@@ -112,7 +112,12 @@ namespace LeukocyteGUI_for_oclHashCat
             return DeleteTask(CrackTasks.Length - 1);
         }
 
-        public int TaskMoveUp(int Index)
+        public void DeleteAllTasks()
+        {
+            CrackTasks = new CrackTask[0];
+        }
+
+        public int TaskMoveToStart(int Index)
         {
             int result = Index;
 
@@ -128,7 +133,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return result;
         }
 
-        public int TaskMoveDown(int Index)
+        public int TaskMoveToEnd(int Index)
         {
             int result = Index;
 

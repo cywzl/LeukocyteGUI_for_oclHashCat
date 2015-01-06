@@ -107,6 +107,7 @@
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
+            this.listViewTasks.SelectedIndexChanged += new System.EventHandler(this.listViewTasks_SelectedIndexChanged);
             // 
             // columnHeaderNumber
             // 
@@ -174,7 +175,7 @@
             // buttonOpenConverter
             // 
             this.buttonOpenConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.message_reply_9020;
-            this.buttonOpenConverter.Location = new System.Drawing.Point(210, 19);
+            this.buttonOpenConverter.Location = new System.Drawing.Point(312, 19);
             this.buttonOpenConverter.Name = "buttonOpenConverter";
             this.buttonOpenConverter.Padding = new System.Windows.Forms.Padding(3);
             this.buttonOpenConverter.Size = new System.Drawing.Size(40, 32);
@@ -185,6 +186,7 @@
             // 
             // buttonClearTask
             // 
+            this.buttonClearTask.Enabled = false;
             this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.old_view_refresh_4484;
             this.buttonClearTask.Location = new System.Drawing.Point(154, 19);
             this.buttonClearTask.Name = "buttonClearTask";
@@ -193,6 +195,7 @@
             this.buttonClearTask.TabIndex = 17;
             this.buttonClearTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonClearTask.UseVisualStyleBackColor = true;
+            this.buttonClearTask.Click += new System.EventHandler(this.buttonClearTask_Click);
             // 
             // buttonStopTask
             // 
@@ -229,6 +232,7 @@
             // 
             // buttonChangeTask
             // 
+            this.buttonChangeTask.Enabled = false;
             this.buttonChangeTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.configure_9863;
             this.buttonChangeTask.Location = new System.Drawing.Point(108, 19);
             this.buttonChangeTask.Name = "buttonChangeTask";
@@ -241,28 +245,33 @@
             // 
             // buttonDownTask
             // 
+            this.buttonDownTask.Enabled = false;
             this.buttonDownTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources._1downarrow_9068;
-            this.buttonDownTask.Location = new System.Drawing.Point(312, 19);
+            this.buttonDownTask.Location = new System.Drawing.Point(256, 19);
             this.buttonDownTask.Name = "buttonDownTask";
             this.buttonDownTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonDownTask.Size = new System.Drawing.Size(40, 32);
             this.buttonDownTask.TabIndex = 12;
             this.buttonDownTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDownTask.UseVisualStyleBackColor = true;
+            this.buttonDownTask.Click += new System.EventHandler(this.buttonDownTask_Click);
             // 
             // buttonUpTask
             // 
+            this.buttonUpTask.Enabled = false;
             this.buttonUpTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources._1uparrow_2202;
-            this.buttonUpTask.Location = new System.Drawing.Point(266, 19);
+            this.buttonUpTask.Location = new System.Drawing.Point(210, 19);
             this.buttonUpTask.Name = "buttonUpTask";
             this.buttonUpTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonUpTask.Size = new System.Drawing.Size(40, 32);
             this.buttonUpTask.TabIndex = 11;
             this.buttonUpTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUpTask.UseVisualStyleBackColor = true;
+            this.buttonUpTask.Click += new System.EventHandler(this.buttonUpTask_Click);
             // 
             // buttonDeleteTask
             // 
+            this.buttonDeleteTask.Enabled = false;
             this.buttonDeleteTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.button_cancel_8125;
             this.buttonDeleteTask.Location = new System.Drawing.Point(62, 19);
             this.buttonDeleteTask.Name = "buttonDeleteTask";
@@ -271,6 +280,7 @@
             this.buttonDeleteTask.TabIndex = 10;
             this.buttonDeleteTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDeleteTask.UseVisualStyleBackColor = true;
+            this.buttonDeleteTask.Click += new System.EventHandler(this.buttonDeleteTask_Click);
             // 
             // buttonAddTask
             // 
