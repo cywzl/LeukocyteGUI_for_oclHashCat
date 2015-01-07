@@ -153,11 +153,13 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             private string sHashFileName, sHashTypeName, sBruteforceMask, sSeparator,
                 sCharset1, sCharset2, sCharset3, sCharset4, sDictionary, sOutputFileName,
-                sOutputFormatName, sSessionId, sWorkloadProfileName, sPlain, sHash;
+                sOutputFormatName, sSessionId, sWorkloadProfileName, sPlain, sHash,
+                sStatus;
             private int sHashTypeCode, sWorkloadFineTuning = 8;
             private byte sWorkloadProfileCode, sOutputFormatCode, sStartLength, sMaxLength,
-                sWorkloadTuning, sAbortTemp, sRetainTemp, sAttackType;
-            public DateTime Started, Finished;
+                sWorkloadTuning, sAbortTemp, sRetainTemp, sAttackType, sCurrentLength;
+            private float sProgress;
+            public DateTime Started, Finished, Estimated;
             public bool UseCharset1, UseCharset2, UseCharset3, UseCharset4,
                 EnableIncrementMode, EnableGPUAsync, EnableSpecificWorkloadProfile,
                 EnableWorkloadTuning, EnableWorkloadFineTuning, DisableTempReading,
@@ -286,6 +288,19 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
 
+            public string Status
+            {
+                get
+                {
+                    return sStatus;
+                }
+
+                set
+                {
+                    sStatus = value;
+                }
+            }
+
             public int HashTypeCode
             {
                 get
@@ -363,6 +378,32 @@ namespace LeukocyteGUI_for_oclHashCat
                 get
                 {
                     return sAttackType;
+                }
+            }
+
+            public byte CurrentLength
+            {
+                get
+                {
+                    return sCurrentLength;
+                }
+
+                set
+                {
+                    sCurrentLength = value;
+                }
+            }
+
+            public float Progress
+            {
+                get
+                {
+                    return sProgress;
+                }
+
+                set
+                {
+                    sProgress = value;
                 }
             }
 
@@ -1401,6 +1442,46 @@ namespace LeukocyteGUI_for_oclHashCat
                         return sRealLength;
                     }
                 }
+            }
+        }
+
+        public class Cracker : System.Diagnostics.Process
+        {
+            private string sHashcat;
+
+            public Cracker()
+            {
+                StartInfo.UseShellExecute = false;
+                StartInfo.CreateNoWindow = true;
+                StartInfo.RedirectStandardOutput = true;
+                OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
+            }
+
+            private void Cracker_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
+            {
+
+            }
+
+            public bool SetHashcat(string Hashcat, bool ShowErrorMessages = false)
+            {
+                bool result = false;
+
+                if (System.IO.File.Exists(Hashcat))
+                {
+                    sHashcat = Hashcat;
+                    result = true;
+                }
+                else if (ShowErrorMessages)
+                {
+                    if (MessageBox.Show("Specified hashcat.exe does not exist. Continue anyway (not recommended)?",
+                        "Warning!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        sHashcat = Hashcat;
+                        result = true;
+                    }
+                }
+
+                return result;
             }
         }
     }
