@@ -67,29 +67,18 @@ namespace LeukocyteGUI_for_oclHashCat
             Visualizer = new VisualManager(this);
         }
 
-        public int AddTask(int Index)
+        public int AddEmptyTask()
         {
-            if (Index > -1)
-            {
-                Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length + 1);
-
-                if (Index != CrackTasks.Length - 1)
-                {
-                    for (int i = CrackTasks.Length - 1; i > Index; i--)
-                    {
-                        CrackTasks[i] = CrackTasks[i - 1];
-                    }
-                }
-
-                CrackTasks[Index] = new CrackTask();
-            }
-
+            Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length + 1);
+            CrackTasks[CrackTasks.Length - 1] = new CrackTask();
             return CrackTasks.Length;
         }
 
-        public int AddTask()
+        public int AddTask(CrackTask NewCrackTask)
         {
-            return AddTask(CrackTasks.Length);
+            Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length + 1);
+            CrackTasks[CrackTasks.Length - 1] = NewCrackTask;
+            return CrackTasks.Length;
         }
 
         public int DeleteTask(int Index)
@@ -167,6 +156,12 @@ namespace LeukocyteGUI_for_oclHashCat
                 CharsetIsInHex, SaltIsInHex, IgnoreWarnings, EnableLoopback,
                 IgnoreUsernames, RemoveCrackedHashes, DisablePotfile, DisableLogfile,
                 OutputToFile, Restore;
+
+            public CrackTask DeepCopy()
+            {
+                CrackTask CrackTaskCopy = (CrackTask)this.MemberwiseClone();
+                return CrackTaskCopy;
+            }
 
             public string HashFileName
             {

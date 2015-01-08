@@ -34,14 +34,12 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (ChangingTaskId > -1)
             {
-                TaskId = ChangingTaskId;
+                CrackTask = MainCrackTaskManager.CrackTasks[ChangingTaskId].DeepCopy();
             }
             else
             {
-                TaskId = MainCrackTaskManager.AddTask() - 1;
+                CrackTask = new CrackTaskManager.CrackTask();
             }
-
-            CrackTask = MainCrackTaskManager.CrackTasks[TaskId];
 
             CrackTask.SetHash(textBoxHashFileName.Text);
             CrackTask.SetSeparator(textBoxSeparator.Text);
@@ -133,7 +131,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (!CrackTask.SetOutputFileName(textBoxOutputFile.Text, true))
                 {
-                    MainCrackTaskManager.DeleteTask(TaskId);
                     return;
                 }
 
@@ -154,10 +151,12 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (ChangingTaskId > -1)
             {
-                MainCrackTaskManager.Visualizer.VisualizeTask(TaskId);
+                MainCrackTaskManager.CrackTasks[ChangingTaskId] = CrackTask;
+                MainCrackTaskManager.Visualizer.VisualizeTask(ChangingTaskId);
             }
             else
             {
+                MainCrackTaskManager.AddTask(CrackTask);
                 MainCrackTaskManager.Visualizer.VisualizeNewTask();
             }
 
