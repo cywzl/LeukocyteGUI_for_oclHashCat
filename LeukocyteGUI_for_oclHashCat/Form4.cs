@@ -28,7 +28,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void buttonSubmitTask_Click(object sender, EventArgs e)
         {
-            int TaskId;
             string[] Data;
             CrackTaskManager.CrackTask CrackTask;
 

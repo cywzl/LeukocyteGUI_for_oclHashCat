@@ -60,11 +60,13 @@ namespace LeukocyteGUI_for_oclHashCat
     {
         public CrackTask[] CrackTasks;
         public VisualManager Visualizer;
+        public CrackManager Cracker;
 
         public CrackTaskManager()
         {
             CrackTasks = new CrackTask[0];
             Visualizer = new VisualManager(this);
+            Cracker = new CrackManager(this);
         }
 
         public int AddEmptyTask()
@@ -1440,21 +1442,52 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
 
-        public class Cracker : System.Diagnostics.Process
+        public class CrackManager : System.Diagnostics.Process
         {
-            private string sHashcat;
+            private CrackTaskManager sCrackTaskManager;
+            private int sCrackingTaskId;
 
-            public Cracker()
+            public CrackManager(CrackTaskManager tskManager)
             {
+                sCrackTaskManager = tskManager;
                 StartInfo.UseShellExecute = false;
                 StartInfo.CreateNoWindow = true;
                 StartInfo.RedirectStandardOutput = true;
+                EnableRaisingEvents = true;
                 OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
+                Exited += new EventHandler(Cracker_Exited);
+            }
+
+            public void Crack(int TaskId)
+            {
+                sCrackingTaskId = TaskId;
+
+                if (sCrackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
+                {
+                    sCrackTaskManager.CrackTasks[TaskId].Started = DateTime.Now;
+                }
+
+                try
+                {
+                    sCrackTaskManager.CrackTasks[sCrackingTaskId].Restore = true;
+                    StartInfo.Arguments = sCrackTaskManager.CrackTasks[sCrackingTaskId].GetHashcatParams();
+                    Start();
+                    BeginOutputReadLine();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred trying to crack Task #"+ TaskId.ToString() + ":\n" + e.Message);
+                }
             }
 
             private void Cracker_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
             {
 
+            }
+
+            private void Cracker_Exited(object sender, System.EventArgs e)
+            {
+                
             }
 
             public bool SetHashcat(string Hashcat, bool ShowErrorMessages = false)
@@ -1463,7 +1496,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (System.IO.File.Exists(Hashcat))
                 {
-                    sHashcat = Hashcat;
+                    StartInfo.FileName = Hashcat;
                     result = true;
                 }
                 else if (ShowErrorMessages)
@@ -1471,7 +1504,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     if (MessageBox.Show("Specified hashcat.exe does not exist. Continue anyway (not recommended)?",
                         "Warning!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        sHashcat = Hashcat;
+                        StartInfo.FileName = Hashcat;
                         result = true;
                     }
                 }
