@@ -40,7 +40,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 CrackTask = new CrackTaskManager.CrackTask();
             }
 
-            CrackTask.SetHash(textBoxHashFileName.Text);
+            if (!CrackTask.SetHash(textBoxHashFileName.Text))
+            {
+                return;
+            }
+
             CrackTask.SetSeparator(textBoxSeparator.Text);
             Data = comboBoxHashType.Text.Split('=');
             CrackTask.SetHashTypeCode(int.Parse(Data[0].Trim()));

@@ -65,6 +65,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.groupBoxGPUStatistics = new System.Windows.Forms.GroupBox();
             this.groupBoxActions = new System.Windows.Forms.GroupBox();
+            this.columnHeaderDigests = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSalts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBoxMainSettings.SuspendLayout();
             this.groupBoxGPUStatistics.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -90,6 +92,8 @@
             this.columnHeaderPlain,
             this.columnHeaderLength,
             this.columnHeaderProgress,
+            this.columnHeaderDigests,
+            this.columnHeaderSalts,
             this.columnHeaderStatus,
             this.columnHeaderEstimated,
             this.columnHeaderOutput,
@@ -122,12 +126,12 @@
             // columnHeaderHash
             // 
             this.columnHeaderHash.Text = "Hash";
-            this.columnHeaderHash.Width = 207;
+            this.columnHeaderHash.Width = 142;
             // 
             // columnHeaderPlain
             // 
             this.columnHeaderPlain.Text = "Plain";
-            this.columnHeaderPlain.Width = 206;
+            this.columnHeaderPlain.Width = 143;
             // 
             // columnHeaderLength
             // 
@@ -432,6 +436,14 @@
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Actions";
             // 
+            // columnHeaderDigests
+            // 
+            this.columnHeaderDigests.Text = "Digests";
+            // 
+            // columnHeaderSalts
+            // 
+            this.columnHeaderSalts.Text = "Salts";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,5 +503,7 @@
         private System.Windows.Forms.GroupBox groupBoxGPUStatistics;
         private System.Windows.Forms.GroupBox groupBoxActions;
         private System.Windows.Forms.ColumnHeader columnHeaderLength;
+        private System.Windows.Forms.ColumnHeader columnHeaderDigests;
+        private System.Windows.Forms.ColumnHeader columnHeaderSalts;
     }
 }

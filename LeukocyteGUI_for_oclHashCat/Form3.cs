@@ -13,22 +13,14 @@ namespace LeukocyteGUI_for_oclHashCat
     public partial class MainForm : Form
     {
         CrackTaskManager tskManager;
+        public string DateTimeFormat;
 
         public MainForm()
         {
             InitializeComponent();
+            DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
             tskManager = new CrackTaskManager();
-            tskManager.Visualizer.SetListView(listViewTasks);
-            tskManager.Visualizer.StartId = 1;
-            tskManager.Visualizer.InfoIndexes.Id = 0;
-            tskManager.Visualizer.InfoIndexes.HashTypeName = 1;
-            tskManager.Visualizer.InfoIndexes.Hash = 2;
-            tskManager.Visualizer.InfoIndexes.Plain = 3;
-            tskManager.Visualizer.InfoIndexes.OutputFileName = 8;
-            tskManager.Visualizer.InfoIndexes.BruteforceMaskDictionary = 9;
-            tskManager.Visualizer.InfoIndexes.Started = 10;
-            tskManager.Visualizer.InfoIndexes.Finished = 11;
-            tskManager.Visualizer.InfoIndexes.SessionId = 12;
+            VisualizeTasks();
             CheckButtons();
         }
 
@@ -103,7 +95,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void buttonClearTask_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("All tasks will be deleted. Are you sure?", "Warning",
+            if (MessageBox.Show("All tasks will be deleted. Are you sure?", "Warning",
                 MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 MainCrackTaskManager.DeleteAllTasks();
@@ -144,7 +136,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void CheckButtons()
         {
-            if(listViewTasks.Items.Count > 0)
+            if (listViewTasks.Items.Count > 0)
             {
                 buttonClearTask.Enabled = true;
             }
@@ -188,6 +180,60 @@ namespace LeukocyteGUI_for_oclHashCat
         private void listViewTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckButtons();
+        }
+
+        public void VisualizeTask(int TaskId)
+        {
+            string[] values = new string[listViewTasks.Columns.Count];
+            CrackTaskManager.CrackTask curTask = tskManager.CrackTasks[TaskId];
+
+            values[0] = (TaskId + 1).ToString();
+            values[1] = curTask.HashTypeName;
+            values[2] = curTask.Hash;
+            values[3] = curTask.Plain;
+            values[4] = curTask.CurrentLength.ToString() + "/"
+                + curTask.MaxLength.ToString();
+            values[5] = curTask.Progress.ToString("F") + " %";
+            values[6] = curTask.RecoveredDigests.ToString() + "/"
+                + curTask.Digests;
+            values[7] = curTask.RecoveredSalts.ToString() + "/"
+                + curTask.Salts;
+            values[8] = curTask.Status;
+            values[9] = curTask.Estimated;
+            values[10] = curTask.OutputFileName;
+
+            switch (curTask.AttackType)
+            {
+                case 0:
+                    values[11] = curTask.Dictionary;
+                    break;
+                case 3:
+                    values[11] = curTask.BruteforceMask;
+                    break;
+            }
+
+            values[12] = curTask.Started.ToString(DateTimeFormat);
+            values[13] = curTask.Finished.ToString(DateTimeFormat);
+            values[14] = curTask.SessionId;
+
+            listViewTasks.Items[TaskId] = new ListViewItem(values);
+        }
+
+        public void VisualizeTasks()
+        {
+            listViewTasks.Items.Clear();
+
+            for (int i = 0; i < tskManager.CrackTasks.Length; i++)
+            {
+                listViewTasks.Items.Add("");
+                VisualizeTask(i);
+            }
+        }
+
+        public void VisualizeNewTask()
+        {
+            listViewTasks.Items.Add("");
+            VisualizeTask(tskManager.CrackTasks.Length - 1);
         }
     }
 }

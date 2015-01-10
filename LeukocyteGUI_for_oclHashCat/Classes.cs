@@ -142,15 +142,17 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public class CrackTask
         {
-            private string sHashFileName, sHashTypeName, sBruteforceMask, sSeparator,
+            private string sHashTypeName, sBruteforceMask, sSeparator,
                 sCharset1, sCharset2, sCharset3, sCharset4, sDictionary, sOutputFileName,
                 sOutputFormatName, sSessionId, sWorkloadProfileName, sPlain, sHash,
                 sStatus;
             private int sHashTypeCode, sWorkloadFineTuning = 8;
             private byte sWorkloadProfileCode, sOutputFormatCode, sStartLength, sMaxLength,
                 sWorkloadTuning, sAbortTemp, sRetainTemp, sAttackType, sCurrentLength;
-            private float sProgress;
-            public DateTime Started, Finished, Estimated;
+            public float Progress;
+            public int Digests, RecoveredDigests, Salts, RecoveredSalts;
+            public string Estimated;
+            public DateTime Started, Finished;
             public bool UseCharset1, UseCharset2, UseCharset3, UseCharset4,
                 EnableIncrementMode, EnableGPUAsync, EnableSpecificWorkloadProfile,
                 EnableWorkloadTuning, EnableWorkloadFineTuning, DisableTempReading,
@@ -163,14 +165,6 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 CrackTask CrackTaskCopy = (CrackTask)this.MemberwiseClone();
                 return CrackTaskCopy;
-            }
-
-            public string HashFileName
-            {
-                get
-                {
-                    return sHashFileName;
-                }
             }
 
             public string HashTypeName
@@ -391,26 +385,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
 
-            public float Progress
-            {
-                get
-                {
-                    return sProgress;
-                }
-
-                set
-                {
-                    sProgress = value;
-                }
-            }
-
-            public bool SetHash(string Hash)
-            {
-                this.sHash = Hash;
-                return true;
-            }
-
-            public bool SetHashFileName(string HashFileName, bool ShowErrorMessages = false)
+            public bool SetHash(string HashFileName, bool ShowErrorMessages = false)
             {
                 bool result = false;
 
@@ -425,7 +400,7 @@ namespace LeukocyteGUI_for_oclHashCat
                         if (System.IO.File.Exists(HashFileName))
                         {
                             result = true;
-                            this.sHashFileName = HashFileName;
+                            this.sHash = HashFileName;
                         }
                         else
                         {
@@ -435,7 +410,7 @@ namespace LeukocyteGUI_for_oclHashCat
                                     "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     result = true;
-                                    this.sHashFileName = HashFileName;
+                                    this.sHash = HashFileName;
                                 }
                             }
                         }
@@ -777,7 +752,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     result += " --restore";
                 }
 
-                result += " " + sHashFileName;
+                result += " " + sHash;
 
                 switch (sAttackType)
                 {
@@ -866,11 +841,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     if (InfoIndexes.Hash > -1)
                     {
                         values[InfoIndexes.Hash] = sCrackTaskManager.CrackTasks[TaskId].Hash;
-                    }
-
-                    if (InfoIndexes.HashFileName > -1)
-                    {
-                        values[InfoIndexes.HashFileName] = sCrackTaskManager.CrackTasks[TaskId].HashFileName;
                     }
 
                     if (InfoIndexes.HashTypeCode > -1)
@@ -1006,7 +976,6 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 private Dictionary<string, int> sIndexes = new Dictionary<string, int>()
                 {
-                    { "HashFileName", -1 },
                     { "HashTypeName", -1 },
                     { "BruteforceMaskDictionary", -1 },
                     { "Separator", -1 },
