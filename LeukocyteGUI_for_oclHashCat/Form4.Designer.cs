@@ -876,7 +876,6 @@
             // 
             // buttonSubmitTask
             // 
-            this.buttonSubmitTask.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonSubmitTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.button_ok_3054;
             this.buttonSubmitTask.Location = new System.Drawing.Point(18, 27);
             this.buttonSubmitTask.Name = "buttonSubmitTask";

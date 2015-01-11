@@ -76,7 +76,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 int index = listViewTasks.SelectedIndices[0];
 
                 MainCrackTaskManager.DeleteTask(index);
-                MainCrackTaskManager.Visualizer.VisualizeTasks();
+                VisualizeTasks();
 
                 if (index > 0)
                 {
@@ -99,7 +99,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 MainCrackTaskManager.DeleteAllTasks();
-                MainCrackTaskManager.Visualizer.VisualizeTasks();
+                VisualizeTasks();
             }
 
             CheckButtons();
@@ -112,9 +112,8 @@ namespace LeukocyteGUI_for_oclHashCat
                 int index1 = listViewTasks.SelectedIndices[0];
                 int index2 = MainCrackTaskManager.TaskMoveToStart(index1);
 
-                MainCrackTaskManager.Visualizer.VisualizeTask(index1);
-                MainCrackTaskManager.Visualizer.VisualizeTask(index2);
-
+                VisualizeTask(index1);
+                VisualizeTask(index2);
                 listViewTasks.Items[index2].Focused = true;
                 listViewTasks.Items[index2].Selected = true;
             }
@@ -127,8 +126,8 @@ namespace LeukocyteGUI_for_oclHashCat
                 int index1 = listViewTasks.SelectedIndices[0];
                 int index2 = MainCrackTaskManager.TaskMoveToEnd(index1);
 
-                MainCrackTaskManager.Visualizer.VisualizeTask(index1);
-                MainCrackTaskManager.Visualizer.VisualizeTask(index2);
+                VisualizeTask(index1);
+                VisualizeTask(index2);
                 listViewTasks.Items[index2].Focused = true;
                 listViewTasks.Items[index2].Selected = true;
             }
