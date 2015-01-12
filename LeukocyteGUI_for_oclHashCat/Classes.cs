@@ -86,6 +86,20 @@ namespace LeukocyteGUI_for_oclHashCat
             return CrackTasks.Length;
         }
 
+        public bool UpdateTask(int Index, CrackTask UpdatedCrackTask)
+        {
+            bool result = false;
+
+            if ((Index < CrackTasks.Length - 1) && (Index > 0))
+            {
+                CrackTasks[Index] = UpdatedCrackTask;
+                TaskUpdated(this, Index);
+                result = true;
+            }
+
+            return result;
+        }
+
         public int DeleteTask(int Index)
         {
             if ((Index < CrackTasks.Length) && (Index > -1))
@@ -779,9 +793,19 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             private CrackTaskManager sCrackTaskManager;
             private int sCrackingTaskId;
+            private System.Timers.Timer sTimer;
+
+            public delegate void StartedCrackingStoppedEventHandler(object sender, int TaskId);
+
+            public event StartedCrackingStoppedEventHandler BeforeStart = delegate { };
+            public event StartedCrackingStoppedEventHandler OnStart = delegate { };
+            public event StartedCrackingStoppedEventHandler OnCracking = delegate { };
+            public event StartedCrackingStoppedEventHandler OnStop = delegate { };
 
             public CrackManager(CrackTaskManager tskManager)
             {
+                sTimer = new System.Timers.Timer(2000);
+                sTimer.Elapsed += sTimer_Elapsed;
                 sCrackTaskManager = tskManager;
                 StartInfo.UseShellExecute = false;
                 StartInfo.CreateNoWindow = true;
@@ -791,8 +815,31 @@ namespace LeukocyteGUI_for_oclHashCat
                 Exited += new EventHandler(Cracker_Exited);
             }
 
+            public double OnCrackInterval
+            {
+                get
+                {
+                    return sTimer.Interval;
+                }
+
+                set
+                {
+                    if (value > 0)
+                    {
+                        sTimer.Interval = value;
+                    }
+                }
+            }
+
+            void sTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+            {
+                OnCracking(this, sCrackingTaskId);
+            }
+
             public void Crack(int TaskId)
             {
+                BeforeStart(this, sCrackingTaskId);
+
                 sCrackingTaskId = TaskId;
 
                 if (sCrackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
@@ -806,6 +853,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     StartInfo.Arguments = sCrackTaskManager.CrackTasks[sCrackingTaskId].GetHashcatParams();
                     Start();
                     BeginOutputReadLine();
+                    OnStart(this, sCrackingTaskId);
                 }
                 catch (Exception e)
                 {
@@ -815,12 +863,12 @@ namespace LeukocyteGUI_for_oclHashCat
 
             private void Cracker_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
             {
-
+                //todo
             }
 
             private void Cracker_Exited(object sender, System.EventArgs e)
             {
-                
+                sTimer.Stop();
             }
 
             public bool SetHashcat(string Hashcat, bool ShowErrorMessages = false)

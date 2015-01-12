@@ -13,7 +13,6 @@ namespace LeukocyteGUI_for_oclHashCat
     public partial class TaskEditorForm : Form
     {
         CrackTaskManager MainCrackTaskManager;
-        MainForm Form3;
         int ChangingTaskId = -1;
 
         public TaskEditorForm()
@@ -155,13 +154,11 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (ChangingTaskId > -1)
             {
-                MainCrackTaskManager.CrackTasks[ChangingTaskId] = CrackTask;
-                Form3.VisualizeTask(ChangingTaskId);
+                MainCrackTaskManager.UpdateTask(ChangingTaskId, CrackTask);
             }
             else
             {
                 MainCrackTaskManager.AddTask(CrackTask);
-                Form3.VisualizeNewTask();
             }
 
             this.DialogResult = DialogResult.OK;
@@ -290,8 +287,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void TaskEditorForm_Load(object sender, EventArgs e)
         {
-            Form3 = (MainForm)this.Owner;
-            MainCrackTaskManager = Form3.MainCrackTaskManager;
+            MainCrackTaskManager = (this.Owner as MainForm).MainCrackTaskManager;
             FillFormWithTaskData();
         }
 

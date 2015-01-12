@@ -20,6 +20,46 @@ namespace LeukocyteGUI_for_oclHashCat
             InitializeComponent();
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
             tskManager = new CrackTaskManager();
+            tskManager.TaskAdded += tskManager_TaskAdded;
+            tskManager.TaskDeleted += tskManager_TaskDeleted;
+            tskManager.TaskMovedToEnd += tskManager_TaskMovedToEnd;
+            tskManager.TaskMovedToStart += tskManager_TaskMovedToStart;
+            tskManager.TaskUpdated += tskManager_TaskUpdated;
+            tskManager.TasksAllDeleted += tskManager_TasksAllDeleted;
+            VisualizeTasks();
+            CheckButtons();
+        }
+
+        private void tskManager_TaskAdded(object sender, int TaskId)
+        {
+            VisualizeNewTask();
+        }
+
+        private void tskManager_TaskDeleted(object sender, int TaskId)
+        {
+            VisualizeTasks();
+            CheckButtons();
+        }
+
+        private void tskManager_TaskMovedToEnd(object sender, int OriginalId, int NewId)
+        {
+            VisualizeTask(OriginalId);
+            VisualizeTask(NewId);
+        }
+
+        private void tskManager_TaskMovedToStart(object sender, int OriginalId, int NewId)
+        {
+            VisualizeTask(OriginalId);
+            VisualizeTask(NewId);
+        }
+
+        private void tskManager_TaskUpdated(object sender, int TaskId)
+        {
+            VisualizeTask(TaskId);
+        }
+
+        private void tskManager_TasksAllDeleted(object sender)
+        {
             VisualizeTasks();
             CheckButtons();
         }
