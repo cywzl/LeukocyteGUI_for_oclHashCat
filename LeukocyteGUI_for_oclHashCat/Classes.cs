@@ -793,7 +793,11 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             private CrackTaskManager sCrackTaskManager;
             private int sCrackingTaskId;
+            private CrackTask sCrackingTask;
             private System.Timers.Timer sTimer;
+
+            public string Speed;
+            public byte Util = 0, Temp = 0, Fan = 0;
 
             public delegate void StartedCrackingStoppedEventHandler(object sender, int TaskId);
 
@@ -841,6 +845,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 BeforeStart(this, sCrackingTaskId);
 
                 sCrackingTaskId = TaskId;
+                sCrackingTask = sCrackTaskManager.CrackTasks[TaskId];
 
                 if (sCrackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
                 {
@@ -857,13 +862,88 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("An error occurred trying to crack Task #"+ TaskId.ToString() + ":\n" + e.Message);
+                    Console.WriteLine("An error occurred trying to crack Task #" + TaskId.ToString() + ":\n" + e.Message);
                 }
             }
 
             private void Cracker_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
             {
-                //todo
+                string[] parameters = e.Data.Split(':');
+
+                if (parameters.Length > 1)
+                {
+                    parameters[1] = parameters[1].Trim();
+
+                    switch (parameters[0])
+                    {
+                        case "Input.Mode.....":
+                            {
+                                byte start = (byte)(parameters[1].IndexOf('[') + 1);
+                                byte length = (byte)(parameters[1].IndexOf(']') - start);
+
+                                sCrackingTask.CurrentLength = byte.Parse(parameters[1].Substring(start, length));
+
+                                break;
+                            }
+                        case "Time.Estimated.":
+                            {
+                                sCrackingTask.Estimated = parameters[1];
+
+                                break;
+                            }
+                        case "Speed.GPU.#1...":
+                            {
+                                Speed = parameters[1];
+
+                                break;
+                            }
+                        case "Recovered......":
+                            {
+                                string[] recovered = parameters[1].Split(',');
+                                byte slashPos;
+                                byte spacePos;
+
+                                recovered[1] = recovered[1].Trim();
+
+                                slashPos = (byte)recovered[0].IndexOf('/');
+                                spacePos = (byte)recovered[0].IndexOf(' ');
+                                sCrackingTask.RecoveredDigests = int.Parse(recovered[0].Substring(0, slashPos));
+                                sCrackingTask.Digests = int.Parse(recovered[0].Substring(slashPos + 1,
+                                    spacePos - slashPos - 1));
+
+                                slashPos = (byte)recovered[1].IndexOf('/');
+                                spacePos = (byte)recovered[1].IndexOf(' ');
+                                sCrackingTask.RecoveredSalts = int.Parse(recovered[1].Substring(0, slashPos));
+                                sCrackingTask.Salts = int.Parse(recovered[1].Substring(slashPos + 1,
+                                    spacePos - slashPos - 1));
+
+                                break;
+                            }
+                        case "Progress.......":
+                            {
+                                byte start = (byte)(parameters[1].IndexOf('(') + 1);
+                                byte length = (byte)(parameters[1].IndexOf('%') - start);
+
+                                sCrackingTask.Progress = float.Parse(parameters[1].Substring(start, length));
+
+                                break;
+                            }
+                        case "HWMon.GPU.#1...":
+                            {
+                                string[] monitors = parameters[1].Split(',');
+
+                                monitors[0] = monitors[0].Trim();
+                                monitors[1] = monitors[1].Trim();
+                                monitors[2] = monitors[2].Trim();
+
+                                Util = byte.Parse(monitors[0].Substring(0, monitors[0].IndexOf('%')));
+                                Temp = byte.Parse(monitors[1].Substring(0, monitors[1].IndexOf('c')));
+                                Fan = byte.Parse(monitors[2].Substring(0, monitors[2].IndexOf('%')));
+
+                                break;
+                            }
+                    }
+                }
             }
 
             private void Cracker_Exited(object sender, System.EventArgs e)
