@@ -14,11 +14,14 @@ namespace LeukocyteGUI_for_oclHashCat
     {
         CrackTaskManager tskManager;
         public string DateTimeFormat;
+        private System.Timers.Timer timer;
 
         public MainForm()
         {
             InitializeComponent();
+
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+
             tskManager = new CrackTaskManager();
             tskManager.TaskAdded += tskManager_TaskAdded;
             tskManager.TaskDeleted += tskManager_TaskDeleted;
@@ -26,8 +29,37 @@ namespace LeukocyteGUI_for_oclHashCat
             tskManager.TaskMovedToStart += tskManager_TaskMovedToStart;
             tskManager.TaskUpdated += tskManager_TaskUpdated;
             tskManager.TasksAllDeleted += tskManager_TasksAllDeleted;
+
+            timer = new System.Timers.Timer(2000);
+            timer.SynchronizingObject = this;
+            timer.Elapsed += timer_Elapsed;
+            timer.AutoReset = true;
+
+            tskManager.Cracker.OnStart += Cracker_OnStart;
+            tskManager.Cracker.OnStop += Cracker_OnStop;
+
             VisualizeTasks();
             CheckButtons();
+        }
+
+        private void Cracker_OnStop(object sender, int TaskId)
+        {
+            timer.Stop();
+            VisualizeTask(TaskId);
+        }
+
+        private void Cracker_OnStart(object sender, int TaskId)
+        {
+            timer.Start();
+        }
+
+        private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            VisualizeTask(MainCrackTaskManager.Cracker.CrackingTaskId);
+            labelGPUSpeed.Text = MainCrackTaskManager.Cracker.Speed;
+            labelGPUTemp.Text = MainCrackTaskManager.Cracker.Temp.ToString() + " °C";
+            labelGPUUtil.Text = MainCrackTaskManager.Cracker.Util.ToString() + "%";
+            labelFanSpeed.Text = MainCrackTaskManager.Cracker.Fan.ToString() + "%";
         }
 
         private void tskManager_TaskAdded(object sender, int TaskId)
@@ -273,6 +305,28 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             listViewTasks.Items.Add("");
             VisualizeTask(tskManager.CrackTasks.Length - 1);
+        }
+
+        private void buttonStartTask_Click(object sender, EventArgs e)
+        {
+            if (listViewTasks.SelectedIndices.Count > 0)
+            {
+                tskManager.Cracker.SetHashcat(textBoxHashcat.Text, true);
+                tskManager.Cracker.Crack(listViewTasks.SelectedIndices[0]);
+            }
+        }
+
+        private void buttonPauseTask_Click(object sender, EventArgs e)
+        {
+            tskManager.Cracker.PauseCracking();
+        }
+
+        private void buttonStopTask_Click(object sender, EventArgs e)
+        {
+            if (listViewTasks.SelectedIndices.Count > 0)
+            {
+                tskManager.Cracker.StopCracking(listViewTasks.SelectedIndices[0]);
+            }
         }
     }
 }

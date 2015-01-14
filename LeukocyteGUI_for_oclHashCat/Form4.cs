@@ -143,14 +143,14 @@ namespace LeukocyteGUI_for_oclHashCat
             }
 
             CrackTask.SetSessionId(textBoxSessionId.Text);
-            CrackTask.CharsetIsInHex = checkBoxCharsetIsInHex.Enabled;
-            CrackTask.SaltIsInHex = checkBoxSaltIsInHex.Enabled;
-            CrackTask.IgnoreWarnings = checkBoxIgnoreWarnings.Enabled;
-            CrackTask.EnableLoopback = checkBoxLoopback.Enabled;
-            CrackTask.IgnoreUsernames = checkBoxIgnoreUsernames.Enabled;
-            CrackTask.RemoveCrackedHashes = checkBoxRemoveCracked.Enabled;
-            CrackTask.DisablePotfile = checkBoxDisablePot.Enabled;
-            CrackTask.DisableLogfile = checkBoxDisableLog.Enabled;
+            CrackTask.CharsetIsInHex = checkBoxCharsetIsInHex.Checked;
+            CrackTask.SaltIsInHex = checkBoxSaltIsInHex.Checked;
+            CrackTask.IgnoreWarnings = checkBoxIgnoreWarnings.Checked;
+            CrackTask.EnableLoopback = checkBoxLoopback.Checked;
+            CrackTask.IgnoreUsernames = checkBoxIgnoreUsernames.Checked;
+            CrackTask.RemoveCrackedHashes = checkBoxRemoveCracked.Checked;
+            CrackTask.DisablePotfile = checkBoxDisablePot.Checked;
+            CrackTask.DisableLogfile = checkBoxDisableLog.Checked;
 
             if (ChangingTaskId > -1)
             {

@@ -36,6 +36,8 @@
             this.columnHeaderPlain = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderLength = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderProgress = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDigests = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSalts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderEstimated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderOutput = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,17 +58,15 @@
             this.labelOclHashcat = new System.Windows.Forms.Label();
             this.groupBoxMainSettings = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelGPUSpeed = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelGPUTemp = new System.Windows.Forms.Label();
+            this.labelGPUUtil = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelFanSpeed = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBoxGPUStatistics = new System.Windows.Forms.GroupBox();
             this.groupBoxActions = new System.Windows.Forms.GroupBox();
-            this.columnHeaderDigests = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderSalts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBoxMainSettings.SuspendLayout();
             this.groupBoxGPUStatistics.SuspendLayout();
             this.groupBoxActions.SuspendLayout();
@@ -142,6 +142,14 @@
             this.columnHeaderProgress.Text = "Progress";
             this.columnHeaderProgress.Width = 54;
             // 
+            // columnHeaderDigests
+            // 
+            this.columnHeaderDigests.Text = "Digests";
+            // 
+            // columnHeaderSalts
+            // 
+            this.columnHeaderSalts.Text = "Salts";
+            // 
             // columnHeaderStatus
             // 
             this.columnHeaderStatus.Text = "Status";
@@ -211,6 +219,7 @@
             this.buttonStopTask.TabIndex = 16;
             this.buttonStopTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonStopTask.UseVisualStyleBackColor = true;
+            this.buttonStopTask.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
             // buttonPauseTask
             // 
@@ -222,6 +231,7 @@
             this.buttonPauseTask.TabIndex = 15;
             this.buttonPauseTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonPauseTask.UseVisualStyleBackColor = true;
+            this.buttonPauseTask.Click += new System.EventHandler(this.buttonPauseTask_Click);
             // 
             // buttonStartTask
             // 
@@ -233,6 +243,7 @@
             this.buttonStartTask.TabIndex = 14;
             this.buttonStartTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonStartTask.UseVisualStyleBackColor = true;
+            this.buttonStartTask.Click += new System.EventHandler(this.buttonStartTask_Click);
             // 
             // buttonChangeTask
             // 
@@ -328,15 +339,15 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "GPU Speed:";
             // 
-            // label2
+            // labelGPUSpeed
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(122, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 17);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "0";
+            this.labelGPUSpeed.AutoSize = true;
+            this.labelGPUSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGPUSpeed.Location = new System.Drawing.Point(122, 23);
+            this.labelGPUSpeed.Name = "labelGPUSpeed";
+            this.labelGPUSpeed.Size = new System.Drawing.Size(16, 17);
+            this.labelGPUSpeed.TabIndex = 22;
+            this.labelGPUSpeed.Text = "0";
             // 
             // label3
             // 
@@ -348,25 +359,25 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "GPU Temp:";
             // 
-            // label4
+            // labelGPUTemp
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(122, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 17);
-            this.label4.TabIndex = 24;
-            this.label4.Text = "0";
+            this.labelGPUTemp.AutoSize = true;
+            this.labelGPUTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGPUTemp.Location = new System.Drawing.Point(122, 47);
+            this.labelGPUTemp.Name = "labelGPUTemp";
+            this.labelGPUTemp.Size = new System.Drawing.Size(16, 17);
+            this.labelGPUTemp.TabIndex = 24;
+            this.labelGPUTemp.Text = "0";
             // 
-            // label5
+            // labelGPUUtil
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(122, 71);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(16, 17);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "0";
+            this.labelGPUUtil.AutoSize = true;
+            this.labelGPUUtil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelGPUUtil.Location = new System.Drawing.Point(122, 71);
+            this.labelGPUUtil.Name = "labelGPUUtil";
+            this.labelGPUUtil.Size = new System.Drawing.Size(16, 17);
+            this.labelGPUUtil.TabIndex = 26;
+            this.labelGPUUtil.Text = "0";
             // 
             // label6
             // 
@@ -378,15 +389,15 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "GPU Util:";
             // 
-            // label7
+            // labelFanSpeed
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(122, 95);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 17);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "0";
+            this.labelFanSpeed.AutoSize = true;
+            this.labelFanSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFanSpeed.Location = new System.Drawing.Point(122, 95);
+            this.labelFanSpeed.Name = "labelFanSpeed";
+            this.labelFanSpeed.Size = new System.Drawing.Size(16, 17);
+            this.labelFanSpeed.TabIndex = 28;
+            this.labelFanSpeed.Text = "0";
             // 
             // label8
             // 
@@ -403,13 +414,13 @@
             this.groupBoxGPUStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxGPUStatistics.Controls.Add(this.label8);
-            this.groupBoxGPUStatistics.Controls.Add(this.label7);
+            this.groupBoxGPUStatistics.Controls.Add(this.labelFanSpeed);
             this.groupBoxGPUStatistics.Controls.Add(this.label6);
-            this.groupBoxGPUStatistics.Controls.Add(this.label5);
+            this.groupBoxGPUStatistics.Controls.Add(this.labelGPUUtil);
             this.groupBoxGPUStatistics.Controls.Add(this.label3);
-            this.groupBoxGPUStatistics.Controls.Add(this.label4);
+            this.groupBoxGPUStatistics.Controls.Add(this.labelGPUTemp);
             this.groupBoxGPUStatistics.Controls.Add(this.label1);
-            this.groupBoxGPUStatistics.Controls.Add(this.label2);
+            this.groupBoxGPUStatistics.Controls.Add(this.labelGPUSpeed);
             this.groupBoxGPUStatistics.Location = new System.Drawing.Point(534, 12);
             this.groupBoxGPUStatistics.Name = "groupBoxGPUStatistics";
             this.groupBoxGPUStatistics.Size = new System.Drawing.Size(229, 126);
@@ -435,14 +446,6 @@
             this.groupBoxActions.TabIndex = 30;
             this.groupBoxActions.TabStop = false;
             this.groupBoxActions.Text = "Actions";
-            // 
-            // columnHeaderDigests
-            // 
-            this.columnHeaderDigests.Text = "Digests";
-            // 
-            // columnHeaderSalts
-            // 
-            this.columnHeaderSalts.Text = "Salts";
             // 
             // MainForm
             // 
@@ -493,12 +496,12 @@
         private System.Windows.Forms.Label labelOclHashcat;
         private System.Windows.Forms.GroupBox groupBoxMainSettings;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelGPUSpeed;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelGPUTemp;
+        private System.Windows.Forms.Label labelGPUUtil;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelFanSpeed;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBoxGPUStatistics;
         private System.Windows.Forms.GroupBox groupBoxActions;
