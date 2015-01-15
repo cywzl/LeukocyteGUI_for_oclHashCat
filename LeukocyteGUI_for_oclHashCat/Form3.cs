@@ -38,18 +38,26 @@ namespace LeukocyteGUI_for_oclHashCat
             tskManager.Cracker.OnStart += Cracker_OnStart;
             tskManager.Cracker.OnStop += Cracker_OnStop;
 
+            typeof(Control).InvokeMember("DoubleBuffered",
+                System.Reflection.BindingFlags.SetProperty
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic,
+                null, listViewTasks, new object[] { true });
+
             VisualizeTasks();
             CheckButtons();
         }
 
         private void Cracker_OnStop(object sender, int TaskId)
         {
-            timer.Stop();
-            VisualizeTask(TaskId);
+            //timer.Stop();
+            //VisualizeTask(TaskId);
+            timer.AutoReset = false;
         }
 
         private void Cracker_OnStart(object sender, int TaskId)
         {
+            timer.AutoReset = true;
             timer.Start();
         }
 
@@ -287,7 +295,10 @@ namespace LeukocyteGUI_for_oclHashCat
             values[13] = curTask.Finished.ToString(DateTimeFormat);
             values[14] = curTask.SessionId;
 
-            listViewTasks.Items[TaskId] = new ListViewItem(values);
+            for (byte i = 0; i < values.Length; i++)
+            {
+                listViewTasks.Items[TaskId].SubItems[i].Text = values[i];
+            }
         }
 
         public void VisualizeTasks()
@@ -303,7 +314,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public void VisualizeNewTask()
         {
-            listViewTasks.Items.Add("");
+            string[] subItems = new string[listViewTasks.Columns.Count];
+            ListViewItem lvItem = new ListViewItem(subItems);
+            listViewTasks.Items.Add(lvItem);
             VisualizeTask(tskManager.CrackTasks.Length - 1);
         }
 

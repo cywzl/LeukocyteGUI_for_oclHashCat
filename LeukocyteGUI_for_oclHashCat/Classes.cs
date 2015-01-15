@@ -798,7 +798,7 @@ namespace LeukocyteGUI_for_oclHashCat
             private CultureInfo sCulture;
             private bool sIsCracking;
 
-            public string Speed;
+            public string Speed = "0";
             public byte Util = 0, Temp = 0, Fan = 0;
 
             public delegate void StartedCrackingStoppedEventHandler(object sender, int TaskId);
@@ -862,9 +862,9 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 if ((sCrackingTaskId > -1) && (sIsCracking))
                 {
-                    Kill();
                     sCrackingTask.Status = "Paused";
                     sCrackingTask.Restore = true;
+                    Kill();
                     OnManualPause(this, sCrackingTaskId);
                 }
             }
@@ -876,13 +876,14 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     sCrackTaskManager.CrackTasks[TaskId].Status = "Stopped";
                     sCrackTaskManager.CrackTasks[TaskId].Restore = false;
-                    OnManualStop(this, TaskId);
                 }
 
                 if (sIsCracking)
                 {
                     Kill();
                 }
+
+                OnManualStop(this, TaskId);
             }
 
             public void StopCracking()
@@ -924,8 +925,8 @@ namespace LeukocyteGUI_for_oclHashCat
                                 {
                                     if (parameters.Length > 3)
                                     {
-                                        byte start = (byte)(parameters[1].IndexOf('(') + 1);
-                                        byte length = (byte)(parameters[1].IndexOf(')') - start);
+                                        byte start = (byte)(parameters[3].IndexOf('(') + 1);
+                                        byte length = (byte)(parameters[3].IndexOf(')') - start);
 
                                         if ((start > 0) && (length > 0) && (length < 255))
                                         {
@@ -994,10 +995,14 @@ namespace LeukocyteGUI_for_oclHashCat
 
             private void Cracker_Exited(object sender, System.EventArgs e)
             {
-                OnStop(this, sCrackingTaskId);
+                Temp = 0;
+                Util = 0;
+                Fan = 0;
+                Speed = "0";
                 sIsCracking = false;
                 CancelOutputRead();
                 Close();
+                OnStop(this, sCrackingTaskId);
             }
 
             public bool SetHashcat(string Hashcat, bool ShowErrorMessages = false)
