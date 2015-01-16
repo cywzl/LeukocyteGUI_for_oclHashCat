@@ -73,11 +73,13 @@ namespace LeukocyteGUI_for_oclHashCat
         public event TaskMovedToStartEnd TaskMovedToStart = delegate { };
         public event TaskMovedToStartEnd TaskMovedToEnd = delegate { };
 
-        public CrackTaskManager()
+        public CrackTaskManager(CrackTask[] crackTasks)
         {
-            CrackTasks = new CrackTask[0];
+            CrackTasks = crackTasks;
             Cracker = new CrackManager(this);
         }
+
+        public CrackTaskManager() : this(new CrackTask[0]) { }
 
         public int AddTask(CrackTask NewCrackTask)
         {
@@ -162,6 +164,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return result;
         }
 
+        [Serializable()]
         public class CrackTask
         {
             private string sHashTypeName, sBruteforceMask, sSeparator,

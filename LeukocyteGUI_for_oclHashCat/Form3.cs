@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
     public partial class MainForm : Form
     {
+        const string crackTasksFile = "CrackTasks.bin";
+
         CrackTaskManager tskManager;
         public string DateTimeFormat;
         private System.Timers.Timer timer;
@@ -22,7 +26,20 @@ namespace LeukocyteGUI_for_oclHashCat
 
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
-            tskManager = new CrackTaskManager();
+            if (File.Exists(crackTasksFile))
+            {
+                Stream deserializerStream = File.OpenRead(crackTasksFile);
+                BinaryFormatter deserializer = new BinaryFormatter();
+                CrackTaskManager.CrackTask[] crackTasks
+                    = (CrackTaskManager.CrackTask[]) deserializer.Deserialize(deserializerStream);
+                deserializerStream.Close();
+                tskManager = new CrackTaskManager(crackTasks);
+            }
+            else
+            {
+                tskManager = new CrackTaskManager();
+            }
+
             tskManager.TaskAdded += tskManager_TaskAdded;
             tskManager.TaskDeleted += tskManager_TaskDeleted;
             tskManager.TaskMovedToEnd += tskManager_TaskMovedToEnd;
@@ -46,6 +63,19 @@ namespace LeukocyteGUI_for_oclHashCat
 
             VisualizeTasks();
             CheckButtons();
+        }
+
+        public CrackTaskManager MainCrackTaskManager
+        {
+            get
+            {
+                return tskManager;
+            }
+
+            set
+            {
+                tskManager = value;
+            }
         }
 
         private void Cracker_OnStop(object sender, int TaskId)
@@ -121,19 +151,6 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             ConverterForm Converter = new ConverterForm();
             Converter.ShowDialog(this);
-        }
-
-        public CrackTaskManager MainCrackTaskManager
-        {
-            get
-            {
-                return tskManager;
-            }
-
-            set
-            {
-                tskManager = value;
-            }
         }
 
         private void buttonChangeTask_Click(object sender, EventArgs e)
@@ -295,9 +312,16 @@ namespace LeukocyteGUI_for_oclHashCat
             values[13] = curTask.Finished.ToString(DateTimeFormat);
             values[14] = curTask.SessionId;
 
-            for (byte i = 0; i < values.Length; i++)
+            if (listViewTasks.Items[TaskId].SubItems.Count > 1)
             {
-                listViewTasks.Items[TaskId].SubItems[i].Text = values[i];
+                for (byte i = 0; i < values.Length; i++)
+                {
+                    listViewTasks.Items[TaskId].SubItems[i].Text = values[i];
+                }
+            }
+            else
+            {
+                listViewTasks.Items[TaskId] = new ListViewItem(values);
             }
         }
 
@@ -340,6 +364,14 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 tskManager.Cracker.StopCracking(listViewTasks.SelectedIndices[0]);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Stream crackTasksStream = File.Create(crackTasksFile);
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(crackTasksStream, tskManager.CrackTasks);
+            crackTasksStream.Close();
         }
     }
 }

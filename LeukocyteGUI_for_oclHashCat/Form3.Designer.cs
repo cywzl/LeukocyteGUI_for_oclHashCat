@@ -458,6 +458,7 @@
             this.Controls.Add(this.listViewTasks);
             this.Name = "MainForm";
             this.Text = "LeukocyteGUI for oclHashCat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.groupBoxMainSettings.ResumeLayout(false);
             this.groupBoxMainSettings.PerformLayout();
             this.groupBoxGPUStatistics.ResumeLayout(false);
