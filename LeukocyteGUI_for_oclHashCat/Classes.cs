@@ -526,7 +526,10 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (OutputFileName == "")
                 {
-                    MessageBox.Show("Output file name cannot be empty", "Error");
+                    if (ShowErrorMessages)
+                    {
+                        MessageBox.Show("Output file name cannot be empty", "Error");
+                    }
                 }
                 else
                 {

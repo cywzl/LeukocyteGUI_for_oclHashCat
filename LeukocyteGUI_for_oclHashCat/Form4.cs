@@ -49,77 +49,16 @@ namespace LeukocyteGUI_for_oclHashCat
             Data = comboBoxHashType.Text.Split('=');
             CrackTask.SetHashTypeCode(int.Parse(Data[0].Trim()));
             CrackTask.SetHashTypeName(Data[1].Trim());
-
-            if (radioButtonAttackTypeBrute.Checked)
-            {
-                CrackTask.SetAttackType(3);
-                CrackTask.SetBruteforceMask(textBoxBruteforceMask.Text);
-            }
-            else
-            {
-                CrackTask.SetAttackType(0);
-                CrackTask.SetDictionary(textBoxDictionary.Text);
-            }
-
-            if (checkBoxCharset1.Checked)
-            {
-                CrackTask.UseCharset1 = true;
-                CrackTask.SetCharset1(textBoxCharset1.Text);
-            }
-
-            if (checkBoxCharset2.Checked)
-            {
-                CrackTask.UseCharset2 = true;
-                CrackTask.SetCharset2(textBoxCharset2.Text);
-            }
-
-            if (checkBoxCharset3.Checked)
-            {
-                CrackTask.UseCharset3 = true;
-                CrackTask.SetCharset3(textBoxCharset3.Text);
-            }
-
-            if (checkBoxCharset4.Checked)
-            {
-                CrackTask.UseCharset4 = true;
-                CrackTask.SetCharset4(textBoxCharset4.Text);
-            }
-
-            CrackTask.EnableGPUAsync = checkBoxGPUAsync.Checked;
-
-            if (checkBoxSpecificWorkloadProfile.Checked)
-            {
-                CrackTask.EnableSpecificWorkloadProfile = true;
-                Data = comboBoxWorkloadProfile.Text.Split('=');
-                CrackTask.SetWorkloadProfileCode(byte.Parse(Data[0].Trim()));
-                CrackTask.SetWorkloadProfileName(Data[1].Trim());
-            }
-
-            if (checkBoxWorkloadTuning.Checked)
-            {
-                CrackTask.EnableWorkloadTuning = true;
-                CrackTask.SetWorkloadTuning(byte.Parse(comboBoxWorkloadTuning.Text));
-            }
-
-            if (checkBoxWorkloadFineTuning.Checked)
-            {
-                CrackTask.EnableWorkloadFineTuning = true;
-                CrackTask.SetWorkloadFineTuning((int)numericUpDownWorkloadFineTuning.Value);
-            }
-
-            if (checkBoxTempAbort.Checked)
-            {
-                CrackTask.AbortSessionIfReachesMaxTemp = true;
-                CrackTask.SetAbortTemp((byte)numericUpDownTempAbort.Value);
-            }
-
-            if (checkBoxTempRetain.Checked)
-            {
-                CrackTask.TryToRetain = true;
-                CrackTask.SetRetainTemp((byte)numericUpDownTempRetain.Value);
-            }
-
-            CrackTask.DisableAutoPowertuning = checkBoxDisablePowertune.Checked;
+            CrackTask.SetBruteforceMask(textBoxBruteforceMask.Text);
+            CrackTask.SetDictionary(textBoxDictionary.Text);
+            CrackTask.SetCharset1(textBoxCharset1.Text);
+            CrackTask.SetCharset2(textBoxCharset2.Text);
+            CrackTask.SetCharset3(textBoxCharset3.Text);
+            CrackTask.SetCharset4(textBoxCharset4.Text);
+            CrackTask.UseCharset1 = checkBoxCharset1.Checked;
+            CrackTask.UseCharset2 = checkBoxCharset2.Checked;
+            CrackTask.UseCharset3 = checkBoxCharset3.Checked;
+            CrackTask.UseCharset4 = checkBoxCharset4.Checked;
 
             if (checkBoxEnableIncrement.Checked)
             {
@@ -127,6 +66,42 @@ namespace LeukocyteGUI_for_oclHashCat
                 CrackTask.SetStartLength((byte)numericUpDownIncrementMin.Value);
                 CrackTask.SetMaxLength((byte)numericUpDownIncrementMax.Value);
             }
+            else
+            {
+                CrackTask.SetMaxLength((byte)textBoxBruteforceMask.Text.Replace("?", "").Length);
+            }
+
+            if (radioButtonAttackTypeBrute.Checked)
+            {
+                CrackTask.SetAttackType(3);
+            }
+            else
+            {
+                CrackTask.SetAttackType(0);
+            }
+
+            CrackTask.EnableGPUAsync = checkBoxGPUAsync.Checked;
+
+            CrackTask.EnableSpecificWorkloadProfile = checkBoxSpecificWorkloadProfile.Checked;
+            Data = comboBoxWorkloadProfile.Text.Split('=');
+            CrackTask.SetWorkloadProfileCode(byte.Parse(Data[0].Trim()));
+            CrackTask.SetWorkloadProfileName(Data[1].Trim());
+
+            CrackTask.EnableWorkloadTuning = checkBoxWorkloadTuning.Checked;
+            CrackTask.SetWorkloadTuning(byte.Parse(comboBoxWorkloadTuning.Text));
+
+            CrackTask.EnableWorkloadFineTuning = checkBoxWorkloadFineTuning.Checked;
+            CrackTask.SetWorkloadFineTuning((int)numericUpDownWorkloadFineTuning.Value);
+
+            CrackTask.DisableTempReading = checkBoxDisableTemp.Checked;
+
+            CrackTask.AbortSessionIfReachesMaxTemp = checkBoxTempAbort.Checked;
+            CrackTask.SetAbortTemp((byte)numericUpDownTempAbort.Value);
+
+            CrackTask.TryToRetain = checkBoxTempRetain.Checked;
+            CrackTask.SetRetainTemp((byte)numericUpDownTempRetain.Value);
+
+            CrackTask.DisableAutoPowertuning = checkBoxDisablePowertune.Checked;
 
             if (checkBoxOutputToFile.Checked)
             {
@@ -136,11 +111,15 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     return;
                 }
-
-                Data = comboBoxOutputFormat.Text.Split('=');
-                CrackTask.SetOutputFormatCode(byte.Parse(Data[0].Trim()));
-                CrackTask.SetOutputFormatName(Data[1].Trim());
             }
+            else
+            {
+                CrackTask.SetOutputFileName(textBoxOutputFile.Text);
+            }
+
+            Data = comboBoxOutputFormat.Text.Split('=');
+            CrackTask.SetOutputFormatCode(byte.Parse(Data[0].Trim()));
+            CrackTask.SetOutputFormatName(Data[1].Trim());
 
             CrackTask.SetSessionId(textBoxSessionId.Text);
             CrackTask.CharsetIsInHex = checkBoxCharsetIsInHex.Checked;
