@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
@@ -172,6 +173,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 sOutputFormatName, sSessionId, sWorkloadProfileName, sPlain, sHash,
                 sStatus;
             private int sHashTypeCode, sWorkloadFineTuning = 8;
+            private ulong sRestorePosition;
             private byte sWorkloadProfileCode, sOutputFormatCode, sStartLength, sMaxLength,
                 sWorkloadTuning, sAbortTemp, sRetainTemp, sAttackType, sCurrentLength;
             public float Progress;
@@ -330,6 +332,19 @@ namespace LeukocyteGUI_for_oclHashCat
                 get
                 {
                     return sWorkloadFineTuning;
+                }
+            }
+
+            public ulong RestorePosition
+            {
+                get
+                {
+                    return sRestorePosition;
+                }
+
+                set
+                {
+                    sRestorePosition = value;
                 }
             }
 
@@ -661,7 +676,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 if (OutputToFile)
                 {
                     result
-                        += " --outfile=" + sOutputFileName
+                        += " --outfile=\"" + sOutputFileName + "\""
                          + " --outfile-format=" + sOutputFormatCode.ToString();
                 }
 
@@ -780,12 +795,19 @@ namespace LeukocyteGUI_for_oclHashCat
                     result += " --restore";
                 }
 
-                result += " " + sHash;
+                if (sHash.Contains('.') || sHash.Contains('/') || sHash.Contains(@"\"))
+                {
+                    result += " \"" + sHash + "\"";
+                }
+                else
+                {
+                    result += " " + sHash;
+                }
 
                 switch (sAttackType)
                 {
                     case 0:
-                        result += " " + sDictionary;
+                        result += " \"" + sDictionary + "\"";
                         break;
                     case 3:
                         result += " " + sBruteforceMask;
@@ -799,10 +821,11 @@ namespace LeukocyteGUI_for_oclHashCat
         public class CrackManager : System.Diagnostics.Process
         {
             private CrackTaskManager sCrackTaskManager;
-            private int sCrackingTaskId;
+            private int sCrackingTaskId = -1;
             private CrackTask sCrackingTask;
             private CultureInfo sCulture;
             private bool sIsCracking;
+            private System.Timers.Timer sTimer;
 
             public string Speed = "0";
             public byte Util = 0, Temp = 0, Fan = 0;
@@ -826,6 +849,26 @@ namespace LeukocyteGUI_for_oclHashCat
                 EnableRaisingEvents = true;
                 OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
                 Exited += new EventHandler(Cracker_Exited);
+                sCrackTaskManager.TaskMovedToEnd += sCrackTaskManager_TaskMovedToEnd;
+                sCrackTaskManager.TaskMovedToStart += sCrackTaskManager_TaskMovedToStart;
+                sCrackTaskManager.TaskDeleted += sCrackTaskManager_TaskDeleted;
+                sTimer = new System.Timers.Timer(5000);
+                sTimer.AutoReset = true;
+                sTimer.Elapsed += sTimer_Elapsed;
+            }
+
+            private void sTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+            {
+                if (sCrackingTaskId != -1)
+                {
+                    ulong rp = ReadRestorePosition(StartInfo.WorkingDirectory
+                        + sCrackingTask.SessionId + ".restore");
+
+                    if (rp > sCrackingTask.RestorePosition)
+                    {
+                        sCrackingTask.RestorePosition = rp;
+                    }
+                }
             }
 
             public int CrackingTaskId
@@ -836,12 +879,58 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
 
+            public bool IsCracking
+            {
+                get
+                {
+                    return sIsCracking;
+                }
+            }
+
+            private void sCrackTaskManager_TaskDeleted(object sender, int TaskId)
+            {
+                if ((TaskId < sCrackingTaskId) && (sCrackingTaskId > -1))
+                {
+                    sCrackingTaskId--;
+                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                }
+            }
+
+            private void sCrackTaskManager_TaskMovedToStart(object sender, int OriginalId, int NewId)
+            {
+                if (sCrackingTaskId == OriginalId)
+                {
+                    sCrackingTaskId = NewId;
+                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                }
+                else if (sCrackingTaskId == NewId)
+                {
+                    sCrackingTaskId = OriginalId;
+                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                }
+            }
+
+            private void sCrackTaskManager_TaskMovedToEnd(object sender, int OriginalId, int NewId)
+            {
+                if (sCrackingTaskId == OriginalId)
+                {
+                    sCrackingTaskId = NewId;
+                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                }
+                else if (sCrackingTaskId == NewId)
+                {
+                    sCrackingTaskId = OriginalId;
+                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                }
+            }
+
             public void Crack(int TaskId)
             {
                 BeforeStart(this, sCrackingTaskId);
 
                 sCrackingTaskId = TaskId;
                 sCrackingTask = sCrackTaskManager.CrackTasks[TaskId];
+                sCrackingTask.RestorePosition = 0;
 
                 if (sCrackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
                 {
@@ -850,13 +939,16 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 try
                 {
-                    StartInfo.Arguments = sCrackTaskManager.CrackTasks[sCrackingTaskId].GetHashcatParams();
+                    sCrackingTask.RestorePosition = ReadRestorePosition(StartInfo.WorkingDirectory
+                        + sCrackingTask.SessionId + ".restore");
+                    StartInfo.Arguments = sCrackingTask.GetHashcatParams();
                     Start();
                     BeginOutputReadLine();
                     sIsCracking = true;
-                    sCrackTaskManager.CrackTasks[sCrackingTaskId].Restore = true;
+                    sCrackingTask.Restore = true;
                     sCrackingTask.Status = "Cracking";
                     OnStart(this, sCrackingTaskId);
+                    sTimer.Start();
                 }
                 catch (Exception e)
                 {
@@ -866,7 +958,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             public void PauseCracking()
             {
-                if ((sCrackingTaskId > -1) && (sIsCracking))
+                if (sIsCracking)
                 {
                     sCrackingTask.Status = "Paused";
                     sCrackingTask.Restore = true;
@@ -1001,14 +1093,34 @@ namespace LeukocyteGUI_for_oclHashCat
 
             private void Cracker_Exited(object sender, System.EventArgs e)
             {
+                if (sCrackingTaskId != -1)
+                {
+                    if (ExitCode != 0)
+                    {
+                        if (sCrackingTask.Restore)
+                        {
+                            sCrackingTask.Status = "Paused";
+                        }
+                        else
+                        {
+                            sCrackingTask.Status = "Stopped";
+                        }
+                    }
+
+                    WriteRestorePosition(StartInfo.WorkingDirectory + sCrackingTask.SessionId + ".restore",
+                        sCrackingTask.RestorePosition);
+                }
+
+                sTimer.Stop();
                 Temp = 0;
                 Util = 0;
                 Fan = 0;
-                Speed = "0";
+                Speed = "0 h/s";
                 sIsCracking = false;
                 CancelOutputRead();
                 Close();
                 OnStop(this, sCrackingTaskId);
+                sCrackingTaskId = -1;
             }
 
             public bool SetHashcat(string Hashcat, bool ShowErrorMessages = false)
@@ -1031,6 +1143,44 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
 
                 return result;
+            }
+
+            public bool SetWorkingDirectory(string WorkingDirectory)
+            {
+                bool result = true;
+
+                StartInfo.WorkingDirectory = WorkingDirectory;
+
+                return result;
+            }
+
+            private ulong ReadRestorePosition(string RestoreFile)
+            {
+                if (File.Exists(RestoreFile))
+                {
+                    ulong progress;
+                    FileStream fs = new FileStream(RestoreFile, FileMode.Open);
+                    BinaryReader rd = new BinaryReader(fs);
+
+                    rd.ReadBytes(272);
+                    progress = rd.ReadUInt64();
+                    rd.Close();
+
+                    return progress;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            private void WriteRestorePosition(string RestoreFile, ulong RestorePosition)
+            {
+                    FileStream fs = new FileStream(RestoreFile, FileMode.Open);
+                    BinaryWriter bw = new BinaryWriter(fs);
+
+                    bw.Seek(272, SeekOrigin.Begin);
+                    bw.Write(RestorePosition);
             }
         }
     }

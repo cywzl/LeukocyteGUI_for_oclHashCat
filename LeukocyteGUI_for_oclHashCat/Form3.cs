@@ -40,6 +40,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 tskManager = new CrackTaskManager();
             }
 
+            tskManager.Cracker.SynchronizingObject = this;
             tskManager.TaskAdded += tskManager_TaskAdded;
             tskManager.TaskDeleted += tskManager_TaskDeleted;
             tskManager.TaskMovedToEnd += tskManager_TaskMovedToEnd;
@@ -80,24 +81,30 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void Cracker_OnStop(object sender, int TaskId)
         {
-            //timer.Stop();
-            //VisualizeTask(TaskId);
             timer.AutoReset = false;
+            CheckButtons();
+            VisualizeTask(TaskId);
         }
 
         private void Cracker_OnStart(object sender, int TaskId)
         {
             timer.AutoReset = true;
             timer.Start();
+            CheckButtons();
+            VisualizeTask(TaskId);
         }
 
         private void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            VisualizeTask(MainCrackTaskManager.Cracker.CrackingTaskId);
+            if (MainCrackTaskManager.Cracker.IsCracking)
+            {
+                VisualizeTask(MainCrackTaskManager.Cracker.CrackingTaskId);
+            }
+
             labelGPUSpeed.Text = MainCrackTaskManager.Cracker.Speed;
             labelGPUTemp.Text = MainCrackTaskManager.Cracker.Temp.ToString() + " °C";
-            labelGPUUtil.Text = MainCrackTaskManager.Cracker.Util.ToString() + "%";
-            labelFanSpeed.Text = MainCrackTaskManager.Cracker.Fan.ToString() + "%";
+            labelGPUUtil.Text = MainCrackTaskManager.Cracker.Util.ToString() + " %";
+            labelFanSpeed.Text = MainCrackTaskManager.Cracker.Fan.ToString() + " %";
         }
 
         private void tskManager_TaskAdded(object sender, int TaskId)
@@ -232,7 +239,18 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void CheckButtons()
         {
-            if (listViewTasks.Items.Count > 0)
+            if (MainCrackTaskManager.Cracker.IsCracking)
+            {
+                buttonPauseTask.Enabled = true;
+                buttonStopTask.Enabled = true;
+            }
+            else
+            {
+                buttonPauseTask.Enabled = false;
+                buttonStopTask.Enabled = false;
+            }
+
+            if ((listViewTasks.Items.Count > 0) && (!MainCrackTaskManager.Cracker.IsCracking))
             {
                 buttonClearTask.Enabled = true;
             }
@@ -243,8 +261,25 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (listViewTasks.SelectedIndices.Count == 1)
             {
-                buttonDeleteTask.Enabled = true;
-                buttonChangeTask.Enabled = true;
+                if (MainCrackTaskManager.Cracker.CrackingTaskId != listViewTasks.SelectedIndices[0])
+                {
+                    buttonDeleteTask.Enabled = true;
+                    buttonChangeTask.Enabled = true;
+                }
+                else
+                {
+                    buttonDeleteTask.Enabled = false;
+                    buttonChangeTask.Enabled = false;
+                }
+
+                if (MainCrackTaskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Restore == true)
+                {
+                    buttonStopTask.Enabled = true;
+                }
+                else
+                {
+                    buttonStopTask.Enabled = false;
+                }
 
                 if (listViewTasks.SelectedIndices[0] > 0)
                 {
@@ -270,6 +305,15 @@ namespace LeukocyteGUI_for_oclHashCat
                 buttonDownTask.Enabled = false;
                 buttonDeleteTask.Enabled = false;
                 buttonChangeTask.Enabled = false;
+
+                if (MainCrackTaskManager.Cracker.IsCracking)
+                {
+                    buttonStopTask.Enabled = true;
+                }
+                else
+                {
+                    buttonStopTask.Enabled = false;
+                }
             }
         }
 
@@ -348,8 +392,11 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             if (listViewTasks.SelectedIndices.Count > 0)
             {
-                tskManager.Cracker.SetHashcat(textBoxHashcat.Text, true);
-                tskManager.Cracker.Crack(listViewTasks.SelectedIndices[0]);
+                if (tskManager.Cracker.SetHashcat(textBoxHashcat.Text, true))
+                {
+                    //tskManager.Cracker.SetWorkingDirectory("");
+                    tskManager.Cracker.Crack(listViewTasks.SelectedIndices[0]);
+                }
             }
         }
 
@@ -363,11 +410,26 @@ namespace LeukocyteGUI_for_oclHashCat
             if (listViewTasks.SelectedIndices.Count > 0)
             {
                 tskManager.Cracker.StopCracking(listViewTasks.SelectedIndices[0]);
+
+                if (!tskManager.Cracker.IsCracking)
+                {
+                    CheckButtons();
+                    VisualizeTask(listViewTasks.SelectedIndices[0]);
+                }
+            }
+            else if (tskManager.Cracker.IsCracking)
+            {
+                tskManager.Cracker.StopCracking();
             }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (tskManager.Cracker.IsCracking)
+            {
+                tskManager.Cracker.PauseCracking();
+            }
+
             Stream crackTasksStream = File.Create(crackTasksFile);
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(crackTasksStream, tskManager.CrackTasks);

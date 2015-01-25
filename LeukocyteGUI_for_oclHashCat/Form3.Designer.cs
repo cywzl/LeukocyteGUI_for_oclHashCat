@@ -345,9 +345,9 @@
             this.labelGPUSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGPUSpeed.Location = new System.Drawing.Point(122, 23);
             this.labelGPUSpeed.Name = "labelGPUSpeed";
-            this.labelGPUSpeed.Size = new System.Drawing.Size(16, 17);
+            this.labelGPUSpeed.Size = new System.Drawing.Size(39, 17);
             this.labelGPUSpeed.TabIndex = 22;
-            this.labelGPUSpeed.Text = "0";
+            this.labelGPUSpeed.Text = "0 h/s";
             // 
             // label3
             // 
@@ -365,9 +365,9 @@
             this.labelGPUTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGPUTemp.Location = new System.Drawing.Point(122, 47);
             this.labelGPUTemp.Name = "labelGPUTemp";
-            this.labelGPUTemp.Size = new System.Drawing.Size(16, 17);
+            this.labelGPUTemp.Size = new System.Drawing.Size(35, 17);
             this.labelGPUTemp.TabIndex = 24;
-            this.labelGPUTemp.Text = "0";
+            this.labelGPUTemp.Text = "0 °C";
             // 
             // labelGPUUtil
             // 
@@ -375,9 +375,9 @@
             this.labelGPUUtil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGPUUtil.Location = new System.Drawing.Point(122, 71);
             this.labelGPUUtil.Name = "labelGPUUtil";
-            this.labelGPUUtil.Size = new System.Drawing.Size(16, 17);
+            this.labelGPUUtil.Size = new System.Drawing.Size(32, 17);
             this.labelGPUUtil.TabIndex = 26;
-            this.labelGPUUtil.Text = "0";
+            this.labelGPUUtil.Text = "0 %";
             // 
             // label6
             // 
@@ -395,9 +395,9 @@
             this.labelFanSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelFanSpeed.Location = new System.Drawing.Point(122, 95);
             this.labelFanSpeed.Name = "labelFanSpeed";
-            this.labelFanSpeed.Size = new System.Drawing.Size(16, 17);
+            this.labelFanSpeed.Size = new System.Drawing.Size(32, 17);
             this.labelFanSpeed.TabIndex = 28;
-            this.labelFanSpeed.Text = "0";
+            this.labelFanSpeed.Text = "0 %";
             // 
             // label8
             // 
