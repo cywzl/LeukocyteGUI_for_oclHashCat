@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxHashcat = new System.Windows.Forms.TextBox();
             this.listViewTasks = new System.Windows.Forms.ListView();
             this.columnHeaderNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderHashType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -45,40 +44,30 @@
             this.columnHeaderStarted = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderFinished = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderSession = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonOpenConverter = new System.Windows.Forms.Button();
-            this.buttonClearTask = new System.Windows.Forms.Button();
-            this.buttonStopTask = new System.Windows.Forms.Button();
-            this.buttonPauseTask = new System.Windows.Forms.Button();
-            this.buttonStartTask = new System.Windows.Forms.Button();
-            this.buttonChangeTask = new System.Windows.Forms.Button();
-            this.buttonDownTask = new System.Windows.Forms.Button();
-            this.buttonUpTask = new System.Windows.Forms.Button();
-            this.buttonDeleteTask = new System.Windows.Forms.Button();
-            this.buttonAddTask = new System.Windows.Forms.Button();
-            this.labelOclHashcat = new System.Windows.Forms.Label();
-            this.groupBoxMainSettings = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.labelGPUSpeed = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.labelGPUTemp = new System.Windows.Forms.Label();
             this.labelGPUUtil = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.labelFanSpeed = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.groupBoxGPUStatistics = new System.Windows.Forms.GroupBox();
-            this.groupBoxActions = new System.Windows.Forms.GroupBox();
-            this.groupBoxMainSettings.SuspendLayout();
-            this.groupBoxGPUStatistics.SuspendLayout();
-            this.groupBoxActions.SuspendLayout();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonAddTask = new System.Windows.Forms.Button();
+            this.buttonDeleteTask = new System.Windows.Forms.Button();
+            this.buttonUpTask = new System.Windows.Forms.Button();
+            this.buttonOpenConverter = new System.Windows.Forms.Button();
+            this.buttonDownTask = new System.Windows.Forms.Button();
+            this.buttonClearTask = new System.Windows.Forms.Button();
+            this.buttonPauseTask = new System.Windows.Forms.Button();
+            this.buttonChangeTask = new System.Windows.Forms.Button();
+            this.buttonStartTask = new System.Windows.Forms.Button();
+            this.buttonStopTask = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBoxHashcat
-            // 
-            this.textBoxHashcat.Location = new System.Drawing.Point(82, 22);
-            this.textBoxHashcat.Name = "textBoxHashcat";
-            this.textBoxHashcat.Size = new System.Drawing.Size(418, 20);
-            this.textBoxHashcat.TabIndex = 8;
-            this.textBoxHashcat.Text = "oclHashcat64.exe";
             // 
             // listViewTasks
             // 
@@ -104,10 +93,10 @@
             this.listViewTasks.FullRowSelect = true;
             this.listViewTasks.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewTasks.HideSelection = false;
-            this.listViewTasks.Location = new System.Drawing.Point(11, 144);
+            this.listViewTasks.Location = new System.Drawing.Point(11, 83);
             this.listViewTasks.MultiSelect = false;
             this.listViewTasks.Name = "listViewTasks";
-            this.listViewTasks.Size = new System.Drawing.Size(752, 318);
+            this.listViewTasks.Size = new System.Drawing.Size(752, 379);
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
@@ -184,186 +173,23 @@
             // 
             this.columnHeaderSession.Text = "Session";
             // 
-            // buttonOpenConverter
-            // 
-            this.buttonOpenConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.message_reply_9020;
-            this.buttonOpenConverter.Location = new System.Drawing.Point(312, 19);
-            this.buttonOpenConverter.Name = "buttonOpenConverter";
-            this.buttonOpenConverter.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonOpenConverter.Size = new System.Drawing.Size(40, 32);
-            this.buttonOpenConverter.TabIndex = 18;
-            this.buttonOpenConverter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonOpenConverter.UseVisualStyleBackColor = true;
-            this.buttonOpenConverter.Click += new System.EventHandler(this.buttonOpenConverter_Click);
-            // 
-            // buttonClearTask
-            // 
-            this.buttonClearTask.Enabled = false;
-            this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.old_view_refresh_4484;
-            this.buttonClearTask.Location = new System.Drawing.Point(154, 19);
-            this.buttonClearTask.Name = "buttonClearTask";
-            this.buttonClearTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonClearTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonClearTask.TabIndex = 17;
-            this.buttonClearTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonClearTask.UseVisualStyleBackColor = true;
-            this.buttonClearTask.Click += new System.EventHandler(this.buttonClearTask_Click);
-            // 
-            // buttonStopTask
-            // 
-            this.buttonStopTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.gtk_media_stop_2295;
-            this.buttonStopTask.Location = new System.Drawing.Point(460, 19);
-            this.buttonStopTask.Name = "buttonStopTask";
-            this.buttonStopTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonStopTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonStopTask.TabIndex = 16;
-            this.buttonStopTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonStopTask.UseVisualStyleBackColor = true;
-            this.buttonStopTask.Click += new System.EventHandler(this.buttonStopTask_Click);
-            // 
-            // buttonPauseTask
-            // 
-            this.buttonPauseTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.gtk_media_pause_9393;
-            this.buttonPauseTask.Location = new System.Drawing.Point(414, 19);
-            this.buttonPauseTask.Name = "buttonPauseTask";
-            this.buttonPauseTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonPauseTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonPauseTask.TabIndex = 15;
-            this.buttonPauseTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonPauseTask.UseVisualStyleBackColor = true;
-            this.buttonPauseTask.Click += new System.EventHandler(this.buttonPauseTask_Click);
-            // 
-            // buttonStartTask
-            // 
-            this.buttonStartTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.gtk_media_play_ltr_9072;
-            this.buttonStartTask.Location = new System.Drawing.Point(368, 19);
-            this.buttonStartTask.Name = "buttonStartTask";
-            this.buttonStartTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonStartTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonStartTask.TabIndex = 14;
-            this.buttonStartTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonStartTask.UseVisualStyleBackColor = true;
-            this.buttonStartTask.Click += new System.EventHandler(this.buttonStartTask_Click);
-            // 
-            // buttonChangeTask
-            // 
-            this.buttonChangeTask.Enabled = false;
-            this.buttonChangeTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.configure_9863;
-            this.buttonChangeTask.Location = new System.Drawing.Point(108, 19);
-            this.buttonChangeTask.Name = "buttonChangeTask";
-            this.buttonChangeTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonChangeTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonChangeTask.TabIndex = 13;
-            this.buttonChangeTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonChangeTask.UseVisualStyleBackColor = true;
-            this.buttonChangeTask.Click += new System.EventHandler(this.buttonChangeTask_Click);
-            // 
-            // buttonDownTask
-            // 
-            this.buttonDownTask.Enabled = false;
-            this.buttonDownTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources._1downarrow_9068;
-            this.buttonDownTask.Location = new System.Drawing.Point(256, 19);
-            this.buttonDownTask.Name = "buttonDownTask";
-            this.buttonDownTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonDownTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonDownTask.TabIndex = 12;
-            this.buttonDownTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDownTask.UseVisualStyleBackColor = true;
-            this.buttonDownTask.Click += new System.EventHandler(this.buttonDownTask_Click);
-            // 
-            // buttonUpTask
-            // 
-            this.buttonUpTask.Enabled = false;
-            this.buttonUpTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources._1uparrow_2202;
-            this.buttonUpTask.Location = new System.Drawing.Point(210, 19);
-            this.buttonUpTask.Name = "buttonUpTask";
-            this.buttonUpTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonUpTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonUpTask.TabIndex = 11;
-            this.buttonUpTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonUpTask.UseVisualStyleBackColor = true;
-            this.buttonUpTask.Click += new System.EventHandler(this.buttonUpTask_Click);
-            // 
-            // buttonDeleteTask
-            // 
-            this.buttonDeleteTask.Enabled = false;
-            this.buttonDeleteTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.button_cancel_8125;
-            this.buttonDeleteTask.Location = new System.Drawing.Point(62, 19);
-            this.buttonDeleteTask.Name = "buttonDeleteTask";
-            this.buttonDeleteTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonDeleteTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonDeleteTask.TabIndex = 10;
-            this.buttonDeleteTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteTask.UseVisualStyleBackColor = true;
-            this.buttonDeleteTask.Click += new System.EventHandler(this.buttonDeleteTask_Click);
-            // 
-            // buttonAddTask
-            // 
-            this.buttonAddTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.edit_add_7148;
-            this.buttonAddTask.Location = new System.Drawing.Point(16, 19);
-            this.buttonAddTask.Name = "buttonAddTask";
-            this.buttonAddTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonAddTask.Size = new System.Drawing.Size(40, 32);
-            this.buttonAddTask.TabIndex = 9;
-            this.buttonAddTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAddTask.UseVisualStyleBackColor = true;
-            this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
-            // 
-            // labelOclHashcat
-            // 
-            this.labelOclHashcat.AutoSize = true;
-            this.labelOclHashcat.Location = new System.Drawing.Point(12, 25);
-            this.labelOclHashcat.Name = "labelOclHashcat";
-            this.labelOclHashcat.Size = new System.Drawing.Size(64, 13);
-            this.labelOclHashcat.TabIndex = 19;
-            this.labelOclHashcat.Text = "oclHashcat:";
-            // 
-            // groupBoxMainSettings
-            // 
-            this.groupBoxMainSettings.Controls.Add(this.labelOclHashcat);
-            this.groupBoxMainSettings.Controls.Add(this.textBoxHashcat);
-            this.groupBoxMainSettings.Location = new System.Drawing.Point(11, 12);
-            this.groupBoxMainSettings.Name = "groupBoxMainSettings";
-            this.groupBoxMainSettings.Size = new System.Drawing.Size(517, 57);
-            this.groupBoxMainSettings.TabIndex = 20;
-            this.groupBoxMainSettings.TabStop = false;
-            this.groupBoxMainSettings.Text = "Main Settings";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(17, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 17);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "GPU Speed:";
-            // 
             // labelGPUSpeed
             // 
+            this.labelGPUSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUSpeed.AutoSize = true;
             this.labelGPUSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUSpeed.Location = new System.Drawing.Point(122, 23);
+            this.labelGPUSpeed.Location = new System.Drawing.Point(575, 18);
             this.labelGPUSpeed.Name = "labelGPUSpeed";
             this.labelGPUSpeed.Size = new System.Drawing.Size(39, 17);
             this.labelGPUSpeed.TabIndex = 22;
             this.labelGPUSpeed.Text = "0 h/s";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(17, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 17);
-            this.label3.TabIndex = 23;
-            this.label3.Text = "GPU Temp:";
-            // 
             // labelGPUTemp
             // 
+            this.labelGPUTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUTemp.AutoSize = true;
             this.labelGPUTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUTemp.Location = new System.Drawing.Point(122, 47);
+            this.labelGPUTemp.Location = new System.Drawing.Point(575, 49);
             this.labelGPUTemp.Name = "labelGPUTemp";
             this.labelGPUTemp.Size = new System.Drawing.Size(35, 17);
             this.labelGPUTemp.TabIndex = 24;
@@ -371,106 +197,302 @@
             // 
             // labelGPUUtil
             // 
+            this.labelGPUUtil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUUtil.AutoSize = true;
             this.labelGPUUtil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUUtil.Location = new System.Drawing.Point(122, 71);
+            this.labelGPUUtil.Location = new System.Drawing.Point(715, 18);
             this.labelGPUUtil.Name = "labelGPUUtil";
             this.labelGPUUtil.Size = new System.Drawing.Size(32, 17);
             this.labelGPUUtil.TabIndex = 26;
             this.labelGPUUtil.Text = "0 %";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(17, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 17);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "GPU Util:";
-            // 
             // labelFanSpeed
             // 
+            this.labelFanSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFanSpeed.AutoSize = true;
             this.labelFanSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFanSpeed.Location = new System.Drawing.Point(122, 95);
+            this.labelFanSpeed.Location = new System.Drawing.Point(715, 49);
             this.labelFanSpeed.Name = "labelFanSpeed";
             this.labelFanSpeed.Size = new System.Drawing.Size(32, 17);
             this.labelFanSpeed.TabIndex = 28;
             this.labelFanSpeed.Text = "0 %";
             // 
-            // label8
+            // buttonSettings
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(17, 95);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(81, 17);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "Fan Speed:";
+            this.buttonSettings.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSettings.FlatAppearance.BorderSize = 0;
+            this.buttonSettings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettings.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.settings;
+            this.buttonSettings.Location = new System.Drawing.Point(465, 45);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonSettings.Size = new System.Drawing.Size(31, 32);
+            this.buttonSettings.TabIndex = 35;
+            this.buttonSettings.TabStop = false;
+            this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
             // 
-            // groupBoxGPUStatistics
+            // pictureBox4
             // 
-            this.groupBoxGPUStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxGPUStatistics.Controls.Add(this.label8);
-            this.groupBoxGPUStatistics.Controls.Add(this.labelFanSpeed);
-            this.groupBoxGPUStatistics.Controls.Add(this.label6);
-            this.groupBoxGPUStatistics.Controls.Add(this.labelGPUUtil);
-            this.groupBoxGPUStatistics.Controls.Add(this.label3);
-            this.groupBoxGPUStatistics.Controls.Add(this.labelGPUTemp);
-            this.groupBoxGPUStatistics.Controls.Add(this.label1);
-            this.groupBoxGPUStatistics.Controls.Add(this.labelGPUSpeed);
-            this.groupBoxGPUStatistics.Location = new System.Drawing.Point(534, 12);
-            this.groupBoxGPUStatistics.Name = "groupBoxGPUStatistics";
-            this.groupBoxGPUStatistics.Size = new System.Drawing.Size(229, 126);
-            this.groupBoxGPUStatistics.TabIndex = 29;
-            this.groupBoxGPUStatistics.TabStop = false;
-            this.groupBoxGPUStatistics.Text = "GPU Statistics";
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.fan;
+            this.pictureBox4.Location = new System.Drawing.Point(684, 45);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox4.TabIndex = 34;
+            this.pictureBox4.TabStop = false;
             // 
-            // groupBoxActions
+            // pictureBox3
             // 
-            this.groupBoxActions.Controls.Add(this.buttonAddTask);
-            this.groupBoxActions.Controls.Add(this.buttonDeleteTask);
-            this.groupBoxActions.Controls.Add(this.buttonUpTask);
-            this.groupBoxActions.Controls.Add(this.buttonOpenConverter);
-            this.groupBoxActions.Controls.Add(this.buttonDownTask);
-            this.groupBoxActions.Controls.Add(this.buttonClearTask);
-            this.groupBoxActions.Controls.Add(this.buttonChangeTask);
-            this.groupBoxActions.Controls.Add(this.buttonStopTask);
-            this.groupBoxActions.Controls.Add(this.buttonStartTask);
-            this.groupBoxActions.Controls.Add(this.buttonPauseTask);
-            this.groupBoxActions.Location = new System.Drawing.Point(11, 75);
-            this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(517, 63);
-            this.groupBoxActions.TabIndex = 30;
-            this.groupBoxActions.TabStop = false;
-            this.groupBoxActions.Text = "Actions";
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.opacity;
+            this.pictureBox3.Location = new System.Drawing.Point(685, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 33;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.Thermometer;
+            this.pictureBox2.Location = new System.Drawing.Point(545, 46);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 32;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.speed;
+            this.pictureBox1.Location = new System.Drawing.Point(544, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            // 
+            // buttonAddTask
+            // 
+            this.buttonAddTask.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonAddTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonAddTask.FlatAppearance.BorderSize = 0;
+            this.buttonAddTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.edit_add_7148;
+            this.buttonAddTask.Location = new System.Drawing.Point(11, 45);
+            this.buttonAddTask.Name = "buttonAddTask";
+            this.buttonAddTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonAddTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonAddTask.TabIndex = 9;
+            this.buttonAddTask.TabStop = false;
+            this.buttonAddTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAddTask.UseVisualStyleBackColor = false;
+            this.buttonAddTask.Click += new System.EventHandler(this.buttonAddTask_Click);
+            // 
+            // buttonDeleteTask
+            // 
+            this.buttonDeleteTask.Enabled = false;
+            this.buttonDeleteTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonDeleteTask.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonDeleteTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.button_cancel_8125;
+            this.buttonDeleteTask.Location = new System.Drawing.Point(48, 45);
+            this.buttonDeleteTask.Name = "buttonDeleteTask";
+            this.buttonDeleteTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonDeleteTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonDeleteTask.TabIndex = 10;
+            this.buttonDeleteTask.TabStop = false;
+            this.buttonDeleteTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteTask.UseVisualStyleBackColor = true;
+            this.buttonDeleteTask.Click += new System.EventHandler(this.buttonDeleteTask_Click);
+            // 
+            // buttonUpTask
+            // 
+            this.buttonUpTask.Enabled = false;
+            this.buttonUpTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonUpTask.FlatAppearance.BorderSize = 0;
+            this.buttonUpTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonUpTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources._1uparrow_2202;
+            this.buttonUpTask.Location = new System.Drawing.Point(169, 45);
+            this.buttonUpTask.Name = "buttonUpTask";
+            this.buttonUpTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonUpTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonUpTask.TabIndex = 11;
+            this.buttonUpTask.TabStop = false;
+            this.buttonUpTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonUpTask.UseVisualStyleBackColor = true;
+            this.buttonUpTask.Click += new System.EventHandler(this.buttonUpTask_Click);
+            // 
+            // buttonOpenConverter
+            // 
+            this.buttonOpenConverter.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonOpenConverter.FlatAppearance.BorderSize = 0;
+            this.buttonOpenConverter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonOpenConverter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.message_reply_9020;
+            this.buttonOpenConverter.Location = new System.Drawing.Point(374, 45);
+            this.buttonOpenConverter.Name = "buttonOpenConverter";
+            this.buttonOpenConverter.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonOpenConverter.Size = new System.Drawing.Size(31, 32);
+            this.buttonOpenConverter.TabIndex = 18;
+            this.buttonOpenConverter.TabStop = false;
+            this.buttonOpenConverter.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonOpenConverter.UseVisualStyleBackColor = true;
+            this.buttonOpenConverter.Click += new System.EventHandler(this.buttonOpenConverter_Click);
+            // 
+            // buttonDownTask
+            // 
+            this.buttonDownTask.Enabled = false;
+            this.buttonDownTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonDownTask.FlatAppearance.BorderSize = 0;
+            this.buttonDownTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonDownTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources._1downarrow_9068;
+            this.buttonDownTask.Location = new System.Drawing.Point(206, 45);
+            this.buttonDownTask.Name = "buttonDownTask";
+            this.buttonDownTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonDownTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonDownTask.TabIndex = 12;
+            this.buttonDownTask.TabStop = false;
+            this.buttonDownTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDownTask.UseVisualStyleBackColor = true;
+            this.buttonDownTask.Click += new System.EventHandler(this.buttonDownTask_Click);
+            // 
+            // buttonClearTask
+            // 
+            this.buttonClearTask.Enabled = false;
+            this.buttonClearTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonClearTask.FlatAppearance.BorderSize = 0;
+            this.buttonClearTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonClearTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.old_view_refresh_4484;
+            this.buttonClearTask.Location = new System.Drawing.Point(122, 45);
+            this.buttonClearTask.Name = "buttonClearTask";
+            this.buttonClearTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonClearTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonClearTask.TabIndex = 17;
+            this.buttonClearTask.TabStop = false;
+            this.buttonClearTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonClearTask.UseVisualStyleBackColor = true;
+            this.buttonClearTask.Click += new System.EventHandler(this.buttonClearTask_Click);
+            // 
+            // buttonPauseTask
+            // 
+            this.buttonPauseTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonPauseTask.FlatAppearance.BorderSize = 0;
+            this.buttonPauseTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonPauseTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPauseTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.gtk_media_pause_9393;
+            this.buttonPauseTask.Location = new System.Drawing.Point(290, 45);
+            this.buttonPauseTask.Name = "buttonPauseTask";
+            this.buttonPauseTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonPauseTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonPauseTask.TabIndex = 15;
+            this.buttonPauseTask.TabStop = false;
+            this.buttonPauseTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonPauseTask.UseVisualStyleBackColor = true;
+            this.buttonPauseTask.Click += new System.EventHandler(this.buttonPauseTask_Click);
+            // 
+            // buttonChangeTask
+            // 
+            this.buttonChangeTask.Enabled = false;
+            this.buttonChangeTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonChangeTask.FlatAppearance.BorderSize = 0;
+            this.buttonChangeTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChangeTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.configure_9863;
+            this.buttonChangeTask.Location = new System.Drawing.Point(85, 45);
+            this.buttonChangeTask.Name = "buttonChangeTask";
+            this.buttonChangeTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonChangeTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonChangeTask.TabIndex = 13;
+            this.buttonChangeTask.TabStop = false;
+            this.buttonChangeTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonChangeTask.UseVisualStyleBackColor = true;
+            this.buttonChangeTask.Click += new System.EventHandler(this.buttonChangeTask_Click);
+            // 
+            // buttonStartTask
+            // 
+            this.buttonStartTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonStartTask.FlatAppearance.BorderSize = 0;
+            this.buttonStartTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonStartTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStartTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.gtk_media_play_ltr_9072;
+            this.buttonStartTask.Location = new System.Drawing.Point(253, 45);
+            this.buttonStartTask.Name = "buttonStartTask";
+            this.buttonStartTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonStartTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonStartTask.TabIndex = 14;
+            this.buttonStartTask.TabStop = false;
+            this.buttonStartTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonStartTask.UseVisualStyleBackColor = true;
+            this.buttonStartTask.Click += new System.EventHandler(this.buttonStartTask_Click);
+            // 
+            // buttonStopTask
+            // 
+            this.buttonStopTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonStopTask.FlatAppearance.BorderSize = 0;
+            this.buttonStopTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonStopTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStopTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.gtk_media_stop_2295;
+            this.buttonStopTask.Location = new System.Drawing.Point(327, 45);
+            this.buttonStopTask.Name = "buttonStopTask";
+            this.buttonStopTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonStopTask.Size = new System.Drawing.Size(31, 32);
+            this.buttonStopTask.TabIndex = 16;
+            this.buttonStopTask.TabStop = false;
+            this.buttonStopTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonStopTask.UseVisualStyleBackColor = true;
+            this.buttonStopTask.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 474);
-            this.Controls.Add(this.groupBoxActions);
-            this.Controls.Add(this.groupBoxGPUStatistics);
-            this.Controls.Add(this.groupBoxMainSettings);
+            this.Controls.Add(this.buttonSettings);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.labelFanSpeed);
+            this.Controls.Add(this.buttonAddTask);
+            this.Controls.Add(this.labelGPUUtil);
+            this.Controls.Add(this.buttonDeleteTask);
+            this.Controls.Add(this.buttonUpTask);
+            this.Controls.Add(this.labelGPUTemp);
+            this.Controls.Add(this.labelGPUSpeed);
+            this.Controls.Add(this.buttonOpenConverter);
+            this.Controls.Add(this.buttonDownTask);
             this.Controls.Add(this.listViewTasks);
+            this.Controls.Add(this.buttonClearTask);
+            this.Controls.Add(this.buttonPauseTask);
+            this.Controls.Add(this.buttonChangeTask);
+            this.Controls.Add(this.buttonStartTask);
+            this.Controls.Add(this.buttonStopTask);
             this.Name = "MainForm";
             this.Text = "LeukocyteGUI for oclHashCat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.groupBoxMainSettings.ResumeLayout(false);
-            this.groupBoxMainSettings.PerformLayout();
-            this.groupBoxGPUStatistics.ResumeLayout(false);
-            this.groupBoxGPUStatistics.PerformLayout();
-            this.groupBoxActions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxHashcat;
         private System.Windows.Forms.ListView listViewTasks;
         private System.Windows.Forms.ColumnHeader columnHeaderNumber;
         private System.Windows.Forms.ColumnHeader columnHeaderHashType;
@@ -482,32 +504,29 @@
         private System.Windows.Forms.ColumnHeader columnHeaderFinished;
         private System.Windows.Forms.ColumnHeader columnHeaderEstimated;
         private System.Windows.Forms.ColumnHeader columnHeaderSession;
-        private System.Windows.Forms.Button buttonAddTask;
-        private System.Windows.Forms.Button buttonDeleteTask;
-        private System.Windows.Forms.Button buttonUpTask;
-        private System.Windows.Forms.Button buttonDownTask;
-        private System.Windows.Forms.Button buttonChangeTask;
-        private System.Windows.Forms.Button buttonStartTask;
-        private System.Windows.Forms.Button buttonPauseTask;
-        private System.Windows.Forms.Button buttonStopTask;
-        private System.Windows.Forms.Button buttonClearTask;
         private System.Windows.Forms.ColumnHeader columnHeaderDictionary;
-        private System.Windows.Forms.Button buttonOpenConverter;
         private System.Windows.Forms.ColumnHeader columnHeaderOutput;
-        private System.Windows.Forms.Label labelOclHashcat;
-        private System.Windows.Forms.GroupBox groupBoxMainSettings;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelGPUSpeed;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelGPUTemp;
         private System.Windows.Forms.Label labelGPUUtil;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelFanSpeed;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBoxGPUStatistics;
-        private System.Windows.Forms.GroupBox groupBoxActions;
         private System.Windows.Forms.ColumnHeader columnHeaderLength;
         private System.Windows.Forms.ColumnHeader columnHeaderDigests;
         private System.Windows.Forms.ColumnHeader columnHeaderSalts;
+        private System.Windows.Forms.Button buttonDownTask;
+        private System.Windows.Forms.Button buttonClearTask;
+        private System.Windows.Forms.Button buttonOpenConverter;
+        private System.Windows.Forms.Button buttonPauseTask;
+        private System.Windows.Forms.Button buttonChangeTask;
+        private System.Windows.Forms.Button buttonUpTask;
+        private System.Windows.Forms.Button buttonStartTask;
+        private System.Windows.Forms.Button buttonStopTask;
+        private System.Windows.Forms.Button buttonDeleteTask;
+        private System.Windows.Forms.Button buttonAddTask;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Button buttonSettings;
     }
 }

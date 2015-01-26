@@ -864,6 +864,10 @@
             // buttonCancelTask
             // 
             this.buttonCancelTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonCancelTask.FlatAppearance.BorderSize = 0;
+            this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.button_cancel_8125;
             this.buttonCancelTask.Location = new System.Drawing.Point(125, 27);
             this.buttonCancelTask.Name = "buttonCancelTask";
@@ -876,6 +880,10 @@
             // 
             // buttonSubmitTask
             // 
+            this.buttonSubmitTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSubmitTask.FlatAppearance.BorderSize = 0;
+            this.buttonSubmitTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonSubmitTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSubmitTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.button_ok_3054;
             this.buttonSubmitTask.Location = new System.Drawing.Point(18, 27);
             this.buttonSubmitTask.Name = "buttonSubmitTask";
@@ -888,6 +896,10 @@
             // 
             // buttonClearTask
             // 
+            this.buttonClearTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonClearTask.FlatAppearance.BorderSize = 0;
+            this.buttonClearTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonClearTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.old_view_refresh_4484;
             this.buttonClearTask.Location = new System.Drawing.Point(72, 27);
             this.buttonClearTask.Name = "buttonClearTask";
