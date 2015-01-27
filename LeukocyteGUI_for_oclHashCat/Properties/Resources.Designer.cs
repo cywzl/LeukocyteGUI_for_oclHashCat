@@ -63,46 +63,6 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1downarrow_9068 {
-            get {
-                object obj = ResourceManager.GetObject("1downarrow_9068", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _1downarrow_9087 {
-            get {
-                object obj = ResourceManager.GetObject("1downarrow_9087", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _1uparrow_2202 {
-            get {
-                object obj = ResourceManager.GetObject("1uparrow_2202", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _1uparrow_3635 {
-            get {
-                object obj = ResourceManager.GetObject("1uparrow_3635", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap arrow_090_8301 {
             get {
                 object obj = ResourceManager.GetObject("arrow_090_8301", resourceCulture);
@@ -133,16 +93,6 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap button_cancel_8022 {
-            get {
-                object obj = ResourceManager.GetObject("button_cancel_8022", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap button_cancel_8125 {
             get {
                 object obj = ResourceManager.GetObject("button_cancel_8125", resourceCulture);
@@ -163,39 +113,9 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap configure_9863 {
-            get {
-                object obj = ResourceManager.GetObject("configure_9863", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap cross_4264 {
             get {
                 object obj = ResourceManager.GetObject("cross_4264", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap edit_add_7148 {
-            get {
-                object obj = ResourceManager.GetObject("edit_add_7148", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap edit_add_8671 {
-            get {
-                object obj = ResourceManager.GetObject("edit_add_8671", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +143,9 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gtk_media_pause_9393 {
+        internal static System.Drawing.Bitmap glyph_add {
             get {
-                object obj = ResourceManager.GetObject("gtk-media-pause_9393", resourceCulture);
+                object obj = ResourceManager.GetObject("glyph_add", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +153,9 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gtk_media_play_ltr_9072 {
+        internal static System.Drawing.Bitmap glyph_change {
             get {
-                object obj = ResourceManager.GetObject("gtk-media-play-ltr_9072", resourceCulture);
+                object obj = ResourceManager.GetObject("glyph_change", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +163,9 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap gtk_media_stop_2295 {
+        internal static System.Drawing.Bitmap glyph_clear {
             get {
-                object obj = ResourceManager.GetObject("gtk-media-stop_2295", resourceCulture);
+                object obj = ResourceManager.GetObject("glyph_clear", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +173,149 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap message_reply_9020 {
+        internal static System.Drawing.Bitmap glyph_convert {
             get {
-                object obj = ResourceManager.GetObject("message_reply_9020", resourceCulture);
+                object obj = ResourceManager.GetObject("glyph_convert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_delete {
+            get {
+                object obj = ResourceManager.GetObject("glyph_delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_down {
+            get {
+                object obj = ResourceManager.GetObject("glyph_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_pause {
+            get {
+                object obj = ResourceManager.GetObject("glyph_pause", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_play {
+            get {
+                object obj = ResourceManager.GetObject("glyph_play", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_plus {
+            get {
+                object obj = ResourceManager.GetObject("glyph_plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_settings {
+            get {
+                object obj = ResourceManager.GetObject("glyph_settings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_speed {
+            get {
+                object obj = ResourceManager.GetObject("glyph_speed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_stop {
+            get {
+                object obj = ResourceManager.GetObject("glyph_stop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_switch_off {
+            get {
+                object obj = ResourceManager.GetObject("glyph_switch_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_switch_on {
+            get {
+                object obj = ResourceManager.GetObject("glyph_switch_on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_temperature {
+            get {
+                object obj = ResourceManager.GetObject("glyph_temperature", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_up {
+            get {
+                object obj = ResourceManager.GetObject("glyph_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_update {
+            get {
+                object obj = ResourceManager.GetObject("glyph_update", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_videocard {
+            get {
+                object obj = ResourceManager.GetObject("glyph_videocard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -265,7 +325,7 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap old_view_refresh_4484 {
             get {
-                object obj = ResourceManager.GetObject("old-view-refresh_4484", resourceCulture);
+                object obj = ResourceManager.GetObject("old_view_refresh_4484", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

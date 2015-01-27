@@ -295,7 +295,9 @@ namespace LeukocyteGUI_for_oclHashCat
                     buttonDownTask.Enabled = false;
                 }
 
-                if (MainCrackTaskManager.Cracker.IsCracking)
+                if (MainCrackTaskManager.Cracker.IsCracking
+                    || MainCrackTaskManager.Cracker.IsCalculatingKeyspace
+                    || MainCrackTaskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Status == "Cracked")
                 {
                     buttonStartTask.Enabled = false;
                 }
@@ -447,6 +449,22 @@ namespace LeukocyteGUI_for_oclHashCat
         private void buttonSettings_Click(object sender, EventArgs e)
         {
             (new SettingsForm()).ShowDialog(this);
+        }
+
+        private void checkBoxAllChecked_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+
+            if (checkBox.Checked)
+            {
+                checkBox.ImageIndex = 1;
+                checkBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                checkBox.ImageIndex = 0;
+                checkBox.ForeColor = Color.Gray;
+            }
         }
     }
 }

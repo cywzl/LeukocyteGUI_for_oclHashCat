@@ -227,6 +227,60 @@
   <ItemGroup>
     <None Include="icons\settings.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_convert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_change.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_speed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_temperature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_videocard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_switch_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_switch_on.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

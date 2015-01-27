@@ -594,7 +594,7 @@
             this.groupBoxOutput.Size = new System.Drawing.Size(274, 109);
             this.groupBoxOutput.TabIndex = 3;
             this.groupBoxOutput.TabStop = false;
-            this.groupBoxOutput.Text = "Output";
+            this.groupBoxOutput.Text = "File Output";
             // 
             // checkBoxOutputToFile
             // 

@@ -296,6 +296,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     return sPlain;
                 }
+
+                set
+                {
+                    sPlain = value;
+                }
             }
 
             public string Hash
@@ -887,6 +892,14 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
 
+            public bool IsCalculatingKeyspace
+            {
+                get
+                {
+                    return sIsCalculatingKeyspace;
+                }
+            }
+
             private void sCrackTaskManager_TaskDeleted(object sender, int TaskId)
             {
                 if ((TaskId < sCrackingTaskId) && (sCrackingTaskId > -1))
@@ -1040,6 +1053,10 @@ namespace LeukocyteGUI_for_oclHashCat
 
                                     break;
                                 }
+                            case "Time.Started...":
+                                {
+                                    break;
+                                }
                             case "Time.Estimated.":
                                 {
                                     if (parameters.Length > 3)
@@ -1104,6 +1121,16 @@ namespace LeukocyteGUI_for_oclHashCat
                                     Util = byte.Parse(monitors[0].Substring(0, monitors[0].IndexOf('%')));
                                     Temp = byte.Parse(monitors[1].Substring(0, monitors[1].IndexOf('c')));
                                     Fan = byte.Parse(monitors[2].Substring(0, monitors[2].IndexOf('%')));
+
+                                    break;
+                                }
+                            default:
+                                {
+                                    if((parameters[0] == sCrackingTask.Hash)
+                                        || ((sCrackingTask.HashTypeCode == 2500) && (parameters.Length == 4)))
+                                    {
+                                        sCrackingTask.Plain = parameters[parameters.Length - 1];
+                                    }
 
                                     break;
                                 }
