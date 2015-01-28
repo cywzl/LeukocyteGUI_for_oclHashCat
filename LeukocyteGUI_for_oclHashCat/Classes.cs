@@ -115,6 +115,12 @@ namespace LeukocyteGUI_for_oclHashCat
             }
 
             Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length - 1);
+
+            if (Cracker.LastCrackingTaskId == Index)
+            {
+                Cracker.LastCrackingTaskId = -1;
+            }
+
             TaskDeleted(this, Index);
 
             return CrackTasks.Length;
@@ -128,6 +134,7 @@ namespace LeukocyteGUI_for_oclHashCat
         public void DeleteAllTasks()
         {
             CrackTasks = new CrackTask[0];
+            Cracker.LastCrackingTaskId = -1;
             TasksAllDeleted(this);
         }
 
@@ -142,6 +149,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 CrackTasks[Index] = CrackTasks[Index - 1];
                 CrackTasks[Index - 1] = buffer;
                 result = Index - 1;
+            }
+
+            if (Cracker.LastCrackingTaskId == Index)
+            {
+                Cracker.LastCrackingTaskId = result;
             }
 
             TaskMovedToStart(this, Index, result);
@@ -159,6 +171,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 CrackTasks[Index] = CrackTasks[Index + 1];
                 CrackTasks[Index + 1] = buffer;
                 result = Index + 1;
+            }
+
+            if (Cracker.LastCrackingTaskId == Index)
+            {
+                Cracker.LastCrackingTaskId = result;
             }
 
             TaskMovedToStart(this, Index, result);
@@ -843,7 +860,7 @@ namespace LeukocyteGUI_for_oclHashCat
         public class CrackManager : System.Diagnostics.Process
         {
             private CrackTaskManager sCrackTaskManager;
-            private int sCrackingTaskId = -1;
+            private int sCrackingTaskId = -1, sLastCrackingTaskId = -1;
             private CrackTask sCrackingTask;
             private CultureInfo sCulture;
             private bool sIsCracking, sIsCalculatingKeyspace;
@@ -881,6 +898,19 @@ namespace LeukocyteGUI_for_oclHashCat
                 get
                 {
                     return sCrackingTaskId;
+                }
+            }
+
+            public int LastCrackingTaskId
+            {
+                get
+                {
+                    return sLastCrackingTaskId;
+                }
+
+                set
+                {
+                    sLastCrackingTaskId = value;
                 }
             }
 
@@ -1165,6 +1195,8 @@ namespace LeukocyteGUI_for_oclHashCat
                     {
                         sCrackingTask.RestorePosition = 0;
                     }
+
+                    sLastCrackingTaskId = sCrackingTaskId;
                 }
 
                 CancelOutputRead();

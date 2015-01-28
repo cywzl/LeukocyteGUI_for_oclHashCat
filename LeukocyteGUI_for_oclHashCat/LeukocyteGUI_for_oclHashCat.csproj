@@ -281,6 +281,18 @@
   <ItemGroup>
     <None Include="icons\glyph_switch_on.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_task_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_task_cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_task_update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_edit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

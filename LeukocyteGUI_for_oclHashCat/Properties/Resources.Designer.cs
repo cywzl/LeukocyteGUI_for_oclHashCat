@@ -203,6 +203,16 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap glyph_edit {
+            get {
+                object obj = ResourceManager.GetObject("glyph_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap glyph_pause {
             get {
                 object obj = ResourceManager.GetObject("glyph_pause", resourceCulture);
@@ -276,6 +286,36 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         internal static System.Drawing.Bitmap glyph_switch_on {
             get {
                 object obj = ResourceManager.GetObject("glyph_switch_on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_task_cancel {
+            get {
+                object obj = ResourceManager.GetObject("glyph_task_cancel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_task_ok {
+            get {
+                object obj = ResourceManager.GetObject("glyph_task_ok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_task_update {
+            get {
+                object obj = ResourceManager.GetObject("glyph_task_update", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

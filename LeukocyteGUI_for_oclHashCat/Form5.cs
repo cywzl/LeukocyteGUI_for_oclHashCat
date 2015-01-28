@@ -47,15 +47,17 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void buttonSettingsOK_Click(object sender, EventArgs e)
         {
-            (Owner as MainForm).Hashcat = textBoxHashcat.Text;
-            (Owner as MainForm).WorkingDirectory = textBoxWorkingDirectory.Text;
+            Properties.Settings.Default.Hashcat = textBoxHashcat.Text;
+            Properties.Settings.Default.WorkingDirectory = textBoxWorkingDirectory.Text;
+            Properties.Settings.Default.Save();
+
             Close();
         }
 
         private void SettingsForm_Shown(object sender, EventArgs e)
         {
-            textBoxHashcat.Text = (Owner as MainForm).Hashcat;
-            textBoxWorkingDirectory.Text = (Owner as MainForm).WorkingDirectory;
+            textBoxHashcat.Text = Properties.Settings.Default.Hashcat;
+            textBoxWorkingDirectory.Text = Properties.Settings.Default.WorkingDirectory;
         }
     }
 }

@@ -50,6 +50,8 @@
             this.labelGPUTemp = new System.Windows.Forms.Label();
             this.labelGPUUtil = new System.Windows.Forms.Label();
             this.labelFanSpeed = new System.Windows.Forms.Label();
+            this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
+            this.checkBoxAllChecked = new System.Windows.Forms.CheckBox();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.pictureBoxFan = new System.Windows.Forms.PictureBox();
             this.pictureBoxVideocard = new System.Windows.Forms.PictureBox();
@@ -65,8 +67,7 @@
             this.buttonChangeTask = new System.Windows.Forms.Button();
             this.buttonStartTask = new System.Windows.Forms.Button();
             this.buttonStopTask = new System.Windows.Forms.Button();
-            this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
-            this.checkBoxAllChecked = new System.Windows.Forms.CheckBox();
+            this.checkBoxPauseCracking = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideocard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTemperature)).BeginInit();
@@ -222,6 +223,40 @@
             this.labelFanSpeed.TabIndex = 28;
             this.labelFanSpeed.Text = "0 %";
             // 
+            // imageListCheckBox
+            // 
+            this.imageListCheckBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListCheckBox.ImageStream")));
+            this.imageListCheckBox.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListCheckBox.Images.SetKeyName(0, "glyph_switch_on.png");
+            this.imageListCheckBox.Images.SetKeyName(1, "glyph_switch_off.png");
+            // 
+            // checkBoxAllChecked
+            // 
+            this.checkBoxAllChecked.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxAllChecked.AutoSize = true;
+            this.checkBoxAllChecked.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.CrackAllChecked;
+            this.checkBoxAllChecked.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "CrackAllChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxAllChecked.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatAppearance.BorderSize = 0;
+            this.checkBoxAllChecked.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxAllChecked.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxAllChecked.ForeColor = System.Drawing.Color.Gray;
+            this.checkBoxAllChecked.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxAllChecked.ImageIndex = 0;
+            this.checkBoxAllChecked.ImageList = this.imageListCheckBox;
+            this.checkBoxAllChecked.Location = new System.Drawing.Point(11, 7);
+            this.checkBoxAllChecked.Name = "checkBoxAllChecked";
+            this.checkBoxAllChecked.Size = new System.Drawing.Size(154, 32);
+            this.checkBoxAllChecked.TabIndex = 36;
+            this.checkBoxAllChecked.Text = "  Crack all checked";
+            this.checkBoxAllChecked.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxAllChecked.UseVisualStyleBackColor = true;
+            this.checkBoxAllChecked.CheckedChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
+            this.checkBoxAllChecked.VisibleChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
+            // 
             // buttonSettings
             // 
             this.buttonSettings.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
@@ -229,7 +264,7 @@
             this.buttonSettings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettings.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_settings;
-            this.buttonSettings.Location = new System.Drawing.Point(421, 45);
+            this.buttonSettings.Location = new System.Drawing.Point(431, 45);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSettings.Size = new System.Drawing.Size(31, 32);
@@ -243,7 +278,7 @@
             // 
             this.pictureBoxFan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxFan.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.fan;
-            this.pictureBoxFan.Location = new System.Drawing.Point(684, 45);
+            this.pictureBoxFan.Location = new System.Drawing.Point(683, 45);
             this.pictureBoxFan.Name = "pictureBoxFan";
             this.pictureBoxFan.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxFan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -327,7 +362,7 @@
             this.buttonUpTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonUpTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
-            this.buttonUpTask.Location = new System.Drawing.Point(169, 45);
+            this.buttonUpTask.Location = new System.Drawing.Point(179, 45);
             this.buttonUpTask.Name = "buttonUpTask";
             this.buttonUpTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonUpTask.Size = new System.Drawing.Size(31, 32);
@@ -344,7 +379,7 @@
             this.buttonOpenConverter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonOpenConverter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_convert;
-            this.buttonOpenConverter.Location = new System.Drawing.Point(374, 45);
+            this.buttonOpenConverter.Location = new System.Drawing.Point(384, 45);
             this.buttonOpenConverter.Name = "buttonOpenConverter";
             this.buttonOpenConverter.Padding = new System.Windows.Forms.Padding(3);
             this.buttonOpenConverter.Size = new System.Drawing.Size(31, 32);
@@ -362,7 +397,7 @@
             this.buttonDownTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonDownTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDownTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
-            this.buttonDownTask.Location = new System.Drawing.Point(206, 45);
+            this.buttonDownTask.Location = new System.Drawing.Point(216, 45);
             this.buttonDownTask.Name = "buttonDownTask";
             this.buttonDownTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonDownTask.Size = new System.Drawing.Size(31, 32);
@@ -380,7 +415,7 @@
             this.buttonClearTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonClearTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
-            this.buttonClearTask.Location = new System.Drawing.Point(122, 45);
+            this.buttonClearTask.Location = new System.Drawing.Point(132, 45);
             this.buttonClearTask.Name = "buttonClearTask";
             this.buttonClearTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonClearTask.Size = new System.Drawing.Size(31, 32);
@@ -397,7 +432,7 @@
             this.buttonPauseTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonPauseTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPauseTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
-            this.buttonPauseTask.Location = new System.Drawing.Point(290, 45);
+            this.buttonPauseTask.Location = new System.Drawing.Point(300, 45);
             this.buttonPauseTask.Name = "buttonPauseTask";
             this.buttonPauseTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonPauseTask.Size = new System.Drawing.Size(31, 32);
@@ -414,7 +449,7 @@
             this.buttonChangeTask.FlatAppearance.BorderSize = 0;
             this.buttonChangeTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonChangeTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChangeTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_change;
+            this.buttonChangeTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
             this.buttonChangeTask.Location = new System.Drawing.Point(85, 45);
             this.buttonChangeTask.Name = "buttonChangeTask";
             this.buttonChangeTask.Padding = new System.Windows.Forms.Padding(3);
@@ -432,7 +467,7 @@
             this.buttonStartTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonStartTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStartTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
-            this.buttonStartTask.Location = new System.Drawing.Point(253, 45);
+            this.buttonStartTask.Location = new System.Drawing.Point(263, 45);
             this.buttonStartTask.Name = "buttonStartTask";
             this.buttonStartTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonStartTask.Size = new System.Drawing.Size(31, 32);
@@ -449,7 +484,7 @@
             this.buttonStopTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonStopTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStopTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
-            this.buttonStopTask.Location = new System.Drawing.Point(327, 45);
+            this.buttonStopTask.Location = new System.Drawing.Point(337, 45);
             this.buttonStopTask.Name = "buttonStopTask";
             this.buttonStopTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonStopTask.Size = new System.Drawing.Size(31, 32);
@@ -459,42 +494,36 @@
             this.buttonStopTask.UseVisualStyleBackColor = true;
             this.buttonStopTask.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
-            // imageListCheckBox
+            // checkBoxPauseCracking
             // 
-            this.imageListCheckBox.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListCheckBox.ImageStream")));
-            this.imageListCheckBox.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListCheckBox.Images.SetKeyName(0, "glyph_switch_on.png");
-            this.imageListCheckBox.Images.SetKeyName(1, "glyph_switch_off.png");
-            // 
-            // checkBoxAllChecked
-            // 
-            this.checkBoxAllChecked.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxAllChecked.AutoSize = true;
-            this.checkBoxAllChecked.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatAppearance.BorderSize = 0;
-            this.checkBoxAllChecked.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxAllChecked.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxAllChecked.ForeColor = System.Drawing.Color.Gray;
-            this.checkBoxAllChecked.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.checkBoxAllChecked.ImageIndex = 0;
-            this.checkBoxAllChecked.ImageList = this.imageListCheckBox;
-            this.checkBoxAllChecked.Location = new System.Drawing.Point(11, 7);
-            this.checkBoxAllChecked.Name = "checkBoxAllChecked";
-            this.checkBoxAllChecked.Size = new System.Drawing.Size(154, 32);
-            this.checkBoxAllChecked.TabIndex = 36;
-            this.checkBoxAllChecked.Text = "  Crack all checked";
-            this.checkBoxAllChecked.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.checkBoxAllChecked.UseVisualStyleBackColor = true;
-            this.checkBoxAllChecked.CheckedChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
+            this.checkBoxPauseCracking.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxPauseCracking.AutoSize = true;
+            this.checkBoxPauseCracking.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatAppearance.BorderSize = 0;
+            this.checkBoxPauseCracking.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxPauseCracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxPauseCracking.ForeColor = System.Drawing.Color.Gray;
+            this.checkBoxPauseCracking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxPauseCracking.ImageIndex = 0;
+            this.checkBoxPauseCracking.ImageList = this.imageListCheckBox;
+            this.checkBoxPauseCracking.Location = new System.Drawing.Point(171, 7);
+            this.checkBoxPauseCracking.Name = "checkBoxPauseCracking";
+            this.checkBoxPauseCracking.Size = new System.Drawing.Size(139, 32);
+            this.checkBoxPauseCracking.TabIndex = 37;
+            this.checkBoxPauseCracking.Text = "  Pause cracking";
+            this.checkBoxPauseCracking.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxPauseCracking.UseVisualStyleBackColor = true;
+            this.checkBoxPauseCracking.CheckedChanged += new System.EventHandler(this.checkBoxPauseCracking_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 474);
+            this.Controls.Add(this.checkBoxPauseCracking);
             this.Controls.Add(this.checkBoxAllChecked);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.pictureBoxFan);
@@ -567,5 +596,6 @@
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.ImageList imageListCheckBox;
         private System.Windows.Forms.CheckBox checkBoxAllChecked;
+        private System.Windows.Forms.CheckBox checkBoxPauseCracking;
     }
 }

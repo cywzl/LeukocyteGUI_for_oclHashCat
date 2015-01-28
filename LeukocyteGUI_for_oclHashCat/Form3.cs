@@ -17,7 +17,7 @@ namespace LeukocyteGUI_for_oclHashCat
         const string crackTasksFile = "CrackTasks.bin";
 
         CrackTaskManager tskManager;
-        public string DateTimeFormat, Hashcat, WorkingDirectory;
+        public string DateTimeFormat;
 
         public MainForm()
         {
@@ -81,8 +81,23 @@ namespace LeukocyteGUI_for_oclHashCat
             labelGPUUtil.Text = "0 %";
             labelFanSpeed.Text = "0 %";
 
+            listViewTasks.Items[TaskId].BackColor = SystemColors.Window;
+            listViewTasks.Items[TaskId].ForeColor = SystemColors.WindowText;
+
             CheckButtons();
             VisualizeTask(TaskId);
+
+            if ((checkBoxAllChecked.Checked) && (!checkBoxPauseCracking.Checked))
+            {
+                for (int index = 0; index < listViewTasks.Items.Count; index++)
+                {
+                    if (listViewTasks.Items[index].Checked)
+                    {
+                        tskManager.Cracker.Crack(index);
+                        break;
+                    }
+                }
+            }
         }
 
         private void Cracker_OnCracking(object sender, int TaskId)
@@ -97,6 +112,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void Cracker_OnStart(object sender, int TaskId)
         {
+            listViewTasks.Items[TaskId].BackColor = Color.FromArgb(100, 100, 100);
+            listViewTasks.Items[TaskId].ForeColor = Color.White;
+
             CheckButtons();
             VisualizeTask(TaskId);
         }
@@ -402,11 +420,13 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             if (listViewTasks.SelectedIndices.Count > 0)
             {
-                if (tskManager.Cracker.SetHashcat(Hashcat, true))
+                if (tskManager.Cracker.SetHashcat(Properties.Settings.Default.Hashcat, true))
                 {
-                    tskManager.Cracker.SetWorkingDirectory(WorkingDirectory);
+                    tskManager.Cracker.SetWorkingDirectory(Properties.Settings.Default.WorkingDirectory);
                     tskManager.Cracker.Crack(listViewTasks.SelectedIndices[0]);
                 }
+
+                checkBoxPauseCracking.Checked = false;
             }
         }
 
@@ -444,6 +464,9 @@ namespace LeukocyteGUI_for_oclHashCat
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(crackTasksStream, tskManager.CrackTasks);
             crackTasksStream.Close();
+
+            Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void buttonSettings_Click(object sender, EventArgs e)
@@ -451,19 +474,40 @@ namespace LeukocyteGUI_for_oclHashCat
             (new SettingsForm()).ShowDialog(this);
         }
 
-        private void checkBoxAllChecked_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxAppearanceUpdate(CheckBox sender)
         {
-            CheckBox checkBox = (CheckBox)sender;
-
-            if (checkBox.Checked)
+            if (sender.Checked)
             {
-                checkBox.ImageIndex = 1;
-                checkBox.ForeColor = Color.Black;
+                sender.ImageIndex = 1;
+                sender.ForeColor = Color.Black;
             }
             else
             {
-                checkBox.ImageIndex = 0;
-                checkBox.ForeColor = Color.Gray;
+                sender.ImageIndex = 0;
+                sender.ForeColor = Color.Gray;
+            }
+        }
+
+        private void checkBoxAllChecked_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAppearanceUpdate(checkBoxAllChecked);
+        }
+
+        private void checkBoxPauseCracking_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAppearanceUpdate(checkBoxPauseCracking);
+
+            if (checkBoxPauseCracking.Checked)
+            {
+                tskManager.Cracker.PauseCracking();
+            }
+            else
+            {
+                if ((tskManager.Cracker.LastCrackingTaskId != -1)
+                    && (!tskManager.Cracker.IsCracking))
+                {
+                    tskManager.Cracker.Crack(tskManager.Cracker.LastCrackingTaskId);
+                }
             }
         }
     }

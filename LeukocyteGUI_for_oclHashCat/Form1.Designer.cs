@@ -36,8 +36,6 @@
             this.chooseFilesDialog = new System.Windows.Forms.OpenFileDialog();
             this.chooseOutputDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.listBoxFilenames = new System.Windows.Forms.ListBox();
-            this.textBoxOutput = new System.Windows.Forms.TextBox();
-            this.textBoxConverter = new System.Windows.Forms.TextBox();
             this.chooseConverterDialog = new System.Windows.Forms.OpenFileDialog();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -46,6 +44,8 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonChooseOutput = new System.Windows.Forms.Button();
             this.buttonChooseConverter = new System.Windows.Forms.Button();
+            this.textBoxOutput = new System.Windows.Forms.TextBox();
+            this.textBoxConverter = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labelFilesToConvert
@@ -84,20 +84,6 @@
             this.listBoxFilenames.SelectedIndexChanged += new System.EventHandler(this.listBoxFilenames_SelectedIndexChanged);
             this.listBoxFilenames.DragDrop += new System.Windows.Forms.DragEventHandler(this.listBoxFilenames_DragDrop);
             this.listBoxFilenames.DragEnter += new System.Windows.Forms.DragEventHandler(this.listBoxFilenames_DragEnter);
-            // 
-            // textBoxOutput
-            // 
-            this.textBoxOutput.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "hccapOutputPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.textBoxOutput, "textBoxOutput");
-            this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.hccapOutputPath;
-            // 
-            // textBoxConverter
-            // 
-            this.textBoxConverter.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "capConverter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.textBoxConverter, "textBoxConverter");
-            this.textBoxConverter.Name = "textBoxConverter";
-            this.textBoxConverter.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.capConverter;
             // 
             // chooseConverterDialog
             // 
@@ -160,6 +146,20 @@
             this.buttonChooseConverter.UseVisualStyleBackColor = true;
             this.buttonChooseConverter.Click += new System.EventHandler(this.buttonChooseConverter_Click);
             // 
+            // textBoxOutput
+            // 
+            this.textBoxOutput.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "hccapOutputPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.textBoxOutput, "textBoxOutput");
+            this.textBoxOutput.Name = "textBoxOutput";
+            this.textBoxOutput.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.hccapOutputPath;
+            // 
+            // textBoxConverter
+            // 
+            this.textBoxConverter.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "capConverter", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.textBoxConverter, "textBoxConverter");
+            this.textBoxConverter.Name = "textBoxConverter";
+            this.textBoxConverter.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.capConverter;
+            // 
             // ConverterForm
             // 
             resources.ApplyResources(this, "$this");
@@ -181,6 +181,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ConverterForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConverterForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

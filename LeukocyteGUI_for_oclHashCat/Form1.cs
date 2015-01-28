@@ -86,15 +86,6 @@ namespace LeukocyteGUI_for_oclHashCat
             statistics.ConversionEnd();
         }
 
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            Properties.Settings.Default.capConverter = textBoxConverter.Text;
-            Properties.Settings.Default.hccapOutputPath = textBoxOutput.Text;
-            Properties.Settings.Default.Save();
-
-            base.OnClosing(e);
-        }
-
         private void buttonChooseConverter_Click(object sender, EventArgs e)
         {
             if (chooseConverterDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -201,6 +192,13 @@ namespace LeukocyteGUI_for_oclHashCat
                 buttonMoveDown.Enabled = true;
                 buttonClear.Enabled = true;
             }
+        }
+
+        private void ConverterForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.capConverter = textBoxConverter.Text;
+            Properties.Settings.Default.hccapOutputPath = textBoxOutput.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }

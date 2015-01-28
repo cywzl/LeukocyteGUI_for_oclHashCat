@@ -46,5 +46,41 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
                 this["hccapOutputPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("oclHashcat64.exe")]
+        public string Hashcat {
+            get {
+                return ((string)(this["Hashcat"]));
+            }
+            set {
+                this["Hashcat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string WorkingDirectory {
+            get {
+                return ((string)(this["WorkingDirectory"]));
+            }
+            set {
+                this["WorkingDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CrackAllChecked {
+            get {
+                return ((bool)(this["CrackAllChecked"]));
+            }
+            set {
+                this["CrackAllChecked"] = value;
+            }
+        }
     }
 }
