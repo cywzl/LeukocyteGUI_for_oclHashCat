@@ -118,80 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelFilesToConvert.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelFilesToConvert.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelFilesToConvert.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelFilesToConvert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 84</value>
-  </data>
-  <data name="labelFilesToConvert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 17</value>
-  </data>
-  <data name="labelFilesToConvert.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="labelFilesToConvert.Text" xml:space="preserve">
-    <value>Files *.cap to convert:</value>
-  </data>
-  <data name="&gt;&gt;labelFilesToConvert.Name" xml:space="preserve">
-    <value>labelFilesToConvert</value>
-  </data>
-  <data name="&gt;&gt;labelFilesToConvert.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFilesToConvert.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelFilesToConvert.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="buttonConvert.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonConvert.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
-  </data>
-  <data name="buttonConvert.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonConvert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 80</value>
-  </data>
-  <data name="buttonConvert.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 25</value>
-  </data>
-  <data name="buttonConvert.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="buttonConvert.Text" xml:space="preserve">
-    <value>Convert to .hccap</value>
-  </data>
-  <data name="&gt;&gt;buttonConvert.Name" xml:space="preserve">
-    <value>buttonConvert</value>
-  </data>
-  <data name="&gt;&gt;buttonConvert.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonConvert.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonConvert.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -265,10 +199,10 @@
     <value>True</value>
   </data>
   <data name="listBoxFilenames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 120</value>
+    <value>12, 125</value>
   </data>
   <data name="listBoxFilenames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 199</value>
+    <value>339, 199</value>
   </data>
   <data name="listBoxFilenames.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -290,186 +224,6 @@
   </metadata>
   <data name="chooseConverterDialog.Filter" xml:space="preserve">
     <value>Executable files|*.exe</value>
-  </data>
-  <data name="buttonClear.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 183</value>
-  </data>
-  <data name="buttonClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonClear.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;buttonClear.Name" xml:space="preserve">
-    <value>buttonClear</value>
-  </data>
-  <data name="&gt;&gt;buttonClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonClear.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonClear.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 119</value>
-  </data>
-  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
-    <value>buttonAdd</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonMoveDown.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonMoveDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMoveDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 295</value>
-  </data>
-  <data name="buttonMoveDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonMoveDown.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveDown.Name" xml:space="preserve">
-    <value>buttonMoveDown</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveDown.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveDown.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonMoveUp.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonMoveUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMoveUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 263</value>
-  </data>
-  <data name="buttonMoveUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonMoveUp.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveUp.Name" xml:space="preserve">
-    <value>buttonMoveUp</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveUp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveUp.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonMoveUp.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonDelete.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 151</value>
-  </data>
-  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
-    <value>buttonDelete</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="buttonChooseOutput.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonChooseOutput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 42</value>
-  </data>
-  <data name="buttonChooseOutput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonChooseOutput.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseOutput.Name" xml:space="preserve">
-    <value>buttonChooseOutput</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseOutput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseOutput.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseOutput.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="buttonChooseConverter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonChooseConverter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 9</value>
-  </data>
-  <data name="buttonChooseConverter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonChooseConverter.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseConverter.Name" xml:space="preserve">
-    <value>buttonChooseConverter</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseConverter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseConverter.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;buttonChooseConverter.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="textBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
@@ -519,6 +273,255 @@
   <data name="&gt;&gt;textBoxConverter.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="buttonClear.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonClear.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonClear.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 85</value>
+  </data>
+  <data name="buttonClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 34</value>
+  </data>
+  <data name="buttonClear.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;buttonClear.Name" xml:space="preserve">
+    <value>buttonClear</value>
+  </data>
+  <data name="&gt;&gt;buttonClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonClear.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonClear.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonAdd.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonAdd.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 85</value>
+  </data>
+  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 34</value>
+  </data>
+  <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
+    <value>buttonAdd</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonMoveDown.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonMoveDown.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonMoveDown.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonMoveDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMoveDown.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 85</value>
+  </data>
+  <data name="buttonMoveDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 34</value>
+  </data>
+  <data name="buttonMoveDown.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.Name" xml:space="preserve">
+    <value>buttonMoveDown</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveDown.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonMoveUp.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonMoveUp.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonMoveUp.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonMoveUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMoveUp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 85</value>
+  </data>
+  <data name="buttonMoveUp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 34</value>
+  </data>
+  <data name="buttonMoveUp.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.Name" xml:space="preserve">
+    <value>buttonMoveUp</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonMoveUp.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonDelete.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonDelete.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonDelete.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 85</value>
+  </data>
+  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 34</value>
+  </data>
+  <data name="buttonDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
+    <value>buttonDelete</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonChooseOutput.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonChooseOutput.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonChooseOutput.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 39</value>
+  </data>
+  <data name="buttonChooseOutput.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 31</value>
+  </data>
+  <data name="buttonChooseOutput.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseOutput.Name" xml:space="preserve">
+    <value>buttonChooseOutput</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseOutput.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseOutput.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseOutput.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="buttonChooseConverter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonChooseConverter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonChooseConverter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>321, 6</value>
+  </data>
+  <data name="buttonChooseConverter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 31</value>
+  </data>
+  <data name="buttonChooseConverter.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseConverter.Name" xml:space="preserve">
+    <value>buttonChooseConverter</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseConverter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseConverter.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonChooseConverter.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="buttonConvert.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonConvert.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="buttonConvert.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt</value>
+  </data>
+  <data name="buttonConvert.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonConvert.Location" type="System.Drawing.Point, System.Drawing">
+    <value>228, 85</value>
+  </data>
+  <data name="buttonConvert.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 34</value>
+  </data>
+  <data name="buttonConvert.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;buttonConvert.Name" xml:space="preserve">
+    <value>buttonConvert</value>
+  </data>
+  <data name="&gt;&gt;buttonConvert.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonConvert.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;buttonConvert.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -529,10 +532,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>363, 327</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+    <value>363, 333</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

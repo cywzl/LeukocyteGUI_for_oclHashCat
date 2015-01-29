@@ -293,6 +293,18 @@
   <ItemGroup>
     <None Include="icons\glyph_edit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_add_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_open_exe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\glyph_convert_cap.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

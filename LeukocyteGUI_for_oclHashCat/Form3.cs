@@ -81,11 +81,15 @@ namespace LeukocyteGUI_for_oclHashCat
             labelGPUUtil.Text = "0 %";
             labelFanSpeed.Text = "0 %";
 
-            listViewTasks.Items[TaskId].BackColor = SystemColors.Window;
-            listViewTasks.Items[TaskId].ForeColor = SystemColors.WindowText;
+            if (TaskId != -1)
+            {
+                listViewTasks.Items[TaskId].BackColor = SystemColors.Window;
+                listViewTasks.Items[TaskId].ForeColor = SystemColors.WindowText;
+                listViewTasks.Items[TaskId].Checked = false;
+                VisualizeTask(TaskId);
+            }
 
             CheckButtons();
-            VisualizeTask(TaskId);
 
             if ((checkBoxAllChecked.Checked) && (!checkBoxPauseCracking.Checked))
             {

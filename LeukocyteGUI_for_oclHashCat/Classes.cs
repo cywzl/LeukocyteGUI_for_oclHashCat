@@ -1168,7 +1168,14 @@ namespace LeukocyteGUI_for_oclHashCat
                     }
                 }
 
-                OnCracking(this, sCrackingTaskId);
+                if (sCrackingTaskId != -1)
+                {
+                    OnCracking(this, sCrackingTaskId);
+                }
+                else if (sLastCrackingTaskId != -1)
+                {
+                    OnCracking(this, sLastCrackingTaskId);
+                }
             }
 
             private void Cracker_Exited(object sender, System.EventArgs e)
@@ -1215,8 +1222,8 @@ namespace LeukocyteGUI_for_oclHashCat
                     Fan = 0;
                     Speed = "0 h/s";
                     sIsCracking = false;
-                    OnStop(this, sCrackingTaskId);
                     sCrackingTaskId = -1;
+                    OnStop(this, sLastCrackingTaskId);
                 }
             }
 

@@ -63,66 +63,6 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_090_8301 {
-            get {
-                object obj = ResourceManager.GetObject("arrow_090_8301", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap arrow_270_9490 {
-            get {
-                object obj = ResourceManager.GetObject("arrow_270_9490", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap arrow_circle_315_2306 {
-            get {
-                object obj = ResourceManager.GetObject("arrow_circle_315_2306", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap button_cancel_8125 {
-            get {
-                object obj = ResourceManager.GetObject("button_cancel_8125", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap button_ok_3054 {
-            get {
-                object obj = ResourceManager.GetObject("button_ok_3054", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cross_4264 {
-            get {
-                object obj = ResourceManager.GetObject("cross_4264", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap fan {
             get {
                 object obj = ResourceManager.GetObject("fan", resourceCulture);
@@ -133,29 +73,9 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_horizontal_open_4182 {
+        internal static System.Drawing.Bitmap glyph_add_folder {
             get {
-                object obj = ResourceManager.GetObject("folder_horizontal_open_4182", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap glyph_add {
-            get {
-                object obj = ResourceManager.GetObject("glyph_add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap glyph_change {
-            get {
-                object obj = ResourceManager.GetObject("glyph_change", resourceCulture);
+                object obj = ResourceManager.GetObject("glyph_add_folder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +96,16 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         internal static System.Drawing.Bitmap glyph_convert {
             get {
                 object obj = ResourceManager.GetObject("glyph_convert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_convert_cap {
+            get {
+                object obj = ResourceManager.GetObject("glyph_convert_cap", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +136,16 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         internal static System.Drawing.Bitmap glyph_edit {
             get {
                 object obj = ResourceManager.GetObject("glyph_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_open_exe {
+            get {
+                object obj = ResourceManager.GetObject("glyph_open_exe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,79 +283,9 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap glyph_update {
-            get {
-                object obj = ResourceManager.GetObject("glyph_update", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap glyph_videocard {
             get {
                 object obj = ResourceManager.GetObject("glyph_videocard", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap old_view_refresh_4484 {
-            get {
-                object obj = ResourceManager.GetObject("old_view_refresh_4484", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap opacity {
-            get {
-                object obj = ResourceManager.GetObject("opacity", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap plus_6103 {
-            get {
-                object obj = ResourceManager.GetObject("plus_6103", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap settings {
-            get {
-                object obj = ResourceManager.GetObject("settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap speed {
-            get {
-                object obj = ResourceManager.GetObject("speed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Thermometer {
-            get {
-                object obj = ResourceManager.GetObject("Thermometer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

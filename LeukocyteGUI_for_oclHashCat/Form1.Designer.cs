@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConverterForm));
-            this.labelFilesToConvert = new System.Windows.Forms.Label();
-            this.buttonConvert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.chooseFilesDialog = new System.Windows.Forms.OpenFileDialog();
             this.chooseOutputDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.listBoxFilenames = new System.Windows.Forms.ListBox();
             this.chooseConverterDialog = new System.Windows.Forms.OpenFileDialog();
+            this.textBoxOutput = new System.Windows.Forms.TextBox();
+            this.textBoxConverter = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonMoveDown = new System.Windows.Forms.Button();
@@ -44,21 +44,8 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonChooseOutput = new System.Windows.Forms.Button();
             this.buttonChooseConverter = new System.Windows.Forms.Button();
-            this.textBoxOutput = new System.Windows.Forms.TextBox();
-            this.textBoxConverter = new System.Windows.Forms.TextBox();
+            this.buttonConvert = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // labelFilesToConvert
-            // 
-            resources.ApplyResources(this.labelFilesToConvert, "labelFilesToConvert");
-            this.labelFilesToConvert.Name = "labelFilesToConvert";
-            // 
-            // buttonConvert
-            // 
-            resources.ApplyResources(this.buttonConvert, "buttonConvert");
-            this.buttonConvert.Name = "buttonConvert";
-            this.buttonConvert.UseVisualStyleBackColor = true;
-            this.buttonConvert.Click += new System.EventHandler(this.buttonConvert_Click);
             // 
             // label1
             // 
@@ -90,62 +77,6 @@
             this.chooseConverterDialog.FileName = "aircrack-ng.exe";
             resources.ApplyResources(this.chooseConverterDialog, "chooseConverterDialog");
             // 
-            // buttonClear
-            // 
-            resources.ApplyResources(this.buttonClear, "buttonClear");
-            this.buttonClear.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.arrow_circle_315_2306;
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.plus_6103;
-            resources.ApplyResources(this.buttonAdd, "buttonAdd");
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonMoveDown
-            // 
-            resources.ApplyResources(this.buttonMoveDown, "buttonMoveDown");
-            this.buttonMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.arrow_270_9490;
-            this.buttonMoveDown.Name = "buttonMoveDown";
-            this.buttonMoveDown.UseVisualStyleBackColor = true;
-            this.buttonMoveDown.Click += new System.EventHandler(this.buttonMoveUpDown_Click);
-            // 
-            // buttonMoveUp
-            // 
-            resources.ApplyResources(this.buttonMoveUp, "buttonMoveUp");
-            this.buttonMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.arrow_090_8301;
-            this.buttonMoveUp.Name = "buttonMoveUp";
-            this.buttonMoveUp.UseVisualStyleBackColor = true;
-            this.buttonMoveUp.Click += new System.EventHandler(this.buttonMoveUpDown_Click);
-            // 
-            // buttonDelete
-            // 
-            resources.ApplyResources(this.buttonDelete, "buttonDelete");
-            this.buttonDelete.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.cross_4264;
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // buttonChooseOutput
-            // 
-            this.buttonChooseOutput.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.folder_horizontal_open_4182;
-            resources.ApplyResources(this.buttonChooseOutput, "buttonChooseOutput");
-            this.buttonChooseOutput.Name = "buttonChooseOutput";
-            this.buttonChooseOutput.UseVisualStyleBackColor = true;
-            this.buttonChooseOutput.Click += new System.EventHandler(this.buttonChooseOutput_Click);
-            // 
-            // buttonChooseConverter
-            // 
-            this.buttonChooseConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.folder_horizontal_open_4182;
-            resources.ApplyResources(this.buttonChooseConverter, "buttonChooseConverter");
-            this.buttonChooseConverter.Name = "buttonChooseConverter";
-            this.buttonChooseConverter.UseVisualStyleBackColor = true;
-            this.buttonChooseConverter.Click += new System.EventHandler(this.buttonChooseConverter_Click);
-            // 
             // textBoxOutput
             // 
             this.textBoxOutput.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "hccapOutputPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -159,6 +90,95 @@
             resources.ApplyResources(this.textBoxConverter, "textBoxConverter");
             this.textBoxConverter.Name = "textBoxConverter";
             this.textBoxConverter.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.capConverter;
+            // 
+            // buttonClear
+            // 
+            resources.ApplyResources(this.buttonClear, "buttonClear");
+            this.buttonClear.FlatAppearance.BorderSize = 0;
+            this.buttonClear.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonClear.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonClear.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.FlatAppearance.BorderSize = 0;
+            this.buttonAdd.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonAdd.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            resources.ApplyResources(this.buttonAdd, "buttonAdd");
+            this.buttonAdd.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonMoveDown
+            // 
+            resources.ApplyResources(this.buttonMoveDown, "buttonMoveDown");
+            this.buttonMoveDown.FlatAppearance.BorderSize = 0;
+            this.buttonMoveDown.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonMoveDown.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
+            this.buttonMoveDown.Name = "buttonMoveDown";
+            this.buttonMoveDown.UseVisualStyleBackColor = true;
+            this.buttonMoveDown.Click += new System.EventHandler(this.buttonMoveUpDown_Click);
+            // 
+            // buttonMoveUp
+            // 
+            resources.ApplyResources(this.buttonMoveUp, "buttonMoveUp");
+            this.buttonMoveUp.FlatAppearance.BorderSize = 0;
+            this.buttonMoveUp.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonMoveUp.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
+            this.buttonMoveUp.Name = "buttonMoveUp";
+            this.buttonMoveUp.UseVisualStyleBackColor = true;
+            this.buttonMoveUp.Click += new System.EventHandler(this.buttonMoveUpDown_Click);
+            // 
+            // buttonDelete
+            // 
+            resources.ApplyResources(this.buttonDelete, "buttonDelete");
+            this.buttonDelete.FlatAppearance.BorderSize = 0;
+            this.buttonDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonDelete.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonChooseOutput
+            // 
+            this.buttonChooseOutput.FlatAppearance.BorderSize = 0;
+            this.buttonChooseOutput.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseOutput.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            resources.ApplyResources(this.buttonChooseOutput, "buttonChooseOutput");
+            this.buttonChooseOutput.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder;
+            this.buttonChooseOutput.Name = "buttonChooseOutput";
+            this.buttonChooseOutput.UseVisualStyleBackColor = true;
+            this.buttonChooseOutput.Click += new System.EventHandler(this.buttonChooseOutput_Click);
+            // 
+            // buttonChooseConverter
+            // 
+            this.buttonChooseConverter.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseConverter.FlatAppearance.BorderSize = 0;
+            this.buttonChooseConverter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseConverter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            resources.ApplyResources(this.buttonChooseConverter, "buttonChooseConverter");
+            this.buttonChooseConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe;
+            this.buttonChooseConverter.Name = "buttonChooseConverter";
+            this.buttonChooseConverter.UseVisualStyleBackColor = true;
+            this.buttonChooseConverter.Click += new System.EventHandler(this.buttonChooseConverter_Click);
+            // 
+            // buttonConvert
+            // 
+            resources.ApplyResources(this.buttonConvert, "buttonConvert");
+            this.buttonConvert.FlatAppearance.BorderSize = 0;
+            this.buttonConvert.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonConvert.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonConvert.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_convert_cap;
+            this.buttonConvert.Name = "buttonConvert";
+            this.buttonConvert.UseVisualStyleBackColor = true;
+            this.buttonConvert.Click += new System.EventHandler(this.buttonConvert_Click);
             // 
             // ConverterForm
             // 
@@ -177,7 +197,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxConverter);
             this.Controls.Add(this.buttonConvert);
-            this.Controls.Add(this.labelFilesToConvert);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ConverterForm";
@@ -189,7 +208,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelFilesToConvert;
         private System.Windows.Forms.Button buttonConvert;
         private System.Windows.Forms.TextBox textBoxConverter;
         private System.Windows.Forms.Label label1;

@@ -85,17 +85,23 @@
             // 
             this.imageListConvertStatus.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListConvertStatus.ImageStream")));
             this.imageListConvertStatus.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListConvertStatus.Images.SetKeyName(0, "button_cancel_5732.png");
-            this.imageListConvertStatus.Images.SetKeyName(1, "button_ok_4174.png");
+            this.imageListConvertStatus.Images.SetKeyName(0, "glyph_delete.png");
+            this.imageListConvertStatus.Images.SetKeyName(1, "glyph_task_ok.png");
+            this.imageListConvertStatus.Images.SetKeyName(2, "button_cancel_5732.png");
+            this.imageListConvertStatus.Images.SetKeyName(3, "button_ok_4174.png");
             // 
             // buttonConfirmSuccess
             // 
             this.buttonConfirmSuccess.Enabled = false;
-            this.buttonConfirmSuccess.Location = new System.Drawing.Point(108, 212);
+            this.buttonConfirmSuccess.FlatAppearance.BorderSize = 0;
+            this.buttonConfirmSuccess.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonConfirmSuccess.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonConfirmSuccess.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirmSuccess.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
+            this.buttonConfirmSuccess.Location = new System.Drawing.Point(133, 216);
             this.buttonConfirmSuccess.Name = "buttonConfirmSuccess";
-            this.buttonConfirmSuccess.Size = new System.Drawing.Size(85, 23);
+            this.buttonConfirmSuccess.Size = new System.Drawing.Size(44, 39);
             this.buttonConfirmSuccess.TabIndex = 5;
-            this.buttonConfirmSuccess.Text = "OK";
             this.buttonConfirmSuccess.UseVisualStyleBackColor = true;
             this.buttonConfirmSuccess.Click += new System.EventHandler(this.buttonConfirmSuccess_Click);
             // 
@@ -103,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 247);
+            this.ClientSize = new System.Drawing.Size(309, 267);
             this.Controls.Add(this.buttonConfirmSuccess);
             this.Controls.Add(this.listViewConvertSuccess);
             this.Controls.Add(this.labelConvertingStatus);
