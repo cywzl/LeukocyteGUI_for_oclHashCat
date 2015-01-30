@@ -133,18 +133,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\folder_horizontal_open_4182.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\cross_4264.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\arrow_090_8301.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\arrow_270_9490.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
@@ -162,79 +150,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\plus_6103.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\arrow_circle_315_2306.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\edit_add_8671.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\button_cancel_8022.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\1uparrow_3635.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\1downarrow_9087.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\1uparrow_2202.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\1downarrow_9068.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\edit_add_7148.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\button_cancel_8125.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\configure_9863.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\gtk-media-play-ltr_9072.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\gtk-media-pause_9393.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\gtk-media-stop_2295.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\old-view-refresh_4484.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\message_reply_9020.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\button_ok_3054.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\speed.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\Thermometer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\opacity.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="icons\fan.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\glyph_add.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="icons\glyph_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\glyph_update.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\glyph_clear.png" />
@@ -259,9 +178,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\glyph_plus.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\glyph_change.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\glyph_settings.png" />
@@ -292,9 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\glyph_edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\glyph_folder.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\glyph_add_folder.png" />

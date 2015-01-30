@@ -47,6 +47,7 @@ namespace LeukocyteGUI_for_oclHashCat
             tskManager.TaskUpdated += tskManager_TaskUpdated;
             tskManager.TasksAllDeleted += tskManager_TasksAllDeleted;
 
+            tskManager.Cracker.BeforeStart += Cracker_BeforeStart;
             tskManager.Cracker.OnStart += Cracker_OnStart;
             tskManager.Cracker.OnCracking += Cracker_OnCracking;
             tskManager.Cracker.OnStop += Cracker_OnStop;
@@ -59,6 +60,24 @@ namespace LeukocyteGUI_for_oclHashCat
 
             VisualizeTasks();
             CheckButtons();
+        }
+
+        private void Cracker_BeforeStart(object sender, int TaskId)
+        {
+            string logFile = Properties.Settings.Default.WorkingDirectory + "\\"
+                + tskManager.CrackTasks[TaskId].SessionId + ".log";
+            string potFile = Properties.Settings.Default.WorkingDirectory + "\\"
+                + tskManager.CrackTasks[TaskId].SessionId + ".pot";
+
+            if (File.Exists(logFile))
+            {
+                File.Delete(logFile);
+            }
+
+            if (File.Exists(potFile))
+            {
+                File.Delete(potFile);
+            }
         }
 
         public CrackTaskManager MainCrackTaskManager
@@ -260,21 +279,29 @@ namespace LeukocyteGUI_for_oclHashCat
             if (MainCrackTaskManager.Cracker.IsCracking)
             {
                 buttonPauseTask.Enabled = true;
+                toolStripMenuItemPause.Enabled = true;
+
                 buttonStopTask.Enabled = true;
+                toolStripMenuItemStop.Enabled = true;
             }
             else
             {
                 buttonPauseTask.Enabled = false;
+                toolStripMenuItemPause.Enabled = false;
+
                 buttonStopTask.Enabled = false;
+                toolStripMenuItemStop.Enabled = false;
             }
 
             if ((listViewTasks.Items.Count > 0) && (!MainCrackTaskManager.Cracker.IsCracking))
             {
                 buttonClearTask.Enabled = true;
+                toolStripMenuItemRemoveAll.Enabled = true;
             }
             else
             {
                 buttonClearTask.Enabled = false;
+                toolStripMenuItemRemoveAll.Enabled = false;
             }
 
             if (listViewTasks.SelectedIndices.Count == 1)
@@ -282,39 +309,51 @@ namespace LeukocyteGUI_for_oclHashCat
                 if (MainCrackTaskManager.Cracker.CrackingTaskId != listViewTasks.SelectedIndices[0])
                 {
                     buttonDeleteTask.Enabled = true;
+                    toolStripMenuItemRemove.Enabled = true;
+
                     buttonChangeTask.Enabled = true;
+                    toolStripMenuItemChange.Enabled = true;
                 }
                 else
                 {
                     buttonDeleteTask.Enabled = false;
+                    toolStripMenuItemRemove.Enabled = false;
+
                     buttonChangeTask.Enabled = false;
+                    toolStripMenuItemChange.Enabled = false;
                 }
 
                 if (MainCrackTaskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Restore == true)
                 {
                     buttonStopTask.Enabled = true;
+                    toolStripMenuItemStop.Enabled = true;
                 }
                 else
                 {
                     buttonStopTask.Enabled = false;
+                    toolStripMenuItemStop.Enabled = false;
                 }
 
                 if (listViewTasks.SelectedIndices[0] > 0)
                 {
                     buttonUpTask.Enabled = true;
+                    toolStripMenuItemMoveUp.Enabled = true;
                 }
                 else
                 {
                     buttonUpTask.Enabled = false;
+                    toolStripMenuItemMoveUp.Enabled = false;
                 }
 
                 if (listViewTasks.SelectedIndices[0] < listViewTasks.Items.Count - 1)
                 {
                     buttonDownTask.Enabled = true;
+                    toolStripMenuItemMoveDown.Enabled = true;
                 }
                 else
                 {
                     buttonDownTask.Enabled = false;
+                    toolStripMenuItemMoveDown.Enabled = false;
                 }
 
                 if (MainCrackTaskManager.Cracker.IsCracking
@@ -322,27 +361,40 @@ namespace LeukocyteGUI_for_oclHashCat
                     || MainCrackTaskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Status == "Cracked")
                 {
                     buttonStartTask.Enabled = false;
+                    toolStripMenuItemStart.Enabled = false;
                 }
                 else
                 {
                     buttonStartTask.Enabled = true;
+                    toolStripMenuItemStart.Enabled = true;
                 }
             }
             else
             {
                 buttonUpTask.Enabled = false;
+                toolStripMenuItemMoveUp.Enabled = false;
+
                 buttonDownTask.Enabled = false;
+                toolStripMenuItemMoveDown.Enabled = false;
+
                 buttonDeleteTask.Enabled = false;
+                toolStripMenuItemRemove.Enabled = false;
+
                 buttonChangeTask.Enabled = false;
+                toolStripMenuItemChange.Enabled = false;
+
                 buttonStartTask.Enabled = false;
+                toolStripMenuItemStart.Enabled = false;
 
                 if (MainCrackTaskManager.Cracker.IsCracking)
                 {
                     buttonStopTask.Enabled = true;
+                    toolStripMenuItemStop.Enabled = true;
                 }
                 else
                 {
                     buttonStopTask.Enabled = false;
+                    toolStripMenuItemStop.Enabled = false;
                 }
             }
 
@@ -441,7 +493,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void buttonStopTask_Click(object sender, EventArgs e)
         {
-            if (listViewTasks.SelectedIndices.Count > 0)
+           if (listViewTasks.SelectedIndices.Count > 0)
             {
                 tskManager.Cracker.StopCracking(listViewTasks.SelectedIndices[0]);
 

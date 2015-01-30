@@ -969,7 +969,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             public void Crack(int TaskId)
             {
-                BeforeStart(this, sCrackingTaskId);
+                BeforeStart(this, TaskId);
 
                 sCrackingTaskId = TaskId;
                 sCrackingTask = sCrackTaskManager.CrackTasks[TaskId];
@@ -1024,8 +1024,17 @@ namespace LeukocyteGUI_for_oclHashCat
                 if ((TaskId > -1)
                     && (TaskId < sCrackTaskManager.CrackTasks.Length))
                 {
-                    sCrackTaskManager.CrackTasks[TaskId].Status = "Stopped";
-                    sCrackTaskManager.CrackTasks[TaskId].Restore = false;
+                    CrackTask tsk = sCrackTaskManager.CrackTasks[TaskId];
+                    tsk.Status = "Stopped";
+                    tsk.Plain = "";
+                    tsk.Progress = 0;
+                    tsk.Restore = false;
+                    tsk.CurrentLength = 0;
+                    tsk.RecoveredDigests = 0;
+                    tsk.RecoveredSalts = 0;
+                    tsk.Estimated = "";
+                    tsk.Started = DateTime.MinValue;
+                    tsk.Finished = DateTime.MinValue;
                 }
 
                 if (sIsCracking)
