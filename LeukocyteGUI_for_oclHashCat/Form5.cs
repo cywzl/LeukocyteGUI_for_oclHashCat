@@ -39,10 +39,10 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     textBoxWorkingDirectory.Text = "";
                 }
-                    
             }
 
             textBoxWorkingDirectory.Enabled = !checkBoxAutoWorkingDirectory.Checked;
+            buttonChooseWorkingDirectory.Enabled = !checkBoxAutoWorkingDirectory.Checked;
         }
 
         private void buttonSettingsOK_Click(object sender, EventArgs e)
@@ -58,6 +58,24 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             textBoxHashcat.Text = Properties.Settings.Default.Hashcat;
             textBoxWorkingDirectory.Text = Properties.Settings.Default.WorkingDirectory;
+        }
+
+        private void buttonChooseHashCat_Click(object sender, EventArgs e)
+        {
+            openFileDialogHashCat.ShowDialog();
+        }
+
+        private void buttonChooseWorkingDirectory_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialogWorkingDirectory.ShowDialog() == DialogResult.OK)
+            {
+                textBoxWorkingDirectory.Text = folderBrowserDialogWorkingDirectory.SelectedPath + "\\";
+            }
+        }
+
+        private void openFileDialogHashCat_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxHashcat.Text = openFileDialogHashCat.FileName;
         }
     }
 }
