@@ -12,7 +12,7 @@ using System.IO;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
-    class Converter : System.Diagnostics.Process
+    public class Converter : System.Diagnostics.Process
     {
         public string OutPath = "/";
         public string ConverterFileName = "aircrack-ng.exe";
@@ -1267,6 +1267,106 @@ namespace LeukocyteGUI_for_oclHashCat
                 return result;
             }
 
+        }
+    }
+
+    public class SimpleProgressBar : UserControl
+    {
+        private int value = 0;
+        private int minimum = 0;
+        private int maximum = 100;
+
+        public int Value
+        {
+            get { return value; }
+            set
+            {
+                if (value > maximum)
+                {
+                    throw new ArgumentException("The value specified is greater than the value of the Maximum property.");
+                }
+                if (value < minimum)
+                {
+                    throw new ArgumentException("The value specified is less than the value of the Minimum property.");
+                }
+
+                this.value = value;
+                Invalidate();
+            }
+        }
+        public int Minimum
+        {
+            get { return minimum; }
+            set
+            {
+                if (value > maximum)
+                {
+                    throw new ArgumentException("The value specified is greater than the value of the Maximum property.");
+                }
+                if (value < 0)
+                {
+                    throw new ArgumentException("The value specified is less than 0.");
+                }
+
+                this.minimum = value;
+                Invalidate();
+            }
+        }
+        public int Maximum
+        {
+            get { return maximum; }
+            set
+            {
+                if (value < minimum)
+                {
+                    throw new ArgumentException("The value specified is less than the value of the Minimum property.");
+                }
+
+                this.maximum = value;
+                Invalidate();
+            }
+        }
+        public bool ShowText { get; set; }
+        public string Text { get; set; }
+
+        public SimpleProgressBar()
+        {
+            BackColor = Colors.BackColors.Default;
+            ForeColor = Colors.ForeColors.Processing;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            Graphics graphics = CreateGraphics();
+            Rectangle rect = new Rectangle(0, 0, (int)(1.0 * (value - minimum) / (maximum - minimum) * Width), Height);
+
+            graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
+            graphics.FillRectangle(new SolidBrush(ForeColor), rect);
+
+            if (ShowText)
+            {
+                StringFormat sf = new StringFormat();
+                sf.Alignment = StringAlignment.Center;
+                sf.LineAlignment = StringAlignment.Center;
+                graphics.DrawString(Text, new Font("Arial", (float)8), Brushes.Black, ClientRectangle, sf);
+            }
+        }
+
+        public static class Colors
+        {
+            public struct ForeColors
+            {
+                public static readonly Color Processing = Color.FromArgb(132, 194, 255);
+                public static readonly Color Complete = Color.FromArgb(134, 196, 63);
+                public static readonly Color Stopped = Color.FromArgb(157, 160, 163);
+            }
+
+            public struct BackColors
+            {
+                public static readonly Color Default = Color.FromArgb(235, 235, 235);
+            }
         }
     }
 }
