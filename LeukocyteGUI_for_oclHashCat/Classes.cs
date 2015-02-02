@@ -1275,6 +1275,7 @@ namespace LeukocyteGUI_for_oclHashCat
         private int value = 0;
         private int minimum = 0;
         private int maximum = 100;
+        private string caption = "";
 
         public int Value
         {
@@ -1327,31 +1328,58 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         public bool ShowText { get; set; }
-        public string Text { get; set; }
+        public string Caption
+        {
+            get { return caption; }
+            set
+            {
+                caption = value;
+
+                if (ShowText)
+                {
+                    Invalidate();
+                }
+            }
+        }
 
         public SimpleProgressBar()
         {
             BackColor = Colors.BackColors.Default;
             ForeColor = Colors.ForeColors.Processing;
         }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
             Graphics graphics = CreateGraphics();
-            Rectangle rect = new Rectangle(0, 0, (int)(1.0 * (value - minimum) / (maximum - minimum) * Width), Height);
-
-            graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
-            graphics.FillRectangle(new SolidBrush(ForeColor), rect);
+            string text = "";
 
             if (ShowText)
+            {
+                text = Caption;
+            }
+
+            Render(graphics, ClientRectangle, (int)100.0 * (value - minimum) / (maximum - minimum), text, BackColor, ForeColor);
+        }
+        public static void Render(Graphics Graph, Rectangle Rect, int Position, string Text,
+            Color BackColor, Color ForeColor)
+        {
+            Rectangle rectProgress = new Rectangle(Rect.Left, Rect.Top, (int)Rect.Width * Position / 100, Rect.Height);
+
+            Graph.FillRectangle(new SolidBrush(BackColor), Rect.X + 1, Rect.Y + 1, Rect.Width - 2, Rect.Height - 2);
+            Graph.FillRectangle(new SolidBrush(ForeColor), rectProgress.X + 1, rectProgress.Y + 1, rectProgress.Width - 2, rectProgress.Height - 2);
+
+            if (Text != "")
             {
                 StringFormat sf = new StringFormat();
                 sf.Alignment = StringAlignment.Center;
                 sf.LineAlignment = StringAlignment.Center;
-                graphics.DrawString(Text, new Font("Arial", (float)8), Brushes.Black, ClientRectangle, sf);
+                Graph.DrawString(Text, new Font("Arial", (float)8), Brushes.Black, Rect, sf);
             }
+        }
+        public static void Render(Graphics Graph, Rectangle Rect, int Position, string Text = "")
+        {
+            Render(Graph, Rect, Position, Text, Colors.BackColors.Default, Colors.ForeColors.Processing);
         }
 
         public static class Colors

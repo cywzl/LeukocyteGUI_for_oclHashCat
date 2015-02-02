@@ -150,7 +150,7 @@
             // columnHeaderProgress
             // 
             this.columnHeaderProgress.Text = "Progress";
-            this.columnHeaderProgress.Width = 54;
+            this.columnHeaderProgress.Width = 112;
             // 
             // columnHeaderDigests
             // 
@@ -210,7 +210,7 @@
             this.toolStripMenuItemPause,
             this.toolStripMenuItemStop});
             this.contextMenuStripTasks.Name = "contextMenuStripTasks";
-            this.contextMenuStripTasks.Size = new System.Drawing.Size(156, 242);
+            this.contextMenuStripTasks.Size = new System.Drawing.Size(156, 220);
             // 
             // toolStripMenuItemAdd
             // 
