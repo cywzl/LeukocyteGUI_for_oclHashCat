@@ -117,10 +117,13 @@
             this.listViewTasks.Location = new System.Drawing.Point(11, 83);
             this.listViewTasks.MultiSelect = false;
             this.listViewTasks.Name = "listViewTasks";
+            this.listViewTasks.OwnerDraw = true;
             this.listViewTasks.Size = new System.Drawing.Size(752, 379);
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
+            this.listViewTasks.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listViewTasks_DrawColumnHeader);
+            this.listViewTasks.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listViewTasks_DrawSubItem);
             this.listViewTasks.SelectedIndexChanged += new System.EventHandler(this.listViewTasks_SelectedIndexChanged);
             // 
             // columnHeaderNumber
