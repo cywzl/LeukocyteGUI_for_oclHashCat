@@ -577,31 +577,42 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             if (e.ColumnIndex == 5)
             { 
-                int progress = (int)tskManager.CrackTasks[e.ItemIndex].Progress;
-                string status = tskManager.CrackTasks[e.ItemIndex].Status;
-                Color foreColor;
+                CrackTaskManager.CrackTask crackTask = tskManager.CrackTasks[e.ItemIndex];
+                int progress = (int)crackTask.Progress;
+                string status = crackTask.Status;
+                Color foreColor, backColor;
 
                 switch (status)
                 {
                     case "Stopped":
                     case "Paused":
                         foreColor = SimpleProgressBar.Colors.ForeColors.Stopped;
+                        backColor = SimpleProgressBar.Colors.BackColors.Default;
                         break;
                     case "Cracked":
-                        foreColor = SimpleProgressBar.Colors.ForeColors.Complete;
+                    case "Exhausted":
+                        foreColor = SimpleProgressBar.Colors.ForeColors.CompleteLight;
+                        backColor = SimpleProgressBar.Colors.ForeColors.Failure;
+
+                        if (crackTask.Digests > 0)
+                        {
+                            progress = (int)(((float)crackTask.RecoveredDigests) / crackTask.Digests * 100);
+                        }
+                        
                         break;
                     case "Running":
                         foreColor = SimpleProgressBar.Colors.ForeColors.Processing;
+                        backColor = SimpleProgressBar.Colors.BackColors.Default;
                         break;
                     default:
                         foreColor = SimpleProgressBar.Colors.ForeColors.Stopped;
+                        backColor = SimpleProgressBar.Colors.BackColors.Default;
                         break;
                 }
 
                 SimpleProgressBar.Render(e.Graphics, e.Bounds, progress,
                     status + " (" + progress.ToString() + " %)",
-                    SimpleProgressBar.Colors.BackColors.Default,
-                    foreColor);
+                    backColor, foreColor);
             }
             else
             {

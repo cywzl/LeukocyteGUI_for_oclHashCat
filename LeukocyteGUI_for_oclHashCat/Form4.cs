@@ -59,6 +59,7 @@ namespace LeukocyteGUI_for_oclHashCat
             CrackTask.UseCharset2 = checkBoxCharset2.Checked;
             CrackTask.UseCharset3 = checkBoxCharset3.Checked;
             CrackTask.UseCharset4 = checkBoxCharset4.Checked;
+            CrackTask.Status = "Paused";
 
             if (checkBoxEnableIncrement.Checked)
             {

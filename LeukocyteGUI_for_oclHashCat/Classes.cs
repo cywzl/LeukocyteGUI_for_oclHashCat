@@ -79,7 +79,6 @@ namespace LeukocyteGUI_for_oclHashCat
             CrackTasks = crackTasks;
             Cracker = new CrackManager(this);
         }
-
         public CrackTaskManager() : this(new CrackTask[0]) { }
 
         public int AddTask(CrackTask NewCrackTask)
@@ -89,7 +88,6 @@ namespace LeukocyteGUI_for_oclHashCat
             TaskAdded(this, CrackTasks.Length - 1);
             return CrackTasks.Length;
         }
-
         public bool UpdateTask(int Index, CrackTask UpdatedCrackTask)
         {
             bool result = false;
@@ -103,7 +101,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return result;
         }
-
         public int DeleteTask(int Index)
         {
             if ((Index < CrackTasks.Length) && (Index > -1))
@@ -125,19 +122,16 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return CrackTasks.Length;
         }
-
         public int DeleteLastTask()
         {
             return DeleteTask(CrackTasks.Length - 1);
         }
-
         public void DeleteAllTasks()
         {
             CrackTasks = new CrackTask[0];
             Cracker.LastCrackingTaskId = -1;
             TasksAllDeleted(this);
         }
-
         public int TaskMoveToStart(int Index)
         {
             int result = Index;
@@ -159,7 +153,6 @@ namespace LeukocyteGUI_for_oclHashCat
             TaskMovedToStart(this, Index, result);
             return result;
         }
-
         public int TaskMoveToEnd(int Index)
         {
             int result = Index;
@@ -218,7 +211,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sHashTypeName;
                 }
             }
-
             public string BruteforceMask
             {
                 get
@@ -226,7 +218,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sBruteforceMask;
                 }
             }
-
             public string Separator
             {
                 get
@@ -234,7 +225,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sSeparator;
                 }
             }
-
             public string Charset1
             {
                 get
@@ -242,7 +232,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sCharset1;
                 }
             }
-
             public string Charset2
             {
                 get
@@ -250,7 +239,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sCharset2;
                 }
             }
-
             public string Charset3
             {
                 get
@@ -258,7 +246,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sCharset3;
                 }
             }
-
             public string Charset4
             {
                 get
@@ -266,7 +253,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sCharset4;
                 }
             }
-
             public string Dictionary
             {
                 get
@@ -274,7 +260,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sDictionary;
                 }
             }
-
             public string OutputFileName
             {
                 get
@@ -282,7 +267,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sOutputFileName;
                 }
             }
-
             public string OutputFormatName
             {
                 get
@@ -290,7 +274,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sOutputFormatName;
                 }
             }
-
             public string SessionId
             {
                 get
@@ -298,7 +281,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sSessionId;
                 }
             }
-
             public string WorkloadProfileName
             {
                 get
@@ -306,7 +288,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sWorkloadProfileName;
                 }
             }
-
             public string Plain
             {
                 get
@@ -319,7 +300,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sPlain = value;
                 }
             }
-
             public string Hash
             {
                 get
@@ -327,7 +307,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sHash;
                 }
             }
-
             public string Status
             {
                 get
@@ -340,7 +319,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sStatus = value;
                 }
             }
-
             public int HashTypeCode
             {
                 get
@@ -348,7 +326,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sHashTypeCode;
                 }
             }
-
             public int WorkloadFineTuning
             {
                 get
@@ -356,7 +333,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sWorkloadFineTuning;
                 }
             }
-
             public ulong RestorePosition
             {
                 get
@@ -369,7 +345,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sRestorePosition = value;
                 }
             }
-
             public ulong Keyspace
             {
                 get
@@ -382,7 +357,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sKeyspace = value;
                 }
             }
-
             public byte WorkloadProfileCode
             {
                 get
@@ -390,7 +364,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sWorkloadProfileCode;
                 }
             }
-
             public byte OutputFormatCode
             {
                 get
@@ -398,7 +371,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sOutputFormatCode;
                 }
             }
-
             public byte StartLength
             {
                 get
@@ -406,7 +378,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sStartLength;
                 }
             }
-
             public byte MaxLength
             {
                 get
@@ -414,7 +385,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sMaxLength;
                 }
             }
-
             public byte WorkloadTuning
             {
                 get
@@ -422,7 +392,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sWorkloadTuning;
                 }
             }
-
             public byte AbortTemp
             {
                 get
@@ -430,7 +399,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sAbortTemp;
                 }
             }
-
             public byte RetainTemp
             {
                 get
@@ -438,7 +406,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sRetainTemp;
                 }
             }
-
             public byte AttackType
             {
                 get
@@ -446,7 +413,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sAttackType;
                 }
             }
-
             public byte CurrentLength
             {
                 get
@@ -499,49 +465,41 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 return result;
             }
-
             public bool SetHashTypeName(string HashTypeName)
             {
                 this.sHashTypeName = HashTypeName;
                 return true;
             }
-
             public bool SetBruteforceMask(string BruteforceMask)
             {
                 this.sBruteforceMask = BruteforceMask;
                 return true;
             }
-
             public bool SetSeparator(string Separator)
             {
                 this.sSeparator = Separator;
                 return true;
             }
-
             public bool SetCharset1(string Charset1)
             {
                 this.sCharset1 = Charset1;
                 return true;
             }
-
             public bool SetCharset2(string Charset2)
             {
                 this.sCharset2 = Charset2;
                 return true;
             }
-
             public bool SetCharset3(string Charset3)
             {
                 this.sCharset3 = Charset3;
                 return true;
             }
-
             public bool SetCharset4(string Charset4)
             {
                 this.sCharset4 = Charset4;
                 return true;
             }
-
             public bool SetDictionary(string Dictionary, bool ShowErrorMessages = false)
             {
                 bool result = false;
@@ -569,7 +527,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 return result;
             }
-
             public bool SetOutputFileName(string OutputFileName, bool ShowErrorMessages = false)
             {
                 bool result = false;
@@ -618,79 +575,66 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 return result;
             }
-
             public bool SetOutputFormatName(string OutputFormatName)
             {
                 this.sOutputFormatName = OutputFormatName;
                 return true;
             }
-
             public bool SetSessionId(string SessionId)
             {
                 this.sSessionId = SessionId;
                 return true;
             }
-
             public bool SetWorkloadProfileName(string WorkloadProfileName)
             {
                 this.sWorkloadProfileName = WorkloadProfileName;
                 return true;
             }
-
             public bool SetHashTypeCode(int HashTypeCode)
             {
                 this.sHashTypeCode = HashTypeCode;
                 return true;
             }
-
             public bool SetWorkloadFineTuning(int WorkloadFineTuning)
             {
                 this.sWorkloadFineTuning = WorkloadFineTuning;
                 return true;
             }
-
             public bool SetWorkloadProfileCode(byte WorkloadProfileCode)
             {
                 this.sWorkloadProfileCode = WorkloadProfileCode;
                 return true;
             }
-
             public bool SetOutputFormatCode(byte OutputFormatCode)
             {
                 this.sOutputFormatCode = OutputFormatCode;
                 return true;
             }
-
             public bool SetStartLength(byte StartLength)
             {
                 this.sStartLength = StartLength;
                 return true;
             }
-
             public bool SetMaxLength(byte MaxLength)
             {
                 this.sMaxLength = MaxLength;
                 return true;
             }
-
             public bool SetWorkloadTuning(byte WorkloadTuning)
             {
                 this.sWorkloadTuning = WorkloadTuning;
                 return true;
             }
-
             public bool SetAbortTemp(byte AbortTemp)
             {
                 this.sAbortTemp = AbortTemp;
                 return true;
             }
-
             public bool SetRetainTemp(byte RetainTemp)
             {
                 this.sRetainTemp = RetainTemp;
                 return true;
             }
-
             public bool SetAttackType(byte AttackType)
             {
                 this.sAttackType = AttackType;
@@ -887,6 +831,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 StartInfo.RedirectStandardOutput = true;
                 EnableRaisingEvents = true;
                 OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
+                ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
                 Exited += new EventHandler(Cracker_Exited);
                 sCrackTaskManager.TaskMovedToEnd += sCrackTaskManager_TaskMovedToEnd;
                 sCrackTaskManager.TaskMovedToStart += sCrackTaskManager_TaskMovedToStart;
@@ -900,7 +845,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sCrackingTaskId;
                 }
             }
-
             public int LastCrackingTaskId
             {
                 get
@@ -913,7 +857,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sLastCrackingTaskId = value;
                 }
             }
-
             public bool IsCracking
             {
                 get
@@ -921,7 +864,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     return sIsCracking;
                 }
             }
-
             public bool IsCalculatingKeyspace
             {
                 get
@@ -938,7 +880,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
                 }
             }
-
             private void sCrackTaskManager_TaskMovedToStart(object sender, int OriginalId, int NewId)
             {
                 if (sCrackingTaskId == OriginalId)
@@ -952,7 +893,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
                 }
             }
-
             private void sCrackTaskManager_TaskMovedToEnd(object sender, int OriginalId, int NewId)
             {
                 if (sCrackingTaskId == OriginalId)
@@ -1004,10 +944,9 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("An error occurred trying to crack Task #" + TaskId.ToString() + ":\n" + e.Message);
+                    MessageBox.Show("An error occurred trying to crack Task #" + (TaskId + 1).ToString() + ":\n" + e.Message);
                 }
             }
-
             public void PauseCracking()
             {
                 if (sIsCracking)
@@ -1018,7 +957,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     OnManualPause(this, sCrackingTaskId);
                 }
             }
-
             public void StopCracking(int TaskId)
             {
                 if ((TaskId > -1)
@@ -1044,7 +982,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 OnManualStop(this, TaskId);
             }
-
             public void StopCracking()
             {
                 StopCracking(sCrackingTaskId);
@@ -1186,12 +1123,11 @@ namespace LeukocyteGUI_for_oclHashCat
                     OnCracking(this, sLastCrackingTaskId);
                 }
             }
-
             private void Cracker_Exited(object sender, System.EventArgs e)
             {
                 if (sCrackingTaskId != -1)
                 {
-                    if (ExitCode != 0)
+                    if ((ExitCode != 0) && (sCrackingTask.Status == "Running"))
                     {
                         if (sCrackingTask.Restore)
                         {
@@ -1257,7 +1193,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 return result;
             }
-
             public bool SetWorkingDirectory(string WorkingDirectory)
             {
                 bool result = true;
@@ -1266,7 +1201,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 return result;
             }
-
         }
     }
 
@@ -1388,9 +1322,10 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 public static readonly Color Processing = Color.FromArgb(132, 194, 255);
                 public static readonly Color Complete = Color.FromArgb(134, 196, 63);
+                public static readonly Color CompleteLight = Color.FromArgb(171, 214, 121);
                 public static readonly Color Stopped = Color.FromArgb(157, 160, 163);
+                public static readonly Color Failure = Color.FromArgb(255, 102, 102);
             }
-
             public struct BackColors
             {
                 public static readonly Color Default = Color.FromArgb(235, 235, 235);
