@@ -39,7 +39,6 @@
             this.columnHeaderProgress = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDigests = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderSalts = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderEstimated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderOutput = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderDictionary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -103,7 +102,6 @@
             this.columnHeaderProgress,
             this.columnHeaderDigests,
             this.columnHeaderSalts,
-            this.columnHeaderStatus,
             this.columnHeaderEstimated,
             this.columnHeaderOutput,
             this.columnHeaderDictionary,
@@ -134,39 +132,37 @@
             // columnHeaderHashType
             // 
             this.columnHeaderHashType.Text = "Hash Type";
-            this.columnHeaderHashType.Width = 67;
+            this.columnHeaderHashType.Width = 65;
             // 
             // columnHeaderHash
             // 
             this.columnHeaderHash.Text = "Hash";
-            this.columnHeaderHash.Width = 142;
+            this.columnHeaderHash.Width = 155;
             // 
             // columnHeaderPlain
             // 
             this.columnHeaderPlain.Text = "Plain";
-            this.columnHeaderPlain.Width = 143;
+            this.columnHeaderPlain.Width = 98;
             // 
             // columnHeaderLength
             // 
             this.columnHeaderLength.Text = "Length";
+            this.columnHeaderLength.Width = 45;
             // 
             // columnHeaderProgress
             // 
             this.columnHeaderProgress.Text = "Progress";
-            this.columnHeaderProgress.Width = 112;
+            this.columnHeaderProgress.Width = 172;
             // 
             // columnHeaderDigests
             // 
             this.columnHeaderDigests.Text = "Digests";
+            this.columnHeaderDigests.Width = 55;
             // 
             // columnHeaderSalts
             // 
             this.columnHeaderSalts.Text = "Salts";
-            // 
-            // columnHeaderStatus
-            // 
-            this.columnHeaderStatus.Text = "Status";
-            this.columnHeaderStatus.Width = 56;
+            this.columnHeaderSalts.Width = 49;
             // 
             // columnHeaderEstimated
             // 
@@ -687,7 +683,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderNumber;
         private System.Windows.Forms.ColumnHeader columnHeaderHashType;
         private System.Windows.Forms.ColumnHeader columnHeaderProgress;
-        private System.Windows.Forms.ColumnHeader columnHeaderStatus;
         private System.Windows.Forms.ColumnHeader columnHeaderHash;
         private System.Windows.Forms.ColumnHeader columnHeaderPlain;
         private System.Windows.Forms.ColumnHeader columnHeaderStarted;

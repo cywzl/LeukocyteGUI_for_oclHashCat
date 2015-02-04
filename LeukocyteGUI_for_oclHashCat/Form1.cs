@@ -17,6 +17,12 @@ namespace LeukocyteGUI_for_oclHashCat
             InitializeComponent();
         }
 
+        private void ConverterForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.capConverter = textBoxConverter.Text;
+            Properties.Settings.Default.hccapOutputPath = textBoxOutput.Text;
+            Properties.Settings.Default.Save();
+        }
         private void listBoxFilenames_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData("FileDrop", false);
@@ -46,12 +52,14 @@ namespace LeukocyteGUI_for_oclHashCat
                 listBoxFilenames.SelectedIndex = 0;
             }
         }
-
         private void listBoxFilenames_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
         }
-
+        private void listBoxFilenames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateInterface();
+        }
         private void buttonConvert_Click(object sender, EventArgs e)
         {
             Converter converter = new Converter(textBoxOutput.Text, textBoxConverter.Text);
@@ -85,7 +93,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             statistics.ConversionEnd();
         }
-
         private void buttonChooseConverter_Click(object sender, EventArgs e)
         {
             if (chooseConverterDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -93,7 +100,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 textBoxConverter.Text = chooseConverterDialog.FileName;
             }
         }
-
         private void buttonChooseOutput_Click(object sender, EventArgs e)
         {
             if (chooseOutputDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -101,7 +107,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 textBoxOutput.Text = chooseOutputDialog.SelectedPath + "\\";
             }
         }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             int index = listBoxFilenames.SelectedIndex;
@@ -120,7 +125,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 listBoxFilenames.SelectedIndex = index - 1;
             }
         }
-
         private void buttonMoveUpDown_Click(object sender, EventArgs e)
         {
             int index = listBoxFilenames.SelectedIndex;
@@ -146,12 +150,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 listBoxFilenames.SelectedIndex = index + 1;
             }
         }
-
-        private void listBoxFilenames_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateInterface();
-        }
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (chooseFilesDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -167,7 +165,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 listBoxFilenames.SelectedIndex = 0;
             }
         }
-
         private void buttonClear_Click(object sender, EventArgs e)
         {
             listBoxFilenames.Items.Clear();
@@ -192,13 +189,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 buttonMoveDown.Enabled = true;
                 buttonClear.Enabled = true;
             }
-        }
-
-        private void ConverterForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.capConverter = textBoxConverter.Text;
-            Properties.Settings.Default.hccapOutputPath = textBoxOutput.Text;
-            Properties.Settings.Default.Save();
         }
     }
 }

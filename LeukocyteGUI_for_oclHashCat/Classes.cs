@@ -14,19 +14,15 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public class Converter : System.Diagnostics.Process
     {
-        public string OutPath = "/";
-        public string ConverterFileName = "aircrack-ng.exe";
         private bool result = false;
 
-        public Converter(string OutPath, string ConverterFileName)
-            : this()
+        public string OutPath { get; set; }
+        public string ConverterFileName { get; set; }
+
+        public Converter(string OutPath = "/", string ConverterFileName = "aircrack-ng.exe")
         {
             this.OutPath = OutPath;
             this.ConverterFileName = ConverterFileName;
-        }
-
-        public Converter()
-        {
             StartInfo.UseShellExecute = false;
             StartInfo.CreateNoWindow = true;
             StartInfo.RedirectStandardOutput = true;
@@ -178,253 +174,287 @@ namespace LeukocyteGUI_for_oclHashCat
         [Serializable()]
         public class CrackTask
         {
-            private string sHashTypeName, sBruteforceMask, sSeparator,
-                sCharset1, sCharset2, sCharset3, sCharset4, sDictionary, sOutputFileName,
-                sOutputFormatName, sSessionId, sWorkloadProfileName, sPlain, sHash,
-                sStatus;
-            private int sHashTypeCode, sWorkloadFineTuning = 8;
-            private ulong sRestorePosition, sKeyspace;
-            private byte sWorkloadProfileCode, sOutputFormatCode, sStartLength, sMaxLength,
-                sWorkloadTuning, sAbortTemp, sRetainTemp, sAttackType, sCurrentLength;
-            public float Progress;
-            public int Digests, RecoveredDigests, Salts, RecoveredSalts;
-            public string Estimated;
-            public DateTime Started, Finished;
-            public bool UseCharset1, UseCharset2, UseCharset3, UseCharset4,
-                EnableIncrementMode, EnableGPUAsync, EnableSpecificWorkloadProfile,
-                EnableWorkloadTuning, EnableWorkloadFineTuning, DisableTempReading,
-                AbortSessionIfReachesMaxTemp, TryToRetain, DisableAutoPowertuning,
-                CharsetIsInHex, SaltIsInHex, IgnoreWarnings, EnableLoopback,
-                IgnoreUsernames, RemoveCrackedHashes, DisablePotfile, DisableLogfile,
-                OutputToFile, Restore;
-
-            public CrackTask DeepCopy()
-            {
-                CrackTask CrackTaskCopy = (CrackTask)this.MemberwiseClone();
-                return CrackTaskCopy;
-            }
+            private string hashTypeName;
+            private string bruteforceMask;
+            private string separator;
+            private string charset1;
+            private string charset2;
+            private string charset3;
+            private string charset4;
+            private string dictionary;
+            private string outputFileName;
+            private string outputFormatName;
+            private string sessionId;
+            private string workloadProfileName;
+            private string plain;
+            private string hash;
+            private string status;
+            private int hashTypeCode;
+            private int workloadFineTuning = 8;
+            private ulong restorePosition;
+            private ulong keyspace;
+            private byte workloadProfileCode;
+            private byte outputFormatCode;
+            private byte startLength;
+            private byte currentLength;
+            private byte maxLength;
+            private byte workloadTuning;
+            private byte abortTemp;
+            private byte retainTemp;
+            private byte attackType;
 
             public string HashTypeName
             {
                 get
                 {
-                    return sHashTypeName;
+                    return hashTypeName;
                 }
             }
             public string BruteforceMask
             {
                 get
                 {
-                    return sBruteforceMask;
+                    return bruteforceMask;
                 }
             }
             public string Separator
             {
                 get
                 {
-                    return sSeparator;
+                    return separator;
                 }
             }
             public string Charset1
             {
                 get
                 {
-                    return sCharset1;
+                    return charset1;
                 }
             }
             public string Charset2
             {
                 get
                 {
-                    return sCharset2;
+                    return charset2;
                 }
             }
             public string Charset3
             {
                 get
                 {
-                    return sCharset3;
+                    return charset3;
                 }
             }
             public string Charset4
             {
                 get
                 {
-                    return sCharset4;
+                    return charset4;
                 }
             }
             public string Dictionary
             {
                 get
                 {
-                    return sDictionary;
+                    return dictionary;
                 }
             }
             public string OutputFileName
             {
                 get
                 {
-                    return sOutputFileName;
+                    return outputFileName;
                 }
             }
             public string OutputFormatName
             {
                 get
                 {
-                    return sOutputFormatName;
+                    return outputFormatName;
                 }
             }
             public string SessionId
             {
                 get
                 {
-                    return sSessionId;
+                    return sessionId;
                 }
             }
             public string WorkloadProfileName
             {
                 get
                 {
-                    return sWorkloadProfileName;
+                    return workloadProfileName;
                 }
             }
             public string Plain
             {
                 get
                 {
-                    return sPlain;
+                    return plain;
                 }
 
                 set
                 {
-                    sPlain = value;
+                    plain = value;
                 }
             }
             public string Hash
             {
                 get
                 {
-                    return sHash;
+                    return hash;
                 }
             }
             public string Status
             {
                 get
                 {
-                    return sStatus;
+                    return status;
                 }
 
                 set
                 {
-                    sStatus = value;
+                    status = value;
                 }
             }
+            public string Estimated { get; set; }
             public int HashTypeCode
             {
                 get
                 {
-                    return sHashTypeCode;
+                    return hashTypeCode;
                 }
             }
             public int WorkloadFineTuning
             {
                 get
                 {
-                    return sWorkloadFineTuning;
+                    return workloadFineTuning;
                 }
             }
+            public int Digests { get; set; }
+            public int RecoveredDigests { get; set; }
+            public int Salts { get; set; }
+            public int RecoveredSalts { get; set; }
             public ulong RestorePosition
             {
                 get
                 {
-                    return sRestorePosition;
+                    return restorePosition;
                 }
 
                 set
                 {
-                    sRestorePosition = value;
+                    restorePosition = value;
                 }
             }
             public ulong Keyspace
             {
                 get
                 {
-                    return sKeyspace;
+                    return keyspace;
                 }
 
                 set
                 {
-                    sKeyspace = value;
+                    keyspace = value;
                 }
             }
+            public float Progress { get; set; }
             public byte WorkloadProfileCode
             {
                 get
                 {
-                    return sWorkloadProfileCode;
+                    return workloadProfileCode;
                 }
             }
             public byte OutputFormatCode
             {
                 get
                 {
-                    return sOutputFormatCode;
+                    return outputFormatCode;
                 }
             }
             public byte StartLength
             {
                 get
                 {
-                    return sStartLength;
+                    return startLength;
                 }
             }
             public byte MaxLength
             {
                 get
                 {
-                    return sMaxLength;
+                    return maxLength;
                 }
             }
             public byte WorkloadTuning
             {
                 get
                 {
-                    return sWorkloadTuning;
+                    return workloadTuning;
                 }
             }
             public byte AbortTemp
             {
                 get
                 {
-                    return sAbortTemp;
+                    return abortTemp;
                 }
             }
             public byte RetainTemp
             {
                 get
                 {
-                    return sRetainTemp;
+                    return retainTemp;
                 }
             }
             public byte AttackType
             {
                 get
                 {
-                    return sAttackType;
+                    return attackType;
                 }
             }
             public byte CurrentLength
             {
                 get
                 {
-                    return sCurrentLength;
+                    return currentLength;
                 }
 
                 set
                 {
-                    sCurrentLength = value;
+                    currentLength = value;
                 }
             }
+            public bool UseCharset1 { get; set; }
+            public bool UseCharset2 { get; set; }
+            public bool UseCharset3 { get; set; }
+            public bool UseCharset4 { get; set; }
+            public bool EnableIncrementMode { get; set; }
+            public bool EnableGPUAsync { get; set; }
+            public bool EnableSpecificWorkloadProfile { get; set; }
+            public bool EnableWorkloadTuning { get; set; }
+            public bool EnableWorkloadFineTuning { get; set; }
+            public bool DisableTempReading { get; set; }
+            public bool AbortSessionIfReachesMaxTemp { get; set; }
+            public bool TryToRetain { get; set; }
+            public bool DisableAutoPowertuning { get; set; }
+            public bool CharsetIsInHex { get; set; }
+            public bool SaltIsInHex { get; set; }
+            public bool IgnoreWarnings { get; set; }
+            public bool EnableLoopback { get; set; }
+            public bool IgnoreUsernames { get; set; }
+            public bool RemoveCrackedHashes { get; set; }
+            public bool DisablePotfile { get; set; }
+            public bool DisableLogfile { get; set; }
+            public bool OutputToFile { get; set; }
+            public bool Restore { get; set; }
+            public DateTime Started { get; set; }
+            public DateTime Finished { get; set; }
 
             public bool SetHash(string HashFileName, bool ShowErrorMessages = false)
             {
@@ -441,7 +471,7 @@ namespace LeukocyteGUI_for_oclHashCat
                         if (System.IO.File.Exists(HashFileName))
                         {
                             result = true;
-                            this.sHash = HashFileName;
+                            this.hash = HashFileName;
                         }
                         else
                         {
@@ -451,7 +481,7 @@ namespace LeukocyteGUI_for_oclHashCat
                                     "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 {
                                     result = true;
-                                    this.sHash = HashFileName;
+                                    this.hash = HashFileName;
                                 }
                             }
                         }
@@ -459,7 +489,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     else
                     {
                         result = true;
-                        this.sHash = HashFileName;
+                        this.hash = HashFileName;
                     }
                 }
 
@@ -467,37 +497,37 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             public bool SetHashTypeName(string HashTypeName)
             {
-                this.sHashTypeName = HashTypeName;
+                this.hashTypeName = HashTypeName;
                 return true;
             }
             public bool SetBruteforceMask(string BruteforceMask)
             {
-                this.sBruteforceMask = BruteforceMask;
+                this.bruteforceMask = BruteforceMask;
                 return true;
             }
             public bool SetSeparator(string Separator)
             {
-                this.sSeparator = Separator;
+                this.separator = Separator;
                 return true;
             }
             public bool SetCharset1(string Charset1)
             {
-                this.sCharset1 = Charset1;
+                this.charset1 = Charset1;
                 return true;
             }
             public bool SetCharset2(string Charset2)
             {
-                this.sCharset2 = Charset2;
+                this.charset2 = Charset2;
                 return true;
             }
             public bool SetCharset3(string Charset3)
             {
-                this.sCharset3 = Charset3;
+                this.charset3 = Charset3;
                 return true;
             }
             public bool SetCharset4(string Charset4)
             {
-                this.sCharset4 = Charset4;
+                this.charset4 = Charset4;
                 return true;
             }
             public bool SetDictionary(string Dictionary, bool ShowErrorMessages = false)
@@ -522,7 +552,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (result)
                 {
-                    this.sDictionary = Dictionary;
+                    this.dictionary = Dictionary;
                 }
 
                 return result;
@@ -570,87 +600,92 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (result)
                 {
-                    this.sOutputFileName = OutputFileName;
+                    this.outputFileName = OutputFileName;
                 }
 
                 return result;
             }
             public bool SetOutputFormatName(string OutputFormatName)
             {
-                this.sOutputFormatName = OutputFormatName;
+                this.outputFormatName = OutputFormatName;
                 return true;
             }
             public bool SetSessionId(string SessionId)
             {
-                this.sSessionId = SessionId;
+                this.sessionId = SessionId;
                 return true;
             }
             public bool SetWorkloadProfileName(string WorkloadProfileName)
             {
-                this.sWorkloadProfileName = WorkloadProfileName;
+                this.workloadProfileName = WorkloadProfileName;
                 return true;
             }
             public bool SetHashTypeCode(int HashTypeCode)
             {
-                this.sHashTypeCode = HashTypeCode;
+                this.hashTypeCode = HashTypeCode;
                 return true;
             }
             public bool SetWorkloadFineTuning(int WorkloadFineTuning)
             {
-                this.sWorkloadFineTuning = WorkloadFineTuning;
+                this.workloadFineTuning = WorkloadFineTuning;
                 return true;
             }
             public bool SetWorkloadProfileCode(byte WorkloadProfileCode)
             {
-                this.sWorkloadProfileCode = WorkloadProfileCode;
+                this.workloadProfileCode = WorkloadProfileCode;
                 return true;
             }
             public bool SetOutputFormatCode(byte OutputFormatCode)
             {
-                this.sOutputFormatCode = OutputFormatCode;
+                this.outputFormatCode = OutputFormatCode;
                 return true;
             }
             public bool SetStartLength(byte StartLength)
             {
-                this.sStartLength = StartLength;
+                this.startLength = StartLength;
                 return true;
             }
             public bool SetMaxLength(byte MaxLength)
             {
-                this.sMaxLength = MaxLength;
+                this.maxLength = MaxLength;
                 return true;
             }
             public bool SetWorkloadTuning(byte WorkloadTuning)
             {
-                this.sWorkloadTuning = WorkloadTuning;
+                this.workloadTuning = WorkloadTuning;
                 return true;
             }
             public bool SetAbortTemp(byte AbortTemp)
             {
-                this.sAbortTemp = AbortTemp;
+                this.abortTemp = AbortTemp;
                 return true;
             }
             public bool SetRetainTemp(byte RetainTemp)
             {
-                this.sRetainTemp = RetainTemp;
+                this.retainTemp = RetainTemp;
                 return true;
             }
             public bool SetAttackType(byte AttackType)
             {
-                this.sAttackType = AttackType;
+                this.attackType = AttackType;
                 return true;
             }
 
+            public CrackTask DeepCopy()
+            {
+                CrackTask CrackTaskCopy = (CrackTask)this.MemberwiseClone();
+                return CrackTaskCopy;
+            }
             public string GetHashcatParams(bool GenerateKeyspace = false)
             {
                 string result = "";
 
                 result
-                   += " --hash-type=" + sHashTypeCode.ToString()
-                    + " --attack-mode=" + sAttackType.ToString()
+                   += " --hash-type=" + hashTypeCode.ToString()
+                    + " --attack-mode=" + attackType.ToString()
                     + " --status"
                     + " --status-timer=" + "1"
-                    + " --separator=" + sSeparator;
+                    + " --separator=" + separator;
 
                 if (GenerateKeyspace)
                 {
@@ -658,42 +693,42 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 else
                 {
-                    result += " --skip=" + sRestorePosition.ToString();
+                    result += " --skip=" + restorePosition.ToString();
                 }
 
                 if (OutputToFile)
                 {
                     result
-                        += " --outfile=\"" + sOutputFileName + "\""
-                         + " --outfile-format=" + sOutputFormatCode.ToString();
+                        += " --outfile=\"" + outputFileName + "\""
+                         + " --outfile-format=" + outputFormatCode.ToString();
                 }
 
                 if (UseCharset1)
                 {
-                    result += " --custom-charset1=" + sCharset1;
+                    result += " --custom-charset1=" + charset1;
                 }
 
                 if (UseCharset2)
                 {
-                    result += " --custom-charset2=" + sCharset2;
+                    result += " --custom-charset2=" + charset2;
                 }
 
                 if (UseCharset3)
                 {
-                    result += " --custom-charset3=" + sCharset3;
+                    result += " --custom-charset3=" + charset3;
                 }
 
                 if (UseCharset4)
                 {
-                    result += " --custom-charset4=" + sCharset4;
+                    result += " --custom-charset4=" + charset4;
                 }
 
                 if (EnableIncrementMode)
                 {
                     result
                         += " --increment"
-                         + " --increment-min=" + sStartLength
-                         + " --increment-max=" + sMaxLength;
+                         + " --increment-min=" + startLength
+                         + " --increment-max=" + maxLength;
                 }
 
                 if (EnableGPUAsync)
@@ -703,17 +738,17 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (EnableSpecificWorkloadProfile)
                 {
-                    result += " --workload-profile=" + sWorkloadProfileCode.ToString();
+                    result += " --workload-profile=" + workloadProfileCode.ToString();
                 }
 
                 if (EnableWorkloadTuning)
                 {
-                    result += " --gpu-accel=" + sWorkloadTuning.ToString();
+                    result += " --gpu-accel=" + workloadTuning.ToString();
                 }
 
                 if (EnableWorkloadFineTuning)
                 {
-                    result += " --gpu-loops=" + sWorkloadFineTuning.ToString();
+                    result += " --gpu-loops=" + workloadFineTuning.ToString();
                 }
 
                 if (DisableTempReading)
@@ -723,12 +758,12 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (AbortSessionIfReachesMaxTemp)
                 {
-                    result += " --gpu-temp-abort=" + sAbortTemp.ToString();
+                    result += " --gpu-temp-abort=" + abortTemp.ToString();
                 }
 
                 if (TryToRetain)
                 {
-                    result += " --gpu-temp-retain=" + sRetainTemp.ToString();
+                    result += " --gpu-temp-retain=" + retainTemp.ToString();
                 }
 
                 if (DisableAutoPowertuning)
@@ -776,24 +811,24 @@ namespace LeukocyteGUI_for_oclHashCat
                     result += " --logfile-disable";
                 }
 
-                result += " --session=" + sSessionId;
+                result += " --session=" + sessionId;
 
-                if (sHash.Contains('.') || sHash.Contains('/') || sHash.Contains(@"\"))
+                if (hash.Contains('.') || hash.Contains('/') || hash.Contains(@"\"))
                 {
-                    result += " \"" + sHash + "\"";
+                    result += " \"" + hash + "\"";
                 }
                 else
                 {
-                    result += " " + sHash;
+                    result += " " + hash;
                 }
 
-                switch (sAttackType)
+                switch (attackType)
                 {
                     case 0:
-                        result += " \"" + sDictionary + "\"";
+                        result += " \"" + dictionary + "\"";
                         break;
                     case 3:
-                        result += " " + sBruteforceMask;
+                        result += " " + bruteforceMask;
                         break;
                 }
 
@@ -803,14 +838,51 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public class CrackManager : System.Diagnostics.Process
         {
-            private CrackTaskManager sCrackTaskManager;
-            private int sCrackingTaskId = -1, sLastCrackingTaskId = -1;
-            private CrackTask sCrackingTask;
-            private CultureInfo sCulture;
-            private bool sIsCracking, sIsCalculatingKeyspace;
+            private CrackTaskManager crackTaskManager;
+            private CrackTask crackingTask;
+            private CultureInfo culture;
+            private int crackingTaskId = -1;
+            private int lastCrackingTaskId = -1;
+            private bool isCracking;
+            private bool isCalculatingKeyspace;
 
-            public string Speed = "0";
-            public byte Util = 0, Temp = 0, Fan = 0;
+            public string Speed { get; set; }
+            public byte Util { get; set; }
+            public byte Temp { get; set; }
+            public byte Fan { get; set; }
+            public int CrackingTaskId
+            {
+                get
+                {
+                    return crackingTaskId;
+                }
+            }
+            public int LastCrackingTaskId
+            {
+                get
+                {
+                    return lastCrackingTaskId;
+                }
+
+                set
+                {
+                    lastCrackingTaskId = value;
+                }
+            }
+            public bool IsCracking
+            {
+                get
+                {
+                    return isCracking;
+                }
+            }
+            public bool IsCalculatingKeyspace
+            {
+                get
+                {
+                    return isCalculatingKeyspace;
+                }
+            }
 
             public delegate void StartedCrackingStoppedEventHandler(object sender, int TaskId);
 
@@ -823,9 +895,13 @@ namespace LeukocyteGUI_for_oclHashCat
 
             public CrackManager(CrackTaskManager tskManager)
             {
-                sCulture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-                sCulture.NumberFormat.CurrencyDecimalSeparator = ".";
-                sCrackTaskManager = tskManager;
+                Speed = "0";
+                Util = 0;
+                Temp = 0;
+                Fan = 0;
+                culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+                culture.NumberFormat.CurrencyDecimalSeparator = ".";
+                crackTaskManager = tskManager;
                 StartInfo.UseShellExecute = false;
                 StartInfo.CreateNoWindow = true;
                 StartInfo.RedirectStandardOutput = true;
@@ -833,171 +909,56 @@ namespace LeukocyteGUI_for_oclHashCat
                 OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
                 ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
                 Exited += new EventHandler(Cracker_Exited);
-                sCrackTaskManager.TaskMovedToEnd += sCrackTaskManager_TaskMovedToEnd;
-                sCrackTaskManager.TaskMovedToStart += sCrackTaskManager_TaskMovedToStart;
-                sCrackTaskManager.TaskDeleted += sCrackTaskManager_TaskDeleted;
-            }
-
-            public int CrackingTaskId
-            {
-                get
-                {
-                    return sCrackingTaskId;
-                }
-            }
-            public int LastCrackingTaskId
-            {
-                get
-                {
-                    return sLastCrackingTaskId;
-                }
-
-                set
-                {
-                    sLastCrackingTaskId = value;
-                }
-            }
-            public bool IsCracking
-            {
-                get
-                {
-                    return sIsCracking;
-                }
-            }
-            public bool IsCalculatingKeyspace
-            {
-                get
-                {
-                    return sIsCalculatingKeyspace;
-                }
+                crackTaskManager.TaskMovedToEnd += sCrackTaskManager_TaskMovedToEnd;
+                crackTaskManager.TaskMovedToStart += sCrackTaskManager_TaskMovedToStart;
+                crackTaskManager.TaskDeleted += sCrackTaskManager_TaskDeleted;
             }
 
             private void sCrackTaskManager_TaskDeleted(object sender, int TaskId)
             {
-                if ((TaskId < sCrackingTaskId) && (sCrackingTaskId > -1))
+                if ((TaskId < crackingTaskId) && (crackingTaskId > -1))
                 {
-                    sCrackingTaskId--;
-                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                    crackingTaskId--;
+                    crackingTask = crackTaskManager.CrackTasks[crackingTaskId];
                 }
             }
             private void sCrackTaskManager_TaskMovedToStart(object sender, int OriginalId, int NewId)
             {
-                if (sCrackingTaskId == OriginalId)
+                if (crackingTaskId == OriginalId)
                 {
-                    sCrackingTaskId = NewId;
-                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                    crackingTaskId = NewId;
+                    crackingTask = crackTaskManager.CrackTasks[crackingTaskId];
                 }
-                else if (sCrackingTaskId == NewId)
+                else if (crackingTaskId == NewId)
                 {
-                    sCrackingTaskId = OriginalId;
-                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                    crackingTaskId = OriginalId;
+                    crackingTask = crackTaskManager.CrackTasks[crackingTaskId];
                 }
             }
             private void sCrackTaskManager_TaskMovedToEnd(object sender, int OriginalId, int NewId)
             {
-                if (sCrackingTaskId == OriginalId)
+                if (crackingTaskId == OriginalId)
                 {
-                    sCrackingTaskId = NewId;
-                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
+                    crackingTaskId = NewId;
+                    crackingTask = crackTaskManager.CrackTasks[crackingTaskId];
                 }
-                else if (sCrackingTaskId == NewId)
+                else if (crackingTaskId == NewId)
                 {
-                    sCrackingTaskId = OriginalId;
-                    sCrackingTask = sCrackTaskManager.CrackTasks[sCrackingTaskId];
-                }
-            }
-
-            public void Crack(int TaskId)
-            {
-                BeforeStart(this, TaskId);
-
-                sCrackingTaskId = TaskId;
-                sCrackingTask = sCrackTaskManager.CrackTasks[TaskId];
-
-                if (sCrackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
-                {
-                    sCrackTaskManager.CrackTasks[TaskId].Started = DateTime.Now;
-                }
-
-                try
-                {
-                    if (!sCrackingTask.Restore)
-                    {
-                        sIsCalculatingKeyspace = true;
-                        sCrackingTask.RestorePosition = 0;
-                        StartInfo.Arguments = sCrackingTask.GetHashcatParams(true);
-                        Start();
-                        BeginOutputReadLine();
-                        sCrackingTask.Status = "Calculating keyspace";
-                    }
-                    else
-                    {
-                        StartInfo.Arguments = sCrackingTask.GetHashcatParams();
-                        Start();
-                        BeginOutputReadLine();
-                        sIsCracking = true;
-                        sCrackingTask.Restore = true;
-                        sCrackingTask.Status = "Cracking";
-                    }
-
-                    OnStart(this, sCrackingTaskId);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("An error occurred trying to crack Task #" + (TaskId + 1).ToString() + ":\n" + e.Message);
+                    crackingTaskId = OriginalId;
+                    crackingTask = crackTaskManager.CrackTasks[crackingTaskId];
                 }
             }
-            public void PauseCracking()
-            {
-                if (sIsCracking)
-                {
-                    sCrackingTask.Status = "Paused";
-                    sCrackingTask.Restore = true;
-                    Kill();
-                    OnManualPause(this, sCrackingTaskId);
-                }
-            }
-            public void StopCracking(int TaskId)
-            {
-                if ((TaskId > -1)
-                    && (TaskId < sCrackTaskManager.CrackTasks.Length))
-                {
-                    CrackTask tsk = sCrackTaskManager.CrackTasks[TaskId];
-                    tsk.Status = "Stopped";
-                    tsk.Plain = "";
-                    tsk.Progress = 0;
-                    tsk.Restore = false;
-                    tsk.CurrentLength = 0;
-                    tsk.RecoveredDigests = 0;
-                    tsk.RecoveredSalts = 0;
-                    tsk.Estimated = "";
-                    tsk.Started = DateTime.MinValue;
-                    tsk.Finished = DateTime.MinValue;
-                }
-
-                if (sIsCracking)
-                {
-                    Kill();
-                }
-
-                OnManualStop(this, TaskId);
-            }
-            public void StopCracking()
-            {
-                StopCracking(sCrackingTaskId);
-            }
-
             private void Cracker_OutputDataReceived(object sender, System.Diagnostics.DataReceivedEventArgs e)
             {
                 if (e.Data != null)
                 {
-                    if (sIsCalculatingKeyspace)
+                    if (isCalculatingKeyspace)
                     {
                         uint rp;
 
                         if (uint.TryParse(e.Data, out rp))
                         {
-                            sCrackingTask.Keyspace = rp;
+                            crackingTask.Keyspace = rp;
                         }
 
                         return;
@@ -1013,7 +974,7 @@ namespace LeukocyteGUI_for_oclHashCat
                         {
                             case "Status.........":
                                 {
-                                    sCrackingTask.Status = parameters[1];
+                                    crackingTask.Status = parameters[1];
 
                                     break;
                                 }
@@ -1024,7 +985,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
                                     if ((start > 0) && (length > 0) && (length < 255))
                                     {
-                                        sCrackingTask.CurrentLength = byte.Parse(parameters[1].Substring(start, length));
+                                        crackingTask.CurrentLength = byte.Parse(parameters[1].Substring(start, length));
                                     }
 
                                     break;
@@ -1042,7 +1003,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
                                         if ((start > 0) && (length > 0) && (length < 255))
                                         {
-                                            sCrackingTask.Estimated = parameters[3].Substring(start, length);
+                                            crackingTask.Estimated = parameters[3].Substring(start, length);
                                         }
                                     }
 
@@ -1064,14 +1025,14 @@ namespace LeukocyteGUI_for_oclHashCat
 
                                     slashPos = (byte)recovered[0].IndexOf('/');
                                     spacePos = (byte)recovered[0].IndexOf(' ');
-                                    sCrackingTask.RecoveredDigests = int.Parse(recovered[0].Substring(0, slashPos));
-                                    sCrackingTask.Digests = int.Parse(recovered[0].Substring(slashPos + 1,
+                                    crackingTask.RecoveredDigests = int.Parse(recovered[0].Substring(0, slashPos));
+                                    crackingTask.Digests = int.Parse(recovered[0].Substring(slashPos + 1,
                                         spacePos - slashPos - 1));
 
                                     slashPos = (byte)recovered[1].IndexOf('/');
                                     spacePos = (byte)recovered[1].IndexOf(' ');
-                                    sCrackingTask.RecoveredSalts = int.Parse(recovered[1].Substring(0, slashPos));
-                                    sCrackingTask.Salts = int.Parse(recovered[1].Substring(slashPos + 1,
+                                    crackingTask.RecoveredSalts = int.Parse(recovered[1].Substring(0, slashPos));
+                                    crackingTask.Salts = int.Parse(recovered[1].Substring(slashPos + 1,
                                         spacePos - slashPos - 1));
 
                                     break;
@@ -1081,8 +1042,8 @@ namespace LeukocyteGUI_for_oclHashCat
                                     byte start = (byte)(parameters[1].IndexOf('(') + 1);
                                     byte length = (byte)(parameters[1].IndexOf('%') - start);
 
-                                    sCrackingTask.Progress = float.Parse(parameters[1].Substring(start, length),
-                                        NumberStyles.Any, sCulture);
+                                    crackingTask.Progress = float.Parse(parameters[1].Substring(start, length),
+                                        NumberStyles.Any, culture);
 
                                     break;
                                 }
@@ -1102,10 +1063,10 @@ namespace LeukocyteGUI_for_oclHashCat
                                 }
                             default:
                                 {
-                                    if((parameters[0] == sCrackingTask.Hash)
-                                        || ((sCrackingTask.HashTypeCode == 2500) && (parameters.Length == 4)))
+                                    if ((parameters[0] == crackingTask.Hash)
+                                        || ((crackingTask.HashTypeCode == 2500) && (parameters.Length == 4)))
                                     {
-                                        sCrackingTask.Plain = parameters[parameters.Length - 1];
+                                        crackingTask.Plain = parameters[parameters.Length - 1];
                                     }
 
                                     break;
@@ -1114,51 +1075,51 @@ namespace LeukocyteGUI_for_oclHashCat
                     }
                 }
 
-                if (sCrackingTaskId != -1)
+                if (crackingTaskId != -1)
                 {
-                    OnCracking(this, sCrackingTaskId);
+                    OnCracking(this, crackingTaskId);
                 }
-                else if (sLastCrackingTaskId != -1)
+                else if (lastCrackingTaskId != -1)
                 {
-                    OnCracking(this, sLastCrackingTaskId);
+                    OnCracking(this, lastCrackingTaskId);
                 }
             }
             private void Cracker_Exited(object sender, System.EventArgs e)
             {
-                if (sCrackingTaskId != -1)
+                if (crackingTaskId != -1)
                 {
-                    if ((ExitCode != 0) && (sCrackingTask.Status == "Running"))
+                    if ((ExitCode != 0) && (crackingTask.Status == "Running"))
                     {
-                        if (sCrackingTask.Restore)
+                        if (crackingTask.Restore)
                         {
-                            sCrackingTask.Status = "Paused";
+                            crackingTask.Status = "Paused";
                         }
                         else
                         {
-                            sCrackingTask.Status = "Stopped";
+                            crackingTask.Status = "Stopped";
                         }
                     }
 
-                    if (sCrackingTask.Restore)
+                    if (crackingTask.Restore)
                     {
-                        sCrackingTask.RestorePosition = (uint)(sCrackingTask.Keyspace * sCrackingTask.Progress / 100);
+                        crackingTask.RestorePosition = (uint)(crackingTask.Keyspace * crackingTask.Progress / 100);
                     }
                     else
                     {
-                        sCrackingTask.RestorePosition = 0;
+                        crackingTask.RestorePosition = 0;
                     }
 
-                    sLastCrackingTaskId = sCrackingTaskId;
+                    lastCrackingTaskId = crackingTaskId;
                 }
 
                 CancelOutputRead();
                 Close();
 
-                if (sIsCalculatingKeyspace)
+                if (isCalculatingKeyspace)
                 {
-                    sIsCalculatingKeyspace = false;
-                    sCrackingTask.Restore = true;
-                    Crack(sCrackingTaskId);
+                    isCalculatingKeyspace = false;
+                    crackingTask.Restore = true;
+                    Crack(crackingTaskId);
                 }
                 else
                 {
@@ -1166,12 +1127,92 @@ namespace LeukocyteGUI_for_oclHashCat
                     Util = 0;
                     Fan = 0;
                     Speed = "0 h/s";
-                    sIsCracking = false;
-                    sCrackingTaskId = -1;
-                    OnStop(this, sLastCrackingTaskId);
+                    isCracking = false;
+                    crackingTask.Finished = DateTime.Now;
+                    crackingTaskId = -1;
+                    OnStop(this, lastCrackingTaskId);
                 }
             }
 
+            public void Crack(int TaskId)
+            {
+                BeforeStart(this, TaskId);
+
+                crackingTaskId = TaskId;
+                crackingTask = crackTaskManager.CrackTasks[TaskId];
+
+                if (crackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
+                {
+                    crackTaskManager.CrackTasks[TaskId].Started = DateTime.Now;
+                }
+
+                try
+                {
+                    if (!crackingTask.Restore)
+                    {
+                        isCalculatingKeyspace = true;
+                        crackingTask.RestorePosition = 0;
+                        StartInfo.Arguments = crackingTask.GetHashcatParams(true);
+                        Start();
+                        BeginOutputReadLine();
+                        crackingTask.Status = "Calculating keyspace";
+                    }
+                    else
+                    {
+                        StartInfo.Arguments = crackingTask.GetHashcatParams();
+                        Start();
+                        BeginOutputReadLine();
+                        isCracking = true;
+                        crackingTask.Restore = true;
+                        crackingTask.Status = "Cracking";
+                    }
+
+                    OnStart(this, crackingTaskId);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("An error occurred trying to crack Task #" + (TaskId + 1).ToString() + ":\n" + e.Message);
+                }
+            }
+            public void PauseCracking()
+            {
+                if (isCracking)
+                {
+                    crackingTask.Status = "Paused";
+                    crackingTask.Restore = true;
+                    Kill();
+                    OnManualPause(this, crackingTaskId);
+                }
+            }
+            public void StopCracking(int TaskId)
+            {
+                if ((TaskId > -1)
+                    && (TaskId < crackTaskManager.CrackTasks.Length))
+                {
+                    CrackTask tsk = crackTaskManager.CrackTasks[TaskId];
+                    tsk.Status = "Stopped";
+                    tsk.Plain = "";
+                    tsk.Progress = 0;
+                    tsk.Restore = false;
+                    tsk.CurrentLength = 0;
+                    tsk.RecoveredDigests = 0;
+                    tsk.RecoveredSalts = 0;
+                    tsk.Estimated = "";
+                    tsk.Started = DateTime.MinValue;
+                    tsk.Finished = DateTime.MinValue;
+                }
+
+                if (isCracking)
+                {
+                    Kill();
+                }
+
+                OnManualStop(this, TaskId);
+            }
+            public void StopCracking()
+            {
+                StopCracking(crackingTaskId);
+            }
             public bool SetHashcat(string Hashcat, bool ShowErrorMessages = false)
             {
                 bool result = false;

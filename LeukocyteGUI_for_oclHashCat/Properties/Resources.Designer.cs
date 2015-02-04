@@ -83,6 +83,16 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap glyph_add_folder16 {
+            get {
+                object obj = ResourceManager.GetObject("glyph_add_folder16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap glyph_clear {
             get {
                 object obj = ResourceManager.GetObject("glyph_clear", resourceCulture);
@@ -146,6 +156,16 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         internal static System.Drawing.Bitmap glyph_open_exe {
             get {
                 object obj = ResourceManager.GetObject("glyph_open_exe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_open_exe16 {
+            get {
+                object obj = ResourceManager.GetObject("glyph_open_exe16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

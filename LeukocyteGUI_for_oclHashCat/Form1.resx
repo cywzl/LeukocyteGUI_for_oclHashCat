@@ -123,17 +123,17 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 11</value>
+    <value>12, 13</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 17</value>
+    <value>56, 13</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -157,16 +157,16 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 44</value>
+    <value>12, 40</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 17</value>
+    <value>54, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -199,10 +199,10 @@
     <value>True</value>
   </data>
   <data name="listBoxFilenames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 125</value>
+    <value>12, 112</value>
   </data>
   <data name="listBoxFilenames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 199</value>
+    <value>339, 212</value>
   </data>
   <data name="listBoxFilenames.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -226,13 +226,13 @@
     <value>Executable files|*.exe</value>
   </data>
   <data name="textBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="textBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 43</value>
+    <value>74, 37</value>
   </data>
   <data name="textBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 23</value>
+    <value>241, 20</value>
   </data>
   <data name="textBoxOutput.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -250,13 +250,13 @@
     <value>9</value>
   </data>
   <data name="textBoxConverter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 10pt</value>
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="textBoxConverter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 10</value>
+    <value>74, 10</value>
   </data>
   <data name="textBoxConverter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 23</value>
+    <value>241, 20</value>
   </data>
   <data name="textBoxConverter.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -286,7 +286,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 85</value>
+    <value>88, 72</value>
   </data>
   <data name="buttonClear.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 34</value>
@@ -316,7 +316,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 85</value>
+    <value>12, 72</value>
   </data>
   <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 34</value>
@@ -349,7 +349,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonMoveDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 85</value>
+    <value>178, 72</value>
   </data>
   <data name="buttonMoveDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 34</value>
@@ -382,7 +382,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonMoveUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 85</value>
+    <value>138, 72</value>
   </data>
   <data name="buttonMoveUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 34</value>
@@ -415,7 +415,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 85</value>
+    <value>48, 72</value>
   </data>
   <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 34</value>
@@ -442,10 +442,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonChooseOutput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 39</value>
+    <value>321, 36</value>
   </data>
   <data name="buttonChooseOutput.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 31</value>
+    <value>34, 22</value>
   </data>
   <data name="buttonChooseOutput.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -469,10 +469,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonChooseConverter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 6</value>
+    <value>321, 9</value>
   </data>
   <data name="buttonChooseConverter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 31</value>
+    <value>34, 22</value>
   </data>
   <data name="buttonChooseConverter.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -502,7 +502,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonConvert.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, 85</value>
+    <value>228, 72</value>
   </data>
   <data name="buttonConvert.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 34</value>
@@ -533,6 +533,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>363, 333</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

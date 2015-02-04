@@ -33,12 +33,12 @@
             this.checkBoxAutoWorkingDirectory = new System.Windows.Forms.CheckBox();
             this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
             this.textBoxHashcat = new System.Windows.Forms.TextBox();
-            this.buttonSettingsOK = new System.Windows.Forms.Button();
-            this.buttonCancelTask = new System.Windows.Forms.Button();
-            this.buttonChooseHashCat = new System.Windows.Forms.Button();
-            this.buttonChooseWorkingDirectory = new System.Windows.Forms.Button();
             this.openFileDialogHashCat = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogWorkingDirectory = new System.Windows.Forms.FolderBrowserDialog();
+            this.buttonChooseWorkingDirectory = new System.Windows.Forms.Button();
+            this.buttonChooseHashCat = new System.Windows.Forms.Button();
+            this.buttonCancelTask = new System.Windows.Forms.Button();
+            this.buttonSettingsOK = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelWorkingDirectory
@@ -78,7 +78,7 @@
             this.textBoxWorkingDirectory.Enabled = false;
             this.textBoxWorkingDirectory.Location = new System.Drawing.Point(110, 45);
             this.textBoxWorkingDirectory.Name = "textBoxWorkingDirectory";
-            this.textBoxWorkingDirectory.Size = new System.Drawing.Size(305, 20);
+            this.textBoxWorkingDirectory.Size = new System.Drawing.Size(311, 20);
             this.textBoxWorkingDirectory.TabIndex = 33;
             this.textBoxWorkingDirectory.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.WorkingDirectory;
             // 
@@ -87,26 +87,48 @@
             this.textBoxHashcat.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "Hashcat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxHashcat.Location = new System.Drawing.Point(110, 15);
             this.textBoxHashcat.Name = "textBoxHashcat";
-            this.textBoxHashcat.Size = new System.Drawing.Size(305, 20);
+            this.textBoxHashcat.Size = new System.Drawing.Size(311, 20);
             this.textBoxHashcat.TabIndex = 31;
             this.textBoxHashcat.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.Hashcat;
             this.textBoxHashcat.TextChanged += new System.EventHandler(this.textBoxHashcat_TextChanged);
             // 
-            // buttonSettingsOK
+            // openFileDialogHashCat
             // 
-            this.buttonSettingsOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.buttonSettingsOK.FlatAppearance.BorderSize = 0;
-            this.buttonSettingsOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonSettingsOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettingsOK.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
-            this.buttonSettingsOK.Location = new System.Drawing.Point(375, 85);
-            this.buttonSettingsOK.Name = "buttonSettingsOK";
-            this.buttonSettingsOK.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonSettingsOK.Size = new System.Drawing.Size(40, 40);
-            this.buttonSettingsOK.TabIndex = 43;
-            this.buttonSettingsOK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSettingsOK.UseVisualStyleBackColor = true;
-            this.buttonSettingsOK.Click += new System.EventHandler(this.buttonSettingsOK_Click);
+            this.openFileDialogHashCat.FileName = "oclHashcat64.exe";
+            this.openFileDialogHashCat.Filter = "oclHashcat executable|*.exe";
+            this.openFileDialogHashCat.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogHashCat_FileOk);
+            // 
+            // buttonChooseWorkingDirectory
+            // 
+            this.buttonChooseWorkingDirectory.Enabled = false;
+            this.buttonChooseWorkingDirectory.FlatAppearance.BorderSize = 0;
+            this.buttonChooseWorkingDirectory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseWorkingDirectory.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseWorkingDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseWorkingDirectory.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder16;
+            this.buttonChooseWorkingDirectory.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseWorkingDirectory.Location = new System.Drawing.Point(427, 44);
+            this.buttonChooseWorkingDirectory.Name = "buttonChooseWorkingDirectory";
+            this.buttonChooseWorkingDirectory.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseWorkingDirectory.TabIndex = 47;
+            this.buttonChooseWorkingDirectory.UseVisualStyleBackColor = true;
+            this.buttonChooseWorkingDirectory.Click += new System.EventHandler(this.buttonChooseWorkingDirectory_Click);
+            // 
+            // buttonChooseHashCat
+            // 
+            this.buttonChooseHashCat.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseHashCat.FlatAppearance.BorderSize = 0;
+            this.buttonChooseHashCat.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseHashCat.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseHashCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseHashCat.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseHashCat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseHashCat.Location = new System.Drawing.Point(427, 14);
+            this.buttonChooseHashCat.Name = "buttonChooseHashCat";
+            this.buttonChooseHashCat.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseHashCat.TabIndex = 46;
+            this.buttonChooseHashCat.UseVisualStyleBackColor = true;
+            this.buttonChooseHashCat.Click += new System.EventHandler(this.buttonChooseHashCat_Click);
             // 
             // buttonCancelTask
             // 
@@ -124,43 +146,21 @@
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
-            // buttonChooseHashCat
+            // buttonSettingsOK
             // 
-            this.buttonChooseHashCat.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseHashCat.FlatAppearance.BorderSize = 0;
-            this.buttonChooseHashCat.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseHashCat.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseHashCat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseHashCat.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe;
-            this.buttonChooseHashCat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseHashCat.Location = new System.Drawing.Point(427, 9);
-            this.buttonChooseHashCat.Name = "buttonChooseHashCat";
-            this.buttonChooseHashCat.Size = new System.Drawing.Size(34, 31);
-            this.buttonChooseHashCat.TabIndex = 46;
-            this.buttonChooseHashCat.UseVisualStyleBackColor = true;
-            this.buttonChooseHashCat.Click += new System.EventHandler(this.buttonChooseHashCat_Click);
-            // 
-            // buttonChooseWorkingDirectory
-            // 
-            this.buttonChooseWorkingDirectory.Enabled = false;
-            this.buttonChooseWorkingDirectory.FlatAppearance.BorderSize = 0;
-            this.buttonChooseWorkingDirectory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseWorkingDirectory.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseWorkingDirectory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseWorkingDirectory.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder;
-            this.buttonChooseWorkingDirectory.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseWorkingDirectory.Location = new System.Drawing.Point(427, 39);
-            this.buttonChooseWorkingDirectory.Name = "buttonChooseWorkingDirectory";
-            this.buttonChooseWorkingDirectory.Size = new System.Drawing.Size(34, 31);
-            this.buttonChooseWorkingDirectory.TabIndex = 47;
-            this.buttonChooseWorkingDirectory.UseVisualStyleBackColor = true;
-            this.buttonChooseWorkingDirectory.Click += new System.EventHandler(this.buttonChooseWorkingDirectory_Click);
-            // 
-            // openFileDialogHashCat
-            // 
-            this.openFileDialogHashCat.FileName = "oclHashcat64.exe";
-            this.openFileDialogHashCat.Filter = "oclHashcat executable|*.exe";
-            this.openFileDialogHashCat.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogHashCat_FileOk);
+            this.buttonSettingsOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSettingsOK.FlatAppearance.BorderSize = 0;
+            this.buttonSettingsOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonSettingsOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettingsOK.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
+            this.buttonSettingsOK.Location = new System.Drawing.Point(375, 85);
+            this.buttonSettingsOK.Name = "buttonSettingsOK";
+            this.buttonSettingsOK.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonSettingsOK.Size = new System.Drawing.Size(40, 40);
+            this.buttonSettingsOK.TabIndex = 43;
+            this.buttonSettingsOK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSettingsOK.UseVisualStyleBackColor = true;
+            this.buttonSettingsOK.Click += new System.EventHandler(this.buttonSettingsOK_Click);
             // 
             // SettingsForm
             // 

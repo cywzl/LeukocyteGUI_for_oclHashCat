@@ -12,28 +12,32 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public partial class TaskEditorForm : Form
     {
-        CrackTaskManager MainCrackTaskManager;
-        int ChangingTaskId = -1;
+        CrackTaskManager tskManager;
+        int changingTaskId = -1;
 
         public TaskEditorForm()
         {
             InitializeComponent();
         }
-
         public TaskEditorForm(int ChangingTaskId)
             : this()
         {
-            this.ChangingTaskId = ChangingTaskId;
+            this.changingTaskId = ChangingTaskId;
         }
 
+        private void TaskEditorForm_Load(object sender, EventArgs e)
+        {
+            tskManager = (this.Owner as MainForm).MainCrackTaskManager;
+            FillFormWithTaskData();
+        }
         private void buttonSubmitTask_Click(object sender, EventArgs e)
         {
             string[] Data;
             CrackTaskManager.CrackTask CrackTask;
 
-            if (ChangingTaskId > -1)
+            if (changingTaskId > -1)
             {
-                CrackTask = MainCrackTaskManager.CrackTasks[ChangingTaskId].DeepCopy();
+                CrackTask = tskManager.CrackTasks[changingTaskId].DeepCopy();
             }
             else
             {
@@ -132,22 +136,30 @@ namespace LeukocyteGUI_for_oclHashCat
             CrackTask.DisablePotfile = checkBoxDisablePot.Checked;
             CrackTask.DisableLogfile = checkBoxDisableLog.Checked;
 
-            if (ChangingTaskId > -1)
+            if (changingTaskId > -1)
             {
-                MainCrackTaskManager.UpdateTask(ChangingTaskId, CrackTask);
+                tskManager.UpdateTask(changingTaskId, CrackTask);
             }
             else
             {
-                MainCrackTaskManager.AddTask(CrackTask);
+                tskManager.AddTask(CrackTask);
             }
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+        private void buttonClearTask_Click(object sender, EventArgs e)
+        {
+            FillFormWithTaskData();
+        }
+        private void buttonCancelTask_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void FillFormWithTaskData()
         {
-            if (ChangingTaskId == -1)
+            if (changingTaskId == -1)
             {
                 comboBoxHashType.SelectedIndex = 0;
                 comboBoxOutputFormat.SelectedIndex = 0;
@@ -200,7 +212,7 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             else
             {
-                CrackTaskManager.CrackTask CrackTask = MainCrackTaskManager.CrackTasks[ChangingTaskId];
+                CrackTaskManager.CrackTask CrackTask = tskManager.CrackTasks[changingTaskId];
 
                 textBoxHashFileName.Text = CrackTask.Hash;
                 textBoxSeparator.Text = CrackTask.Separator;
@@ -263,22 +275,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 checkBoxDisablePot.Checked = CrackTask.DisablePotfile;
                 checkBoxDisableLog.Checked = CrackTask.DisableLogfile;
             }
-        }
-
-        private void TaskEditorForm_Load(object sender, EventArgs e)
-        {
-            MainCrackTaskManager = (this.Owner as MainForm).MainCrackTaskManager;
-            FillFormWithTaskData();
-        }
-
-        private void buttonCancelTask_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void buttonClearTask_Click(object sender, EventArgs e)
-        {
-            FillFormWithTaskData();
         }
     }
 }

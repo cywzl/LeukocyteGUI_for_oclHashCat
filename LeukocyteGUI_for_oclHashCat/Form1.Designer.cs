@@ -152,7 +152,7 @@
             this.buttonChooseOutput.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonChooseOutput.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             resources.ApplyResources(this.buttonChooseOutput, "buttonChooseOutput");
-            this.buttonChooseOutput.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder;
+            this.buttonChooseOutput.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder16;
             this.buttonChooseOutput.Name = "buttonChooseOutput";
             this.buttonChooseOutput.UseVisualStyleBackColor = true;
             this.buttonChooseOutput.Click += new System.EventHandler(this.buttonChooseOutput_Click);
@@ -164,7 +164,7 @@
             this.buttonChooseConverter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonChooseConverter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             resources.ApplyResources(this.buttonChooseConverter, "buttonChooseConverter");
-            this.buttonChooseConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe;
+            this.buttonChooseConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
             this.buttonChooseConverter.Name = "buttonChooseConverter";
             this.buttonChooseConverter.UseVisualStyleBackColor = true;
             this.buttonChooseConverter.Click += new System.EventHandler(this.buttonChooseConverter_Click);

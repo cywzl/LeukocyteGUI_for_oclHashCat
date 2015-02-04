@@ -15,9 +15,21 @@ namespace LeukocyteGUI_for_oclHashCat
     public partial class MainForm : Form
     {
         const string crackTasksFile = "CrackTasks.bin";
-
         CrackTaskManager tskManager;
-        public string DateTimeFormat;
+
+        public string DateTimeFormat { get; set; }
+        public CrackTaskManager MainCrackTaskManager
+        {
+            get
+            {
+                return tskManager;
+            }
+
+            set
+            {
+                tskManager = value;
+            }
+        }
 
         public MainForm()
         {
@@ -79,20 +91,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 File.Delete(potFile);
             }
         }
-
-        public CrackTaskManager MainCrackTaskManager
-        {
-            get
-            {
-                return tskManager;
-            }
-
-            set
-            {
-                tskManager = value;
-            }
-        }
-
         private void Cracker_OnStop(object sender, int TaskId)
         {
             labelGPUSpeed.Text = "0 H/s";
@@ -102,8 +100,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (TaskId != -1)
             {
-                listViewTasks.Items[TaskId].BackColor = SystemColors.Window;
-                listViewTasks.Items[TaskId].ForeColor = SystemColors.WindowText;
                 listViewTasks.Items[TaskId].Checked = false;
                 VisualizeTask(TaskId);
             }
@@ -122,54 +118,43 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
         }
-
         private void Cracker_OnCracking(object sender, int TaskId)
         {
             VisualizeTask(TaskId);
 
-            labelGPUSpeed.Text = MainCrackTaskManager.Cracker.Speed;
-            labelGPUTemp.Text = MainCrackTaskManager.Cracker.Temp.ToString() + " °C";
-            labelGPUUtil.Text = MainCrackTaskManager.Cracker.Util.ToString() + " %";
-            labelFanSpeed.Text = MainCrackTaskManager.Cracker.Fan.ToString() + " %";
+            labelGPUSpeed.Text = tskManager.Cracker.Speed;
+            labelGPUTemp.Text = tskManager.Cracker.Temp.ToString() + " °C";
+            labelGPUUtil.Text = tskManager.Cracker.Util.ToString() + " %";
+            labelFanSpeed.Text = tskManager.Cracker.Fan.ToString() + " %";
         }
-
         private void Cracker_OnStart(object sender, int TaskId)
         {
-            listViewTasks.Items[TaskId].BackColor = Color.FromArgb(100, 100, 100);
-            listViewTasks.Items[TaskId].ForeColor = Color.White;
-
             CheckButtons();
             VisualizeTask(TaskId);
         }
-
         private void tskManager_TaskAdded(object sender, int TaskId)
         {
             VisualizeNewTask();
         }
-
         private void tskManager_TaskDeleted(object sender, int TaskId)
         {
             VisualizeTasks();
             CheckButtons();
         }
-
         private void tskManager_TaskMovedToEnd(object sender, int OriginalId, int NewId)
         {
             VisualizeTask(OriginalId);
             VisualizeTask(NewId);
         }
-
         private void tskManager_TaskMovedToStart(object sender, int OriginalId, int NewId)
         {
             VisualizeTask(OriginalId);
             VisualizeTask(NewId);
         }
-
         private void tskManager_TaskUpdated(object sender, int TaskId)
         {
             VisualizeTask(TaskId);
         }
-
         private void tskManager_TasksAllDeleted(object sender)
         {
             VisualizeTasks();
@@ -189,13 +174,11 @@ namespace LeukocyteGUI_for_oclHashCat
             listViewTasks.Focus();
             CheckButtons();
         }
-
         private void buttonOpenConverter_Click(object sender, EventArgs e)
         {
             ConverterForm Converter = new ConverterForm();
             Converter.ShowDialog(this);
         }
-
         private void buttonChangeTask_Click(object sender, EventArgs e)
         {
             if (listViewTasks.SelectedIndices.Count > 0)
@@ -209,14 +192,13 @@ namespace LeukocyteGUI_for_oclHashCat
                 listViewTasks.Items[index].Selected = true;
             }
         }
-
         private void buttonDeleteTask_Click(object sender, EventArgs e)
         {
             if (listViewTasks.SelectedIndices.Count > 0)
             {
                 int index = listViewTasks.SelectedIndices[0];
 
-                MainCrackTaskManager.DeleteTask(index);
+                tskManager.DeleteTask(index);
                 VisualizeTasks();
 
                 if (index > 0)
@@ -233,25 +215,23 @@ namespace LeukocyteGUI_for_oclHashCat
 
             CheckButtons();
         }
-
         private void buttonClearTask_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("All tasks will be deleted. Are you sure?", "Warning",
                 MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                MainCrackTaskManager.DeleteAllTasks();
+                tskManager.DeleteAllTasks();
                 VisualizeTasks();
             }
 
             CheckButtons();
         }
-
         private void buttonUpTask_Click(object sender, EventArgs e)
         {
             if (listViewTasks.SelectedIndices.Count > 0)
             {
                 int index1 = listViewTasks.SelectedIndices[0];
-                int index2 = MainCrackTaskManager.TaskMoveToStart(index1);
+                int index2 = tskManager.TaskMoveToStart(index1);
 
                 VisualizeTask(index1);
                 VisualizeTask(index2);
@@ -259,13 +239,12 @@ namespace LeukocyteGUI_for_oclHashCat
                 listViewTasks.Items[index2].Selected = true;
             }
         }
-
         private void buttonDownTask_Click(object sender, EventArgs e)
         {
             if (listViewTasks.SelectedIndices.Count > 0)
             {
                 int index1 = listViewTasks.SelectedIndices[0];
-                int index2 = MainCrackTaskManager.TaskMoveToEnd(index1);
+                int index2 = tskManager.TaskMoveToEnd(index1);
 
                 VisualizeTask(index1);
                 VisualizeTask(index2);
@@ -273,10 +252,151 @@ namespace LeukocyteGUI_for_oclHashCat
                 listViewTasks.Items[index2].Selected = true;
             }
         }
-
-        private void CheckButtons()
+        private void buttonStartTask_Click(object sender, EventArgs e)
         {
-            if (MainCrackTaskManager.Cracker.IsCracking)
+            if (listViewTasks.SelectedIndices.Count > 0)
+            {
+                if (tskManager.Cracker.SetHashcat(Properties.Settings.Default.Hashcat, true))
+                {
+                    tskManager.Cracker.SetWorkingDirectory(Properties.Settings.Default.WorkingDirectory);
+                    tskManager.Cracker.Crack(listViewTasks.SelectedIndices[0]);
+                }
+
+                checkBoxPauseCracking.Checked = false;
+            }
+        }
+        private void buttonPauseTask_Click(object sender, EventArgs e)
+        {
+            tskManager.Cracker.PauseCracking();
+        }
+        private void buttonStopTask_Click(object sender, EventArgs e)
+        {
+            if (listViewTasks.SelectedIndices.Count > 0)
+            {
+                tskManager.Cracker.StopCracking(listViewTasks.SelectedIndices[0]);
+
+                if (!tskManager.Cracker.IsCracking)
+                {
+                    CheckButtons();
+                    VisualizeTask(listViewTasks.SelectedIndices[0]);
+                }
+            }
+            else if (tskManager.Cracker.IsCracking)
+            {
+                tskManager.Cracker.StopCracking();
+            }
+        }
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            (new SettingsForm()).ShowDialog(this);
+        }
+        private void listViewTasks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckButtons();
+        }
+        private void listViewTasks_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.DrawDefault = true;
+        }
+        private void listViewTasks_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                CrackTaskManager.CrackTask crackTask = tskManager.CrackTasks[e.ItemIndex];
+                int progress = (int)crackTask.Progress;
+                string status = crackTask.Status;
+                Color foreColor, backColor;
+
+                switch (status)
+                {
+                    case "Stopped":
+                    case "Paused":
+                        foreColor = SimpleProgressBar.Colors.ForeColors.Stopped;
+                        backColor = SimpleProgressBar.Colors.BackColors.Default;
+                        break;
+                    case "Cracked":
+                    case "Exhausted":
+                        foreColor = SimpleProgressBar.Colors.ForeColors.CompleteLight;
+                        backColor = SimpleProgressBar.Colors.ForeColors.Failure;
+
+                        if (crackTask.Digests > 0)
+                        {
+                            progress = (int)(((float)crackTask.RecoveredDigests) / crackTask.Digests * 100);
+                        }
+
+                        break;
+                    case "Running":
+                        foreColor = SimpleProgressBar.Colors.ForeColors.Processing;
+                        backColor = SimpleProgressBar.Colors.BackColors.Default;
+                        break;
+                    default:
+                        foreColor = SimpleProgressBar.Colors.ForeColors.Stopped;
+                        backColor = SimpleProgressBar.Colors.BackColors.Default;
+                        break;
+                }
+
+                SimpleProgressBar.Render(e.Graphics, e.Bounds, progress,
+                    status + " (" + progress.ToString() + " %)",
+                    backColor, foreColor);
+            }
+            else
+            {
+                e.DrawDefault = true;
+            }
+        }
+        private void checkBoxAppearanceUpdate(CheckBox sender)
+        {
+            if (sender.Checked)
+            {
+                sender.ImageIndex = 1;
+                sender.ForeColor = Color.Black;
+            }
+            else
+            {
+                sender.ImageIndex = 0;
+                sender.ForeColor = Color.Gray;
+            }
+        }
+        private void checkBoxAllChecked_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAppearanceUpdate(checkBoxAllChecked);
+        }
+        private void checkBoxPauseCracking_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxAppearanceUpdate(checkBoxPauseCracking);
+
+            if (checkBoxPauseCracking.Checked)
+            {
+                tskManager.Cracker.PauseCracking();
+            }
+            else
+            {
+                if ((tskManager.Cracker.LastCrackingTaskId != -1)
+                    && (!tskManager.Cracker.IsCracking))
+                {
+                    tskManager.Cracker.Crack(tskManager.Cracker.LastCrackingTaskId);
+                }
+            }
+        }
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tskManager.Cracker.IsCracking)
+            {
+                tskManager.Cracker.PauseCracking();
+            }
+
+            Stream crackTasksStream = File.Create(crackTasksFile);
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(crackTasksStream, tskManager.CrackTasks);
+            crackTasksStream.Close();
+
+            Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        public void CheckButtons()
+        {
+            if (tskManager.Cracker.IsCracking)
             {
                 buttonPauseTask.Enabled = true;
                 toolStripMenuItemPause.Enabled = true;
@@ -293,7 +413,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 toolStripMenuItemStop.Enabled = false;
             }
 
-            if ((listViewTasks.Items.Count > 0) && (!MainCrackTaskManager.Cracker.IsCracking))
+            if ((listViewTasks.Items.Count > 0) && (!tskManager.Cracker.IsCracking))
             {
                 buttonClearTask.Enabled = true;
                 toolStripMenuItemRemoveAll.Enabled = true;
@@ -306,7 +426,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (listViewTasks.SelectedIndices.Count == 1)
             {
-                if (MainCrackTaskManager.Cracker.CrackingTaskId != listViewTasks.SelectedIndices[0])
+                if (tskManager.Cracker.CrackingTaskId != listViewTasks.SelectedIndices[0])
                 {
                     buttonDeleteTask.Enabled = true;
                     toolStripMenuItemRemove.Enabled = true;
@@ -323,7 +443,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     toolStripMenuItemChange.Enabled = false;
                 }
 
-                if (MainCrackTaskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Restore == true)
+                if (tskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Restore == true)
                 {
                     buttonStopTask.Enabled = true;
                     toolStripMenuItemStop.Enabled = true;
@@ -356,9 +476,9 @@ namespace LeukocyteGUI_for_oclHashCat
                     toolStripMenuItemMoveDown.Enabled = false;
                 }
 
-                if (MainCrackTaskManager.Cracker.IsCracking
-                    || MainCrackTaskManager.Cracker.IsCalculatingKeyspace
-                    || MainCrackTaskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Status == "Cracked")
+                if (tskManager.Cracker.IsCracking
+                    || tskManager.Cracker.IsCalculatingKeyspace
+                    || tskManager.CrackTasks[listViewTasks.SelectedIndices[0]].Status == "Cracked")
                 {
                     buttonStartTask.Enabled = false;
                     toolStripMenuItemStart.Enabled = false;
@@ -386,7 +506,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 buttonStartTask.Enabled = false;
                 toolStripMenuItemStart.Enabled = false;
 
-                if (MainCrackTaskManager.Cracker.IsCracking)
+                if (tskManager.Cracker.IsCracking)
                 {
                     buttonStopTask.Enabled = true;
                     toolStripMenuItemStop.Enabled = true;
@@ -400,12 +520,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             listViewTasks.Focus();
         }
-
-        private void listViewTasks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CheckButtons();
-        }
-
         public void VisualizeTask(int TaskId)
         {
             string[] values = new string[listViewTasks.Columns.Count];
@@ -417,29 +531,27 @@ namespace LeukocyteGUI_for_oclHashCat
             values[3] = curTask.Plain;
             values[4] = curTask.CurrentLength.ToString() + "/"
                 + curTask.MaxLength.ToString();
-            //values[5] = curTask.Progress.ToString("F") + " %";
             values[5] = "";
             values[6] = curTask.RecoveredDigests.ToString() + "/"
                 + curTask.Digests;
             values[7] = curTask.RecoveredSalts.ToString() + "/"
                 + curTask.Salts;
-            values[8] = curTask.Status;
-            values[9] = curTask.Estimated;
-            values[10] = curTask.OutputFileName;
+            values[8] = curTask.Estimated;
+            values[9] = curTask.OutputFileName;
 
             switch (curTask.AttackType)
             {
                 case 0:
-                    values[11] = curTask.Dictionary;
+                    values[10] = curTask.Dictionary;
                     break;
                 case 3:
-                    values[11] = curTask.BruteforceMask;
+                    values[10] = curTask.BruteforceMask;
                     break;
             }
 
-            values[12] = curTask.Started.ToString(DateTimeFormat);
-            values[13] = curTask.Finished.ToString(DateTimeFormat);
-            values[14] = curTask.SessionId;
+            values[11] = curTask.Started.ToString(DateTimeFormat);
+            values[12] = curTask.Finished.ToString(DateTimeFormat);
+            values[13] = curTask.SessionId;
 
             if (listViewTasks.Items[TaskId].SubItems.Count > 1)
             {
@@ -453,7 +565,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 listViewTasks.Items[TaskId] = new ListViewItem(values);
             }
         }
-
         public void VisualizeTasks()
         {
             listViewTasks.Items.Clear();
@@ -464,160 +575,12 @@ namespace LeukocyteGUI_for_oclHashCat
                 VisualizeTask(i);
             }
         }
-
         public void VisualizeNewTask()
         {
             string[] subItems = new string[listViewTasks.Columns.Count];
             ListViewItem lvItem = new ListViewItem(subItems);
             listViewTasks.Items.Add(lvItem);
             VisualizeTask(tskManager.CrackTasks.Length - 1);
-        }
-
-        private void buttonStartTask_Click(object sender, EventArgs e)
-        {
-            if (listViewTasks.SelectedIndices.Count > 0)
-            {
-                if (tskManager.Cracker.SetHashcat(Properties.Settings.Default.Hashcat, true))
-                {
-                    tskManager.Cracker.SetWorkingDirectory(Properties.Settings.Default.WorkingDirectory);
-                    tskManager.Cracker.Crack(listViewTasks.SelectedIndices[0]);
-                }
-
-                checkBoxPauseCracking.Checked = false;
-            }
-        }
-
-        private void buttonPauseTask_Click(object sender, EventArgs e)
-        {
-            tskManager.Cracker.PauseCracking();
-        }
-
-        private void buttonStopTask_Click(object sender, EventArgs e)
-        {
-           if (listViewTasks.SelectedIndices.Count > 0)
-            {
-                tskManager.Cracker.StopCracking(listViewTasks.SelectedIndices[0]);
-
-                if (!tskManager.Cracker.IsCracking)
-                {
-                    CheckButtons();
-                    VisualizeTask(listViewTasks.SelectedIndices[0]);
-                }
-            }
-            else if (tskManager.Cracker.IsCracking)
-            {
-                tskManager.Cracker.StopCracking();
-            }
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (tskManager.Cracker.IsCracking)
-            {
-                tskManager.Cracker.PauseCracking();
-            }
-
-            Stream crackTasksStream = File.Create(crackTasksFile);
-            BinaryFormatter serializer = new BinaryFormatter();
-            serializer.Serialize(crackTasksStream, tskManager.CrackTasks);
-            crackTasksStream.Close();
-
-            Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
-            Properties.Settings.Default.Save();
-        }
-
-        private void buttonSettings_Click(object sender, EventArgs e)
-        {
-            (new SettingsForm()).ShowDialog(this);
-        }
-
-        private void checkBoxAppearanceUpdate(CheckBox sender)
-        {
-            if (sender.Checked)
-            {
-                sender.ImageIndex = 1;
-                sender.ForeColor = Color.Black;
-            }
-            else
-            {
-                sender.ImageIndex = 0;
-                sender.ForeColor = Color.Gray;
-            }
-        }
-
-        private void checkBoxAllChecked_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxAppearanceUpdate(checkBoxAllChecked);
-        }
-
-        private void checkBoxPauseCracking_CheckedChanged(object sender, EventArgs e)
-        {
-            checkBoxAppearanceUpdate(checkBoxPauseCracking);
-
-            if (checkBoxPauseCracking.Checked)
-            {
-                tskManager.Cracker.PauseCracking();
-            }
-            else
-            {
-                if ((tskManager.Cracker.LastCrackingTaskId != -1)
-                    && (!tskManager.Cracker.IsCracking))
-                {
-                    tskManager.Cracker.Crack(tskManager.Cracker.LastCrackingTaskId);
-                }
-            }
-        }
-
-        private void listViewTasks_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
-        {
-            e.DrawDefault = true;
-        }
-
-        private void listViewTasks_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
-        {
-            if (e.ColumnIndex == 5)
-            { 
-                CrackTaskManager.CrackTask crackTask = tskManager.CrackTasks[e.ItemIndex];
-                int progress = (int)crackTask.Progress;
-                string status = crackTask.Status;
-                Color foreColor, backColor;
-
-                switch (status)
-                {
-                    case "Stopped":
-                    case "Paused":
-                        foreColor = SimpleProgressBar.Colors.ForeColors.Stopped;
-                        backColor = SimpleProgressBar.Colors.BackColors.Default;
-                        break;
-                    case "Cracked":
-                    case "Exhausted":
-                        foreColor = SimpleProgressBar.Colors.ForeColors.CompleteLight;
-                        backColor = SimpleProgressBar.Colors.ForeColors.Failure;
-
-                        if (crackTask.Digests > 0)
-                        {
-                            progress = (int)(((float)crackTask.RecoveredDigests) / crackTask.Digests * 100);
-                        }
-                        
-                        break;
-                    case "Running":
-                        foreColor = SimpleProgressBar.Colors.ForeColors.Processing;
-                        backColor = SimpleProgressBar.Colors.BackColors.Default;
-                        break;
-                    default:
-                        foreColor = SimpleProgressBar.Colors.ForeColors.Stopped;
-                        backColor = SimpleProgressBar.Colors.BackColors.Default;
-                        break;
-                }
-
-                SimpleProgressBar.Render(e.Graphics, e.Bounds, progress,
-                    status + " (" + progress.ToString() + " %)",
-                    backColor, foreColor);
-            }
-            else
-            {
-                e.DrawDefault = true;
-            }
         }
     }
 }
