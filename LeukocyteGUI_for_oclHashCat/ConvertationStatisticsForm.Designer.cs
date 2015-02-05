@@ -1,6 +1,6 @@
 ﻿namespace LeukocyteGUI_for_oclHashCat
 {
-    partial class ConvertationStatistics
+    partial class ConvertationStatisticsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConvertationStatistics));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConvertationStatisticsForm));
             this.labelConverting = new System.Windows.Forms.Label();
             this.labelConvertingStatus = new System.Windows.Forms.Label();
             this.listViewConvertSuccess = new System.Windows.Forms.ListView();

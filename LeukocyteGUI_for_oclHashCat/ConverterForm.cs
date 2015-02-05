@@ -63,7 +63,7 @@ namespace LeukocyteGUI_for_oclHashCat
         private void buttonConvert_Click(object sender, EventArgs e)
         {
             Converter converter = new Converter(textBoxOutput.Text, textBoxConverter.Text);
-            ConvertationStatistics statistics = new ConvertationStatistics(listBoxFilenames.Items.Count);
+            ConvertationStatisticsForm statistics = new ConvertationStatisticsForm(listBoxFilenames.Items.Count);
 
             int x = this.Location.X + (this.Size.Width - statistics.Size.Width) / 2;
             int y = this.Location.Y + (this.Size.Height - statistics.Size.Height) / 2;
