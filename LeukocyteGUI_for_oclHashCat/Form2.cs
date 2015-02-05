@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
-    public partial class ConvertationStatisticsForm : Form
+    public partial class ConvertationStatistics : Form
     {
         int cCount = 0, cConverted = 0;
 
-        public ConvertationStatisticsForm()
+        public ConvertationStatistics()
         {
             InitializeComponent();
             listViewConvertSuccess.ShowItemToolTips = true;
@@ -29,7 +29,7 @@ namespace LeukocyteGUI_for_oclHashCat
             );
         }
 
-        public ConvertationStatisticsForm(int ConvertCount)
+        public ConvertationStatistics(int ConvertCount)
             : this()
         {
             cCount = ConvertCount;
