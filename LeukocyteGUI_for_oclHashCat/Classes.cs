@@ -1064,7 +1064,8 @@ namespace LeukocyteGUI_for_oclHashCat
                             default:
                                 {
                                     if ((parameters[0] == crackingTask.Hash)
-                                        || ((crackingTask.HashTypeCode == 2500) && (parameters.Length == 4)))
+                                        || ((crackingTask.HashTypeCode == 2500) && (parameters.Length == 4)
+                                           && (parameters[0] != "Started") && (parameters[0] != "Stopped")))
                                     {
                                         crackingTask.Plain = parameters[parameters.Length - 1];
                                     }
