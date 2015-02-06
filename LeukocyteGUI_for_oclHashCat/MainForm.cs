@@ -14,7 +14,6 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public partial class MainForm : Form
     {
-        const string crackTasksFile = "CrackTasks.bin";
         CrackTaskManager tskManager;
 
         public string DateTimeFormat { get; set; }
@@ -37,18 +36,11 @@ namespace LeukocyteGUI_for_oclHashCat
 
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
-            if (File.Exists(crackTasksFile))
+            tskManager = new CrackTaskManager();
+
+            if (Properties.Settings.Default.LoadOnStartup)
             {
-                Stream deserializerStream = File.OpenRead(crackTasksFile);
-                BinaryFormatter deserializer = new BinaryFormatter();
-                CrackTaskManager.CrackTask[] crackTasks
-                    = (CrackTaskManager.CrackTask[]) deserializer.Deserialize(deserializerStream);
-                deserializerStream.Close();
-                tskManager = new CrackTaskManager(crackTasks);
-            }
-            else
-            {
-                tskManager = new CrackTaskManager();
+                LoadTasks();
             }
 
             tskManager.Cracker.SynchronizingObject = this;
@@ -136,13 +128,11 @@ namespace LeukocyteGUI_for_oclHashCat
         private void tskManager_TaskAdded(object sender, int TaskId)
         {
             VisualizeNewTask();
-            SaveTasks();
         }
         private void tskManager_TaskDeleted(object sender, int TaskId)
         {
             VisualizeTasks();
             CheckButtons();
-            SaveTasks();
         }
         private void tskManager_TaskMovedToEnd(object sender, int OriginalId, int NewId)
         {
@@ -157,7 +147,6 @@ namespace LeukocyteGUI_for_oclHashCat
         private void tskManager_TaskUpdated(object sender, int TaskId)
         {
             VisualizeTask(TaskId);
-            SaveTasks();
         }
         private void tskManager_TasksAllDeleted(object sender)
         {
@@ -165,6 +154,18 @@ namespace LeukocyteGUI_for_oclHashCat
             CheckButtons();
         }
 
+        private void buttonOpenCrackTasksFile_Click(object sender, EventArgs e)
+        {
+            openFileDialogCrackTasks.ShowDialog();
+        }
+        private void buttonSaveCrackTasksFile_Click(object sender, EventArgs e)
+        {
+            SaveTasks();
+        }
+        private void buttonSaveCrackTasksFileAs_Click(object sender, EventArgs e)
+        {
+            saveFileDialogCrackTasks.ShowDialog();
+        }
         private void buttonAddTask_Click(object sender, EventArgs e)
         {
             TaskEditorForm TaskEditor = new TaskEditorForm();
@@ -389,10 +390,23 @@ namespace LeukocyteGUI_for_oclHashCat
                 tskManager.Cracker.PauseCracking();
             }
 
-            SaveTasks();
+            if (Properties.Settings.Default.SaveBeforeExit)
+            {
+                SaveTasks();
+            }
 
             Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
             Properties.Settings.Default.Save();
+        }
+        private void openFileDialogCrackTasks_FileOk(object sender, CancelEventArgs e)
+        {
+            Properties.Settings.Default.CrackTasksFile = openFileDialogCrackTasks.FileName;
+            LoadTasks();
+        }
+        private void saveFileDialogCrackTasks_FileOk(object sender, CancelEventArgs e)
+        {
+            Properties.Settings.Default.CrackTasksFile = saveFileDialogCrackTasks.FileName;
+            SaveTasks();
         }
 
         public void CheckButtons()
@@ -594,12 +608,32 @@ namespace LeukocyteGUI_for_oclHashCat
             listViewTasks.Items.Add(lvItem);
             VisualizeTask(tskManager.CrackTasks.Length - 1);
         }
+        public void LoadTasks(bool ReplaceMode = true)
+        {
+            if (ReplaceMode)
+            {
+                tskManager.DeleteAllTasks();
+            }
+
+            if (File.Exists(Properties.Settings.Default.CrackTasksFile))
+            {
+                Stream deserializerStream = File.OpenRead(Properties.Settings.Default.CrackTasksFile);
+                BinaryFormatter deserializer = new BinaryFormatter();
+                CrackTaskManager.CrackTask[] crackTasks
+                    = (CrackTaskManager.CrackTask[])deserializer.Deserialize(deserializerStream);
+                deserializerStream.Close();
+                tskManager.AddTasks(crackTasks);
+            }
+
+            tsslCrackTasksFile.Text = Properties.Settings.Default.CrackTasksFile;
+        }
         public void SaveTasks()
         {
-            Stream crackTasksStream = File.Create(crackTasksFile);
+            Stream crackTasksStream = File.Create(Properties.Settings.Default.CrackTasksFile);
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(crackTasksStream, tskManager.CrackTasks);
             crackTasksStream.Close();
+            tsslCrackTasksFile.Text = Properties.Settings.Default.CrackTasksFile;
         }
     }
 }

@@ -17,5 +17,14 @@
     <Setting Name="CrackAllChecked" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="CrackTasksFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CrackTasks.bin</Value>
+    </Setting>
+    <Setting Name="SaveBeforeExit" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LoadOnStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

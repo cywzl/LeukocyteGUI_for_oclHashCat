@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="glyph_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="glyph_speed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_speed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="glyph_open_exe16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_open_exe16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="glyph_add_folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_add_folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +145,11 @@
   <data name="glyph_task_cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_task_cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_add_folder16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_add_folder16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="glyph_task_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_task_update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="glyph_switch_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_switch_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,8 +157,17 @@
   <data name="glyph_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_task_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_task_update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_switch_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_switch_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="glyph_videocard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_videocard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="glyph_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="glyph_temperature" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_temperature.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="glyph_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,14 +175,8 @@
   <data name="glyph_open_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_open_exe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_temperature" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_temperature.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="glyph_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="glyph_switch_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_switch_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="glyph_convert_cap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_convert_cap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,19 +184,19 @@
   <data name="fan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\fan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_videocard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_videocard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_open_exe16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_open_exe16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="glyph_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icons\glyph_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="glyph_add_folder16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icons\glyph_add_folder16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="glyph_save_as" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icons\glyph_save_as.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

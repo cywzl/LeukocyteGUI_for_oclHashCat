@@ -77,6 +77,15 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public CrackTaskManager() : this(new CrackTask[0]) { }
 
+        public int AddTasks(CrackTask[] NewCrackTasks)
+        {
+            for (int index = 0; index < NewCrackTasks.Length; index++)
+            {
+                AddTask(NewCrackTasks[index]);
+            }
+
+            return CrackTasks.Length;
+        }
         public int AddTask(CrackTask NewCrackTask)
         {
             Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length + 1);

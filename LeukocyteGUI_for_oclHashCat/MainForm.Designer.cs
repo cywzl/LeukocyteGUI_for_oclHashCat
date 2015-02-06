@@ -46,23 +46,20 @@
             this.columnHeaderFinished = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderSession = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripTasks = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemMoveUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemMoveDown = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItemStart = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemPause = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemStop = new System.Windows.Forms.ToolStripMenuItem();
             this.labelGPUSpeed = new System.Windows.Forms.Label();
             this.labelGPUTemp = new System.Windows.Forms.Label();
             this.labelGPUUtil = new System.Windows.Forms.Label();
             this.labelFanSpeed = new System.Windows.Forms.Label();
             this.imageListCheckBox = new System.Windows.Forms.ImageList(this.components);
+            this.openFileDialogCrackTasks = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialogCrackTasks = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSaveCrackTasksFileAs = new System.Windows.Forms.Button();
+            this.buttonOpenCrackTasksFile = new System.Windows.Forms.Button();
+            this.buttonSaveCrackTasksFile = new System.Windows.Forms.Button();
+            this.checkBoxPauseCracking = new System.Windows.Forms.CheckBox();
             this.checkBoxAllChecked = new System.Windows.Forms.CheckBox();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.pictureBoxFan = new System.Windows.Forms.PictureBox();
@@ -74,17 +71,28 @@
             this.buttonUpTask = new System.Windows.Forms.Button();
             this.buttonOpenConverter = new System.Windows.Forms.Button();
             this.buttonDownTask = new System.Windows.Forms.Button();
+            this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMoveUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMoveDown = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPause = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemStop = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonClearTask = new System.Windows.Forms.Button();
             this.buttonPauseTask = new System.Windows.Forms.Button();
             this.buttonChangeTask = new System.Windows.Forms.Button();
             this.buttonStartTask = new System.Windows.Forms.Button();
             this.buttonStopTask = new System.Windows.Forms.Button();
-            this.checkBoxPauseCracking = new System.Windows.Forms.CheckBox();
+            this.statusStripInfo = new System.Windows.Forms.StatusStrip();
+            this.tsslCrackTasksFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideocard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpeed)).BeginInit();
+            this.statusStripInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // listViewTasks
@@ -116,7 +124,7 @@
             this.listViewTasks.MultiSelect = false;
             this.listViewTasks.Name = "listViewTasks";
             this.listViewTasks.OwnerDraw = true;
-            this.listViewTasks.Size = new System.Drawing.Size(752, 379);
+            this.listViewTasks.Size = new System.Drawing.Size(863, 358);
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
@@ -132,7 +140,7 @@
             // columnHeaderHashType
             // 
             this.columnHeaderHashType.Text = "Hash Type";
-            this.columnHeaderHashType.Width = 65;
+            this.columnHeaderHashType.Width = 75;
             // 
             // columnHeaderHash
             // 
@@ -167,7 +175,7 @@
             // columnHeaderEstimated
             // 
             this.columnHeaderEstimated.Text = "Estimated";
-            this.columnHeaderEstimated.Width = 68;
+            this.columnHeaderEstimated.Width = 108;
             // 
             // columnHeaderOutput
             // 
@@ -211,99 +219,27 @@
             this.contextMenuStripTasks.Name = "contextMenuStripTasks";
             this.contextMenuStripTasks.Size = new System.Drawing.Size(156, 220);
             // 
-            // toolStripMenuItemAdd
-            // 
-            this.toolStripMenuItemAdd.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
-            this.toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
-            this.toolStripMenuItemAdd.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemAdd.Text = "Add..";
-            this.toolStripMenuItemAdd.Click += new System.EventHandler(this.buttonAddTask_Click);
-            // 
-            // toolStripMenuItemChange
-            // 
-            this.toolStripMenuItemChange.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
-            this.toolStripMenuItemChange.Name = "toolStripMenuItemChange";
-            this.toolStripMenuItemChange.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemChange.Text = "Change..";
-            this.toolStripMenuItemChange.Click += new System.EventHandler(this.buttonChangeTask_Click);
-            // 
-            // toolStripMenuItemRemove
-            // 
-            this.toolStripMenuItemRemove.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
-            this.toolStripMenuItemRemove.Name = "toolStripMenuItemRemove";
-            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemRemove.Text = "Remove";
-            this.toolStripMenuItemRemove.Click += new System.EventHandler(this.buttonDeleteTask_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
-            // 
-            // toolStripMenuItemRemoveAll
-            // 
-            this.toolStripMenuItemRemoveAll.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
-            this.toolStripMenuItemRemoveAll.Name = "toolStripMenuItemRemoveAll";
-            this.toolStripMenuItemRemoveAll.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemRemoveAll.Text = "Remove All";
-            this.toolStripMenuItemRemoveAll.Click += new System.EventHandler(this.buttonClearTask_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
             // 
-            // toolStripMenuItemMoveUp
-            // 
-            this.toolStripMenuItemMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
-            this.toolStripMenuItemMoveUp.Name = "toolStripMenuItemMoveUp";
-            this.toolStripMenuItemMoveUp.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemMoveUp.Text = "Move Up";
-            this.toolStripMenuItemMoveUp.Click += new System.EventHandler(this.buttonUpTask_Click);
-            // 
-            // toolStripMenuItemMoveDown
-            // 
-            this.toolStripMenuItemMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
-            this.toolStripMenuItemMoveDown.Name = "toolStripMenuItemMoveDown";
-            this.toolStripMenuItemMoveDown.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemMoveDown.Text = "Move Down";
-            this.toolStripMenuItemMoveDown.Click += new System.EventHandler(this.buttonDownTask_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(152, 6);
-            // 
-            // toolStripMenuItemStart
-            // 
-            this.toolStripMenuItemStart.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
-            this.toolStripMenuItemStart.Name = "toolStripMenuItemStart";
-            this.toolStripMenuItemStart.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemStart.Text = "Start Cracking";
-            this.toolStripMenuItemStart.Click += new System.EventHandler(this.buttonStartTask_Click);
-            // 
-            // toolStripMenuItemPause
-            // 
-            this.toolStripMenuItemPause.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
-            this.toolStripMenuItemPause.Name = "toolStripMenuItemPause";
-            this.toolStripMenuItemPause.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemPause.Text = "Pause Cracking";
-            this.toolStripMenuItemPause.Click += new System.EventHandler(this.buttonPauseTask_Click);
-            // 
-            // toolStripMenuItemStop
-            // 
-            this.toolStripMenuItemStop.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
-            this.toolStripMenuItemStop.Name = "toolStripMenuItemStop";
-            this.toolStripMenuItemStop.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemStop.Text = "Stop Cracking";
-            this.toolStripMenuItemStop.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
             // labelGPUSpeed
             // 
             this.labelGPUSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUSpeed.AutoSize = true;
             this.labelGPUSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUSpeed.Location = new System.Drawing.Point(575, 18);
+            this.labelGPUSpeed.Location = new System.Drawing.Point(686, 18);
             this.labelGPUSpeed.Name = "labelGPUSpeed";
             this.labelGPUSpeed.Size = new System.Drawing.Size(39, 17);
             this.labelGPUSpeed.TabIndex = 22;
@@ -314,7 +250,7 @@
             this.labelGPUTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUTemp.AutoSize = true;
             this.labelGPUTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUTemp.Location = new System.Drawing.Point(575, 49);
+            this.labelGPUTemp.Location = new System.Drawing.Point(686, 49);
             this.labelGPUTemp.Name = "labelGPUTemp";
             this.labelGPUTemp.Size = new System.Drawing.Size(35, 17);
             this.labelGPUTemp.TabIndex = 24;
@@ -325,7 +261,7 @@
             this.labelGPUUtil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUUtil.AutoSize = true;
             this.labelGPUUtil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUUtil.Location = new System.Drawing.Point(715, 18);
+            this.labelGPUUtil.Location = new System.Drawing.Point(826, 18);
             this.labelGPUUtil.Name = "labelGPUUtil";
             this.labelGPUUtil.Size = new System.Drawing.Size(32, 17);
             this.labelGPUUtil.TabIndex = 26;
@@ -336,7 +272,7 @@
             this.labelFanSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFanSpeed.AutoSize = true;
             this.labelFanSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFanSpeed.Location = new System.Drawing.Point(715, 49);
+            this.labelFanSpeed.Location = new System.Drawing.Point(826, 49);
             this.labelFanSpeed.Name = "labelFanSpeed";
             this.labelFanSpeed.Size = new System.Drawing.Size(32, 17);
             this.labelFanSpeed.TabIndex = 28;
@@ -348,6 +284,94 @@
             this.imageListCheckBox.TransparentColor = System.Drawing.Color.Transparent;
             this.imageListCheckBox.Images.SetKeyName(0, "glyph_switch_on.png");
             this.imageListCheckBox.Images.SetKeyName(1, "glyph_switch_off.png");
+            // 
+            // openFileDialogCrackTasks
+            // 
+            this.openFileDialogCrackTasks.DefaultExt = "bin";
+            this.openFileDialogCrackTasks.FileName = "CrackTasks.bin";
+            this.openFileDialogCrackTasks.Filter = "Binary file (*.bin)|*.bin|All files (*.*)|*.*";
+            this.openFileDialogCrackTasks.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogCrackTasks_FileOk);
+            // 
+            // saveFileDialogCrackTasks
+            // 
+            this.saveFileDialogCrackTasks.FileName = "CrackTasks.bin";
+            this.saveFileDialogCrackTasks.Filter = "Binary file (*.bin)|*.bin|All files (*.*)|*.*";
+            this.saveFileDialogCrackTasks.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialogCrackTasks_FileOk);
+            // 
+            // buttonSaveCrackTasksFileAs
+            // 
+            this.buttonSaveCrackTasksFileAs.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSaveCrackTasksFileAs.FlatAppearance.BorderSize = 0;
+            this.buttonSaveCrackTasksFileAs.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonSaveCrackTasksFileAs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveCrackTasksFileAs.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_save_as;
+            this.buttonSaveCrackTasksFileAs.Location = new System.Drawing.Point(86, 45);
+            this.buttonSaveCrackTasksFileAs.Name = "buttonSaveCrackTasksFileAs";
+            this.buttonSaveCrackTasksFileAs.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonSaveCrackTasksFileAs.Size = new System.Drawing.Size(31, 32);
+            this.buttonSaveCrackTasksFileAs.TabIndex = 40;
+            this.buttonSaveCrackTasksFileAs.TabStop = false;
+            this.buttonSaveCrackTasksFileAs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSaveCrackTasksFileAs.UseVisualStyleBackColor = true;
+            this.buttonSaveCrackTasksFileAs.Click += new System.EventHandler(this.buttonSaveCrackTasksFileAs_Click);
+            // 
+            // buttonOpenCrackTasksFile
+            // 
+            this.buttonOpenCrackTasksFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonOpenCrackTasksFile.FlatAppearance.BorderSize = 0;
+            this.buttonOpenCrackTasksFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonOpenCrackTasksFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenCrackTasksFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe;
+            this.buttonOpenCrackTasksFile.Location = new System.Drawing.Point(12, 45);
+            this.buttonOpenCrackTasksFile.Name = "buttonOpenCrackTasksFile";
+            this.buttonOpenCrackTasksFile.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonOpenCrackTasksFile.Size = new System.Drawing.Size(31, 32);
+            this.buttonOpenCrackTasksFile.TabIndex = 39;
+            this.buttonOpenCrackTasksFile.TabStop = false;
+            this.buttonOpenCrackTasksFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonOpenCrackTasksFile.UseVisualStyleBackColor = true;
+            this.buttonOpenCrackTasksFile.Click += new System.EventHandler(this.buttonOpenCrackTasksFile_Click);
+            // 
+            // buttonSaveCrackTasksFile
+            // 
+            this.buttonSaveCrackTasksFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonSaveCrackTasksFile.FlatAppearance.BorderSize = 0;
+            this.buttonSaveCrackTasksFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonSaveCrackTasksFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveCrackTasksFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_save;
+            this.buttonSaveCrackTasksFile.Location = new System.Drawing.Point(49, 45);
+            this.buttonSaveCrackTasksFile.Name = "buttonSaveCrackTasksFile";
+            this.buttonSaveCrackTasksFile.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonSaveCrackTasksFile.Size = new System.Drawing.Size(31, 32);
+            this.buttonSaveCrackTasksFile.TabIndex = 38;
+            this.buttonSaveCrackTasksFile.TabStop = false;
+            this.buttonSaveCrackTasksFile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSaveCrackTasksFile.UseVisualStyleBackColor = true;
+            this.buttonSaveCrackTasksFile.Click += new System.EventHandler(this.buttonSaveCrackTasksFile_Click);
+            // 
+            // checkBoxPauseCracking
+            // 
+            this.checkBoxPauseCracking.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxPauseCracking.AutoSize = true;
+            this.checkBoxPauseCracking.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatAppearance.BorderSize = 0;
+            this.checkBoxPauseCracking.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxPauseCracking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxPauseCracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxPauseCracking.ForeColor = System.Drawing.Color.Gray;
+            this.checkBoxPauseCracking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxPauseCracking.ImageIndex = 0;
+            this.checkBoxPauseCracking.ImageList = this.imageListCheckBox;
+            this.checkBoxPauseCracking.Location = new System.Drawing.Point(171, 7);
+            this.checkBoxPauseCracking.Name = "checkBoxPauseCracking";
+            this.checkBoxPauseCracking.Size = new System.Drawing.Size(139, 32);
+            this.checkBoxPauseCracking.TabIndex = 37;
+            this.checkBoxPauseCracking.Text = "  Pause cracking";
+            this.checkBoxPauseCracking.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxPauseCracking.UseVisualStyleBackColor = true;
+            this.checkBoxPauseCracking.CheckedChanged += new System.EventHandler(this.checkBoxPauseCracking_CheckedChanged);
             // 
             // checkBoxAllChecked
             // 
@@ -383,7 +407,7 @@
             this.buttonSettings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettings.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_settings;
-            this.buttonSettings.Location = new System.Drawing.Point(431, 45);
+            this.buttonSettings.Location = new System.Drawing.Point(553, 45);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSettings.Size = new System.Drawing.Size(31, 32);
@@ -397,7 +421,7 @@
             // 
             this.pictureBoxFan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxFan.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.fan;
-            this.pictureBoxFan.Location = new System.Drawing.Point(683, 45);
+            this.pictureBoxFan.Location = new System.Drawing.Point(794, 45);
             this.pictureBoxFan.Name = "pictureBoxFan";
             this.pictureBoxFan.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxFan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -408,7 +432,7 @@
             // 
             this.pictureBoxVideocard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxVideocard.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_videocard;
-            this.pictureBoxVideocard.Location = new System.Drawing.Point(683, 15);
+            this.pictureBoxVideocard.Location = new System.Drawing.Point(794, 15);
             this.pictureBoxVideocard.Name = "pictureBoxVideocard";
             this.pictureBoxVideocard.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxVideocard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -419,7 +443,7 @@
             // 
             this.pictureBoxTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxTemperature.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_temperature;
-            this.pictureBoxTemperature.Location = new System.Drawing.Point(544, 46);
+            this.pictureBoxTemperature.Location = new System.Drawing.Point(655, 46);
             this.pictureBoxTemperature.Name = "pictureBoxTemperature";
             this.pictureBoxTemperature.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxTemperature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -430,7 +454,7 @@
             // 
             this.pictureBoxSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxSpeed.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_speed;
-            this.pictureBoxSpeed.Location = new System.Drawing.Point(544, 15);
+            this.pictureBoxSpeed.Location = new System.Drawing.Point(655, 15);
             this.pictureBoxSpeed.Name = "pictureBoxSpeed";
             this.pictureBoxSpeed.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxSpeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -445,7 +469,7 @@
             this.buttonAddTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
-            this.buttonAddTask.Location = new System.Drawing.Point(11, 45);
+            this.buttonAddTask.Location = new System.Drawing.Point(133, 45);
             this.buttonAddTask.Name = "buttonAddTask";
             this.buttonAddTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonAddTask.Size = new System.Drawing.Size(31, 32);
@@ -463,7 +487,7 @@
             this.buttonDeleteTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonDeleteTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
-            this.buttonDeleteTask.Location = new System.Drawing.Point(48, 45);
+            this.buttonDeleteTask.Location = new System.Drawing.Point(170, 45);
             this.buttonDeleteTask.Name = "buttonDeleteTask";
             this.buttonDeleteTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonDeleteTask.Size = new System.Drawing.Size(31, 32);
@@ -481,7 +505,7 @@
             this.buttonUpTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonUpTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUpTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
-            this.buttonUpTask.Location = new System.Drawing.Point(179, 45);
+            this.buttonUpTask.Location = new System.Drawing.Point(301, 45);
             this.buttonUpTask.Name = "buttonUpTask";
             this.buttonUpTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonUpTask.Size = new System.Drawing.Size(31, 32);
@@ -498,7 +522,7 @@
             this.buttonOpenConverter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonOpenConverter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOpenConverter.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_convert;
-            this.buttonOpenConverter.Location = new System.Drawing.Point(384, 45);
+            this.buttonOpenConverter.Location = new System.Drawing.Point(506, 45);
             this.buttonOpenConverter.Name = "buttonOpenConverter";
             this.buttonOpenConverter.Padding = new System.Windows.Forms.Padding(3);
             this.buttonOpenConverter.Size = new System.Drawing.Size(31, 32);
@@ -516,7 +540,7 @@
             this.buttonDownTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonDownTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDownTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
-            this.buttonDownTask.Location = new System.Drawing.Point(216, 45);
+            this.buttonDownTask.Location = new System.Drawing.Point(338, 45);
             this.buttonDownTask.Name = "buttonDownTask";
             this.buttonDownTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonDownTask.Size = new System.Drawing.Size(31, 32);
@@ -526,6 +550,78 @@
             this.buttonDownTask.UseVisualStyleBackColor = true;
             this.buttonDownTask.Click += new System.EventHandler(this.buttonDownTask_Click);
             // 
+            // toolStripMenuItemAdd
+            // 
+            this.toolStripMenuItemAdd.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
+            this.toolStripMenuItemAdd.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemAdd.Text = "Add..";
+            this.toolStripMenuItemAdd.Click += new System.EventHandler(this.buttonAddTask_Click);
+            // 
+            // toolStripMenuItemChange
+            // 
+            this.toolStripMenuItemChange.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
+            this.toolStripMenuItemChange.Name = "toolStripMenuItemChange";
+            this.toolStripMenuItemChange.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemChange.Text = "Change..";
+            this.toolStripMenuItemChange.Click += new System.EventHandler(this.buttonChangeTask_Click);
+            // 
+            // toolStripMenuItemRemove
+            // 
+            this.toolStripMenuItemRemove.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.toolStripMenuItemRemove.Name = "toolStripMenuItemRemove";
+            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemRemove.Text = "Remove";
+            this.toolStripMenuItemRemove.Click += new System.EventHandler(this.buttonDeleteTask_Click);
+            // 
+            // toolStripMenuItemRemoveAll
+            // 
+            this.toolStripMenuItemRemoveAll.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
+            this.toolStripMenuItemRemoveAll.Name = "toolStripMenuItemRemoveAll";
+            this.toolStripMenuItemRemoveAll.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemRemoveAll.Text = "Remove All";
+            this.toolStripMenuItemRemoveAll.Click += new System.EventHandler(this.buttonClearTask_Click);
+            // 
+            // toolStripMenuItemMoveUp
+            // 
+            this.toolStripMenuItemMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
+            this.toolStripMenuItemMoveUp.Name = "toolStripMenuItemMoveUp";
+            this.toolStripMenuItemMoveUp.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemMoveUp.Text = "Move Up";
+            this.toolStripMenuItemMoveUp.Click += new System.EventHandler(this.buttonUpTask_Click);
+            // 
+            // toolStripMenuItemMoveDown
+            // 
+            this.toolStripMenuItemMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
+            this.toolStripMenuItemMoveDown.Name = "toolStripMenuItemMoveDown";
+            this.toolStripMenuItemMoveDown.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemMoveDown.Text = "Move Down";
+            this.toolStripMenuItemMoveDown.Click += new System.EventHandler(this.buttonDownTask_Click);
+            // 
+            // toolStripMenuItemStart
+            // 
+            this.toolStripMenuItemStart.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
+            this.toolStripMenuItemStart.Name = "toolStripMenuItemStart";
+            this.toolStripMenuItemStart.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemStart.Text = "Start Cracking";
+            this.toolStripMenuItemStart.Click += new System.EventHandler(this.buttonStartTask_Click);
+            // 
+            // toolStripMenuItemPause
+            // 
+            this.toolStripMenuItemPause.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
+            this.toolStripMenuItemPause.Name = "toolStripMenuItemPause";
+            this.toolStripMenuItemPause.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemPause.Text = "Pause Cracking";
+            this.toolStripMenuItemPause.Click += new System.EventHandler(this.buttonPauseTask_Click);
+            // 
+            // toolStripMenuItemStop
+            // 
+            this.toolStripMenuItemStop.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
+            this.toolStripMenuItemStop.Name = "toolStripMenuItemStop";
+            this.toolStripMenuItemStop.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemStop.Text = "Stop Cracking";
+            this.toolStripMenuItemStop.Click += new System.EventHandler(this.buttonStopTask_Click);
+            // 
             // buttonClearTask
             // 
             this.buttonClearTask.Enabled = false;
@@ -534,7 +630,7 @@
             this.buttonClearTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonClearTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
-            this.buttonClearTask.Location = new System.Drawing.Point(132, 45);
+            this.buttonClearTask.Location = new System.Drawing.Point(254, 45);
             this.buttonClearTask.Name = "buttonClearTask";
             this.buttonClearTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonClearTask.Size = new System.Drawing.Size(31, 32);
@@ -551,7 +647,7 @@
             this.buttonPauseTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonPauseTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPauseTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
-            this.buttonPauseTask.Location = new System.Drawing.Point(300, 45);
+            this.buttonPauseTask.Location = new System.Drawing.Point(422, 45);
             this.buttonPauseTask.Name = "buttonPauseTask";
             this.buttonPauseTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonPauseTask.Size = new System.Drawing.Size(31, 32);
@@ -569,7 +665,7 @@
             this.buttonChangeTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonChangeTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChangeTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
-            this.buttonChangeTask.Location = new System.Drawing.Point(85, 45);
+            this.buttonChangeTask.Location = new System.Drawing.Point(207, 45);
             this.buttonChangeTask.Name = "buttonChangeTask";
             this.buttonChangeTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonChangeTask.Size = new System.Drawing.Size(31, 32);
@@ -586,7 +682,7 @@
             this.buttonStartTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonStartTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStartTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
-            this.buttonStartTask.Location = new System.Drawing.Point(263, 45);
+            this.buttonStartTask.Location = new System.Drawing.Point(385, 45);
             this.buttonStartTask.Name = "buttonStartTask";
             this.buttonStartTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonStartTask.Size = new System.Drawing.Size(31, 32);
@@ -603,7 +699,7 @@
             this.buttonStopTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonStopTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonStopTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
-            this.buttonStopTask.Location = new System.Drawing.Point(337, 45);
+            this.buttonStopTask.Location = new System.Drawing.Point(459, 45);
             this.buttonStopTask.Name = "buttonStopTask";
             this.buttonStopTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonStopTask.Size = new System.Drawing.Size(31, 32);
@@ -613,35 +709,31 @@
             this.buttonStopTask.UseVisualStyleBackColor = true;
             this.buttonStopTask.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
-            // checkBoxPauseCracking
+            // statusStripInfo
             // 
-            this.checkBoxPauseCracking.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxPauseCracking.AutoSize = true;
-            this.checkBoxPauseCracking.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.checkBoxPauseCracking.FlatAppearance.BorderSize = 0;
-            this.checkBoxPauseCracking.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxPauseCracking.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxPauseCracking.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxPauseCracking.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxPauseCracking.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxPauseCracking.ForeColor = System.Drawing.Color.Gray;
-            this.checkBoxPauseCracking.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.checkBoxPauseCracking.ImageIndex = 0;
-            this.checkBoxPauseCracking.ImageList = this.imageListCheckBox;
-            this.checkBoxPauseCracking.Location = new System.Drawing.Point(171, 7);
-            this.checkBoxPauseCracking.Name = "checkBoxPauseCracking";
-            this.checkBoxPauseCracking.Size = new System.Drawing.Size(139, 32);
-            this.checkBoxPauseCracking.TabIndex = 37;
-            this.checkBoxPauseCracking.Text = "  Pause cracking";
-            this.checkBoxPauseCracking.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.checkBoxPauseCracking.UseVisualStyleBackColor = true;
-            this.checkBoxPauseCracking.CheckedChanged += new System.EventHandler(this.checkBoxPauseCracking_CheckedChanged);
+            this.statusStripInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslCrackTasksFile});
+            this.statusStripInfo.Location = new System.Drawing.Point(0, 452);
+            this.statusStripInfo.Name = "statusStripInfo";
+            this.statusStripInfo.Size = new System.Drawing.Size(887, 22);
+            this.statusStripInfo.TabIndex = 41;
+            this.statusStripInfo.Text = "statusStrip1";
+            // 
+            // tsslCrackTasksFile
+            // 
+            this.tsslCrackTasksFile.Name = "tsslCrackTasksFile";
+            this.tsslCrackTasksFile.Size = new System.Drawing.Size(10, 17);
+            this.tsslCrackTasksFile.Text = " ";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 474);
+            this.ClientSize = new System.Drawing.Size(887, 474);
+            this.Controls.Add(this.statusStripInfo);
+            this.Controls.Add(this.buttonSaveCrackTasksFileAs);
+            this.Controls.Add(this.buttonOpenCrackTasksFile);
+            this.Controls.Add(this.buttonSaveCrackTasksFile);
             this.Controls.Add(this.checkBoxPauseCracking);
             this.Controls.Add(this.checkBoxAllChecked);
             this.Controls.Add(this.buttonSettings);
@@ -672,6 +764,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideocard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTemperature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpeed)).EndInit();
+            this.statusStripInfo.ResumeLayout(false);
+            this.statusStripInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -729,5 +823,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAdd;
+        private System.Windows.Forms.Button buttonSaveCrackTasksFile;
+        private System.Windows.Forms.Button buttonOpenCrackTasksFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialogCrackTasks;
+        private System.Windows.Forms.SaveFileDialog saveFileDialogCrackTasks;
+        private System.Windows.Forms.Button buttonSaveCrackTasksFileAs;
+        private System.Windows.Forms.StatusStrip statusStripInfo;
+        private System.Windows.Forms.ToolStripStatusLabel tsslCrackTasksFile;
     }
 }

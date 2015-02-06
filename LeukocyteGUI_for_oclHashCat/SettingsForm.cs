@@ -21,11 +21,15 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             textBoxHashcat.Text = Properties.Settings.Default.Hashcat;
             textBoxWorkingDirectory.Text = Properties.Settings.Default.WorkingDirectory;
+            checkBoxSaveOnExit.Checked = Properties.Settings.Default.SaveBeforeExit;
+            checkBoxLoadOnStart.Checked = Properties.Settings.Default.LoadOnStartup;
         }
         private void buttonSettingsOK_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Hashcat = textBoxHashcat.Text;
             Properties.Settings.Default.WorkingDirectory = textBoxWorkingDirectory.Text;
+            Properties.Settings.Default.SaveBeforeExit = checkBoxSaveOnExit.Checked;
+            Properties.Settings.Default.LoadOnStartup = checkBoxLoadOnStart.Checked;
             Properties.Settings.Default.Save();
 
             Close();

@@ -91,6 +91,10 @@
             this.buttonCancelTask = new System.Windows.Forms.Button();
             this.buttonSubmitTask = new System.Windows.Forms.Button();
             this.buttonClearTask = new System.Windows.Forms.Button();
+            this.buttonChooseHashFile = new System.Windows.Forms.Button();
+            this.openFileDialogHash = new System.Windows.Forms.OpenFileDialog();
+            this.buttonChooseDictionaryFile = new System.Windows.Forms.Button();
+            this.openFileDialogDictionary = new System.Windows.Forms.OpenFileDialog();
             this.groupBoxAttackType.SuspendLayout();
             this.groupBoxHash.SuspendLayout();
             this.groupBoxIncrement.SuspendLayout();
@@ -107,9 +111,9 @@
             // 
             // textBoxHashFileName
             // 
-            this.textBoxHashFileName.Location = new System.Drawing.Point(101, 19);
+            this.textBoxHashFileName.Location = new System.Drawing.Point(78, 19);
             this.textBoxHashFileName.Name = "textBoxHashFileName";
-            this.textBoxHashFileName.Size = new System.Drawing.Size(201, 20);
+            this.textBoxHashFileName.Size = new System.Drawing.Size(304, 20);
             this.textBoxHashFileName.TabIndex = 0;
             // 
             // radioButtonAttackTypeBrute
@@ -136,6 +140,7 @@
             // 
             // groupBoxAttackType
             // 
+            this.groupBoxAttackType.Controls.Add(this.buttonChooseDictionaryFile);
             this.groupBoxAttackType.Controls.Add(this.checkBoxCharset4);
             this.groupBoxAttackType.Controls.Add(this.textBoxCharset4);
             this.groupBoxAttackType.Controls.Add(this.checkBoxCharset3);
@@ -227,7 +232,7 @@
             // 
             this.textBoxDictionary.Location = new System.Drawing.Point(138, 178);
             this.textBoxDictionary.Name = "textBoxDictionary";
-            this.textBoxDictionary.Size = new System.Drawing.Size(186, 20);
+            this.textBoxDictionary.Size = new System.Drawing.Size(159, 20);
             this.textBoxDictionary.TabIndex = 14;
             // 
             // textBoxBruteforceMask
@@ -239,6 +244,7 @@
             // 
             // groupBoxHash
             // 
+            this.groupBoxHash.Controls.Add(this.buttonChooseHashFile);
             this.groupBoxHash.Controls.Add(this.labelSeparator);
             this.groupBoxHash.Controls.Add(this.textBoxSeparator);
             this.groupBoxHash.Controls.Add(this.comboBoxHashType);
@@ -255,7 +261,7 @@
             // labelSeparator
             // 
             this.labelSeparator.AutoSize = true;
-            this.labelSeparator.Location = new System.Drawing.Point(318, 22);
+            this.labelSeparator.Location = new System.Drawing.Point(317, 49);
             this.labelSeparator.Name = "labelSeparator";
             this.labelSeparator.Size = new System.Drawing.Size(56, 13);
             this.labelSeparator.TabIndex = 15;
@@ -263,7 +269,7 @@
             // 
             // textBoxSeparator
             // 
-            this.textBoxSeparator.Location = new System.Drawing.Point(380, 19);
+            this.textBoxSeparator.Location = new System.Drawing.Point(379, 46);
             this.textBoxSeparator.Name = "textBoxSeparator";
             this.textBoxSeparator.Size = new System.Drawing.Size(36, 20);
             this.textBoxSeparator.TabIndex = 1;
@@ -388,9 +394,9 @@
             "2711 = vBulletin > v3.8.5",
             "2811 = IPB2+, MyBB1.2+",
             "3711 = Mediawiki B type"});
-            this.comboBoxHashType.Location = new System.Drawing.Point(101, 46);
+            this.comboBoxHashType.Location = new System.Drawing.Point(78, 46);
             this.comboBoxHashType.Name = "comboBoxHashType";
-            this.comboBoxHashType.Size = new System.Drawing.Size(315, 21);
+            this.comboBoxHashType.Size = new System.Drawing.Size(227, 21);
             this.comboBoxHashType.TabIndex = 2;
             // 
             // labelHashType
@@ -407,9 +413,9 @@
             this.labelHashFile.AutoSize = true;
             this.labelHashFile.Location = new System.Drawing.Point(13, 22);
             this.labelHashFile.Name = "labelHashFile";
-            this.labelHashFile.Size = new System.Drawing.Size(82, 13);
+            this.labelHashFile.Size = new System.Drawing.Size(59, 13);
             this.labelHashFile.TabIndex = 11;
-            this.labelHashFile.Text = "Hash / hashfile:";
+            this.labelHashFile.Text = "Hash / file:";
             // 
             // groupBoxIncrement
             // 
@@ -910,6 +916,48 @@
             this.buttonClearTask.UseVisualStyleBackColor = true;
             this.buttonClearTask.Click += new System.EventHandler(this.buttonClearTask_Click);
             // 
+            // buttonChooseHashFile
+            // 
+            this.buttonChooseHashFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseHashFile.FlatAppearance.BorderSize = 0;
+            this.buttonChooseHashFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseHashFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseHashFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseHashFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseHashFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseHashFile.Location = new System.Drawing.Point(388, 18);
+            this.buttonChooseHashFile.Name = "buttonChooseHashFile";
+            this.buttonChooseHashFile.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseHashFile.TabIndex = 47;
+            this.buttonChooseHashFile.UseVisualStyleBackColor = true;
+            this.buttonChooseHashFile.Click += new System.EventHandler(this.buttonChooseHashFile_Click);
+            // 
+            // openFileDialogHash
+            // 
+            this.openFileDialogHash.FileName = "hashfile";
+            this.openFileDialogHash.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogHash_FileOk);
+            // 
+            // buttonChooseDictionaryFile
+            // 
+            this.buttonChooseDictionaryFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseDictionaryFile.FlatAppearance.BorderSize = 0;
+            this.buttonChooseDictionaryFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseDictionaryFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseDictionaryFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseDictionaryFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseDictionaryFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseDictionaryFile.Location = new System.Drawing.Point(303, 177);
+            this.buttonChooseDictionaryFile.Name = "buttonChooseDictionaryFile";
+            this.buttonChooseDictionaryFile.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseDictionaryFile.TabIndex = 48;
+            this.buttonChooseDictionaryFile.UseVisualStyleBackColor = true;
+            this.buttonChooseDictionaryFile.Click += new System.EventHandler(this.buttonChooseDictionaryFile_Click);
+            // 
+            // openFileDialogDictionary
+            // 
+            this.openFileDialogDictionary.FileName = "dictionary";
+            this.openFileDialogDictionary.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogDictionary_FileOk);
+            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1016,5 +1064,9 @@
         private System.Windows.Forms.Button buttonSubmitTask;
         private System.Windows.Forms.Button buttonClearTask;
         private System.Windows.Forms.CheckBox checkBoxOutputToFile;
+        private System.Windows.Forms.Button buttonChooseHashFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialogHash;
+        private System.Windows.Forms.Button buttonChooseDictionaryFile;
+        private System.Windows.Forms.OpenFileDialog openFileDialogDictionary;
     }
 }

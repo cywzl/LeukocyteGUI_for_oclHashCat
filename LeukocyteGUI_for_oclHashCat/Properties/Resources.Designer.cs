@@ -203,6 +203,26 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap glyph_save {
+            get {
+                object obj = ResourceManager.GetObject("glyph_save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap glyph_save_as {
+            get {
+                object obj = ResourceManager.GetObject("glyph_save_as", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap glyph_settings {
             get {
                 object obj = ResourceManager.GetObject("glyph_settings", resourceCulture);

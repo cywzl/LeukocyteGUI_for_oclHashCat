@@ -12,7 +12,36 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public partial class ConvertationStatisticsForm : Form
     {
-        int cCount = 0, cConverted = 0;
+        private int count = 0;
+        private int converted = 0;
+
+        public int ConvertCount
+        {
+            get
+            {
+                return count;
+            }
+
+            set
+            {
+                count = value;
+                labelConvertingStatus.Text = "0 / " + value.ToString();
+            }
+        }
+        public int Converted
+        {
+            get
+            {
+                return converted;
+            }
+
+            set
+            {
+                converted = value;
+                labelConvertingStatus.Text = value.ToString() + " / "
+                    + count.ToString();
+            }
+        }
 
         public ConvertationStatisticsForm()
         {
@@ -28,40 +57,15 @@ namespace LeukocyteGUI_for_oclHashCat
                 new object[] { true }
             );
         }
-
         public ConvertationStatisticsForm(int ConvertCount)
             : this()
         {
-            cCount = ConvertCount;
+            count = ConvertCount;
         }
 
-        public int ConvertCount
+        public void buttonConfirmSuccess_Click(object sender, EventArgs e)
         {
-            get
-            {
-                return cCount;
-            }
-
-            set
-            {
-                cCount = value;
-                labelConvertingStatus.Text = "0 / " + value.ToString();
-            }
-        }
-
-        public int Converted
-        {
-            get
-            {
-                return cConverted;
-            }
-
-            set
-            {
-                cConverted = value;
-                labelConvertingStatus.Text = value.ToString() + " / "
-                    + cCount.ToString();
-            }
+            Close();
         }
 
         public void listViewConvertSuccessChange(int Index, bool Success)
@@ -85,7 +89,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 listViewConvertSuccess.Items[Index + 1].EnsureVisible();
             }
         }
-
         public void listViewConvertSuccessAddItems(string[] Items)
         {
             for (int i = 0; i < Items.Length; i++)
@@ -99,7 +102,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 FontStyle.Bold);
             }
         }
-
         public void listViewConvertSuccessAddItems(ListBox.ObjectCollection ListBoxItems)
         {
             string[] Items = new string[ListBoxItems.Count];
@@ -111,12 +113,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             listViewConvertSuccessAddItems(Items);
         }
-
-        private void buttonConfirmSuccess_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         public void ConversionEnd()
         {
             buttonConfirmSuccess.Enabled = true;

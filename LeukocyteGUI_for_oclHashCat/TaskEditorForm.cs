@@ -156,6 +156,22 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             this.Close();
         }
+        private void buttonChooseHashFile_Click(object sender, EventArgs e)
+        {
+            openFileDialogHash.ShowDialog();
+        }
+        private void buttonChooseDictionaryFile_Click(object sender, EventArgs e)
+        {
+            openFileDialogDictionary.ShowDialog();
+        }
+        private void openFileDialogHash_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxHashFileName.Text = openFileDialogHash.FileName;
+        }
+        private void openFileDialogDictionary_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxDictionary.Text = openFileDialogDictionary.FileName;
+        }
 
         private void FillFormWithTaskData()
         {
