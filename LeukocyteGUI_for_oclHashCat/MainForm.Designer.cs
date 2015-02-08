@@ -46,9 +46,18 @@
             this.columnHeaderFinished = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderSession = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStripTasks = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemMoveUp = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMoveDown = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPause = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemStop = new System.Windows.Forms.ToolStripMenuItem();
             this.labelGPUSpeed = new System.Windows.Forms.Label();
             this.labelGPUTemp = new System.Windows.Forms.Label();
             this.labelGPUUtil = new System.Windows.Forms.Label();
@@ -71,15 +80,6 @@
             this.buttonUpTask = new System.Windows.Forms.Button();
             this.buttonOpenConverter = new System.Windows.Forms.Button();
             this.buttonDownTask = new System.Windows.Forms.Button();
-            this.toolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemMoveUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemMoveDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemStart = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemPause = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemStop = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonClearTask = new System.Windows.Forms.Button();
             this.buttonPauseTask = new System.Windows.Forms.Button();
             this.buttonChangeTask = new System.Windows.Forms.Button();
@@ -219,20 +219,92 @@
             this.contextMenuStripTasks.Name = "contextMenuStripTasks";
             this.contextMenuStripTasks.Size = new System.Drawing.Size(156, 220);
             // 
+            // toolStripMenuItemAdd
+            // 
+            this.toolStripMenuItemAdd.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
+            this.toolStripMenuItemAdd.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemAdd.Text = "Add..";
+            this.toolStripMenuItemAdd.Click += new System.EventHandler(this.buttonAddTask_Click);
+            // 
+            // toolStripMenuItemChange
+            // 
+            this.toolStripMenuItemChange.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
+            this.toolStripMenuItemChange.Name = "toolStripMenuItemChange";
+            this.toolStripMenuItemChange.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemChange.Text = "Change..";
+            this.toolStripMenuItemChange.Click += new System.EventHandler(this.buttonChangeTask_Click);
+            // 
+            // toolStripMenuItemRemove
+            // 
+            this.toolStripMenuItemRemove.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.toolStripMenuItemRemove.Name = "toolStripMenuItemRemove";
+            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemRemove.Text = "Remove";
+            this.toolStripMenuItemRemove.Click += new System.EventHandler(this.buttonDeleteTask_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(152, 6);
+            // 
+            // toolStripMenuItemRemoveAll
+            // 
+            this.toolStripMenuItemRemoveAll.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
+            this.toolStripMenuItemRemoveAll.Name = "toolStripMenuItemRemoveAll";
+            this.toolStripMenuItemRemoveAll.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemRemoveAll.Text = "Remove All";
+            this.toolStripMenuItemRemoveAll.Click += new System.EventHandler(this.buttonClearTask_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(152, 6);
             // 
+            // toolStripMenuItemMoveUp
+            // 
+            this.toolStripMenuItemMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
+            this.toolStripMenuItemMoveUp.Name = "toolStripMenuItemMoveUp";
+            this.toolStripMenuItemMoveUp.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemMoveUp.Text = "Move Up";
+            this.toolStripMenuItemMoveUp.Click += new System.EventHandler(this.buttonUpTask_Click);
+            // 
+            // toolStripMenuItemMoveDown
+            // 
+            this.toolStripMenuItemMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
+            this.toolStripMenuItemMoveDown.Name = "toolStripMenuItemMoveDown";
+            this.toolStripMenuItemMoveDown.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemMoveDown.Text = "Move Down";
+            this.toolStripMenuItemMoveDown.Click += new System.EventHandler(this.buttonDownTask_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(152, 6);
+            // 
+            // toolStripMenuItemStart
+            // 
+            this.toolStripMenuItemStart.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
+            this.toolStripMenuItemStart.Name = "toolStripMenuItemStart";
+            this.toolStripMenuItemStart.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemStart.Text = "Start Cracking";
+            this.toolStripMenuItemStart.Click += new System.EventHandler(this.buttonStartTask_Click);
+            // 
+            // toolStripMenuItemPause
+            // 
+            this.toolStripMenuItemPause.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
+            this.toolStripMenuItemPause.Name = "toolStripMenuItemPause";
+            this.toolStripMenuItemPause.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemPause.Text = "Pause Cracking";
+            this.toolStripMenuItemPause.Click += new System.EventHandler(this.buttonPauseTask_Click);
+            // 
+            // toolStripMenuItemStop
+            // 
+            this.toolStripMenuItemStop.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
+            this.toolStripMenuItemStop.Name = "toolStripMenuItemStop";
+            this.toolStripMenuItemStop.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemStop.Text = "Stop Cracking";
+            this.toolStripMenuItemStop.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
             // labelGPUSpeed
             // 
@@ -549,78 +621,6 @@
             this.buttonDownTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDownTask.UseVisualStyleBackColor = true;
             this.buttonDownTask.Click += new System.EventHandler(this.buttonDownTask_Click);
-            // 
-            // toolStripMenuItemAdd
-            // 
-            this.toolStripMenuItemAdd.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
-            this.toolStripMenuItemAdd.Name = "toolStripMenuItemAdd";
-            this.toolStripMenuItemAdd.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemAdd.Text = "Add..";
-            this.toolStripMenuItemAdd.Click += new System.EventHandler(this.buttonAddTask_Click);
-            // 
-            // toolStripMenuItemChange
-            // 
-            this.toolStripMenuItemChange.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
-            this.toolStripMenuItemChange.Name = "toolStripMenuItemChange";
-            this.toolStripMenuItemChange.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemChange.Text = "Change..";
-            this.toolStripMenuItemChange.Click += new System.EventHandler(this.buttonChangeTask_Click);
-            // 
-            // toolStripMenuItemRemove
-            // 
-            this.toolStripMenuItemRemove.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
-            this.toolStripMenuItemRemove.Name = "toolStripMenuItemRemove";
-            this.toolStripMenuItemRemove.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemRemove.Text = "Remove";
-            this.toolStripMenuItemRemove.Click += new System.EventHandler(this.buttonDeleteTask_Click);
-            // 
-            // toolStripMenuItemRemoveAll
-            // 
-            this.toolStripMenuItemRemoveAll.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
-            this.toolStripMenuItemRemoveAll.Name = "toolStripMenuItemRemoveAll";
-            this.toolStripMenuItemRemoveAll.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemRemoveAll.Text = "Remove All";
-            this.toolStripMenuItemRemoveAll.Click += new System.EventHandler(this.buttonClearTask_Click);
-            // 
-            // toolStripMenuItemMoveUp
-            // 
-            this.toolStripMenuItemMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
-            this.toolStripMenuItemMoveUp.Name = "toolStripMenuItemMoveUp";
-            this.toolStripMenuItemMoveUp.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemMoveUp.Text = "Move Up";
-            this.toolStripMenuItemMoveUp.Click += new System.EventHandler(this.buttonUpTask_Click);
-            // 
-            // toolStripMenuItemMoveDown
-            // 
-            this.toolStripMenuItemMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
-            this.toolStripMenuItemMoveDown.Name = "toolStripMenuItemMoveDown";
-            this.toolStripMenuItemMoveDown.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemMoveDown.Text = "Move Down";
-            this.toolStripMenuItemMoveDown.Click += new System.EventHandler(this.buttonDownTask_Click);
-            // 
-            // toolStripMenuItemStart
-            // 
-            this.toolStripMenuItemStart.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
-            this.toolStripMenuItemStart.Name = "toolStripMenuItemStart";
-            this.toolStripMenuItemStart.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemStart.Text = "Start Cracking";
-            this.toolStripMenuItemStart.Click += new System.EventHandler(this.buttonStartTask_Click);
-            // 
-            // toolStripMenuItemPause
-            // 
-            this.toolStripMenuItemPause.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
-            this.toolStripMenuItemPause.Name = "toolStripMenuItemPause";
-            this.toolStripMenuItemPause.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemPause.Text = "Pause Cracking";
-            this.toolStripMenuItemPause.Click += new System.EventHandler(this.buttonPauseTask_Click);
-            // 
-            // toolStripMenuItemStop
-            // 
-            this.toolStripMenuItemStop.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
-            this.toolStripMenuItemStop.Name = "toolStripMenuItemStop";
-            this.toolStripMenuItemStop.Size = new System.Drawing.Size(155, 22);
-            this.toolStripMenuItemStop.Text = "Stop Cracking";
-            this.toolStripMenuItemStop.Click += new System.EventHandler(this.buttonStopTask_Click);
             // 
             // buttonClearTask
             // 

@@ -164,6 +164,10 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             openFileDialogDictionary.ShowDialog();
         }
+        private void buttonChooseOutputFile_Click(object sender, EventArgs e)
+        {
+            saveFileDialogOutput.ShowDialog();
+        }
         private void openFileDialogHash_FileOk(object sender, CancelEventArgs e)
         {
             textBoxHashFileName.Text = openFileDialogHash.FileName;
@@ -171,6 +175,10 @@ namespace LeukocyteGUI_for_oclHashCat
         private void openFileDialogDictionary_FileOk(object sender, CancelEventArgs e)
         {
             textBoxDictionary.Text = openFileDialogDictionary.FileName;
+        }
+        private void saveFileDialogOutput_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxOutputFile.Text = saveFileDialogOutput.FileName;
         }
 
         private void FillFormWithTaskData()
@@ -291,6 +299,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 checkBoxDisablePot.Checked = CrackTask.DisablePotfile;
                 checkBoxDisableLog.Checked = CrackTask.DisableLogfile;
             }
-        }
+        } 
     }
 }

@@ -42,10 +42,22 @@
             this.checkBoxSaveOnExit = new System.Windows.Forms.CheckBox();
             this.textBoxHashcat = new System.Windows.Forms.TextBox();
             this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageDictionaries = new System.Windows.Forms.TabPage();
             this.buttonCancelTask = new System.Windows.Forms.Button();
+            this.listViewDictionaries = new System.Windows.Forms.ListView();
+            this.columnHeaderNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonAddDictionary = new System.Windows.Forms.Button();
+            this.buttonDeleteDictionary = new System.Windows.Forms.Button();
+            this.buttonUpDictionary = new System.Windows.Forms.Button();
+            this.buttonDownDictionary = new System.Windows.Forms.Button();
+            this.buttonClearDictionary = new System.Windows.Forms.Button();
+            this.buttonChangeDictionary = new System.Windows.Forms.Button();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
+            this.tabPageDictionaries.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelWorkingDirectory
@@ -124,7 +136,7 @@
             this.buttonSettingsOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonSettingsOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettingsOK.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
-            this.buttonSettingsOK.Location = new System.Drawing.Point(392, 243);
+            this.buttonSettingsOK.Location = new System.Drawing.Point(393, 275);
             this.buttonSettingsOK.Name = "buttonSettingsOK";
             this.buttonSettingsOK.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSettingsOK.Size = new System.Drawing.Size(40, 40);
@@ -136,11 +148,11 @@
             // tabControlSettings
             // 
             this.tabControlSettings.Controls.Add(this.tabPageMain);
-            this.tabControlSettings.Controls.Add(this.tabPage2);
+            this.tabControlSettings.Controls.Add(this.tabPageDictionaries);
             this.tabControlSettings.Location = new System.Drawing.Point(12, 12);
             this.tabControlSettings.Name = "tabControlSettings";
             this.tabControlSettings.SelectedIndex = 0;
-            this.tabControlSettings.Size = new System.Drawing.Size(470, 225);
+            this.tabControlSettings.Size = new System.Drawing.Size(470, 257);
             this.tabControlSettings.TabIndex = 48;
             // 
             // tabPageMain
@@ -206,15 +218,22 @@
             this.textBoxWorkingDirectory.TabIndex = 33;
             this.textBoxWorkingDirectory.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.WorkingDirectory;
             // 
-            // tabPage2
+            // tabPageDictionaries
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(462, 199);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageDictionaries.Controls.Add(this.buttonAddDictionary);
+            this.tabPageDictionaries.Controls.Add(this.buttonDeleteDictionary);
+            this.tabPageDictionaries.Controls.Add(this.buttonUpDictionary);
+            this.tabPageDictionaries.Controls.Add(this.buttonDownDictionary);
+            this.tabPageDictionaries.Controls.Add(this.buttonClearDictionary);
+            this.tabPageDictionaries.Controls.Add(this.buttonChangeDictionary);
+            this.tabPageDictionaries.Controls.Add(this.listViewDictionaries);
+            this.tabPageDictionaries.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDictionaries.Name = "tabPageDictionaries";
+            this.tabPageDictionaries.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDictionaries.Size = new System.Drawing.Size(462, 231);
+            this.tabPageDictionaries.TabIndex = 1;
+            this.tabPageDictionaries.Text = "Dictionaries";
+            this.tabPageDictionaries.UseVisualStyleBackColor = true;
             // 
             // buttonCancelTask
             // 
@@ -224,7 +243,7 @@
             this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
-            this.buttonCancelTask.Location = new System.Drawing.Point(438, 243);
+            this.buttonCancelTask.Location = new System.Drawing.Point(439, 275);
             this.buttonCancelTask.Name = "buttonCancelTask";
             this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
@@ -232,11 +251,146 @@
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
+            // listViewDictionaries
+            // 
+            this.listViewDictionaries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderNumber,
+            this.columnHeaderName,
+            this.columnHeaderSize,
+            this.columnHeaderPath});
+            this.listViewDictionaries.Location = new System.Drawing.Point(6, 44);
+            this.listViewDictionaries.Name = "listViewDictionaries";
+            this.listViewDictionaries.Size = new System.Drawing.Size(450, 181);
+            this.listViewDictionaries.TabIndex = 0;
+            this.listViewDictionaries.UseCompatibleStateImageBehavior = false;
+            this.listViewDictionaries.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderNumber
+            // 
+            this.columnHeaderNumber.Text = "№";
+            this.columnHeaderNumber.Width = 30;
+            // 
+            // columnHeaderName
+            // 
+            this.columnHeaderName.Text = "Name";
+            this.columnHeaderName.Width = 71;
+            // 
+            // columnHeaderSize
+            // 
+            this.columnHeaderSize.Text = "Size";
+            // 
+            // columnHeaderPath
+            // 
+            this.columnHeaderPath.Text = "Path";
+            this.columnHeaderPath.Width = 274;
+            // 
+            // buttonAddDictionary
+            // 
+            this.buttonAddDictionary.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAddDictionary.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonAddDictionary.FlatAppearance.BorderSize = 0;
+            this.buttonAddDictionary.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonAddDictionary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddDictionary.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.buttonAddDictionary.Location = new System.Drawing.Point(6, 6);
+            this.buttonAddDictionary.Name = "buttonAddDictionary";
+            this.buttonAddDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonAddDictionary.Size = new System.Drawing.Size(31, 32);
+            this.buttonAddDictionary.TabIndex = 18;
+            this.buttonAddDictionary.TabStop = false;
+            this.buttonAddDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAddDictionary.UseVisualStyleBackColor = false;
+            // 
+            // buttonDeleteDictionary
+            // 
+            this.buttonDeleteDictionary.Enabled = false;
+            this.buttonDeleteDictionary.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonDeleteDictionary.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteDictionary.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonDeleteDictionary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteDictionary.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.buttonDeleteDictionary.Location = new System.Drawing.Point(43, 6);
+            this.buttonDeleteDictionary.Name = "buttonDeleteDictionary";
+            this.buttonDeleteDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonDeleteDictionary.Size = new System.Drawing.Size(31, 32);
+            this.buttonDeleteDictionary.TabIndex = 19;
+            this.buttonDeleteDictionary.TabStop = false;
+            this.buttonDeleteDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteDictionary.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpDictionary
+            // 
+            this.buttonUpDictionary.Enabled = false;
+            this.buttonUpDictionary.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonUpDictionary.FlatAppearance.BorderSize = 0;
+            this.buttonUpDictionary.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonUpDictionary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpDictionary.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
+            this.buttonUpDictionary.Location = new System.Drawing.Point(174, 6);
+            this.buttonUpDictionary.Name = "buttonUpDictionary";
+            this.buttonUpDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonUpDictionary.Size = new System.Drawing.Size(31, 32);
+            this.buttonUpDictionary.TabIndex = 20;
+            this.buttonUpDictionary.TabStop = false;
+            this.buttonUpDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonUpDictionary.UseVisualStyleBackColor = true;
+            // 
+            // buttonDownDictionary
+            // 
+            this.buttonDownDictionary.Enabled = false;
+            this.buttonDownDictionary.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonDownDictionary.FlatAppearance.BorderSize = 0;
+            this.buttonDownDictionary.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonDownDictionary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownDictionary.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
+            this.buttonDownDictionary.Location = new System.Drawing.Point(211, 6);
+            this.buttonDownDictionary.Name = "buttonDownDictionary";
+            this.buttonDownDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonDownDictionary.Size = new System.Drawing.Size(31, 32);
+            this.buttonDownDictionary.TabIndex = 21;
+            this.buttonDownDictionary.TabStop = false;
+            this.buttonDownDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDownDictionary.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearDictionary
+            // 
+            this.buttonClearDictionary.Enabled = false;
+            this.buttonClearDictionary.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonClearDictionary.FlatAppearance.BorderSize = 0;
+            this.buttonClearDictionary.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonClearDictionary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClearDictionary.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_clear;
+            this.buttonClearDictionary.Location = new System.Drawing.Point(127, 6);
+            this.buttonClearDictionary.Name = "buttonClearDictionary";
+            this.buttonClearDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonClearDictionary.Size = new System.Drawing.Size(31, 32);
+            this.buttonClearDictionary.TabIndex = 23;
+            this.buttonClearDictionary.TabStop = false;
+            this.buttonClearDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonClearDictionary.UseVisualStyleBackColor = true;
+            // 
+            // buttonChangeDictionary
+            // 
+            this.buttonChangeDictionary.Enabled = false;
+            this.buttonChangeDictionary.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonChangeDictionary.FlatAppearance.BorderSize = 0;
+            this.buttonChangeDictionary.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChangeDictionary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeDictionary.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
+            this.buttonChangeDictionary.Location = new System.Drawing.Point(80, 6);
+            this.buttonChangeDictionary.Name = "buttonChangeDictionary";
+            this.buttonChangeDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonChangeDictionary.Size = new System.Drawing.Size(31, 32);
+            this.buttonChangeDictionary.TabIndex = 22;
+            this.buttonChangeDictionary.TabStop = false;
+            this.buttonChangeDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonChangeDictionary.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 295);
+            this.ClientSize = new System.Drawing.Size(491, 327);
             this.Controls.Add(this.tabControlSettings);
             this.Controls.Add(this.buttonCancelTask);
             this.Controls.Add(this.buttonSettingsOK);
@@ -249,6 +403,7 @@
             this.tabControlSettings.ResumeLayout(false);
             this.tabPageMain.ResumeLayout(false);
             this.tabPageMain.PerformLayout();
+            this.tabPageDictionaries.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -267,9 +422,20 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogWorkingDirectory;
         private System.Windows.Forms.TabControl tabControlSettings;
         private System.Windows.Forms.TabPage tabPageMain;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageDictionaries;
         private System.Windows.Forms.CheckBox checkBoxLoadOnStart;
         private System.Windows.Forms.CheckBox checkBoxSaveOnExit;
         private System.Windows.Forms.Button buttonCancelTask;
+        private System.Windows.Forms.ListView listViewDictionaries;
+        private System.Windows.Forms.ColumnHeader columnHeaderNumber;
+        private System.Windows.Forms.ColumnHeader columnHeaderName;
+        private System.Windows.Forms.ColumnHeader columnHeaderSize;
+        private System.Windows.Forms.ColumnHeader columnHeaderPath;
+        private System.Windows.Forms.Button buttonAddDictionary;
+        private System.Windows.Forms.Button buttonDeleteDictionary;
+        private System.Windows.Forms.Button buttonUpDictionary;
+        private System.Windows.Forms.Button buttonDownDictionary;
+        private System.Windows.Forms.Button buttonClearDictionary;
+        private System.Windows.Forms.Button buttonChangeDictionary;
     }
 }
