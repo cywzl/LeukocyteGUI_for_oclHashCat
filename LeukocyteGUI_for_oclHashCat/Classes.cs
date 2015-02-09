@@ -1255,6 +1255,167 @@ namespace LeukocyteGUI_for_oclHashCat
         }
     }
 
+    public class DictionaryManager
+    {
+        public Dictionary[] Dictionaries;
+
+        public delegate void DictionaryAddedDeletedUpdatedEventHandler(object sender, int DictionaryId);
+        public delegate void DictionariesAllDeletedEventHandler(object sender);
+        public delegate void DictionaryMovedToStartEnd(object sender, int OriginalId, int NewId);
+
+        public event DictionaryAddedDeletedUpdatedEventHandler DictionaryAdded = delegate { };
+        public event DictionaryAddedDeletedUpdatedEventHandler DictionaryDeleted = delegate { };
+        public event DictionaryAddedDeletedUpdatedEventHandler DictionaryUpdated = delegate { };
+        public event DictionariesAllDeletedEventHandler DictionariesAllDeleted = delegate { };
+        public event DictionaryMovedToStartEnd DictionaryMovedToStart = delegate { };
+        public event DictionaryMovedToStartEnd DictionaryMovedToEnd = delegate { };
+
+        public DictionaryManager(Dictionary[] dictionaries)
+        {
+            Dictionaries = dictionaries;
+        }
+        public DictionaryManager() : this(new Dictionary[0]) { }
+
+        public int AddDictionary(Dictionary newDictionary)
+        {
+            Array.Resize<Dictionary>(ref Dictionaries, Dictionaries.Length + 1);
+            Dictionaries[Dictionaries.Length - 1] = newDictionary;
+            return Dictionaries.Length;
+        }
+        public int AddDictionaries(Dictionary[] newDictionaries)
+        {
+            for (int index = 0; index < newDictionaries.Length; index++)
+            {
+                AddDictionary(newDictionaries[index]);
+            }
+
+            return Dictionaries.Length;
+        }
+        public bool UpdateDictionary(int Index, Dictionary UpdatedDictionary)
+        {
+            bool result = false;
+
+            if ((Index < Dictionaries.Length) && (Index > -1))
+            {
+                Dictionaries[Index] = UpdatedDictionary;
+                DictionaryUpdated(this, Index);
+                result = true;
+            }
+
+            return result;
+        }
+        public int DeleteDictionary(int Index)
+        {
+            if ((Index < Dictionaries.Length) && (Index > -1))
+            {
+                for (int i = Index; i < Dictionaries.Length - 1; i++)
+                {
+                    Dictionaries[i] = Dictionaries[i + 1];
+                }
+            }
+
+            Array.Resize<Dictionary>(ref Dictionaries, Dictionaries.Length - 1);
+
+            DictionaryDeleted(this, Index);
+
+            return Dictionaries.Length;
+        }
+        public int DeleteLastDictionary()
+        {
+            return DeleteDictionary(Dictionaries.Length - 1);
+        }
+        public void DeleteAllDictionaries()
+        {
+            Dictionaries = new Dictionary[0];
+            DictionariesAllDeleted(this);
+        }
+        public int DictionaryMoveToStart(int Index)
+        {
+            int result = Index;
+
+            if ((Index > 0) && (Index < Dictionaries.Length))
+            {
+                Dictionary buffer = Dictionaries[Index];
+
+                Dictionaries[Index] = Dictionaries[Index - 1];
+                Dictionaries[Index - 1] = buffer;
+                result = Index - 1;
+            }
+
+            DictionaryMovedToStart(this, Index, result);
+            return result;
+        }
+        public int DictionaryMoveToEnd(int Index)
+        {
+            int result = Index;
+
+            if ((Index > -1) && (Index < Dictionaries.Length - 1))
+            {
+                Dictionary buffer = Dictionaries[Index];
+
+                Dictionaries[Index] = Dictionaries[Index + 1];
+                Dictionaries[Index + 1] = buffer;
+                result = Index + 1;
+            }
+
+            DictionaryMovedToStart(this, Index, result);
+            return result;
+        }
+
+        [Serializable()]
+        public class Dictionary
+        {
+            private FileInfo fileInfo;
+
+            public string Description { get; set; }
+            public string FileName
+            {
+                get { return fileInfo.FullName; }
+                set
+                {
+                    fileInfo = new FileInfo(value);
+                }
+            }
+            public string FormattedSize
+            {
+                get
+                {
+                    int length = fileInfo.Length.ToString().Length;
+
+                    if (length < 3)
+                    {
+                        return fileInfo.Length.ToString() + " B";
+                    }
+                    else if (length < 6)
+                    {
+                        return Math.Round(fileInfo.Length / 1024.0, 1).ToString() + " KB";
+                    }
+                    else if (length < 9)
+                    {
+                        return Math.Round(fileInfo.Length / 1048576.0, 1).ToString() + " MB";
+                    }
+                    else if (length < 12)
+                    {
+                        return Math.Round(fileInfo.Length / 1073741824.0, 1).ToString() + " GB";
+                    }
+                    else
+                    {
+                        return Math.Round(fileInfo.Length / 1099511627776.0, 1).ToString() + " TB";
+                    }
+                }
+            }
+            public long Size
+            {
+                get { return fileInfo.Length; }
+            }
+
+            public Dictionary(string fileName)
+            {
+                fileInfo = new FileInfo(fileName);
+            }
+        }
+    }
+
     public class SimpleProgressBar : UserControl
     {
         private int value = 0;

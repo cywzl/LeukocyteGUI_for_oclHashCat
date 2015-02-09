@@ -43,18 +43,18 @@
             this.textBoxHashcat = new System.Windows.Forms.TextBox();
             this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
             this.tabPageDictionaries = new System.Windows.Forms.TabPage();
-            this.buttonCancelTask = new System.Windows.Forms.Button();
-            this.listViewDictionaries = new System.Windows.Forms.ListView();
-            this.columnHeaderNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAddDictionary = new System.Windows.Forms.Button();
             this.buttonDeleteDictionary = new System.Windows.Forms.Button();
             this.buttonUpDictionary = new System.Windows.Forms.Button();
             this.buttonDownDictionary = new System.Windows.Forms.Button();
             this.buttonClearDictionary = new System.Windows.Forms.Button();
             this.buttonChangeDictionary = new System.Windows.Forms.Button();
+            this.listViewDictionaries = new System.Windows.Forms.ListView();
+            this.columnHeaderNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonCancelTask = new System.Windows.Forms.Button();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageDictionaries.SuspendLayout();
@@ -169,7 +169,7 @@
             this.tabPageMain.Location = new System.Drawing.Point(4, 22);
             this.tabPageMain.Name = "tabPageMain";
             this.tabPageMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMain.Size = new System.Drawing.Size(462, 199);
+            this.tabPageMain.Size = new System.Drawing.Size(462, 231);
             this.tabPageMain.TabIndex = 0;
             this.tabPageMain.Text = "Main";
             this.tabPageMain.UseVisualStyleBackColor = true;
@@ -234,55 +234,6 @@
             this.tabPageDictionaries.TabIndex = 1;
             this.tabPageDictionaries.Text = "Dictionaries";
             this.tabPageDictionaries.UseVisualStyleBackColor = true;
-            // 
-            // buttonCancelTask
-            // 
-            this.buttonCancelTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancelTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
-            this.buttonCancelTask.FlatAppearance.BorderSize = 0;
-            this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
-            this.buttonCancelTask.Location = new System.Drawing.Point(439, 275);
-            this.buttonCancelTask.Name = "buttonCancelTask";
-            this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
-            this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
-            this.buttonCancelTask.TabIndex = 45;
-            this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonCancelTask.UseVisualStyleBackColor = true;
-            // 
-            // listViewDictionaries
-            // 
-            this.listViewDictionaries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderNumber,
-            this.columnHeaderName,
-            this.columnHeaderSize,
-            this.columnHeaderPath});
-            this.listViewDictionaries.Location = new System.Drawing.Point(6, 44);
-            this.listViewDictionaries.Name = "listViewDictionaries";
-            this.listViewDictionaries.Size = new System.Drawing.Size(450, 181);
-            this.listViewDictionaries.TabIndex = 0;
-            this.listViewDictionaries.UseCompatibleStateImageBehavior = false;
-            this.listViewDictionaries.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeaderNumber
-            // 
-            this.columnHeaderNumber.Text = "№";
-            this.columnHeaderNumber.Width = 30;
-            // 
-            // columnHeaderName
-            // 
-            this.columnHeaderName.Text = "Name";
-            this.columnHeaderName.Width = 71;
-            // 
-            // columnHeaderSize
-            // 
-            this.columnHeaderSize.Text = "Size";
-            // 
-            // columnHeaderPath
-            // 
-            this.columnHeaderPath.Text = "Path";
-            this.columnHeaderPath.Width = 274;
             // 
             // buttonAddDictionary
             // 
@@ -386,6 +337,55 @@
             this.buttonChangeDictionary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonChangeDictionary.UseVisualStyleBackColor = true;
             // 
+            // listViewDictionaries
+            // 
+            this.listViewDictionaries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderNumber,
+            this.columnHeaderDescription,
+            this.columnHeaderSize,
+            this.columnHeaderPath});
+            this.listViewDictionaries.Location = new System.Drawing.Point(6, 44);
+            this.listViewDictionaries.Name = "listViewDictionaries";
+            this.listViewDictionaries.Size = new System.Drawing.Size(450, 181);
+            this.listViewDictionaries.TabIndex = 0;
+            this.listViewDictionaries.UseCompatibleStateImageBehavior = false;
+            this.listViewDictionaries.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderNumber
+            // 
+            this.columnHeaderNumber.Text = "№";
+            this.columnHeaderNumber.Width = 30;
+            // 
+            // columnHeaderDescription
+            // 
+            this.columnHeaderDescription.Text = "Description";
+            this.columnHeaderDescription.Width = 148;
+            // 
+            // columnHeaderSize
+            // 
+            this.columnHeaderSize.Text = "Size";
+            // 
+            // columnHeaderPath
+            // 
+            this.columnHeaderPath.Text = "Path";
+            this.columnHeaderPath.Width = 203;
+            // 
+            // buttonCancelTask
+            // 
+            this.buttonCancelTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancelTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
+            this.buttonCancelTask.FlatAppearance.BorderSize = 0;
+            this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
+            this.buttonCancelTask.Location = new System.Drawing.Point(439, 275);
+            this.buttonCancelTask.Name = "buttonCancelTask";
+            this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
+            this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
+            this.buttonCancelTask.TabIndex = 45;
+            this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonCancelTask.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,9 +426,8 @@
         private System.Windows.Forms.CheckBox checkBoxLoadOnStart;
         private System.Windows.Forms.CheckBox checkBoxSaveOnExit;
         private System.Windows.Forms.Button buttonCancelTask;
-        private System.Windows.Forms.ListView listViewDictionaries;
         private System.Windows.Forms.ColumnHeader columnHeaderNumber;
-        private System.Windows.Forms.ColumnHeader columnHeaderName;
+        private System.Windows.Forms.ColumnHeader columnHeaderDescription;
         private System.Windows.Forms.ColumnHeader columnHeaderSize;
         private System.Windows.Forms.ColumnHeader columnHeaderPath;
         private System.Windows.Forms.Button buttonAddDictionary;
@@ -437,5 +436,6 @@
         private System.Windows.Forms.Button buttonDownDictionary;
         private System.Windows.Forms.Button buttonClearDictionary;
         private System.Windows.Forms.Button buttonChangeDictionary;
+        public System.Windows.Forms.ListView listViewDictionaries;
     }
 }

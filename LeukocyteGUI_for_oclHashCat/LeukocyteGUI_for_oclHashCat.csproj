@@ -74,6 +74,12 @@
     <Compile Include="ConvertationStatisticsForm.Designer.cs">
       <DependentUpon>ConvertationStatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DictionaryEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DictionaryEditorForm.Designer.cs">
+      <DependentUpon>DictionaryEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConvertationStatisticsForm.resx">
       <DependentUpon>ConvertationStatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DictionaryEditorForm.resx">
+      <DependentUpon>DictionaryEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

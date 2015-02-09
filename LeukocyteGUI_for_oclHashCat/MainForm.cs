@@ -15,6 +15,7 @@ namespace LeukocyteGUI_for_oclHashCat
     public partial class MainForm : Form
     {
         CrackTaskManager tskManager;
+        DictionaryManager dictManager;
 
         public string DateTimeFormat { get; set; }
         public CrackTaskManager MainCrackTaskManager
@@ -29,6 +30,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 tskManager = value;
             }
         }
+        public DictionaryManager DictionaryManager
+        {
+            get { return dictManager; }
+            set { dictManager = value; }
+        }
 
         public MainForm()
         {
@@ -37,24 +43,25 @@ namespace LeukocyteGUI_for_oclHashCat
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
             tskManager = new CrackTaskManager();
-
-            if (Properties.Settings.Default.LoadOnStartup)
-            {
-                LoadTasks();
-            }
-
-            tskManager.Cracker.SynchronizingObject = this;
             tskManager.TaskAdded += tskManager_TaskAdded;
             tskManager.TaskDeleted += tskManager_TaskDeleted;
             tskManager.TaskMovedToEnd += tskManager_TaskMovedToEnd;
             tskManager.TaskMovedToStart += tskManager_TaskMovedToStart;
             tskManager.TaskUpdated += tskManager_TaskUpdated;
             tskManager.TasksAllDeleted += tskManager_TasksAllDeleted;
-
+            tskManager.Cracker.SynchronizingObject = this;
             tskManager.Cracker.BeforeStart += Cracker_BeforeStart;
             tskManager.Cracker.OnStart += Cracker_OnStart;
             tskManager.Cracker.OnCracking += Cracker_OnCracking;
             tskManager.Cracker.OnStop += Cracker_OnStop;
+
+            if (Properties.Settings.Default.LoadOnStartup)
+            {
+                LoadTasks();
+            }
+
+            dictManager = new DictionaryManager();
+            LoadDictionaries();
 
             typeof(Control).InvokeMember("DoubleBuffered",
                 System.Reflection.BindingFlags.SetProperty
@@ -395,6 +402,8 @@ namespace LeukocyteGUI_for_oclHashCat
                 SaveTasks();
             }
 
+            SaveDictionaries();
+
             Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
             Properties.Settings.Default.Save();
         }
@@ -634,6 +643,25 @@ namespace LeukocyteGUI_for_oclHashCat
             serializer.Serialize(crackTasksStream, tskManager.CrackTasks);
             crackTasksStream.Close();
             tsslCrackTasksFile.Text = Properties.Settings.Default.CrackTasksFile;
+        }
+        public void LoadDictionaries()
+        {
+            if (File.Exists(Properties.Settings.Default.CrackTasksFile))
+            {
+                Stream deserializerStream = File.OpenRead("Dictionaries.bin");
+                BinaryFormatter deserializer = new BinaryFormatter();
+                DictionaryManager.Dictionary[] dictionaries
+                    = (DictionaryManager.Dictionary[])deserializer.Deserialize(deserializerStream);
+                deserializerStream.Close();
+                dictManager.AddDictionaries(dictionaries);
+            }
+        }
+        public void SaveDictionaries()
+        {
+            Stream dictionariesStream = File.Create("Dictionaries.bin");
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(dictionariesStream, dictManager.Dictionaries);
+            dictionariesStream.Close();
         }
     }
 }
