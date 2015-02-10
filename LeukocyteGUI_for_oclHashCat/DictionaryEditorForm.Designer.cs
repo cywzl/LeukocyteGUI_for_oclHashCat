@@ -35,6 +35,7 @@
             this.buttonChooseDictionary = new System.Windows.Forms.Button();
             this.buttonCancelTask = new System.Windows.Forms.Button();
             this.buttonSettingsOK = new System.Windows.Forms.Button();
+            this.openFileDialogDictionary = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // labelDictionary
@@ -60,14 +61,14 @@
             this.textBoxDescription.Location = new System.Drawing.Point(81, 42);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(237, 20);
-            this.textBoxDescription.TabIndex = 2;
+            this.textBoxDescription.TabIndex = 3;
             // 
             // textBoxDictionary
             // 
             this.textBoxDictionary.Location = new System.Drawing.Point(81, 16);
             this.textBoxDictionary.Name = "textBoxDictionary";
             this.textBoxDictionary.Size = new System.Drawing.Size(197, 20);
-            this.textBoxDictionary.TabIndex = 3;
+            this.textBoxDictionary.TabIndex = 1;
             // 
             // buttonChooseDictionary
             // 
@@ -81,8 +82,9 @@
             this.buttonChooseDictionary.Location = new System.Drawing.Point(284, 15);
             this.buttonChooseDictionary.Name = "buttonChooseDictionary";
             this.buttonChooseDictionary.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseDictionary.TabIndex = 47;
+            this.buttonChooseDictionary.TabIndex = 2;
             this.buttonChooseDictionary.UseVisualStyleBackColor = true;
+            this.buttonChooseDictionary.Click += new System.EventHandler(this.buttonChooseDictionary_Click);
             // 
             // buttonCancelTask
             // 
@@ -96,7 +98,7 @@
             this.buttonCancelTask.Name = "buttonCancelTask";
             this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
-            this.buttonCancelTask.TabIndex = 49;
+            this.buttonCancelTask.TabIndex = 5;
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
@@ -111,9 +113,16 @@
             this.buttonSettingsOK.Name = "buttonSettingsOK";
             this.buttonSettingsOK.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSettingsOK.Size = new System.Drawing.Size(40, 40);
-            this.buttonSettingsOK.TabIndex = 48;
+            this.buttonSettingsOK.TabIndex = 4;
             this.buttonSettingsOK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettingsOK.UseVisualStyleBackColor = true;
+            this.buttonSettingsOK.Click += new System.EventHandler(this.buttonSettingsOK_Click);
+            // 
+            // openFileDialogDictionary
+            // 
+            this.openFileDialogDictionary.FileName = "dictionary";
+            this.openFileDialogDictionary.Filter = "Text files (*.txt)|*.txt|Any files (*.*)|*.*";
+            this.openFileDialogDictionary.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogDictionary_FileOk);
             // 
             // DictionaryEditorForm
             // 
@@ -146,5 +155,6 @@
         private System.Windows.Forms.Button buttonChooseDictionary;
         private System.Windows.Forms.Button buttonCancelTask;
         private System.Windows.Forms.Button buttonSettingsOK;
+        private System.Windows.Forms.OpenFileDialog openFileDialogDictionary;
     }
 }

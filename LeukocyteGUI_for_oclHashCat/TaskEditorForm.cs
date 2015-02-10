@@ -13,6 +13,8 @@ namespace LeukocyteGUI_for_oclHashCat
     public partial class TaskEditorForm : Form
     {
         CrackTaskManager tskManager;
+        DictionaryManager dictManager;
+        MaskManager maskManager;
         int changingTaskId = -1;
 
         public TaskEditorForm()
@@ -28,7 +30,19 @@ namespace LeukocyteGUI_for_oclHashCat
         private void TaskEditorForm_Load(object sender, EventArgs e)
         {
             tskManager = (this.Owner as MainForm).MainCrackTaskManager;
+            dictManager = (this.Owner as MainForm).DictionaryManager;
+            maskManager = (this.Owner as MainForm).MaskManager;
             FillFormWithTaskData();
+
+            for (int index = 0; index < dictManager.Dictionaries.Length; index++)
+            {
+                checkedListBoxDictionary.Items.Add(dictManager.Dictionaries[index].Description);
+            }
+
+            for (int index = 0; index < maskManager.Masks.Length; index++)
+            {
+                checkedListBoxMask.Items.Add(maskManager.Masks[index].Description);
+            }
         }
         private void buttonSubmitTask_Click(object sender, EventArgs e)
         {

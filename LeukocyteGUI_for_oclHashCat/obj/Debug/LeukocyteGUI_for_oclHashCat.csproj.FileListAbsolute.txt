@@ -28,3 +28,5 @@ D:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHas
 D:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashCat.Properties.Resources.resources
 D:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashCat.csproj.GenerateResource.Cache
 D:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashCat.DictionaryEditorForm.resources
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashCat.DictionaryEditorForm.resources
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashCat.MaskEditorForm.resources

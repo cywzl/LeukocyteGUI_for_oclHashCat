@@ -68,6 +68,7 @@
             this.checkBoxSaltIsInHex = new System.Windows.Forms.CheckBox();
             this.checkBoxCharsetIsInHex = new System.Windows.Forms.CheckBox();
             this.groupBoxOutput = new System.Windows.Forms.GroupBox();
+            this.buttonChooseOutputFile = new System.Windows.Forms.Button();
             this.checkBoxOutputToFile = new System.Windows.Forms.CheckBox();
             this.comboBoxOutputFormat = new System.Windows.Forms.ComboBox();
             this.labelOutputFormat = new System.Windows.Forms.Label();
@@ -89,14 +90,17 @@
             this.comboBoxWorkloadProfile = new System.Windows.Forms.ComboBox();
             this.checkBoxSpecificWorkloadProfile = new System.Windows.Forms.CheckBox();
             this.checkBoxGPUAsync = new System.Windows.Forms.CheckBox();
-            this.groupBoxActions = new System.Windows.Forms.GroupBox();
             this.buttonCancelTask = new System.Windows.Forms.Button();
             this.buttonSubmitTask = new System.Windows.Forms.Button();
             this.buttonClearTask = new System.Windows.Forms.Button();
             this.openFileDialogHash = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogDictionary = new System.Windows.Forms.OpenFileDialog();
-            this.buttonChooseOutputFile = new System.Windows.Forms.Button();
             this.saveFileDialogOutput = new System.Windows.Forms.SaveFileDialog();
+            this.checkedListBoxDictionary = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxMask = new System.Windows.Forms.CheckedListBox();
+            this.radioButtonAttackTypeMulti = new System.Windows.Forms.RadioButton();
+            this.labelDictionaries = new System.Windows.Forms.Label();
+            this.labelMasks = new System.Windows.Forms.Label();
             this.groupBoxAttackType.SuspendLayout();
             this.groupBoxHash.SuspendLayout();
             this.groupBoxIncrement.SuspendLayout();
@@ -108,40 +112,44 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempRetain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempAbort)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWorkloadFineTuning)).BeginInit();
-            this.groupBoxActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxHashFileName
             // 
             this.textBoxHashFileName.Location = new System.Drawing.Point(78, 19);
             this.textBoxHashFileName.Name = "textBoxHashFileName";
-            this.textBoxHashFileName.Size = new System.Drawing.Size(295, 20);
+            this.textBoxHashFileName.Size = new System.Drawing.Size(365, 20);
             this.textBoxHashFileName.TabIndex = 0;
             // 
             // radioButtonAttackTypeBrute
             // 
             this.radioButtonAttackTypeBrute.AutoSize = true;
             this.radioButtonAttackTypeBrute.Checked = true;
-            this.radioButtonAttackTypeBrute.Location = new System.Drawing.Point(16, 22);
+            this.radioButtonAttackTypeBrute.Location = new System.Drawing.Point(16, 74);
             this.radioButtonAttackTypeBrute.Name = "radioButtonAttackTypeBrute";
-            this.radioButtonAttackTypeBrute.Size = new System.Drawing.Size(111, 17);
+            this.radioButtonAttackTypeBrute.Size = new System.Drawing.Size(54, 17);
             this.radioButtonAttackTypeBrute.TabIndex = 3;
             this.radioButtonAttackTypeBrute.TabStop = true;
-            this.radioButtonAttackTypeBrute.Text = "Mask (bruteforce):";
+            this.radioButtonAttackTypeBrute.Text = "Mask:";
             this.radioButtonAttackTypeBrute.UseVisualStyleBackColor = true;
             // 
             // radioButtonAttackTypeDictionary
             // 
             this.radioButtonAttackTypeDictionary.AutoSize = true;
-            this.radioButtonAttackTypeDictionary.Location = new System.Drawing.Point(16, 179);
+            this.radioButtonAttackTypeDictionary.Location = new System.Drawing.Point(16, 24);
             this.radioButtonAttackTypeDictionary.Name = "radioButtonAttackTypeDictionary";
-            this.radioButtonAttackTypeDictionary.Size = new System.Drawing.Size(108, 17);
+            this.radioButtonAttackTypeDictionary.Size = new System.Drawing.Size(75, 17);
             this.radioButtonAttackTypeDictionary.TabIndex = 13;
-            this.radioButtonAttackTypeDictionary.Text = "Dictionary attack:";
+            this.radioButtonAttackTypeDictionary.Text = "Dictionary:";
             this.radioButtonAttackTypeDictionary.UseVisualStyleBackColor = true;
             // 
             // groupBoxAttackType
             // 
+            this.groupBoxAttackType.Controls.Add(this.labelMasks);
+            this.groupBoxAttackType.Controls.Add(this.labelDictionaries);
+            this.groupBoxAttackType.Controls.Add(this.radioButtonAttackTypeMulti);
+            this.groupBoxAttackType.Controls.Add(this.checkedListBoxMask);
+            this.groupBoxAttackType.Controls.Add(this.checkedListBoxDictionary);
             this.groupBoxAttackType.Controls.Add(this.buttonChooseDictionaryFile);
             this.groupBoxAttackType.Controls.Add(this.checkBoxCharset4);
             this.groupBoxAttackType.Controls.Add(this.textBoxCharset4);
@@ -157,7 +165,7 @@
             this.groupBoxAttackType.Controls.Add(this.radioButtonAttackTypeDictionary);
             this.groupBoxAttackType.Location = new System.Drawing.Point(13, 97);
             this.groupBoxAttackType.Name = "groupBoxAttackType";
-            this.groupBoxAttackType.Size = new System.Drawing.Size(345, 218);
+            this.groupBoxAttackType.Size = new System.Drawing.Size(503, 266);
             this.groupBoxAttackType.TabIndex = 1;
             this.groupBoxAttackType.TabStop = false;
             this.groupBoxAttackType.Text = "Attack type";
@@ -171,7 +179,7 @@
             this.buttonChooseDictionaryFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseDictionaryFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
             this.buttonChooseDictionaryFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseDictionaryFile.Location = new System.Drawing.Point(290, 177);
+            this.buttonChooseDictionaryFile.Location = new System.Drawing.Point(228, 45);
             this.buttonChooseDictionaryFile.Name = "buttonChooseDictionaryFile";
             this.buttonChooseDictionaryFile.Size = new System.Drawing.Size(34, 22);
             this.buttonChooseDictionaryFile.TabIndex = 48;
@@ -181,7 +189,7 @@
             // checkBoxCharset4
             // 
             this.checkBoxCharset4.AutoSize = true;
-            this.checkBoxCharset4.Location = new System.Drawing.Point(30, 141);
+            this.checkBoxCharset4.Location = new System.Drawing.Point(25, 213);
             this.checkBoxCharset4.Name = "checkBoxCharset4";
             this.checkBoxCharset4.Size = new System.Drawing.Size(74, 17);
             this.checkBoxCharset4.TabIndex = 11;
@@ -190,15 +198,15 @@
             // 
             // textBoxCharset4
             // 
-            this.textBoxCharset4.Location = new System.Drawing.Point(110, 139);
+            this.textBoxCharset4.Location = new System.Drawing.Point(105, 211);
             this.textBoxCharset4.Name = "textBoxCharset4";
-            this.textBoxCharset4.Size = new System.Drawing.Size(192, 20);
+            this.textBoxCharset4.Size = new System.Drawing.Size(139, 20);
             this.textBoxCharset4.TabIndex = 12;
             // 
             // checkBoxCharset3
             // 
             this.checkBoxCharset3.AutoSize = true;
-            this.checkBoxCharset3.Location = new System.Drawing.Point(30, 112);
+            this.checkBoxCharset3.Location = new System.Drawing.Point(25, 184);
             this.checkBoxCharset3.Name = "checkBoxCharset3";
             this.checkBoxCharset3.Size = new System.Drawing.Size(74, 17);
             this.checkBoxCharset3.TabIndex = 9;
@@ -207,15 +215,15 @@
             // 
             // textBoxCharset3
             // 
-            this.textBoxCharset3.Location = new System.Drawing.Point(110, 110);
+            this.textBoxCharset3.Location = new System.Drawing.Point(105, 182);
             this.textBoxCharset3.Name = "textBoxCharset3";
-            this.textBoxCharset3.Size = new System.Drawing.Size(192, 20);
+            this.textBoxCharset3.Size = new System.Drawing.Size(139, 20);
             this.textBoxCharset3.TabIndex = 10;
             // 
             // checkBoxCharset2
             // 
             this.checkBoxCharset2.AutoSize = true;
-            this.checkBoxCharset2.Location = new System.Drawing.Point(30, 83);
+            this.checkBoxCharset2.Location = new System.Drawing.Point(25, 155);
             this.checkBoxCharset2.Name = "checkBoxCharset2";
             this.checkBoxCharset2.Size = new System.Drawing.Size(74, 17);
             this.checkBoxCharset2.TabIndex = 7;
@@ -224,15 +232,15 @@
             // 
             // textBoxCharset2
             // 
-            this.textBoxCharset2.Location = new System.Drawing.Point(110, 81);
+            this.textBoxCharset2.Location = new System.Drawing.Point(105, 153);
             this.textBoxCharset2.Name = "textBoxCharset2";
-            this.textBoxCharset2.Size = new System.Drawing.Size(192, 20);
+            this.textBoxCharset2.Size = new System.Drawing.Size(139, 20);
             this.textBoxCharset2.TabIndex = 8;
             // 
             // checkBoxCharset1
             // 
             this.checkBoxCharset1.AutoSize = true;
-            this.checkBoxCharset1.Location = new System.Drawing.Point(30, 54);
+            this.checkBoxCharset1.Location = new System.Drawing.Point(25, 126);
             this.checkBoxCharset1.Name = "checkBoxCharset1";
             this.checkBoxCharset1.Size = new System.Drawing.Size(74, 17);
             this.checkBoxCharset1.TabIndex = 5;
@@ -241,23 +249,23 @@
             // 
             // textBoxCharset1
             // 
-            this.textBoxCharset1.Location = new System.Drawing.Point(110, 52);
+            this.textBoxCharset1.Location = new System.Drawing.Point(105, 124);
             this.textBoxCharset1.Name = "textBoxCharset1";
-            this.textBoxCharset1.Size = new System.Drawing.Size(192, 20);
+            this.textBoxCharset1.Size = new System.Drawing.Size(139, 20);
             this.textBoxCharset1.TabIndex = 6;
             // 
             // textBoxDictionary
             // 
-            this.textBoxDictionary.Location = new System.Drawing.Point(138, 178);
+            this.textBoxDictionary.Location = new System.Drawing.Point(25, 45);
             this.textBoxDictionary.Name = "textBoxDictionary";
-            this.textBoxDictionary.Size = new System.Drawing.Size(146, 20);
+            this.textBoxDictionary.Size = new System.Drawing.Size(197, 20);
             this.textBoxDictionary.TabIndex = 14;
             // 
             // textBoxBruteforceMask
             // 
-            this.textBoxBruteforceMask.Location = new System.Drawing.Point(138, 21);
+            this.textBoxBruteforceMask.Location = new System.Drawing.Point(25, 93);
             this.textBoxBruteforceMask.Name = "textBoxBruteforceMask";
-            this.textBoxBruteforceMask.Size = new System.Drawing.Size(186, 20);
+            this.textBoxBruteforceMask.Size = new System.Drawing.Size(219, 20);
             this.textBoxBruteforceMask.TabIndex = 4;
             // 
             // groupBoxHash
@@ -271,7 +279,7 @@
             this.groupBoxHash.Controls.Add(this.textBoxHashFileName);
             this.groupBoxHash.Location = new System.Drawing.Point(13, 12);
             this.groupBoxHash.Name = "groupBoxHash";
-            this.groupBoxHash.Size = new System.Drawing.Size(433, 79);
+            this.groupBoxHash.Size = new System.Drawing.Size(503, 79);
             this.groupBoxHash.TabIndex = 0;
             this.groupBoxHash.TabStop = false;
             this.groupBoxHash.Text = "Hash";
@@ -285,7 +293,7 @@
             this.buttonChooseHashFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseHashFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
             this.buttonChooseHashFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseHashFile.Location = new System.Drawing.Point(381, 18);
+            this.buttonChooseHashFile.Location = new System.Drawing.Point(451, 17);
             this.buttonChooseHashFile.Name = "buttonChooseHashFile";
             this.buttonChooseHashFile.Size = new System.Drawing.Size(34, 22);
             this.buttonChooseHashFile.TabIndex = 47;
@@ -295,7 +303,7 @@
             // labelSeparator
             // 
             this.labelSeparator.AutoSize = true;
-            this.labelSeparator.Location = new System.Drawing.Point(317, 49);
+            this.labelSeparator.Location = new System.Drawing.Point(387, 49);
             this.labelSeparator.Name = "labelSeparator";
             this.labelSeparator.Size = new System.Drawing.Size(56, 13);
             this.labelSeparator.TabIndex = 15;
@@ -303,7 +311,7 @@
             // 
             // textBoxSeparator
             // 
-            this.textBoxSeparator.Location = new System.Drawing.Point(379, 46);
+            this.textBoxSeparator.Location = new System.Drawing.Point(449, 46);
             this.textBoxSeparator.Name = "textBoxSeparator";
             this.textBoxSeparator.Size = new System.Drawing.Size(36, 20);
             this.textBoxSeparator.TabIndex = 1;
@@ -430,7 +438,7 @@
             "3711 = Mediawiki B type"});
             this.comboBoxHashType.Location = new System.Drawing.Point(78, 46);
             this.comboBoxHashType.Name = "comboBoxHashType";
-            this.comboBoxHashType.Size = new System.Drawing.Size(227, 21);
+            this.comboBoxHashType.Size = new System.Drawing.Size(294, 21);
             this.comboBoxHashType.TabIndex = 2;
             // 
             // labelHashType
@@ -458,7 +466,7 @@
             this.groupBoxIncrement.Controls.Add(this.numericUpDownIncrementMin);
             this.groupBoxIncrement.Controls.Add(this.labelIncrementMin);
             this.groupBoxIncrement.Controls.Add(this.checkBoxEnableIncrement);
-            this.groupBoxIncrement.Location = new System.Drawing.Point(368, 97);
+            this.groupBoxIncrement.Location = new System.Drawing.Point(522, 127);
             this.groupBoxIncrement.Name = "groupBoxIncrement";
             this.groupBoxIncrement.Size = new System.Drawing.Size(274, 81);
             this.groupBoxIncrement.TabIndex = 2;
@@ -519,7 +527,7 @@
             this.groupBoxOptions.Controls.Add(this.checkBoxIgnoreWarnings);
             this.groupBoxOptions.Controls.Add(this.checkBoxSaltIsInHex);
             this.groupBoxOptions.Controls.Add(this.checkBoxCharsetIsInHex);
-            this.groupBoxOptions.Location = new System.Drawing.Point(368, 299);
+            this.groupBoxOptions.Location = new System.Drawing.Point(522, 214);
             this.groupBoxOptions.Name = "groupBoxOptions";
             this.groupBoxOptions.Size = new System.Drawing.Size(274, 246);
             this.groupBoxOptions.TabIndex = 5;
@@ -630,12 +638,28 @@
             this.groupBoxOutput.Controls.Add(this.labelOutputFormat);
             this.groupBoxOutput.Controls.Add(this.labelOutputFile);
             this.groupBoxOutput.Controls.Add(this.textBoxOutputFile);
-            this.groupBoxOutput.Location = new System.Drawing.Point(368, 184);
+            this.groupBoxOutput.Location = new System.Drawing.Point(522, 12);
             this.groupBoxOutput.Name = "groupBoxOutput";
             this.groupBoxOutput.Size = new System.Drawing.Size(274, 109);
             this.groupBoxOutput.TabIndex = 3;
             this.groupBoxOutput.TabStop = false;
             this.groupBoxOutput.Text = "File Output";
+            // 
+            // buttonChooseOutputFile
+            // 
+            this.buttonChooseOutputFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseOutputFile.FlatAppearance.BorderSize = 0;
+            this.buttonChooseOutputFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseOutputFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseOutputFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseOutputFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseOutputFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseOutputFile.Location = new System.Drawing.Point(222, 45);
+            this.buttonChooseOutputFile.Name = "buttonChooseOutputFile";
+            this.buttonChooseOutputFile.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseOutputFile.TabIndex = 48;
+            this.buttonChooseOutputFile.UseVisualStyleBackColor = true;
+            this.buttonChooseOutputFile.Click += new System.EventHandler(this.buttonChooseOutputFile_Click);
             // 
             // checkBoxOutputToFile
             // 
@@ -713,9 +737,9 @@
             this.groupBoxGPUResources.Controls.Add(this.comboBoxWorkloadProfile);
             this.groupBoxGPUResources.Controls.Add(this.checkBoxSpecificWorkloadProfile);
             this.groupBoxGPUResources.Controls.Add(this.checkBoxGPUAsync);
-            this.groupBoxGPUResources.Location = new System.Drawing.Point(13, 321);
+            this.groupBoxGPUResources.Location = new System.Drawing.Point(13, 369);
             this.groupBoxGPUResources.Name = "groupBoxGPUResources";
-            this.groupBoxGPUResources.Size = new System.Drawing.Size(345, 224);
+            this.groupBoxGPUResources.Size = new System.Drawing.Size(503, 163);
             this.groupBoxGPUResources.TabIndex = 4;
             this.groupBoxGPUResources.TabStop = false;
             this.groupBoxGPUResources.Text = "GPU / Resources";
@@ -723,7 +747,7 @@
             // checkBoxDisablePowertune
             // 
             this.checkBoxDisablePowertune.AutoSize = true;
-            this.checkBoxDisablePowertune.Location = new System.Drawing.Point(16, 195);
+            this.checkBoxDisablePowertune.Location = new System.Drawing.Point(16, 135);
             this.checkBoxDisablePowertune.Name = "checkBoxDisablePowertune";
             this.checkBoxDisablePowertune.Size = new System.Drawing.Size(321, 17);
             this.checkBoxDisablePowertune.TabIndex = 27;
@@ -732,7 +756,7 @@
             // 
             // numericUpDownTempRetain
             // 
-            this.numericUpDownTempRetain.Location = new System.Drawing.Point(201, 169);
+            this.numericUpDownTempRetain.Location = new System.Drawing.Point(174, 65);
             this.numericUpDownTempRetain.Maximum = new decimal(new int[] {
             200,
             0,
@@ -745,7 +769,7 @@
             // labelCelsiusAMD
             // 
             this.labelCelsiusAMD.AutoSize = true;
-            this.labelCelsiusAMD.Location = new System.Drawing.Point(264, 171);
+            this.labelCelsiusAMD.Location = new System.Drawing.Point(237, 67);
             this.labelCelsiusAMD.Name = "labelCelsiusAMD";
             this.labelCelsiusAMD.Size = new System.Drawing.Size(73, 13);
             this.labelCelsiusAMD.TabIndex = 28;
@@ -754,16 +778,16 @@
             // checkBoxTempRetain
             // 
             this.checkBoxTempRetain.AutoSize = true;
-            this.checkBoxTempRetain.Location = new System.Drawing.Point(16, 170);
+            this.checkBoxTempRetain.Location = new System.Drawing.Point(16, 66);
             this.checkBoxTempRetain.Name = "checkBoxTempRetain";
-            this.checkBoxTempRetain.Size = new System.Drawing.Size(179, 17);
+            this.checkBoxTempRetain.Size = new System.Drawing.Size(146, 17);
             this.checkBoxTempRetain.TabIndex = 25;
-            this.checkBoxTempRetain.Text = "Try to retain GPU temperature at";
+            this.checkBoxTempRetain.Text = "Try to retain GPU temp at";
             this.checkBoxTempRetain.UseVisualStyleBackColor = true;
             // 
             // numericUpDownTempAbort
             // 
-            this.numericUpDownTempAbort.Location = new System.Drawing.Point(245, 144);
+            this.numericUpDownTempAbort.Location = new System.Drawing.Point(174, 42);
             this.numericUpDownTempAbort.Maximum = new decimal(new int[] {
             200,
             0,
@@ -776,7 +800,7 @@
             // labelCelsius
             // 
             this.labelCelsius.AutoSize = true;
-            this.labelCelsius.Location = new System.Drawing.Point(308, 146);
+            this.labelCelsius.Location = new System.Drawing.Point(237, 44);
             this.labelCelsius.Name = "labelCelsius";
             this.labelCelsius.Size = new System.Drawing.Size(18, 13);
             this.labelCelsius.TabIndex = 25;
@@ -785,17 +809,17 @@
             // checkBoxTempAbort
             // 
             this.checkBoxTempAbort.AutoSize = true;
-            this.checkBoxTempAbort.Location = new System.Drawing.Point(16, 145);
+            this.checkBoxTempAbort.Location = new System.Drawing.Point(16, 43);
             this.checkBoxTempAbort.Name = "checkBoxTempAbort";
-            this.checkBoxTempAbort.Size = new System.Drawing.Size(223, 17);
+            this.checkBoxTempAbort.Size = new System.Drawing.Size(152, 17);
             this.checkBoxTempAbort.TabIndex = 23;
-            this.checkBoxTempAbort.Text = "Abort session if GPU temperature reaches";
+            this.checkBoxTempAbort.Text = "Abort if GPU temp reaches";
             this.checkBoxTempAbort.UseVisualStyleBackColor = true;
             // 
             // checkBoxDisableTemp
             // 
             this.checkBoxDisableTemp.AutoSize = true;
-            this.checkBoxDisableTemp.Location = new System.Drawing.Point(16, 120);
+            this.checkBoxDisableTemp.Location = new System.Drawing.Point(16, 112);
             this.checkBoxDisableTemp.Name = "checkBoxDisableTemp";
             this.checkBoxDisableTemp.Size = new System.Drawing.Size(289, 17);
             this.checkBoxDisableTemp.TabIndex = 22;
@@ -804,7 +828,7 @@
             // 
             // numericUpDownWorkloadFineTuning
             // 
-            this.numericUpDownWorkloadFineTuning.Location = new System.Drawing.Point(166, 94);
+            this.numericUpDownWorkloadFineTuning.Location = new System.Drawing.Point(415, 42);
             this.numericUpDownWorkloadFineTuning.Maximum = new decimal(new int[] {
             1024,
             0,
@@ -827,7 +851,7 @@
             // checkBoxWorkloadFineTuning
             // 
             this.checkBoxWorkloadFineTuning.AutoSize = true;
-            this.checkBoxWorkloadFineTuning.Location = new System.Drawing.Point(16, 95);
+            this.checkBoxWorkloadFineTuning.Location = new System.Drawing.Point(290, 43);
             this.checkBoxWorkloadFineTuning.Name = "checkBoxWorkloadFineTuning";
             this.checkBoxWorkloadFineTuning.Size = new System.Drawing.Size(127, 17);
             this.checkBoxWorkloadFineTuning.TabIndex = 20;
@@ -843,7 +867,7 @@
             "40",
             "80",
             "160"});
-            this.comboBoxWorkloadTuning.Location = new System.Drawing.Point(166, 68);
+            this.comboBoxWorkloadTuning.Location = new System.Drawing.Point(415, 17);
             this.comboBoxWorkloadTuning.Name = "comboBoxWorkloadTuning";
             this.comboBoxWorkloadTuning.Size = new System.Drawing.Size(73, 21);
             this.comboBoxWorkloadTuning.TabIndex = 19;
@@ -851,7 +875,7 @@
             // checkBoxWorkloadTuning
             // 
             this.checkBoxWorkloadTuning.AutoSize = true;
-            this.checkBoxWorkloadTuning.Location = new System.Drawing.Point(16, 70);
+            this.checkBoxWorkloadTuning.Location = new System.Drawing.Point(290, 19);
             this.checkBoxWorkloadTuning.Name = "checkBoxWorkloadTuning";
             this.checkBoxWorkloadTuning.Size = new System.Drawing.Size(107, 17);
             this.checkBoxWorkloadTuning.TabIndex = 18;
@@ -865,7 +889,7 @@
             "1 = Reduced performance",
             "2 = Default performance",
             "3 = Tuned performance"});
-            this.comboBoxWorkloadProfile.Location = new System.Drawing.Point(166, 43);
+            this.comboBoxWorkloadProfile.Location = new System.Drawing.Point(174, 87);
             this.comboBoxWorkloadProfile.Name = "comboBoxWorkloadProfile";
             this.comboBoxWorkloadProfile.Size = new System.Drawing.Size(158, 21);
             this.comboBoxWorkloadProfile.TabIndex = 17;
@@ -873,7 +897,7 @@
             // checkBoxSpecificWorkloadProfile
             // 
             this.checkBoxSpecificWorkloadProfile.AutoSize = true;
-            this.checkBoxSpecificWorkloadProfile.Location = new System.Drawing.Point(16, 45);
+            this.checkBoxSpecificWorkloadProfile.Location = new System.Drawing.Point(16, 89);
             this.checkBoxSpecificWorkloadProfile.Name = "checkBoxSpecificWorkloadProfile";
             this.checkBoxSpecificWorkloadProfile.Size = new System.Drawing.Size(144, 17);
             this.checkBoxSpecificWorkloadProfile.TabIndex = 16;
@@ -890,18 +914,6 @@
             this.checkBoxGPUAsync.Text = "Use non-blocking async calls (NV only)";
             this.checkBoxGPUAsync.UseVisualStyleBackColor = true;
             // 
-            // groupBoxActions
-            // 
-            this.groupBoxActions.Controls.Add(this.buttonCancelTask);
-            this.groupBoxActions.Controls.Add(this.buttonSubmitTask);
-            this.groupBoxActions.Controls.Add(this.buttonClearTask);
-            this.groupBoxActions.Location = new System.Drawing.Point(456, 12);
-            this.groupBoxActions.Name = "groupBoxActions";
-            this.groupBoxActions.Size = new System.Drawing.Size(186, 79);
-            this.groupBoxActions.TabIndex = 6;
-            this.groupBoxActions.TabStop = false;
-            this.groupBoxActions.Text = "Actions";
-            // 
             // buttonCancelTask
             // 
             this.buttonCancelTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -910,7 +922,7 @@
             this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
-            this.buttonCancelTask.Location = new System.Drawing.Point(125, 22);
+            this.buttonCancelTask.Location = new System.Drawing.Point(756, 492);
             this.buttonCancelTask.Name = "buttonCancelTask";
             this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
@@ -926,7 +938,7 @@
             this.buttonSubmitTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonSubmitTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSubmitTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
-            this.buttonSubmitTask.Location = new System.Drawing.Point(17, 22);
+            this.buttonSubmitTask.Location = new System.Drawing.Point(710, 492);
             this.buttonSubmitTask.Name = "buttonSubmitTask";
             this.buttonSubmitTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSubmitTask.Size = new System.Drawing.Size(40, 40);
@@ -942,7 +954,7 @@
             this.buttonClearTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonClearTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_update;
-            this.buttonClearTask.Location = new System.Drawing.Point(72, 22);
+            this.buttonClearTask.Location = new System.Drawing.Point(522, 492);
             this.buttonClearTask.Name = "buttonClearTask";
             this.buttonClearTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonClearTask.Size = new System.Drawing.Size(40, 40);
@@ -961,34 +973,66 @@
             this.openFileDialogDictionary.FileName = "dictionary";
             this.openFileDialogDictionary.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogDictionary_FileOk);
             // 
-            // buttonChooseOutputFile
-            // 
-            this.buttonChooseOutputFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseOutputFile.FlatAppearance.BorderSize = 0;
-            this.buttonChooseOutputFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseOutputFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseOutputFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseOutputFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseOutputFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseOutputFile.Location = new System.Drawing.Point(222, 45);
-            this.buttonChooseOutputFile.Name = "buttonChooseOutputFile";
-            this.buttonChooseOutputFile.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseOutputFile.TabIndex = 48;
-            this.buttonChooseOutputFile.UseVisualStyleBackColor = true;
-            this.buttonChooseOutputFile.Click += new System.EventHandler(this.buttonChooseOutputFile_Click);
-            // 
             // saveFileDialogOutput
             // 
             this.saveFileDialogOutput.Filter = "Text files (*.txt)|*.txt|Any files (*.*)|*.*";
             this.saveFileDialogOutput.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialogOutput_FileOk);
+            // 
+            // checkedListBoxDictionary
+            // 
+            this.checkedListBoxDictionary.CheckOnClick = true;
+            this.checkedListBoxDictionary.FormattingEnabled = true;
+            this.checkedListBoxDictionary.Location = new System.Drawing.Point(290, 64);
+            this.checkedListBoxDictionary.Name = "checkedListBoxDictionary";
+            this.checkedListBoxDictionary.Size = new System.Drawing.Size(195, 79);
+            this.checkedListBoxDictionary.TabIndex = 49;
+            // 
+            // checkedListBoxMask
+            // 
+            this.checkedListBoxMask.CheckOnClick = true;
+            this.checkedListBoxMask.FormattingEnabled = true;
+            this.checkedListBoxMask.Location = new System.Drawing.Point(290, 171);
+            this.checkedListBoxMask.Name = "checkedListBoxMask";
+            this.checkedListBoxMask.Size = new System.Drawing.Size(195, 79);
+            this.checkedListBoxMask.TabIndex = 50;
+            // 
+            // radioButtonAttackTypeMulti
+            // 
+            this.radioButtonAttackTypeMulti.AutoSize = true;
+            this.radioButtonAttackTypeMulti.Location = new System.Drawing.Point(284, 24);
+            this.radioButtonAttackTypeMulti.Name = "radioButtonAttackTypeMulti";
+            this.radioButtonAttackTypeMulti.Size = new System.Drawing.Size(102, 17);
+            this.radioButtonAttackTypeMulti.TabIndex = 51;
+            this.radioButtonAttackTypeMulti.Text = "Multiple attacks:";
+            this.radioButtonAttackTypeMulti.UseVisualStyleBackColor = true;
+            // 
+            // labelDictionaries
+            // 
+            this.labelDictionaries.AutoSize = true;
+            this.labelDictionaries.Location = new System.Drawing.Point(287, 48);
+            this.labelDictionaries.Name = "labelDictionaries";
+            this.labelDictionaries.Size = new System.Drawing.Size(65, 13);
+            this.labelDictionaries.TabIndex = 52;
+            this.labelDictionaries.Text = "Dictionaries:";
+            // 
+            // labelMasks
+            // 
+            this.labelMasks.AutoSize = true;
+            this.labelMasks.Location = new System.Drawing.Point(287, 155);
+            this.labelMasks.Name = "labelMasks";
+            this.labelMasks.Size = new System.Drawing.Size(41, 13);
+            this.labelMasks.TabIndex = 53;
+            this.labelMasks.Text = "Masks:";
             // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancelTask;
-            this.ClientSize = new System.Drawing.Size(656, 556);
-            this.Controls.Add(this.groupBoxActions);
+            this.ClientSize = new System.Drawing.Size(806, 541);
+            this.Controls.Add(this.buttonCancelTask);
+            this.Controls.Add(this.buttonClearTask);
+            this.Controls.Add(this.buttonSubmitTask);
             this.Controls.Add(this.groupBoxGPUResources);
             this.Controls.Add(this.groupBoxOutput);
             this.Controls.Add(this.groupBoxOptions);
@@ -1018,7 +1062,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempRetain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTempAbort)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWorkloadFineTuning)).EndInit();
-            this.groupBoxActions.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1083,7 +1126,6 @@
         private System.Windows.Forms.CheckBox checkBoxTempRetain;
         private System.Windows.Forms.TextBox textBoxSessionId;
         private System.Windows.Forms.Label labelSessionId;
-        private System.Windows.Forms.GroupBox groupBoxActions;
         private System.Windows.Forms.Button buttonCancelTask;
         private System.Windows.Forms.Button buttonSubmitTask;
         private System.Windows.Forms.Button buttonClearTask;
@@ -1094,5 +1136,10 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogDictionary;
         private System.Windows.Forms.Button buttonChooseOutputFile;
         private System.Windows.Forms.SaveFileDialog saveFileDialogOutput;
+        private System.Windows.Forms.Label labelMasks;
+        private System.Windows.Forms.Label labelDictionaries;
+        private System.Windows.Forms.RadioButton radioButtonAttackTypeMulti;
+        private System.Windows.Forms.CheckedListBox checkedListBoxMask;
+        private System.Windows.Forms.CheckedListBox checkedListBoxDictionary;
     }
 }

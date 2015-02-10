@@ -16,6 +16,7 @@ namespace LeukocyteGUI_for_oclHashCat
     {
         CrackTaskManager tskManager;
         DictionaryManager dictManager;
+        MaskManager maskManager;
 
         public string DateTimeFormat { get; set; }
         public CrackTaskManager MainCrackTaskManager
@@ -34,6 +35,11 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             get { return dictManager; }
             set { dictManager = value; }
+        }
+        public MaskManager MaskManager
+        {
+            get { return maskManager; }
+            set { maskManager = value; }
         }
 
         public MainForm()
@@ -62,6 +68,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
             dictManager = new DictionaryManager();
             LoadDictionaries();
+
+            maskManager = new MaskManager();
+            LoadMasks();
 
             typeof(Control).InvokeMember("DoubleBuffered",
                 System.Reflection.BindingFlags.SetProperty
@@ -300,7 +309,7 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            (new SettingsForm()).ShowDialog(this);
+            (new SettingsForm(this)).ShowDialog(this);
         }
         private void listViewTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -403,6 +412,7 @@ namespace LeukocyteGUI_for_oclHashCat
             }
 
             SaveDictionaries();
+            SaveMasks();
 
             Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
             Properties.Settings.Default.Save();
@@ -646,7 +656,7 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public void LoadDictionaries()
         {
-            if (File.Exists(Properties.Settings.Default.CrackTasksFile))
+            if (File.Exists("Dictionaries.bin"))
             {
                 Stream deserializerStream = File.OpenRead("Dictionaries.bin");
                 BinaryFormatter deserializer = new BinaryFormatter();
@@ -662,6 +672,25 @@ namespace LeukocyteGUI_for_oclHashCat
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(dictionariesStream, dictManager.Dictionaries);
             dictionariesStream.Close();
+        }
+        public void LoadMasks()
+        {
+            if (File.Exists("Masks.bin"))
+            {
+                Stream deserializerStream = File.OpenRead("Masks.bin");
+                BinaryFormatter deserializer = new BinaryFormatter();
+                MaskManager.Mask[] masks
+                    = (MaskManager.Mask[])deserializer.Deserialize(deserializerStream);
+                deserializerStream.Close();
+                maskManager.AddMasks(masks);
+            }
+        }
+        public void SaveMasks()
+        {
+            Stream masksStream = File.Create("Masks.bin");
+            BinaryFormatter serializer = new BinaryFormatter();
+            serializer.Serialize(masksStream, maskManager.Masks);
+            masksStream.Close();
         }
     }
 }

@@ -462,8 +462,14 @@ namespace LeukocyteGUI_for_oclHashCat
             public bool DisableLogfile { get; set; }
             public bool OutputToFile { get; set; }
             public bool Restore { get; set; }
+            public List<int> ConnectedTasksIds { get; set; }
             public DateTime Started { get; set; }
             public DateTime Finished { get; set; }
+
+            public CrackTask()
+            {
+                ConnectedTasksIds = new List<int>();
+            }
 
             public bool SetHash(string HashFileName, bool ShowErrorMessages = false)
             {
@@ -1259,17 +1265,6 @@ namespace LeukocyteGUI_for_oclHashCat
     {
         public Dictionary[] Dictionaries;
 
-        public delegate void DictionaryAddedDeletedUpdatedEventHandler(object sender, int DictionaryId);
-        public delegate void DictionariesAllDeletedEventHandler(object sender);
-        public delegate void DictionaryMovedToStartEnd(object sender, int OriginalId, int NewId);
-
-        public event DictionaryAddedDeletedUpdatedEventHandler DictionaryAdded = delegate { };
-        public event DictionaryAddedDeletedUpdatedEventHandler DictionaryDeleted = delegate { };
-        public event DictionaryAddedDeletedUpdatedEventHandler DictionaryUpdated = delegate { };
-        public event DictionariesAllDeletedEventHandler DictionariesAllDeleted = delegate { };
-        public event DictionaryMovedToStartEnd DictionaryMovedToStart = delegate { };
-        public event DictionaryMovedToStartEnd DictionaryMovedToEnd = delegate { };
-
         public DictionaryManager(Dictionary[] dictionaries)
         {
             Dictionaries = dictionaries;
@@ -1298,7 +1293,6 @@ namespace LeukocyteGUI_for_oclHashCat
             if ((Index < Dictionaries.Length) && (Index > -1))
             {
                 Dictionaries[Index] = UpdatedDictionary;
-                DictionaryUpdated(this, Index);
                 result = true;
             }
 
@@ -1316,8 +1310,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             Array.Resize<Dictionary>(ref Dictionaries, Dictionaries.Length - 1);
 
-            DictionaryDeleted(this, Index);
-
             return Dictionaries.Length;
         }
         public int DeleteLastDictionary()
@@ -1327,7 +1319,6 @@ namespace LeukocyteGUI_for_oclHashCat
         public void DeleteAllDictionaries()
         {
             Dictionaries = new Dictionary[0];
-            DictionariesAllDeleted(this);
         }
         public int DictionaryMoveToStart(int Index)
         {
@@ -1342,7 +1333,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 result = Index - 1;
             }
 
-            DictionaryMovedToStart(this, Index, result);
             return result;
         }
         public int DictionaryMoveToEnd(int Index)
@@ -1358,7 +1348,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 result = Index + 1;
             }
 
-            DictionaryMovedToStart(this, Index, result);
             return result;
         }
 
@@ -1413,6 +1402,138 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 fileInfo = new FileInfo(fileName);
             }
+        }
+    }
+
+    public class MaskManager
+    {
+        public Mask[] Masks;
+
+        public MaskManager(Mask[] masks)
+        {
+            Masks = masks;
+        }
+        public MaskManager() : this(new Mask[0]) { }
+
+        public int AddMask(Mask newMask)
+        {
+            Array.Resize<Mask>(ref Masks, Masks.Length + 1);
+            Masks[Masks.Length - 1] = newMask;
+            return Masks.Length;
+        }
+        public int AddMasks(Mask[] newMasks)
+        {
+            for (int index = 0; index < newMasks.Length; index++)
+            {
+                AddMask(newMasks[index]);
+            }
+
+            return Masks.Length;
+        }
+        public bool UpdateMask(int Index, Mask UpdatedMask)
+        {
+            bool result = false;
+
+            if ((Index < Masks.Length) && (Index > -1))
+            {
+                Masks[Index] = UpdatedMask;
+                result = true;
+            }
+
+            return result;
+        }
+        public int DeleteMask(int Index)
+        {
+            if ((Index < Masks.Length) && (Index > -1))
+            {
+                for (int i = Index; i < Masks.Length - 1; i++)
+                {
+                    Masks[i] = Masks[i + 1];
+                }
+            }
+
+            Array.Resize<Mask>(ref Masks, Masks.Length - 1);
+
+            return Masks.Length;
+        }
+        public int DeleteLastMask()
+        {
+            return DeleteMask(Masks.Length - 1);
+        }
+        public void DeleteAllMasks()
+        {
+            Masks = new Mask[0];
+        }
+        public int MaskMoveToStart(int Index)
+        {
+            int result = Index;
+
+            if ((Index > 0) && (Index < Masks.Length))
+            {
+                Mask buffer = Masks[Index];
+
+                Masks[Index] = Masks[Index - 1];
+                Masks[Index - 1] = buffer;
+                result = Index - 1;
+            }
+
+            return result;
+        }
+        public int MaskMoveToEnd(int Index)
+        {
+            int result = Index;
+
+            if ((Index > -1) && (Index < Masks.Length - 1))
+            {
+                Mask buffer = Masks[Index];
+
+                Masks[Index] = Masks[Index + 1];
+                Masks[Index + 1] = buffer;
+                result = Index + 1;
+            }
+
+            return result;
+        }
+
+        [Serializable()]
+        public class Mask
+        {
+            public string BruteMask { get; set; }
+            public string Charset1 { get; set; }
+            public string Charset2 { get; set; }
+            public string Charset3 { get; set; }
+            public string Charset4 { get; set; }
+            public string CharsetString
+            {
+                get
+                {
+                    string result = "";
+
+                    if (UseCharset1)
+                    {
+                        result += "[1]" + Charset1;
+                    }
+                    if (UseCharset2)
+                    {
+                        result += "[2]" + Charset2;
+                    }
+                    if (UseCharset3)
+                    {
+                        result += "[3]" + Charset3;
+                    }
+                    if (UseCharset4)
+                    {
+                        result += "[4]" + Charset4;
+                    }
+
+                    return result;
+                }
+            }
+            public string Description { get; set; }
+            public bool UseCharset1 { get; set; }
+            public bool UseCharset2 { get; set; }
+            public bool UseCharset3 { get; set; }
+            public bool UseCharset4 { get; set; }
         }
     }
 
