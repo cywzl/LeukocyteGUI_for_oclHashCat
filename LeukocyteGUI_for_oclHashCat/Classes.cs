@@ -89,8 +89,11 @@ namespace LeukocyteGUI_for_oclHashCat
         public int AddTask(CrackTask NewCrackTask)
         {
             Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length + 1);
-            CrackTasks[CrackTasks.Length - 1] = NewCrackTask;
-            TaskAdded(this, CrackTasks.Length - 1);
+            int newIndex = CrackTasks.Length - 1;
+
+            CrackTasks[newIndex] = NewCrackTask;
+            TaskAdded(this, newIndex);
+
             return CrackTasks.Length;
         }
         public bool UpdateTask(int Index, CrackTask UpdatedCrackTask)
@@ -114,16 +117,16 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     CrackTasks[i] = CrackTasks[i + 1];
                 }
+
+                Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length - 1);
+
+                if (Cracker.LastCrackingTaskId == Index)
+                {
+                    Cracker.LastCrackingTaskId = -1;
+                }
+
+                TaskDeleted(this, Index);
             }
-
-            Array.Resize<CrackTask>(ref CrackTasks, CrackTasks.Length - 1);
-
-            if (Cracker.LastCrackingTaskId == Index)
-            {
-                Cracker.LastCrackingTaskId = -1;
-            }
-
-            TaskDeleted(this, Index);
 
             return CrackTasks.Length;
         }
@@ -139,45 +142,53 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public int TaskMoveToStart(int Index)
         {
-            int result = Index;
+            int newIndex = Index;
 
-            if ((Index > 0) && (Index < CrackTasks.Length))
+            if ((Index < 1) || (Index >= CrackTasks.Length))
             {
-                CrackTask buffer = CrackTasks[Index];
-
-                CrackTasks[Index] = CrackTasks[Index - 1];
-                CrackTasks[Index - 1] = buffer;
-                result = Index - 1;
+                TaskMovedToStart(this, Index, Index);
+                return Index;
             }
+
+            newIndex = Index - 1;
+
+            CrackTask buffer = CrackTasks[Index];
+
+            CrackTasks[Index] = CrackTasks[newIndex];
+            CrackTasks[newIndex] = buffer;
 
             if (Cracker.LastCrackingTaskId == Index)
             {
-                Cracker.LastCrackingTaskId = result;
+                Cracker.LastCrackingTaskId = newIndex;
             }
 
-            TaskMovedToStart(this, Index, result);
-            return result;
+            TaskMovedToStart(this, Index, newIndex);
+            return newIndex;
         }
         public int TaskMoveToEnd(int Index)
         {
-            int result = Index;
+            int newIndex = Index;
 
-            if ((Index > -1) && (Index < CrackTasks.Length - 1))
+            if ((Index < 0) || (Index > CrackTasks.Length - 2))
             {
-                CrackTask buffer = CrackTasks[Index];
-
-                CrackTasks[Index] = CrackTasks[Index + 1];
-                CrackTasks[Index + 1] = buffer;
-                result = Index + 1;
+                TaskMovedToStart(this, Index, newIndex);
+                return newIndex;
             }
+
+            newIndex = Index + 1;
+
+            CrackTask buffer = CrackTasks[Index];
+
+            CrackTasks[Index] = CrackTasks[newIndex];
+            CrackTasks[newIndex] = buffer;
 
             if (Cracker.LastCrackingTaskId == Index)
             {
-                Cracker.LastCrackingTaskId = result;
+                Cracker.LastCrackingTaskId = newIndex;
             }
 
-            TaskMovedToStart(this, Index, result);
-            return result;
+            TaskMovedToStart(this, Index, newIndex);
+            return newIndex;
         }
 
         [Serializable()]
@@ -462,14 +473,8 @@ namespace LeukocyteGUI_for_oclHashCat
             public bool DisableLogfile { get; set; }
             public bool OutputToFile { get; set; }
             public bool Restore { get; set; }
-            public List<int> ConnectedTasksIds { get; set; }
             public DateTime Started { get; set; }
             public DateTime Finished { get; set; }
-
-            public CrackTask()
-            {
-                ConnectedTasksIds = new List<int>();
-            }
 
             public bool SetHash(string HashFileName, bool ShowErrorMessages = false)
             {
@@ -1530,6 +1535,9 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
             public string Description { get; set; }
+            public byte IncrementMin { get; set; }
+            public byte IncrementMax { get; set; }
+            public bool EnableIncrement { get; set; }
             public bool UseCharset1 { get; set; }
             public bool UseCharset2 { get; set; }
             public bool UseCharset3 { get; set; }

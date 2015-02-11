@@ -42,6 +42,9 @@ namespace LeukocyteGUI_for_oclHashCat
             newMask.UseCharset2 = checkBoxCharset2.Checked;
             newMask.UseCharset3 = checkBoxCharset3.Checked;
             newMask.UseCharset4 = checkBoxCharset4.Checked;
+            newMask.EnableIncrement = checkBoxEnableIncrement.Checked;
+            newMask.IncrementMin = (byte)numericUpDownIncrementMin.Value;
+            newMask.IncrementMax = (byte)numericUpDownIncrementMax.Value;
 
             if (changingMaskId == -1)
             {
@@ -69,6 +72,9 @@ namespace LeukocyteGUI_for_oclHashCat
             checkBoxCharset2.Checked = maskManager.Masks[changingMaskId].UseCharset2;
             checkBoxCharset3.Checked = maskManager.Masks[changingMaskId].UseCharset3;
             checkBoxCharset4.Checked = maskManager.Masks[changingMaskId].UseCharset4;
+            checkBoxEnableIncrement.Checked = maskManager.Masks[changingMaskId].EnableIncrement;
+            numericUpDownIncrementMin.Value = maskManager.Masks[changingMaskId].IncrementMin;
+            numericUpDownIncrementMax.Value = maskManager.Masks[changingMaskId].IncrementMax;
         }
     }
 }

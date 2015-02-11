@@ -113,13 +113,42 @@ namespace LeukocyteGUI_for_oclHashCat
                 SaveTasks();
             }
 
+            string status = tskManager.CrackTasks[TaskId].Status;
+
+            if (status == "Cracked")
+            {
+                string hash = tskManager.CrackTasks[TaskId].Hash;
+
+                for (int index = 0; index < tskManager.CrackTasks.Length; index++)
+                {
+                    if ((index != TaskId)
+                        && (tskManager.CrackTasks[index].Hash == hash))
+                    {
+                        tskManager.CrackTasks[index].Status = status;
+                        tskManager.CrackTasks[index].Digests
+                            = tskManager.CrackTasks[TaskId].Digests;
+                        tskManager.CrackTasks[index].RecoveredDigests
+                            = tskManager.CrackTasks[TaskId].RecoveredDigests;
+                        tskManager.CrackTasks[index].Salts
+                            = tskManager.CrackTasks[TaskId].Salts;
+                        tskManager.CrackTasks[index].RecoveredSalts
+                            = tskManager.CrackTasks[TaskId].RecoveredSalts;
+                        tskManager.CrackTasks[index].Plain
+                            = tskManager.CrackTasks[TaskId].Plain;
+
+                        VisualizeTask(index);
+                    }
+                }
+            }
+
             CheckButtons();
 
             if ((checkBoxAllChecked.Checked) && (!checkBoxPauseCracking.Checked))
             {
                 for (int index = 0; index < listViewTasks.Items.Count; index++)
                 {
-                    if (listViewTasks.Items[index].Checked)
+                    if ((listViewTasks.Items[index].Checked)
+                        && (tskManager.CrackTasks[index].Status != "Cracked"))
                     {
                         tskManager.Cracker.Crack(index);
                         break;

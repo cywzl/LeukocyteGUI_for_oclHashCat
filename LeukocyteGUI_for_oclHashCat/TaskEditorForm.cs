@@ -49,7 +49,7 @@ namespace LeukocyteGUI_for_oclHashCat
             string[] Data;
             CrackTaskManager.CrackTask CrackTask;
 
-            if (changingTaskId > -1)
+            if ((changingTaskId > -1) && (!radioButtonAttackTypeMulti.Checked))
             {
                 CrackTask = tskManager.CrackTasks[changingTaskId].DeepCopy();
             }
@@ -78,26 +78,6 @@ namespace LeukocyteGUI_for_oclHashCat
             CrackTask.UseCharset3 = checkBoxCharset3.Checked;
             CrackTask.UseCharset4 = checkBoxCharset4.Checked;
             CrackTask.Status = "Paused";
-
-            if (checkBoxEnableIncrement.Checked)
-            {
-                CrackTask.EnableIncrementMode = true;
-                CrackTask.SetStartLength((byte)numericUpDownIncrementMin.Value);
-                CrackTask.SetMaxLength((byte)numericUpDownIncrementMax.Value);
-            }
-            else
-            {
-                CrackTask.SetMaxLength((byte)textBoxBruteforceMask.Text.Replace("?", "").Length);
-            }
-
-            if (radioButtonAttackTypeBrute.Checked)
-            {
-                CrackTask.SetAttackType(3);
-            }
-            else
-            {
-                CrackTask.SetAttackType(0);
-            }
 
             CrackTask.EnableGPUAsync = checkBoxGPUAsync.Checked;
 
@@ -150,13 +130,74 @@ namespace LeukocyteGUI_for_oclHashCat
             CrackTask.DisablePotfile = checkBoxDisablePot.Checked;
             CrackTask.DisableLogfile = checkBoxDisableLog.Checked;
 
-            if (changingTaskId > -1)
+            if (radioButtonAttackTypeMulti.Checked)
             {
-                tskManager.UpdateTask(changingTaskId, CrackTask);
+                if((checkedListBoxDictionary.CheckedIndices.Count > 0)
+                    || (checkedListBoxMask.CheckedIndices.Count > 0))
+                {
+                    foreach (int dictId in checkedListBoxDictionary.CheckedIndices)
+                    {
+                        CrackTaskManager.CrackTask curTask = CrackTask.DeepCopy();
+                        curTask.SetAttackType(0);
+                        curTask.SetDictionary(dictManager.Dictionaries[dictId].FileName, true);
+                        tskManager.AddTask(curTask);
+                    }
+
+                    foreach (int maskId in checkedListBoxMask.CheckedIndices)
+                    {
+                        CrackTaskManager.CrackTask curTask = CrackTask.DeepCopy();
+                        curTask.SetAttackType(3);
+                        curTask.SetBruteforceMask(maskManager.Masks[maskId].BruteMask);
+                        curTask.SetCharset1(maskManager.Masks[maskId].Charset1);
+                        curTask.SetCharset2(maskManager.Masks[maskId].Charset2);
+                        curTask.SetCharset3(maskManager.Masks[maskId].Charset3);
+                        curTask.SetCharset4(maskManager.Masks[maskId].Charset4);
+                        curTask.UseCharset1 = maskManager.Masks[maskId].UseCharset1;
+                        curTask.UseCharset2 = maskManager.Masks[maskId].UseCharset2;
+                        curTask.UseCharset3 = maskManager.Masks[maskId].UseCharset3;
+                        curTask.UseCharset4 = maskManager.Masks[maskId].UseCharset4;
+                        curTask.EnableIncrementMode = maskManager.Masks[maskId].EnableIncrement;
+                        curTask.SetStartLength(maskManager.Masks[maskId].IncrementMin);
+                        curTask.SetMaxLength(maskManager.Masks[maskId].IncrementMax);
+                        tskManager.AddTask(curTask);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Select at least 1 dictionary or mask");
+                    return;
+                }
             }
             else
             {
-                tskManager.AddTask(CrackTask);
+                if (radioButtonAttackTypeBrute.Checked)
+                {
+                    CrackTask.SetAttackType(3);
+
+                    if (checkBoxEnableIncrement.Checked)
+                    {
+                        CrackTask.EnableIncrementMode = true;
+                        CrackTask.SetStartLength((byte)numericUpDownIncrementMin.Value);
+                        CrackTask.SetMaxLength((byte)numericUpDownIncrementMax.Value);
+                    }
+                    else
+                    {
+                        CrackTask.SetMaxLength((byte)textBoxBruteforceMask.Text.Replace("?", "").Length);
+                    }
+                }
+                else
+                {
+                    CrackTask.SetAttackType(0);
+                }
+
+                if (changingTaskId > -1)
+                {
+                    tskManager.UpdateTask(changingTaskId, CrackTask);
+                }
+                else
+                {
+                    tskManager.AddTask(CrackTask);
+                }
             }
 
             this.DialogResult = DialogResult.OK;
