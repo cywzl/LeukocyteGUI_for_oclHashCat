@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskEditorForm));
             this.textBoxHashFileName = new System.Windows.Forms.TextBox();
             this.radioButtonAttackTypeBrute = new System.Windows.Forms.RadioButton();
             this.radioButtonAttackTypeDictionary = new System.Windows.Forms.RadioButton();
             this.groupBoxAttackType = new System.Windows.Forms.GroupBox();
+            this.labelMasks = new System.Windows.Forms.Label();
+            this.labelDictionaries = new System.Windows.Forms.Label();
+            this.radioButtonAttackTypeMulti = new System.Windows.Forms.RadioButton();
+            this.checkedListBoxMask = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxDictionary = new System.Windows.Forms.CheckedListBox();
             this.buttonChooseDictionaryFile = new System.Windows.Forms.Button();
             this.checkBoxCharset4 = new System.Windows.Forms.CheckBox();
             this.textBoxCharset4 = new System.Windows.Forms.TextBox();
@@ -96,11 +102,6 @@
             this.openFileDialogHash = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogDictionary = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogOutput = new System.Windows.Forms.SaveFileDialog();
-            this.checkedListBoxDictionary = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBoxMask = new System.Windows.Forms.CheckedListBox();
-            this.radioButtonAttackTypeMulti = new System.Windows.Forms.RadioButton();
-            this.labelDictionaries = new System.Windows.Forms.Label();
-            this.labelMasks = new System.Windows.Forms.Label();
             this.groupBoxAttackType.SuspendLayout();
             this.groupBoxHash.SuspendLayout();
             this.groupBoxIncrement.SuspendLayout();
@@ -169,6 +170,52 @@
             this.groupBoxAttackType.TabIndex = 1;
             this.groupBoxAttackType.TabStop = false;
             this.groupBoxAttackType.Text = "Attack type";
+            // 
+            // labelMasks
+            // 
+            this.labelMasks.AutoSize = true;
+            this.labelMasks.Location = new System.Drawing.Point(287, 155);
+            this.labelMasks.Name = "labelMasks";
+            this.labelMasks.Size = new System.Drawing.Size(41, 13);
+            this.labelMasks.TabIndex = 53;
+            this.labelMasks.Text = "Masks:";
+            // 
+            // labelDictionaries
+            // 
+            this.labelDictionaries.AutoSize = true;
+            this.labelDictionaries.Location = new System.Drawing.Point(287, 48);
+            this.labelDictionaries.Name = "labelDictionaries";
+            this.labelDictionaries.Size = new System.Drawing.Size(65, 13);
+            this.labelDictionaries.TabIndex = 52;
+            this.labelDictionaries.Text = "Dictionaries:";
+            // 
+            // radioButtonAttackTypeMulti
+            // 
+            this.radioButtonAttackTypeMulti.AutoSize = true;
+            this.radioButtonAttackTypeMulti.Location = new System.Drawing.Point(284, 24);
+            this.radioButtonAttackTypeMulti.Name = "radioButtonAttackTypeMulti";
+            this.radioButtonAttackTypeMulti.Size = new System.Drawing.Size(102, 17);
+            this.radioButtonAttackTypeMulti.TabIndex = 51;
+            this.radioButtonAttackTypeMulti.Text = "Multiple attacks:";
+            this.radioButtonAttackTypeMulti.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBoxMask
+            // 
+            this.checkedListBoxMask.CheckOnClick = true;
+            this.checkedListBoxMask.FormattingEnabled = true;
+            this.checkedListBoxMask.Location = new System.Drawing.Point(290, 171);
+            this.checkedListBoxMask.Name = "checkedListBoxMask";
+            this.checkedListBoxMask.Size = new System.Drawing.Size(195, 79);
+            this.checkedListBoxMask.TabIndex = 50;
+            // 
+            // checkedListBoxDictionary
+            // 
+            this.checkedListBoxDictionary.CheckOnClick = true;
+            this.checkedListBoxDictionary.FormattingEnabled = true;
+            this.checkedListBoxDictionary.Location = new System.Drawing.Point(290, 64);
+            this.checkedListBoxDictionary.Name = "checkedListBoxDictionary";
+            this.checkedListBoxDictionary.Size = new System.Drawing.Size(195, 79);
+            this.checkedListBoxDictionary.TabIndex = 49;
             // 
             // buttonChooseDictionaryFile
             // 
@@ -978,52 +1025,6 @@
             this.saveFileDialogOutput.Filter = "Text files (*.txt)|*.txt|Any files (*.*)|*.*";
             this.saveFileDialogOutput.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialogOutput_FileOk);
             // 
-            // checkedListBoxDictionary
-            // 
-            this.checkedListBoxDictionary.CheckOnClick = true;
-            this.checkedListBoxDictionary.FormattingEnabled = true;
-            this.checkedListBoxDictionary.Location = new System.Drawing.Point(290, 64);
-            this.checkedListBoxDictionary.Name = "checkedListBoxDictionary";
-            this.checkedListBoxDictionary.Size = new System.Drawing.Size(195, 79);
-            this.checkedListBoxDictionary.TabIndex = 49;
-            // 
-            // checkedListBoxMask
-            // 
-            this.checkedListBoxMask.CheckOnClick = true;
-            this.checkedListBoxMask.FormattingEnabled = true;
-            this.checkedListBoxMask.Location = new System.Drawing.Point(290, 171);
-            this.checkedListBoxMask.Name = "checkedListBoxMask";
-            this.checkedListBoxMask.Size = new System.Drawing.Size(195, 79);
-            this.checkedListBoxMask.TabIndex = 50;
-            // 
-            // radioButtonAttackTypeMulti
-            // 
-            this.radioButtonAttackTypeMulti.AutoSize = true;
-            this.radioButtonAttackTypeMulti.Location = new System.Drawing.Point(284, 24);
-            this.radioButtonAttackTypeMulti.Name = "radioButtonAttackTypeMulti";
-            this.radioButtonAttackTypeMulti.Size = new System.Drawing.Size(102, 17);
-            this.radioButtonAttackTypeMulti.TabIndex = 51;
-            this.radioButtonAttackTypeMulti.Text = "Multiple attacks:";
-            this.radioButtonAttackTypeMulti.UseVisualStyleBackColor = true;
-            // 
-            // labelDictionaries
-            // 
-            this.labelDictionaries.AutoSize = true;
-            this.labelDictionaries.Location = new System.Drawing.Point(287, 48);
-            this.labelDictionaries.Name = "labelDictionaries";
-            this.labelDictionaries.Size = new System.Drawing.Size(65, 13);
-            this.labelDictionaries.TabIndex = 52;
-            this.labelDictionaries.Text = "Dictionaries:";
-            // 
-            // labelMasks
-            // 
-            this.labelMasks.AutoSize = true;
-            this.labelMasks.Location = new System.Drawing.Point(287, 155);
-            this.labelMasks.Name = "labelMasks";
-            this.labelMasks.Size = new System.Drawing.Size(41, 13);
-            this.labelMasks.TabIndex = 53;
-            this.labelMasks.Text = "Masks:";
-            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1040,6 +1041,7 @@
             this.Controls.Add(this.groupBoxHash);
             this.Controls.Add(this.groupBoxAttackType);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "TaskEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.labelWorkingDirectory = new System.Windows.Forms.Label();
             this.labelOclHashcat = new System.Windows.Forms.Label();
             this.checkBoxAutoWorkingDirectory = new System.Windows.Forms.CheckBox();
@@ -67,6 +68,7 @@
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
+            this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageDictionaries.SuspendLayout();
@@ -171,6 +173,7 @@
             // 
             // tabPageMain
             // 
+            this.tabPageMain.Controls.Add(this.checkBoxDeleteSameWhenCracked);
             this.tabPageMain.Controls.Add(this.checkBoxLoadOnStart);
             this.tabPageMain.Controls.Add(this.checkBoxSaveOnExit);
             this.tabPageMain.Controls.Add(this.labelOclHashcat);
@@ -572,6 +575,16 @@
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
+            // checkBoxDeleteSameWhenCracked
+            // 
+            this.checkBoxDeleteSameWhenCracked.AutoSize = true;
+            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(21, 141);
+            this.checkBoxDeleteSameWhenCracked.Name = "checkBoxDeleteSameWhenCracked";
+            this.checkBoxDeleteSameWhenCracked.Size = new System.Drawing.Size(314, 17);
+            this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
+            this.checkBoxDeleteSameWhenCracked.Text = "When task is cracked, delete other tasks with the same hash";
+            this.checkBoxDeleteSameWhenCracked.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -581,6 +594,7 @@
             this.Controls.Add(this.buttonCancelTask);
             this.Controls.Add(this.buttonSettingsOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -636,5 +650,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderMaskDescription;
         private System.Windows.Forms.ColumnHeader columnHeaderMask;
         private System.Windows.Forms.ColumnHeader columnHeaderCharsets;
+        private System.Windows.Forms.CheckBox checkBoxDeleteSameWhenCracked;
     }
 }

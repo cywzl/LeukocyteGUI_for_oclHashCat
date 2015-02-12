@@ -25,7 +25,7 @@ namespace LeukocyteGUI_for_oclHashCat
             : this()
         {
             this.changingTaskId = ChangingTaskId;
-        }
+        } 
 
         private void TaskEditorForm_Load(object sender, EventArgs e)
         {

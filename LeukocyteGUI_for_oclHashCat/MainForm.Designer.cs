@@ -756,6 +756,7 @@
             this.Controls.Add(this.buttonChangeTask);
             this.Controls.Add(this.buttonStartTask);
             this.Controls.Add(this.buttonStopTask);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "LeukocyteGUI for oclHashCat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);

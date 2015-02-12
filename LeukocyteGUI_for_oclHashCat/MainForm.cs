@@ -119,24 +119,50 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 string hash = tskManager.CrackTasks[TaskId].Hash;
 
-                for (int index = 0; index < tskManager.CrackTasks.Length; index++)
+                if (Properties.Settings.Default.DeleteRelatedTasksWhenCracked)
                 {
-                    if ((index != TaskId)
-                        && (tskManager.CrackTasks[index].Hash == hash))
-                    {
-                        tskManager.CrackTasks[index].Status = status;
-                        tskManager.CrackTasks[index].Digests
-                            = tskManager.CrackTasks[TaskId].Digests;
-                        tskManager.CrackTasks[index].RecoveredDigests
-                            = tskManager.CrackTasks[TaskId].RecoveredDigests;
-                        tskManager.CrackTasks[index].Salts
-                            = tskManager.CrackTasks[TaskId].Salts;
-                        tskManager.CrackTasks[index].RecoveredSalts
-                            = tskManager.CrackTasks[TaskId].RecoveredSalts;
-                        tskManager.CrackTasks[index].Plain
-                            = tskManager.CrackTasks[TaskId].Plain;
+                    int maxIndex = tskManager.CrackTasks.Length - 1;
+                    int actualTaskId = TaskId;
 
-                        VisualizeTask(index);
+                    for (int index = 0; index <= maxIndex; index++)
+                    {
+                        if ((tskManager.CrackTasks[index].Hash == hash)
+                            && (index != actualTaskId))
+                        {
+                            tskManager.DeleteTask(index);
+
+                            if (index < actualTaskId)
+                            {
+                                actualTaskId--;
+                            }
+
+                            maxIndex--;
+                            index--;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int index = 0; index < tskManager.CrackTasks.Length; index++)
+                    {
+                        if ((tskManager.CrackTasks[index].Hash == hash)
+                            && (index != TaskId))
+                        {
+                            tskManager.CrackTasks[index].Restore = true;
+                            tskManager.CrackTasks[index].Status = status;
+                            tskManager.CrackTasks[index].Digests
+                                = tskManager.CrackTasks[TaskId].Digests;
+                            tskManager.CrackTasks[index].RecoveredDigests
+                                = tskManager.CrackTasks[TaskId].RecoveredDigests;
+                            tskManager.CrackTasks[index].Salts
+                                = tskManager.CrackTasks[TaskId].Salts;
+                            tskManager.CrackTasks[index].RecoveredSalts
+                                = tskManager.CrackTasks[TaskId].RecoveredSalts;
+                            tskManager.CrackTasks[index].Plain
+                                = tskManager.CrackTasks[TaskId].Plain;
+
+                            VisualizeTask(index);
+                        }
                     }
                 }
             }

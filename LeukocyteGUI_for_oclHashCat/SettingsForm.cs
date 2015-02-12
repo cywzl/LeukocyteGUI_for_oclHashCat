@@ -34,6 +34,7 @@ namespace LeukocyteGUI_for_oclHashCat
             textBoxWorkingDirectory.Text = Properties.Settings.Default.WorkingDirectory;
             checkBoxSaveOnExit.Checked = Properties.Settings.Default.SaveBeforeExit;
             checkBoxLoadOnStart.Checked = Properties.Settings.Default.LoadOnStartup;
+            checkBoxDeleteSameWhenCracked.Checked = Properties.Settings.Default.DeleteRelatedTasksWhenCracked;
         }
 
         private void buttonSettingsOK_Click(object sender, EventArgs e)
@@ -42,6 +43,7 @@ namespace LeukocyteGUI_for_oclHashCat
             Properties.Settings.Default.WorkingDirectory = textBoxWorkingDirectory.Text;
             Properties.Settings.Default.SaveBeforeExit = checkBoxSaveOnExit.Checked;
             Properties.Settings.Default.LoadOnStartup = checkBoxLoadOnStart.Checked;
+            Properties.Settings.Default.DeleteRelatedTasksWhenCracked = checkBoxDeleteSameWhenCracked.Checked;
             Properties.Settings.Default.Save();
 
             Close();
