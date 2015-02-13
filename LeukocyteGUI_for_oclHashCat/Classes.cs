@@ -1673,4 +1673,208 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
     }
+
+    public class NotifyMessage : Component
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        public string Caption { get; set; }
+        public string Text { get; set; }
+        public int MessageTime { get; set; }
+        public int ShowingValue { get; set; }
+        public int HidingValue { get; set; }
+        public Color CaptionForeColor { get; set; }
+        public Color CaptionBackColor { get; set; }
+        public Color TextForeColor { get; set; }
+        public Color TextBackColor { get; set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+        private void InitializeComponent()
+        {
+            components = new System.ComponentModel.Container();
+        }
+
+        public NotifyMessage()
+        {
+            InitializeComponent();
+            MessageTime = 3000;
+            ShowingValue = 20;
+            HidingValue = 20;
+            CaptionForeColor = Color.White;
+            CaptionBackColor = Color.FromArgb(51, 51, 51);
+            TextForeColor = Color.Black;
+            TextBackColor = Color.White;
+        }
+        public NotifyMessage(IContainer container)
+            : this()
+        {
+            container.Add(this);
+        }
+
+        public void Show()
+        {
+            Show(Text, Caption, MessageTime);
+        }
+        public void Show(string text)
+        {
+            Show(text, Caption, MessageTime);
+        }
+        public void Show(string text, string caption)
+        {
+            Show(text, caption, MessageTime);
+        }
+        public void Show(string text, string caption, int messageTime)
+        {
+            MessageForm messageForm = new MessageForm();
+
+            messageForm.timerWaiting.Interval = messageTime;
+            messageForm.timerShowing.Interval = ShowingValue;
+            messageForm.timerHiding.Interval = HidingValue;
+            messageForm.pictureBoxHeader.BackColor = CaptionBackColor;
+            messageForm.labelCaption.BackColor = CaptionBackColor;
+            messageForm.labelCaption.ForeColor = CaptionForeColor;
+            messageForm.labelCaption.Text = caption;
+            messageForm.labelText.BackColor = TextBackColor;
+            messageForm.labelText.ForeColor = TextForeColor;
+            messageForm.labelText.Text = text;
+            messageForm.BackColor = TextBackColor;
+
+            messageForm.Show();
+        }
+
+        private class MessageForm : Form
+        {
+            private System.ComponentModel.IContainer components = null;
+
+            protected override bool ShowWithoutActivation
+            {
+                get { return true; }
+            }
+
+            public Timer timerShowing;
+            public Timer timerWaiting;
+            public Timer timerHiding;
+            public PictureBox pictureBoxHeader;
+            public Label labelCaption;
+            public Label labelText;
+
+            public MessageForm()
+            {
+                InitializeComponent();
+
+                Rectangle screen = Screen.PrimaryScreen.WorkingArea;
+                Left = screen.Right - Width - 10;
+                Top = screen.Bottom - Height - 10;
+            }
+
+            private void InitializeComponent()
+            {
+                this.components = new System.ComponentModel.Container();
+                this.timerShowing = new System.Windows.Forms.Timer(this.components);
+                this.pictureBoxHeader = new System.Windows.Forms.PictureBox();
+                this.labelCaption = new System.Windows.Forms.Label();
+                this.labelText = new System.Windows.Forms.Label();
+                this.timerWaiting = new System.Windows.Forms.Timer(this.components);
+                this.timerHiding = new System.Windows.Forms.Timer(this.components);
+                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).BeginInit();
+                this.SuspendLayout();
+                // 
+                // timerShowing
+                // 
+                this.timerShowing.Enabled = true;
+                this.timerShowing.Interval = 20;
+                this.timerShowing.Tick += new System.EventHandler(this.timerShowing_Tick);
+                // 
+                // pictureBoxHeader
+                // 
+                this.pictureBoxHeader.Dock = System.Windows.Forms.DockStyle.Top;
+                this.pictureBoxHeader.Location = new System.Drawing.Point(0, 0);
+                this.pictureBoxHeader.Name = "pictureBoxHeader";
+                this.pictureBoxHeader.Size = new System.Drawing.Size(349, 30);
+                this.pictureBoxHeader.TabIndex = 0;
+                this.pictureBoxHeader.TabStop = false;
+                // 
+                // labelCaption
+                // 
+                this.labelCaption.AutoSize = true;
+                this.labelCaption.BackColor = System.Drawing.Color.Transparent;
+                this.labelCaption.ForeColor = System.Drawing.Color.White;
+                this.labelCaption.Location = new System.Drawing.Point(12, 9);
+                this.labelCaption.Name = "labelCaption";
+                this.labelCaption.Size = new System.Drawing.Size(35, 13);
+                this.labelCaption.TabIndex = 1;
+                this.labelCaption.Text = "labelCaption";
+                // 
+                // labelText
+                // 
+                this.labelText.AutoSize = true;
+                this.labelText.Location = new System.Drawing.Point(12, 42);
+                this.labelText.Name = "labelText";
+                this.labelText.Size = new System.Drawing.Size(35, 13);
+                this.labelText.TabIndex = 2;
+                this.labelText.Text = "labelText";
+                // 
+                // timerWaiting
+                // 
+                this.timerWaiting.Tick += new System.EventHandler(this.timerWaiting_Tick);
+                // 
+                // timerHiding
+                // 
+                this.timerHiding.Interval = 20;
+                this.timerHiding.Tick += new System.EventHandler(this.timerHiding_Tick);
+                // 
+                // messageForm
+                // 
+                this.AllowTransparency = true;
+                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+                this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+                this.ClientSize = new System.Drawing.Size(349, 93);
+                this.Controls.Add(this.labelText);
+                this.Controls.Add(this.labelCaption);
+                this.Controls.Add(this.pictureBoxHeader);
+                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                this.Name = "messageForm";
+                this.Opacity = 0D;
+                this.ShowInTaskbar = false;
+                this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                this.Text = "MessageForm";
+                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).EndInit();
+                this.ResumeLayout(false);
+                this.PerformLayout();
+
+            }
+
+            private void timerShowing_Tick(object sender, EventArgs e)
+            {
+                Opacity += 0.05;
+
+                if (Opacity == 1)
+                {
+                    timerShowing.Enabled = false;
+                    timerWaiting.Enabled = true;
+                }
+            }
+            private void timerWaiting_Tick(object sender, EventArgs e)
+            {
+                timerWaiting.Enabled = false;
+                timerHiding.Enabled = true;
+            }
+            private void timerHiding_Tick(object sender, EventArgs e)
+            {
+                Opacity -= 0.05;
+
+                if (Opacity == 0)
+                {
+                    Close();
+                }
+            }
+        }
+    }
 }
