@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -1677,6 +1678,9 @@ namespace LeukocyteGUI_for_oclHashCat
     public class NotifyMessage : Component
     {
         private System.ComponentModel.IContainer components = null;
+        private Queue<MessageForm> messageQueue;
+        private Thread messageQueueThread;
+        private Form mainForm;
 
         public string Caption { get; set; }
         public string Text { get; set; }
@@ -1700,10 +1704,42 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             components = new System.ComponentModel.Container();
         }
+        private void QueueProcessor()
+        {
+            while (messageQueue.Count > 0)
+            {
+                MessageForm messageForm = messageQueue.Dequeue();
+                //messageForm.Show();
+                mainForm.Invoke(new Action(() => { messageForm.Show(); }));
+
+                do
+                {
+                    messageForm.Opacity += 0.05;
+                    Thread.Sleep(ShowingValue);
+                }
+                while (messageForm.Opacity != 1);
+
+                Thread.Sleep(MessageTime);
+
+                do
+                {
+                    messageForm.Opacity -= 0.05;
+                    Thread.Sleep(HidingValue);
+                }
+                while (messageForm.Opacity != 0);
+
+                mainForm.Invoke(new Action(() => { messageForm.Close(); }));
+            }
+        }
 
         public NotifyMessage()
         {
             InitializeComponent();
+
+            messageQueue = new Queue<MessageForm>();
+            messageQueueThread = new Thread(QueueProcessor);
+
+            mainForm = Application.OpenForms[0];
             MessageTime = 3000;
             ShowingValue = 20;
             HidingValue = 20;
@@ -1732,11 +1768,8 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public void Show(string text, string caption, int messageTime)
         {
-            MessageForm messageForm = new MessageForm();
+            MessageForm messageForm = new MessageForm(messageQueue);
 
-            messageForm.timerWaiting.Interval = messageTime;
-            messageForm.timerShowing.Interval = ShowingValue;
-            messageForm.timerHiding.Interval = HidingValue;
             messageForm.pictureBoxHeader.BackColor = CaptionBackColor;
             messageForm.labelCaption.BackColor = CaptionBackColor;
             messageForm.labelCaption.ForeColor = CaptionForeColor;
@@ -1746,28 +1779,33 @@ namespace LeukocyteGUI_for_oclHashCat
             messageForm.labelText.Text = text;
             messageForm.BackColor = TextBackColor;
 
-            messageForm.Show();
+            messageQueue.Enqueue(messageForm);
+
+            if (!messageQueueThread.IsAlive)
+            {
+                messageQueueThread.Start();
+            }
         }
 
         private class MessageForm : Form
         {
             private System.ComponentModel.IContainer components = null;
+            private Queue<MessageForm> messageQueue;
 
             protected override bool ShowWithoutActivation
             {
                 get { return true; }
             }
 
-            public Timer timerShowing;
-            public Timer timerWaiting;
-            public Timer timerHiding;
             public PictureBox pictureBoxHeader;
             public Label labelCaption;
             public Label labelText;
 
-            public MessageForm()
+            public MessageForm(Queue<MessageForm> messageQueue)
             {
                 InitializeComponent();
+
+                this.messageQueue = messageQueue;
 
                 Rectangle screen = Screen.PrimaryScreen.WorkingArea;
                 Left = screen.Right - Width - 10;
@@ -1777,20 +1815,11 @@ namespace LeukocyteGUI_for_oclHashCat
             private void InitializeComponent()
             {
                 this.components = new System.ComponentModel.Container();
-                this.timerShowing = new System.Windows.Forms.Timer(this.components);
                 this.pictureBoxHeader = new System.Windows.Forms.PictureBox();
                 this.labelCaption = new System.Windows.Forms.Label();
                 this.labelText = new System.Windows.Forms.Label();
-                this.timerWaiting = new System.Windows.Forms.Timer(this.components);
-                this.timerHiding = new System.Windows.Forms.Timer(this.components);
                 ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).BeginInit();
                 this.SuspendLayout();
-                // 
-                // timerShowing
-                // 
-                this.timerShowing.Enabled = true;
-                this.timerShowing.Interval = 20;
-                this.timerShowing.Tick += new System.EventHandler(this.timerShowing_Tick);
                 // 
                 // pictureBoxHeader
                 // 
@@ -1821,15 +1850,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 this.labelText.TabIndex = 2;
                 this.labelText.Text = "labelText";
                 // 
-                // timerWaiting
-                // 
-                this.timerWaiting.Tick += new System.EventHandler(this.timerWaiting_Tick);
-                // 
-                // timerHiding
-                // 
-                this.timerHiding.Interval = 20;
-                this.timerHiding.Tick += new System.EventHandler(this.timerHiding_Tick);
-                // 
                 // messageForm
                 // 
                 this.AllowTransparency = true;
@@ -1848,32 +1868,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).EndInit();
                 this.ResumeLayout(false);
                 this.PerformLayout();
-
-            }
-
-            private void timerShowing_Tick(object sender, EventArgs e)
-            {
-                Opacity += 0.05;
-
-                if (Opacity == 1)
-                {
-                    timerShowing.Enabled = false;
-                    timerWaiting.Enabled = true;
-                }
-            }
-            private void timerWaiting_Tick(object sender, EventArgs e)
-            {
-                timerWaiting.Enabled = false;
-                timerHiding.Enabled = true;
-            }
-            private void timerHiding_Tick(object sender, EventArgs e)
-            {
-                Opacity -= 0.05;
-
-                if (Opacity == 0)
-                {
-                    Close();
-                }
             }
         }
     }
