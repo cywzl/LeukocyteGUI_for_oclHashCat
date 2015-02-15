@@ -1678,19 +1678,56 @@ namespace LeukocyteGUI_for_oclHashCat
     public class NotifyMessage : Component
     {
         private System.ComponentModel.IContainer components = null;
-        private Queue<MessageForm> messageQueue;
-        private Thread messageQueueThread;
-        private Form mainForm;
+        private MessageSettings messageSettings;
+        private Queue<MessageSettings> messageQueue;
+        private BackgroundWorker messageQueueProcessor;
 
-        public string Caption { get; set; }
-        public string Text { get; set; }
-        public int MessageTime { get; set; }
-        public int ShowingValue { get; set; }
-        public int HidingValue { get; set; }
-        public Color CaptionForeColor { get; set; }
-        public Color CaptionBackColor { get; set; }
-        public Color TextForeColor { get; set; }
-        public Color TextBackColor { get; set; }
+        public string Caption
+        {
+            get { return messageSettings.Caption; }
+            set { messageSettings.Caption = value; }
+        }
+        public string Text
+        {
+            get { return messageSettings.Text; }
+            set { messageSettings.Text = value; }
+        }
+        public int MessageTime
+        {
+            get { return messageSettings.MessageTime; }
+            set { messageSettings.MessageTime = value; }
+        }
+        public int ShowingValue
+        {
+            get { return messageSettings.ShowingValue; }
+            set { messageSettings.ShowingValue = value; }
+        }
+        public int HidingValue
+        {
+            get { return messageSettings.HidingValue; }
+            set { messageSettings.HidingValue = value; }
+        }
+        public Color CaptionForeColor
+        {
+            get { return messageSettings.CaptionForeColor; }
+            set { messageSettings.CaptionForeColor = value; }
+        }
+        public Color CaptionBackColor
+        {
+            get { return messageSettings.CaptionBackColor; }
+            set { messageSettings.CaptionBackColor = value; }
+        }
+        public Color TextForeColor
+        {
+            get { return messageSettings.TextForeColor; }
+            set { messageSettings.TextForeColor = value; }
+        }
+        public Color TextBackColor
+        {
+            get { return messageSettings.TextBackColor; }
+            set { messageSettings.TextBackColor = value; }
+        }
+        public Form ConnectedForm { get; set; }
 
         protected override void Dispose(bool disposing)
         {
@@ -1704,54 +1741,54 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             components = new System.ComponentModel.Container();
         }
-        private void QueueProcessor()
-        {
-            while (messageQueue.Count > 0)
-            {
-                MessageForm messageForm = messageQueue.Dequeue();
-                //messageForm.Show();
-                mainForm.Invoke(new Action(() => { messageForm.Show(); }));
-
-                do
-                {
-                    messageForm.Opacity += 0.05;
-                    Thread.Sleep(ShowingValue);
-                }
-                while (messageForm.Opacity != 1);
-
-                Thread.Sleep(MessageTime);
-
-                do
-                {
-                    messageForm.Opacity -= 0.05;
-                    Thread.Sleep(HidingValue);
-                }
-                while (messageForm.Opacity != 0);
-
-                mainForm.Invoke(new Action(() => { messageForm.Close(); }));
-            }
-        }
 
         public NotifyMessage()
         {
             InitializeComponent();
 
-            messageQueue = new Queue<MessageForm>();
-            messageQueueThread = new Thread(QueueProcessor);
+            messageSettings = new MessageSettings();
 
-            mainForm = Application.OpenForms[0];
-            MessageTime = 3000;
-            ShowingValue = 20;
-            HidingValue = 20;
-            CaptionForeColor = Color.White;
-            CaptionBackColor = Color.FromArgb(51, 51, 51);
-            TextForeColor = Color.Black;
-            TextBackColor = Color.White;
+            messageSettings.Caption = "";
+            messageSettings.Text = "";
+            messageSettings.MessageTime = 3000;
+            messageSettings.ShowingValue = 20;
+            messageSettings.HidingValue = 20;
+            messageSettings.CaptionForeColor = Color.White;
+            messageSettings.CaptionBackColor = Color.FromArgb(51, 51, 51);
+            messageSettings.TextForeColor = Color.Black;
+            messageSettings.TextBackColor = Color.White;
+
+            messageQueue = new Queue<MessageSettings>();
+            messageQueueProcessor = new BackgroundWorker();
+            messageQueueProcessor.DoWork += messageQueueProcessor_DoWork;
         }
+
         public NotifyMessage(IContainer container)
             : this()
         {
             container.Add(this);
+        }
+
+        private void messageQueueProcessor_DoWork(object sender, DoWorkEventArgs e)
+        {
+            EventWaitHandle formClosed = new EventWaitHandle(false, EventResetMode.AutoReset);
+
+            while (messageQueue.Count > 0)
+            {
+                if (ConnectedForm == null)
+                {
+                    throw new Exception("ConnectedForm is not specified.");
+                }
+
+                ConnectedForm.Invoke((MethodInvoker)delegate()
+                {
+                    MessageForm messageForm = new MessageForm(messageQueue.Dequeue());
+                    messageForm.FormClosed += delegate(object send, FormClosedEventArgs args) { formClosed.Set(); };
+                    messageForm.Show();
+                });
+
+                formClosed.WaitOne();
+            }
         }
 
         public void Show()
@@ -1768,58 +1805,76 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public void Show(string text, string caption, int messageTime)
         {
-            MessageForm messageForm = new MessageForm(messageQueue);
+            MessageSettings messageSettings = MessageSettings.Copy(this.messageSettings);
+            messageSettings.Text = text;
+            messageSettings.Caption = caption;
+            messageSettings.MessageTime = messageTime;
 
-            messageForm.pictureBoxHeader.BackColor = CaptionBackColor;
-            messageForm.labelCaption.BackColor = CaptionBackColor;
-            messageForm.labelCaption.ForeColor = CaptionForeColor;
-            messageForm.labelCaption.Text = caption;
-            messageForm.labelText.BackColor = TextBackColor;
-            messageForm.labelText.ForeColor = TextForeColor;
-            messageForm.labelText.Text = text;
-            messageForm.BackColor = TextBackColor;
+            messageQueue.Enqueue(messageSettings);
 
-            messageQueue.Enqueue(messageForm);
-
-            if (!messageQueueThread.IsAlive)
+            if (!messageQueueProcessor.IsBusy)
             {
-                messageQueueThread.Start();
+                messageQueueProcessor.RunWorkerAsync();
             }
         }
 
         private class MessageForm : Form
         {
             private System.ComponentModel.IContainer components = null;
-            private Queue<MessageForm> messageQueue;
 
             protected override bool ShowWithoutActivation
             {
                 get { return true; }
             }
 
+            public System.Windows.Forms.Timer timerShowing;
+            public System.Windows.Forms.Timer timerWaiting;
+            public System.Windows.Forms.Timer timerHiding;
             public PictureBox pictureBoxHeader;
             public Label labelCaption;
             public Label labelText;
 
-            public MessageForm(Queue<MessageForm> messageQueue)
+            public MessageForm()
             {
                 InitializeComponent();
-
-                this.messageQueue = messageQueue;
 
                 Rectangle screen = Screen.PrimaryScreen.WorkingArea;
                 Left = screen.Right - Width - 10;
                 Top = screen.Bottom - Height - 10;
             }
+            public MessageForm(MessageSettings messageSettings)
+                : this()
+            {
+                timerWaiting.Interval = messageSettings.MessageTime;
+                timerShowing.Interval = messageSettings.ShowingValue;
+                timerHiding.Interval = messageSettings.HidingValue;
+                pictureBoxHeader.BackColor = messageSettings.CaptionBackColor;
+                labelCaption.BackColor = messageSettings.CaptionBackColor;
+                labelCaption.ForeColor = messageSettings.CaptionForeColor;
+                labelCaption.Text = messageSettings.Caption;
+                labelText.BackColor = messageSettings.TextBackColor;
+                labelText.ForeColor = messageSettings.TextForeColor;
+                labelText.Text = messageSettings.Text;
+                BackColor = messageSettings.TextBackColor;
+            }
 
             private void InitializeComponent()
             {
                 this.components = new System.ComponentModel.Container();
+                this.timerShowing = new System.Windows.Forms.Timer(this.components);
                 this.pictureBoxHeader = new System.Windows.Forms.PictureBox();
                 this.labelCaption = new System.Windows.Forms.Label();
                 this.labelText = new System.Windows.Forms.Label();
+                this.timerWaiting = new System.Windows.Forms.Timer(this.components);
+                this.timerHiding = new System.Windows.Forms.Timer(this.components);
                 ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).BeginInit();
                 this.SuspendLayout();
+                // 
+                // timerShowing
+                // 
+                this.timerShowing.Enabled = true;
+                this.timerShowing.Interval = 20;
+                this.timerShowing.Tick += new System.EventHandler(this.timerShowing_Tick);
                 // 
                 // pictureBoxHeader
                 // 
@@ -1850,6 +1905,15 @@ namespace LeukocyteGUI_for_oclHashCat
                 this.labelText.TabIndex = 2;
                 this.labelText.Text = "labelText";
                 // 
+                // timerWaiting
+                // 
+                this.timerWaiting.Tick += new System.EventHandler(this.timerWaiting_Tick);
+                // 
+                // timerHiding
+                // 
+                this.timerHiding.Interval = 20;
+                this.timerHiding.Tick += new System.EventHandler(this.timerHiding_Tick);
+                // 
                 // messageForm
                 // 
                 this.AllowTransparency = true;
@@ -1868,6 +1932,78 @@ namespace LeukocyteGUI_for_oclHashCat
                 ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).EndInit();
                 this.ResumeLayout(false);
                 this.PerformLayout();
+
+            }
+
+            private void timerShowing_Tick(object sender, EventArgs e)
+            {
+                Opacity += 0.05;
+
+                if (Opacity == 1)
+                {
+                    timerShowing.Enabled = false;
+                    timerWaiting.Enabled = true;
+                }
+            }
+            private void timerWaiting_Tick(object sender, EventArgs e)
+            {
+                timerWaiting.Enabled = false;
+                timerHiding.Enabled = true;
+            }
+            private void timerHiding_Tick(object sender, EventArgs e)
+            {
+                Opacity -= 0.05;
+
+                if (Opacity == 0)
+                {
+                    Close();
+                }
+            }
+        }
+
+        private class MessageSettings
+        {
+            public string Caption { get; set; }
+            public string Text { get; set; }
+            public int MessageTime { get; set; }
+            public int ShowingValue { get; set; }
+            public int HidingValue { get; set; }
+            public Color CaptionForeColor { get; set; }
+            public Color CaptionBackColor { get; set; }
+            public Color TextForeColor { get; set; }
+            public Color TextBackColor { get; set; }
+
+            public static MessageSettings Copy(MessageSettings messageToCopy)
+            {
+                MessageSettings messageSettings = new MessageSettings();
+
+                if (String.IsNullOrEmpty(messageToCopy.Caption))
+                {
+                    messageSettings.Caption = "";
+                }
+                else
+                {
+                    messageSettings.Caption = String.Copy(messageToCopy.Caption);
+                }
+
+                if (String.IsNullOrEmpty(messageToCopy.Text))
+                {
+                    messageSettings.Text = "";
+                }
+                else
+                {
+                    messageSettings.Text = String.Copy(messageToCopy.Caption);
+                }
+
+                messageSettings.MessageTime = messageToCopy.MessageTime;
+                messageSettings.ShowingValue = messageToCopy.ShowingValue;
+                messageSettings.HidingValue = messageToCopy.HidingValue;
+                messageSettings.CaptionForeColor = Color.FromArgb(messageToCopy.CaptionForeColor.ToArgb());
+                messageSettings.CaptionBackColor = Color.FromArgb(messageToCopy.CaptionBackColor.ToArgb());
+                messageSettings.TextForeColor = Color.FromArgb(messageToCopy.TextForeColor.ToArgb());
+                messageSettings.TextBackColor = Color.FromArgb(messageToCopy.TextBackColor.ToArgb());
+
+                return messageSettings;
             }
         }
     }
