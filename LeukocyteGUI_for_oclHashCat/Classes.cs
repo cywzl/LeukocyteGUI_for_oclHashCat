@@ -1727,6 +1727,16 @@ namespace LeukocyteGUI_for_oclHashCat
             get { return messageSettings.TextBackColor; }
             set { messageSettings.TextBackColor = value; }
         }
+        public Bitmap Icon
+        {
+            get { return messageSettings.Icon; }
+            set { messageSettings.Icon = value; }
+        }
+        public bool ShowIcon
+        {
+            get { return messageSettings.ShowIcon; }
+            set { messageSettings.ShowIcon = value; }
+        }
         public Form ConnectedForm { get; set; }
 
         protected override void Dispose(bool disposing)
@@ -1803,12 +1813,23 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             Show(text, caption, MessageTime);
         }
-        public void Show(string text, string caption, int messageTime)
+        public void Show(string text, string caption, Bitmap icon)
+        {
+            Show(text, caption, MessageTime, icon);
+        }
+        public void Show(string text, string caption, int messageTime, Bitmap icon = null)
         {
             MessageSettings messageSettings = MessageSettings.Copy(this.messageSettings);
+
             messageSettings.Text = text;
             messageSettings.Caption = caption;
             messageSettings.MessageTime = messageTime;
+
+            if (icon != null)
+            {
+                messageSettings.Icon = icon;
+                messageSettings.ShowIcon = true;
+            }
 
             messageQueue.Enqueue(messageSettings);
 
@@ -1821,7 +1842,6 @@ namespace LeukocyteGUI_for_oclHashCat
         private class MessageForm : Form
         {
             private System.ComponentModel.IContainer components = null;
-
             protected override bool ShowWithoutActivation
             {
                 get { return true; }
@@ -1831,6 +1851,7 @@ namespace LeukocyteGUI_for_oclHashCat
             public System.Windows.Forms.Timer timerWaiting;
             public System.Windows.Forms.Timer timerHiding;
             public PictureBox pictureBoxHeader;
+            public PictureBox pictureBoxIcon;
             public Label labelCaption;
             public Label labelText;
 
@@ -1856,6 +1877,29 @@ namespace LeukocyteGUI_for_oclHashCat
                 labelText.ForeColor = messageSettings.TextForeColor;
                 labelText.Text = messageSettings.Text;
                 BackColor = messageSettings.TextBackColor;
+
+                if (messageSettings.ShowIcon)
+                {
+                    pictureBoxIcon.Image = messageSettings.Icon;
+                    pictureBoxIcon.Size = messageSettings.Icon.Size;
+                    pictureBoxIcon.Location = new System.Drawing.Point(12,
+                        (int)((Height - pictureBoxIcon.Height - pictureBoxHeader.Height) / 2.0)
+                        + pictureBoxHeader.Height);
+
+                    labelText.Left = pictureBoxIcon.Right + 12;
+                    labelText.Top = pictureBoxHeader.Height + 12;
+                    labelText.AutoSize = false;
+                    labelText.Size = new Size(Width - labelText.Left - 12,
+                        Height - labelText.Top - 12);
+                }
+                else
+                {
+                    pictureBoxIcon.Size = new Size(0, 0);
+
+                    labelText.Location = new System.Drawing.Point(12, 42);
+                    labelText.Size = new System.Drawing.Size(35, 13);
+                    labelText.AutoSize = true;
+                }
             }
 
             private void InitializeComponent()
@@ -1863,6 +1907,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 this.components = new System.ComponentModel.Container();
                 this.timerShowing = new System.Windows.Forms.Timer(this.components);
                 this.pictureBoxHeader = new System.Windows.Forms.PictureBox();
+                this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
                 this.labelCaption = new System.Windows.Forms.Label();
                 this.labelText = new System.Windows.Forms.Label();
                 this.timerWaiting = new System.Windows.Forms.Timer(this.components);
@@ -1884,6 +1929,12 @@ namespace LeukocyteGUI_for_oclHashCat
                 this.pictureBoxHeader.Size = new System.Drawing.Size(349, 30);
                 this.pictureBoxHeader.TabIndex = 0;
                 this.pictureBoxHeader.TabStop = false;
+                //
+                // pictureBoxIcon
+                //
+                this.pictureBoxIcon.Name = "pictureBoxIcon";
+                this.pictureBoxIcon.TabIndex = 0;
+                this.pictureBoxIcon.TabStop = false;
                 // 
                 // labelCaption
                 // 
@@ -1898,12 +1949,12 @@ namespace LeukocyteGUI_for_oclHashCat
                 // 
                 // labelText
                 // 
-                this.labelText.AutoSize = true;
                 this.labelText.Location = new System.Drawing.Point(12, 42);
                 this.labelText.Name = "labelText";
                 this.labelText.Size = new System.Drawing.Size(35, 13);
                 this.labelText.TabIndex = 2;
                 this.labelText.Text = "labelText";
+                this.labelText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 // 
                 // timerWaiting
                 // 
@@ -1923,6 +1974,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 this.Controls.Add(this.labelText);
                 this.Controls.Add(this.labelCaption);
                 this.Controls.Add(this.pictureBoxHeader);
+                this.Controls.Add(this.pictureBoxIcon);
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 this.Name = "messageForm";
                 this.Opacity = 0D;
@@ -1930,6 +1982,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
                 this.Text = "MessageForm";
                 ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHeader)).EndInit();
+                ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
                 this.ResumeLayout(false);
                 this.PerformLayout();
 
@@ -1972,6 +2025,8 @@ namespace LeukocyteGUI_for_oclHashCat
             public Color CaptionBackColor { get; set; }
             public Color TextForeColor { get; set; }
             public Color TextBackColor { get; set; }
+            public Bitmap Icon { get; set; }
+            public bool ShowIcon { get; set; }
 
             public static MessageSettings Copy(MessageSettings messageToCopy)
             {
@@ -2002,6 +2057,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 messageSettings.CaptionBackColor = Color.FromArgb(messageToCopy.CaptionBackColor.ToArgb());
                 messageSettings.TextForeColor = Color.FromArgb(messageToCopy.TextForeColor.ToArgb());
                 messageSettings.TextBackColor = Color.FromArgb(messageToCopy.TextBackColor.ToArgb());
+
+                if (messageToCopy.Icon != null)
+                {
+                    messageSettings.Icon = (Bitmap)messageToCopy.Icon.Clone();
+                }
 
                 return messageSettings;
             }
