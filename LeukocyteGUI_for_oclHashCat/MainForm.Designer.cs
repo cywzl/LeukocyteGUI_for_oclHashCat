@@ -87,6 +87,7 @@
             this.buttonStopTask = new System.Windows.Forms.Button();
             this.statusStripInfo = new System.Windows.Forms.StatusStrip();
             this.tsslCrackTasksFile = new System.Windows.Forms.ToolStripStatusLabel();
+            this.notifyMessage = new LeukocyteGUI_for_oclHashCat.NotifyMessage(this.components);
             this.contextMenuStripTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideocard)).BeginInit();
@@ -725,6 +726,21 @@
             this.tsslCrackTasksFile.Size = new System.Drawing.Size(10, 17);
             this.tsslCrackTasksFile.Text = " ";
             // 
+            // notifyMessage
+            // 
+            this.notifyMessage.Caption = "";
+            this.notifyMessage.CaptionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.notifyMessage.CaptionForeColor = System.Drawing.Color.White;
+            this.notifyMessage.ConnectedForm = this;
+            this.notifyMessage.HidingValue = 20;
+            this.notifyMessage.Icon = null;
+            this.notifyMessage.MessageTime = 6000;
+            this.notifyMessage.ShowIcon = false;
+            this.notifyMessage.ShowingValue = 20;
+            this.notifyMessage.Text = "";
+            this.notifyMessage.TextBackColor = System.Drawing.Color.White;
+            this.notifyMessage.TextForeColor = System.Drawing.Color.Black;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -831,5 +847,6 @@
         private System.Windows.Forms.Button buttonSaveCrackTasksFileAs;
         private System.Windows.Forms.StatusStrip statusStripInfo;
         private System.Windows.Forms.ToolStripStatusLabel tsslCrackTasksFile;
+        private NotifyMessage notifyMessage;
     }
 }

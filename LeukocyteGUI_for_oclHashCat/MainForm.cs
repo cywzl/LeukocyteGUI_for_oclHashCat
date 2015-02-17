@@ -165,6 +165,22 @@ namespace LeukocyteGUI_for_oclHashCat
                         }
                     }
                 }
+
+                notifyMessage.Show("Cracking process has finished"
+                        + "\r\nAll " + tskManager.CrackTasks[TaskId].RecoveredDigests.ToString()
+                        + "/" + tskManager.CrackTasks[TaskId].Digests.ToString()
+                        + " digests have been cracked",
+                    "(" + (TaskId + 1).ToString() + ") " + tskManager.CrackTasks[TaskId].Hash,
+                    Properties.Resources.glyph_task_ok);
+            }
+            else
+            {
+                notifyMessage.Show("Cracking process has finished"
+                        + "\r\n" + tskManager.CrackTasks[TaskId].RecoveredDigests.ToString()
+                        + "/" + tskManager.CrackTasks[TaskId].Digests.ToString()
+                        + " digests have been cracked",
+                    "(" + (TaskId + 1).ToString() + ") " + tskManager.CrackTasks[TaskId].Hash,
+                    Properties.Resources.glyph_task_cancel);
             }
 
             CheckButtons();
