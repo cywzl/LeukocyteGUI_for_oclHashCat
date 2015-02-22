@@ -134,7 +134,7 @@
             this.listViewTasks.MultiSelect = false;
             this.listViewTasks.Name = "listViewTasks";
             this.listViewTasks.OwnerDraw = true;
-            this.listViewTasks.Size = new System.Drawing.Size(863, 358);
+            this.listViewTasks.Size = new System.Drawing.Size(860, 360);
             this.listViewTasks.TabIndex = 1;
             this.listViewTasks.UseCompatibleStateImageBehavior = false;
             this.listViewTasks.View = System.Windows.Forms.View.Details;
@@ -321,7 +321,7 @@
             this.labelGPUSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUSpeed.AutoSize = true;
             this.labelGPUSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUSpeed.Location = new System.Drawing.Point(686, 18);
+            this.labelGPUSpeed.Location = new System.Drawing.Point(683, 18);
             this.labelGPUSpeed.Name = "labelGPUSpeed";
             this.labelGPUSpeed.Size = new System.Drawing.Size(39, 17);
             this.labelGPUSpeed.TabIndex = 22;
@@ -332,7 +332,7 @@
             this.labelGPUTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUTemp.AutoSize = true;
             this.labelGPUTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUTemp.Location = new System.Drawing.Point(686, 49);
+            this.labelGPUTemp.Location = new System.Drawing.Point(683, 49);
             this.labelGPUTemp.Name = "labelGPUTemp";
             this.labelGPUTemp.Size = new System.Drawing.Size(35, 17);
             this.labelGPUTemp.TabIndex = 24;
@@ -343,7 +343,7 @@
             this.labelGPUUtil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGPUUtil.AutoSize = true;
             this.labelGPUUtil.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGPUUtil.Location = new System.Drawing.Point(826, 18);
+            this.labelGPUUtil.Location = new System.Drawing.Point(823, 18);
             this.labelGPUUtil.Name = "labelGPUUtil";
             this.labelGPUUtil.Size = new System.Drawing.Size(32, 17);
             this.labelGPUUtil.TabIndex = 26;
@@ -354,7 +354,7 @@
             this.labelFanSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFanSpeed.AutoSize = true;
             this.labelFanSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFanSpeed.Location = new System.Drawing.Point(826, 49);
+            this.labelFanSpeed.Location = new System.Drawing.Point(823, 49);
             this.labelFanSpeed.Name = "labelFanSpeed";
             this.labelFanSpeed.Size = new System.Drawing.Size(32, 17);
             this.labelFanSpeed.TabIndex = 28;
@@ -476,7 +476,7 @@
             // 
             this.pictureBoxFan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxFan.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.fan;
-            this.pictureBoxFan.Location = new System.Drawing.Point(794, 45);
+            this.pictureBoxFan.Location = new System.Drawing.Point(791, 45);
             this.pictureBoxFan.Name = "pictureBoxFan";
             this.pictureBoxFan.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxFan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -487,7 +487,7 @@
             // 
             this.pictureBoxVideocard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxVideocard.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_videocard;
-            this.pictureBoxVideocard.Location = new System.Drawing.Point(794, 15);
+            this.pictureBoxVideocard.Location = new System.Drawing.Point(791, 15);
             this.pictureBoxVideocard.Name = "pictureBoxVideocard";
             this.pictureBoxVideocard.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxVideocard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -498,7 +498,7 @@
             // 
             this.pictureBoxTemperature.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxTemperature.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_temperature;
-            this.pictureBoxTemperature.Location = new System.Drawing.Point(655, 46);
+            this.pictureBoxTemperature.Location = new System.Drawing.Point(652, 46);
             this.pictureBoxTemperature.Name = "pictureBoxTemperature";
             this.pictureBoxTemperature.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxTemperature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -509,7 +509,7 @@
             // 
             this.pictureBoxSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxSpeed.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_speed;
-            this.pictureBoxSpeed.Location = new System.Drawing.Point(655, 15);
+            this.pictureBoxSpeed.Location = new System.Drawing.Point(652, 15);
             this.pictureBoxSpeed.Name = "pictureBoxSpeed";
             this.pictureBoxSpeed.Size = new System.Drawing.Size(26, 26);
             this.pictureBoxSpeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -696,9 +696,9 @@
             // 
             this.statusStripInfo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslCrackTasksFile});
-            this.statusStripInfo.Location = new System.Drawing.Point(0, 452);
+            this.statusStripInfo.Location = new System.Drawing.Point(0, 454);
             this.statusStripInfo.Name = "statusStripInfo";
-            this.statusStripInfo.Size = new System.Drawing.Size(887, 22);
+            this.statusStripInfo.Size = new System.Drawing.Size(884, 22);
             this.statusStripInfo.TabIndex = 41;
             this.statusStripInfo.Text = "statusStrip1";
             // 
@@ -817,7 +817,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 474);
+            this.ClientSize = new System.Drawing.Size(884, 476);
             this.Controls.Add(this.statusStripInfo);
             this.Controls.Add(this.buttonSaveCrackTasksFileAs);
             this.Controls.Add(this.buttonOpenCrackTasksFile);
@@ -845,6 +845,7 @@
             this.Controls.Add(this.buttonStartTask);
             this.Controls.Add(this.buttonStopTask);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(900, 220);
             this.Name = "MainForm";
             this.Text = "LeukocyteGUI for oclHashCat";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);

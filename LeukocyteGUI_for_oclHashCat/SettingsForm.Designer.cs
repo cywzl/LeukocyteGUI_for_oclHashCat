@@ -39,10 +39,9 @@
             this.buttonSettingsOK = new System.Windows.Forms.Button();
             this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.tabPageMain = new System.Windows.Forms.TabPage();
+            this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
             this.checkBoxLoadOnStart = new System.Windows.Forms.CheckBox();
             this.checkBoxSaveOnExit = new System.Windows.Forms.CheckBox();
-            this.textBoxHashcat = new System.Windows.Forms.TextBox();
-            this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
             this.tabPageDictionaries = new System.Windows.Forms.TabPage();
             this.buttonAddDictionary = new System.Windows.Forms.Button();
             this.buttonDeleteDictionary = new System.Windows.Forms.Button();
@@ -68,7 +67,9 @@
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
-            this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
+            this.textBoxHashcat = new System.Windows.Forms.TextBox();
+            this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageDictionaries.SuspendLayout();
@@ -173,6 +174,7 @@
             // 
             // tabPageMain
             // 
+            this.tabPageMain.Controls.Add(this.checkBoxShowNotifications);
             this.tabPageMain.Controls.Add(this.checkBoxDeleteSameWhenCracked);
             this.tabPageMain.Controls.Add(this.checkBoxLoadOnStart);
             this.tabPageMain.Controls.Add(this.checkBoxSaveOnExit);
@@ -190,6 +192,16 @@
             this.tabPageMain.TabIndex = 0;
             this.tabPageMain.Text = "Main";
             this.tabPageMain.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDeleteSameWhenCracked
+            // 
+            this.checkBoxDeleteSameWhenCracked.AutoSize = true;
+            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(21, 141);
+            this.checkBoxDeleteSameWhenCracked.Name = "checkBoxDeleteSameWhenCracked";
+            this.checkBoxDeleteSameWhenCracked.Size = new System.Drawing.Size(314, 17);
+            this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
+            this.checkBoxDeleteSameWhenCracked.Text = "When task is cracked, delete other tasks with the same hash";
+            this.checkBoxDeleteSameWhenCracked.UseVisualStyleBackColor = true;
             // 
             // checkBoxLoadOnStart
             // 
@@ -214,26 +226,6 @@
             this.checkBoxSaveOnExit.TabIndex = 48;
             this.checkBoxSaveOnExit.Text = "Save tasks before exiting the program";
             this.checkBoxSaveOnExit.UseVisualStyleBackColor = true;
-            // 
-            // textBoxHashcat
-            // 
-            this.textBoxHashcat.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "Hashcat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxHashcat.Location = new System.Drawing.Point(105, 10);
-            this.textBoxHashcat.Name = "textBoxHashcat";
-            this.textBoxHashcat.Size = new System.Drawing.Size(311, 20);
-            this.textBoxHashcat.TabIndex = 31;
-            this.textBoxHashcat.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.Hashcat;
-            this.textBoxHashcat.TextChanged += new System.EventHandler(this.textBoxHashcat_TextChanged);
-            // 
-            // textBoxWorkingDirectory
-            // 
-            this.textBoxWorkingDirectory.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "WorkingDirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxWorkingDirectory.Enabled = false;
-            this.textBoxWorkingDirectory.Location = new System.Drawing.Point(105, 40);
-            this.textBoxWorkingDirectory.Name = "textBoxWorkingDirectory";
-            this.textBoxWorkingDirectory.Size = new System.Drawing.Size(311, 20);
-            this.textBoxWorkingDirectory.TabIndex = 33;
-            this.textBoxWorkingDirectory.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.WorkingDirectory;
             // 
             // tabPageDictionaries
             // 
@@ -575,15 +567,38 @@
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
-            // checkBoxDeleteSameWhenCracked
+            // checkBoxShowNotifications
             // 
-            this.checkBoxDeleteSameWhenCracked.AutoSize = true;
-            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(21, 141);
-            this.checkBoxDeleteSameWhenCracked.Name = "checkBoxDeleteSameWhenCracked";
-            this.checkBoxDeleteSameWhenCracked.Size = new System.Drawing.Size(314, 17);
-            this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
-            this.checkBoxDeleteSameWhenCracked.Text = "When task is cracked, delete other tasks with the same hash";
-            this.checkBoxDeleteSameWhenCracked.UseVisualStyleBackColor = true;
+            this.checkBoxShowNotifications.AutoSize = true;
+            this.checkBoxShowNotifications.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.ShowNotifications;
+            this.checkBoxShowNotifications.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowNotifications.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "ShowNotifications", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxShowNotifications.Location = new System.Drawing.Point(21, 164);
+            this.checkBoxShowNotifications.Name = "checkBoxShowNotifications";
+            this.checkBoxShowNotifications.Size = new System.Drawing.Size(189, 17);
+            this.checkBoxShowNotifications.TabIndex = 51;
+            this.checkBoxShowNotifications.Text = "Show cracking results notifications";
+            this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
+            // 
+            // textBoxHashcat
+            // 
+            this.textBoxHashcat.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "Hashcat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxHashcat.Location = new System.Drawing.Point(105, 10);
+            this.textBoxHashcat.Name = "textBoxHashcat";
+            this.textBoxHashcat.Size = new System.Drawing.Size(311, 20);
+            this.textBoxHashcat.TabIndex = 31;
+            this.textBoxHashcat.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.Hashcat;
+            this.textBoxHashcat.TextChanged += new System.EventHandler(this.textBoxHashcat_TextChanged);
+            // 
+            // textBoxWorkingDirectory
+            // 
+            this.textBoxWorkingDirectory.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "WorkingDirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxWorkingDirectory.Enabled = false;
+            this.textBoxWorkingDirectory.Location = new System.Drawing.Point(105, 40);
+            this.textBoxWorkingDirectory.Name = "textBoxWorkingDirectory";
+            this.textBoxWorkingDirectory.Size = new System.Drawing.Size(311, 20);
+            this.textBoxWorkingDirectory.TabIndex = 33;
+            this.textBoxWorkingDirectory.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.WorkingDirectory;
             // 
             // SettingsForm
             // 
@@ -651,5 +666,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderMask;
         private System.Windows.Forms.ColumnHeader columnHeaderCharsets;
         private System.Windows.Forms.CheckBox checkBoxDeleteSameWhenCracked;
+        private System.Windows.Forms.CheckBox checkBoxShowNotifications;
     }
 }
