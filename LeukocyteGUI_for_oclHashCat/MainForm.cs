@@ -459,10 +459,15 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (checkBoxPauseCracking.Checked)
             {
+                toolStripMenuItemPauseCracking.Enabled = false;
+                toolStripMenuItemResumeCracking.Enabled = true;
                 tskManager.Cracker.PauseCracking();
             }
             else
             {
+                toolStripMenuItemPauseCracking.Enabled = true;
+                toolStripMenuItemResumeCracking.Enabled = false;
+
                 if ((tskManager.Cracker.LastCrackingTaskId != -1)
                     && (!tskManager.Cracker.IsCracking))
                 {
@@ -497,6 +502,32 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             Properties.Settings.Default.CrackTasksFile = saveFileDialogCrackTasks.FileName;
             SaveTasks();
+        }
+        private void toolStripMenuItemExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void toolStripMenuItemShow_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+        private void toolStripMenuItemPauseCracking_Click(object sender, EventArgs e)
+        {
+            checkBoxPauseCracking.Checked = true;
+        }
+        private void toolStripMenuItemResumeCracking_Click(object sender, EventArgs e)
+        {
+            checkBoxPauseCracking.Checked = false;
+        }
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                WindowState = FormWindowState.Normal;
+            }
         }
 
         public void CheckButtons()

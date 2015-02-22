@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>main.ico</ApplicationIcon>
+    <ApplicationIcon>main2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>DECF17484F3B900FEC0594B68E691B3BC76F889C</ManifestCertificateThumbprint>
@@ -277,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main.ico" />
+    <Content Include="main2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

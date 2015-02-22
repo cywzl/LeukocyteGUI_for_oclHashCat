@@ -69,7 +69,6 @@
             this.buttonOpenCrackTasksFile = new System.Windows.Forms.Button();
             this.buttonSaveCrackTasksFile = new System.Windows.Forms.Button();
             this.checkBoxPauseCracking = new System.Windows.Forms.CheckBox();
-            this.checkBoxAllChecked = new System.Windows.Forms.CheckBox();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.pictureBoxFan = new System.Windows.Forms.PictureBox();
             this.pictureBoxVideocard = new System.Windows.Forms.PictureBox();
@@ -87,6 +86,15 @@
             this.buttonStopTask = new System.Windows.Forms.Button();
             this.statusStripInfo = new System.Windows.Forms.StatusStrip();
             this.tsslCrackTasksFile = new System.Windows.Forms.ToolStripStatusLabel();
+            this.checkBoxAllChecked = new System.Windows.Forms.CheckBox();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStripIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemPauseCracking = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemResumeCracking = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMessage = new LeukocyteGUI_for_oclHashCat.NotifyMessage(this.components);
             this.contextMenuStripTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFan)).BeginInit();
@@ -94,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTemperature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpeed)).BeginInit();
             this.statusStripInfo.SuspendLayout();
+            this.contextMenuStripIcon.SuspendLayout();
             this.SuspendLayout();
             // 
             // listViewTasks
@@ -446,33 +455,6 @@
             this.checkBoxPauseCracking.UseVisualStyleBackColor = true;
             this.checkBoxPauseCracking.CheckedChanged += new System.EventHandler(this.checkBoxPauseCracking_CheckedChanged);
             // 
-            // checkBoxAllChecked
-            // 
-            this.checkBoxAllChecked.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBoxAllChecked.AutoSize = true;
-            this.checkBoxAllChecked.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.CrackAllChecked;
-            this.checkBoxAllChecked.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "CrackAllChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxAllChecked.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatAppearance.BorderSize = 0;
-            this.checkBoxAllChecked.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.checkBoxAllChecked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBoxAllChecked.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBoxAllChecked.ForeColor = System.Drawing.Color.Gray;
-            this.checkBoxAllChecked.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.checkBoxAllChecked.ImageIndex = 0;
-            this.checkBoxAllChecked.ImageList = this.imageListCheckBox;
-            this.checkBoxAllChecked.Location = new System.Drawing.Point(11, 7);
-            this.checkBoxAllChecked.Name = "checkBoxAllChecked";
-            this.checkBoxAllChecked.Size = new System.Drawing.Size(154, 32);
-            this.checkBoxAllChecked.TabIndex = 36;
-            this.checkBoxAllChecked.Text = "  Crack all checked";
-            this.checkBoxAllChecked.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.checkBoxAllChecked.UseVisualStyleBackColor = true;
-            this.checkBoxAllChecked.CheckedChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
-            this.checkBoxAllChecked.VisibleChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
-            // 
             // buttonSettings
             // 
             this.buttonSettings.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
@@ -726,6 +708,96 @@
             this.tsslCrackTasksFile.Size = new System.Drawing.Size(10, 17);
             this.tsslCrackTasksFile.Text = " ";
             // 
+            // checkBoxAllChecked
+            // 
+            this.checkBoxAllChecked.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBoxAllChecked.AutoSize = true;
+            this.checkBoxAllChecked.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.CrackAllChecked;
+            this.checkBoxAllChecked.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "CrackAllChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxAllChecked.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatAppearance.BorderSize = 0;
+            this.checkBoxAllChecked.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.checkBoxAllChecked.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBoxAllChecked.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBoxAllChecked.ForeColor = System.Drawing.Color.Gray;
+            this.checkBoxAllChecked.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.checkBoxAllChecked.ImageIndex = 0;
+            this.checkBoxAllChecked.ImageList = this.imageListCheckBox;
+            this.checkBoxAllChecked.Location = new System.Drawing.Point(11, 7);
+            this.checkBoxAllChecked.Name = "checkBoxAllChecked";
+            this.checkBoxAllChecked.Size = new System.Drawing.Size(154, 32);
+            this.checkBoxAllChecked.TabIndex = 36;
+            this.checkBoxAllChecked.Text = "  Crack all checked";
+            this.checkBoxAllChecked.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.checkBoxAllChecked.UseVisualStyleBackColor = true;
+            this.checkBoxAllChecked.CheckedChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
+            this.checkBoxAllChecked.VisibleChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStripIcon;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            // 
+            // contextMenuStripIcon
+            // 
+            this.contextMenuStripIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemShow,
+            this.toolStripSeparator4,
+            this.toolStripMenuItemPauseCracking,
+            this.toolStripMenuItemResumeCracking,
+            this.toolStripSeparator5,
+            this.toolStripMenuItemExit});
+            this.contextMenuStripIcon.Name = "contextMenuStripIcon";
+            this.contextMenuStripIcon.Size = new System.Drawing.Size(165, 104);
+            // 
+            // toolStripMenuItemShow
+            // 
+            this.toolStripMenuItemShow.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_videocard;
+            this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
+            this.toolStripMenuItemShow.Size = new System.Drawing.Size(164, 22);
+            this.toolStripMenuItemShow.Text = "Show";
+            this.toolStripMenuItemShow.Click += new System.EventHandler(this.toolStripMenuItemShow_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(161, 6);
+            // 
+            // toolStripMenuItemPauseCracking
+            // 
+            this.toolStripMenuItemPauseCracking.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_pause;
+            this.toolStripMenuItemPauseCracking.Name = "toolStripMenuItemPauseCracking";
+            this.toolStripMenuItemPauseCracking.Size = new System.Drawing.Size(164, 22);
+            this.toolStripMenuItemPauseCracking.Text = "Pause cracking";
+            this.toolStripMenuItemPauseCracking.Click += new System.EventHandler(this.toolStripMenuItemPauseCracking_Click);
+            // 
+            // toolStripMenuItemResumeCracking
+            // 
+            this.toolStripMenuItemResumeCracking.Enabled = false;
+            this.toolStripMenuItemResumeCracking.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
+            this.toolStripMenuItemResumeCracking.Name = "toolStripMenuItemResumeCracking";
+            this.toolStripMenuItemResumeCracking.Size = new System.Drawing.Size(164, 22);
+            this.toolStripMenuItemResumeCracking.Text = "Resume cracking";
+            this.toolStripMenuItemResumeCracking.Click += new System.EventHandler(this.toolStripMenuItemResumeCracking_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(161, 6);
+            // 
+            // toolStripMenuItemExit
+            // 
+            this.toolStripMenuItemExit.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(164, 22);
+            this.toolStripMenuItemExit.Text = "Exit";
+            this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
+            // 
             // notifyMessage
             // 
             this.notifyMessage.Caption = "";
@@ -783,6 +855,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSpeed)).EndInit();
             this.statusStripInfo.ResumeLayout(false);
             this.statusStripInfo.PerformLayout();
+            this.contextMenuStripIcon.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -848,5 +921,13 @@
         private System.Windows.Forms.StatusStrip statusStripInfo;
         private System.Windows.Forms.ToolStripStatusLabel tsslCrackTasksFile;
         private NotifyMessage notifyMessage;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripIcon;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShow;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPauseCracking;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemResumeCracking;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
     }
 }
