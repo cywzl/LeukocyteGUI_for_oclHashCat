@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
@@ -82,6 +84,16 @@ namespace LeukocyteGUI_for_oclHashCat
             CheckButtons();
         }
 
+        private void thumbButtonPause_Click(object sender, ThumbnailButtonClickedEventArgs e)
+        {
+            toolStripMenuItemPauseCracking.PerformClick();
+        }
+
+        private void thumbButtonStart_Click(object sender, ThumbnailButtonClickedEventArgs e)
+        {
+            toolStripMenuItemResumeCracking.PerformClick();
+        }
+
         private void Cracker_BeforeStart(object sender, int TaskId)
         {
             string logFile = Properties.Settings.Default.WorkingDirectory + "\\"
@@ -117,6 +129,8 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (status == "Cracked")
             {
+                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
+
                 string hash = tskManager.CrackTasks[TaskId].Hash;
 
                 if (Properties.Settings.Default.DeleteRelatedTasksWhenCracked)
@@ -178,14 +192,21 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             else
             {
-                if (Properties.Settings.Default.ShowNotifications)
+                if (tskManager.CrackTasks[TaskId].Status == "Paused")
                 {
-                    notifyMessage.Show("Cracking process has finished"
-                            + "\r\n" + tskManager.CrackTasks[TaskId].RecoveredDigests.ToString()
-                            + "/" + tskManager.CrackTasks[TaskId].Digests.ToString()
-                            + " digests have been cracked",
-                        "(" + (TaskId + 1).ToString() + ") " + tskManager.CrackTasks[TaskId].Hash,
-                        Properties.Resources.glyph_task_cancel);
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Paused);
+                }
+                else
+                {
+                    if (Properties.Settings.Default.ShowNotifications)
+                    {
+                        notifyMessage.Show("Cracking process has finished"
+                                + "\r\n" + tskManager.CrackTasks[TaskId].RecoveredDigests.ToString()
+                                + "/" + tskManager.CrackTasks[TaskId].Digests.ToString()
+                                + " digests have been cracked",
+                            "(" + (TaskId + 1).ToString() + ") " + tskManager.CrackTasks[TaskId].Hash,
+                            Properties.Resources.glyph_task_cancel);
+                    }
                 }
             }
 
@@ -212,11 +233,14 @@ namespace LeukocyteGUI_for_oclHashCat
             labelGPUTemp.Text = tskManager.Cracker.Temp.ToString() + " °C";
             labelGPUUtil.Text = tskManager.Cracker.Util.ToString() + " %";
             labelFanSpeed.Text = tskManager.Cracker.Fan.ToString() + " %";
+
+            TaskbarManager.Instance.SetProgressValue((int)tskManager.CrackTasks[TaskId].Progress, 100);
         }
         private void Cracker_OnStart(object sender, int TaskId)
         {
             CheckButtons();
             VisualizeTask(TaskId);
+            TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
         }
         private void tskManager_TaskAdded(object sender, int TaskId)
         {
