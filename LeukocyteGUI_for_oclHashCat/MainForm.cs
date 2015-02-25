@@ -19,6 +19,7 @@ namespace LeukocyteGUI_for_oclHashCat
         CrackTaskManager tskManager;
         DictionaryManager dictManager;
         MaskManager maskManager;
+        ListViewSubItemTip subItemTip;
 
         public string DateTimeFormat { get; set; }
         public CrackTaskManager MainCrackTaskManager
@@ -49,6 +50,8 @@ namespace LeukocyteGUI_for_oclHashCat
             InitializeComponent();
 
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
+
+            subItemTip = new ListViewSubItemTip(listViewTasks);
 
             tskManager = new CrackTaskManager();
             tskManager.TaskAdded += tskManager_TaskAdded;
@@ -82,16 +85,6 @@ namespace LeukocyteGUI_for_oclHashCat
 
             VisualizeTasks();
             CheckButtons();
-        }
-
-        private void thumbButtonPause_Click(object sender, ThumbnailButtonClickedEventArgs e)
-        {
-            toolStripMenuItemPauseCracking.PerformClick();
-        }
-
-        private void thumbButtonStart_Click(object sender, ThumbnailButtonClickedEventArgs e)
-        {
-            toolStripMenuItemResumeCracking.PerformClick();
         }
 
         private void Cracker_BeforeStart(object sender, int TaskId)
@@ -559,6 +552,10 @@ namespace LeukocyteGUI_for_oclHashCat
                 WindowState = FormWindowState.Normal;
             }
         }
+        private void listViewTasks_MouseMove(object sender, MouseEventArgs e)
+        {
+            subItemTip.ShowSubItemTip(e.Location);
+        }
 
         public void CheckButtons()
         {
@@ -734,7 +731,22 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 for (byte i = 0; i < values.Length; i++)
                 {
-                    listViewTasks.Items[TaskId].SubItems[i].Text = values[i];
+                    switch (i)
+                    {
+                        case 2:
+                        case 9:
+                        case 10:
+                            if (values[i] != null)
+                            {
+                                listViewTasks.Items[TaskId].SubItems[i].Text =
+                                    values[i].Substring(values[i].LastIndexOf("\\") + 1);
+                                listViewTasks.Items[TaskId].SubItems[i].Tag = values[i];
+                            }
+                            break;
+                        default:
+                            listViewTasks.Items[TaskId].SubItems[i].Text = values[i];
+                            break;
+                    }
                 }
             }
             else
@@ -748,7 +760,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
             for (int i = 0; i < tskManager.CrackTasks.Length; i++)
             {
-                listViewTasks.Items.Add("");
+                string[] subItems = new string[listViewTasks.Columns.Count];
+                ListViewItem lvItem = new ListViewItem(subItems);
+                listViewTasks.Items.Add(lvItem);
                 VisualizeTask(i);
             }
         }

@@ -2067,4 +2067,82 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
     }
+
+    public class ListViewSubItemTip
+    {
+        int duration = 2000;
+        string caption = "";
+        ToolTip toolTip;
+        ListView listView;
+        ListViewItem.ListViewSubItem lastSubItem;
+        System.Windows.Forms.Timer timer;
+        Point location;
+
+        public int Delay
+        {
+            get { return timer.Interval; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Delay is less than 0.");
+                }
+
+                timer.Interval = value;
+            }
+        }
+        public int Duration
+        {
+            get { return duration; }
+            set
+            {
+                if (duration < 0)
+                {
+                    throw new ArgumentException("Duration is less than 0.");
+                }
+
+                duration = value;
+            }
+        }
+
+        public ListViewSubItemTip(ListView listView, int delay = 1000)
+        {
+            this.listView = listView;
+            this.toolTip = new ToolTip();
+            this.toolTip.SetToolTip(listView, "");
+            this.timer = new System.Windows.Forms.Timer();
+            this.timer.Interval = delay;
+            this.timer.Tick += timer_Tick;
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            toolTip.Show(caption, listView, location, duration);
+            timer.Stop();
+        }
+
+        public void ShowSubItemTip(Point location)
+        {
+            ListViewHitTestInfo ht = listView.HitTest(location);
+
+            if (ht.SubItem != lastSubItem)
+            {
+                timer.Stop();
+                toolTip.Hide(listView);
+                lastSubItem = ht.SubItem;
+
+                if ((ht.SubItem != null) && (ht.SubItem.Tag != null))
+                {
+                    caption = ht.SubItem.Tag.ToString();
+                    timer.Start();
+                }
+                else
+                {
+                    caption = "";
+                }
+            }
+
+            this.location = location;
+        }
+    }
 }
