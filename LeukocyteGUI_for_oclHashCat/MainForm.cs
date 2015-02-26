@@ -520,6 +520,26 @@ namespace LeukocyteGUI_for_oclHashCat
             Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
             Properties.Settings.Default.Save();
         }
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.MinimizeToTray)
+            {
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    if (ShowInTaskbar)
+                    {
+                        ShowInTaskbar = false;
+                    }
+                }
+                else
+                {
+                    if (!ShowInTaskbar)
+                    {
+                        ShowInTaskbar = true;
+                    }
+                }
+            }
+        }
         private void openFileDialogCrackTasks_FileOk(object sender, CancelEventArgs e)
         {
             Properties.Settings.Default.CrackTasksFile = openFileDialogCrackTasks.FileName;

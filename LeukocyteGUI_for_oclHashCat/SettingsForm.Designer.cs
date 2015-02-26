@@ -67,6 +67,7 @@
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
+            this.checkBoxMinimizeToTray = new System.Windows.Forms.CheckBox();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
             this.textBoxHashcat = new System.Windows.Forms.TextBox();
             this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
@@ -174,6 +175,7 @@
             // 
             // tabPageMain
             // 
+            this.tabPageMain.Controls.Add(this.checkBoxMinimizeToTray);
             this.tabPageMain.Controls.Add(this.checkBoxShowNotifications);
             this.tabPageMain.Controls.Add(this.checkBoxDeleteSameWhenCracked);
             this.tabPageMain.Controls.Add(this.checkBoxLoadOnStart);
@@ -567,6 +569,18 @@
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
+            // checkBoxMinimizeToTray
+            // 
+            this.checkBoxMinimizeToTray.AutoSize = true;
+            this.checkBoxMinimizeToTray.Checked = true;
+            this.checkBoxMinimizeToTray.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMinimizeToTray.Location = new System.Drawing.Point(21, 187);
+            this.checkBoxMinimizeToTray.Name = "checkBoxMinimizeToTray";
+            this.checkBoxMinimizeToTray.Size = new System.Drawing.Size(98, 17);
+            this.checkBoxMinimizeToTray.TabIndex = 52;
+            this.checkBoxMinimizeToTray.Text = "Minimize to tray";
+            this.checkBoxMinimizeToTray.UseVisualStyleBackColor = true;
+            // 
             // checkBoxShowNotifications
             // 
             this.checkBoxShowNotifications.AutoSize = true;
@@ -667,5 +681,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderCharsets;
         private System.Windows.Forms.CheckBox checkBoxDeleteSameWhenCracked;
         private System.Windows.Forms.CheckBox checkBoxShowNotifications;
+        private System.Windows.Forms.CheckBox checkBoxMinimizeToTray;
     }
 }
