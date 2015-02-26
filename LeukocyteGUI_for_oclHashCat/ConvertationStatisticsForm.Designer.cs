@@ -105,7 +105,7 @@
             this.buttonConfirmSuccess.UseVisualStyleBackColor = true;
             this.buttonConfirmSuccess.Click += new System.EventHandler(this.buttonConfirmSuccess_Click);
             // 
-            // ConvertationStatistics
+            // ConvertationStatisticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,9 +115,10 @@
             this.Controls.Add(this.labelConvertingStatus);
             this.Controls.Add(this.labelConverting);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ConvertationStatistics";
+            this.Name = "ConvertationStatisticsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Converting";
             this.ResumeLayout(false);
