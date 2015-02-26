@@ -195,21 +195,21 @@ namespace LeukocyteGUI_for_oclHashCat
         [Serializable()]
         public class CrackTask
         {
-            private string hashTypeName;
-            private string bruteforceMask;
-            private string separator;
-            private string charset1;
-            private string charset2;
-            private string charset3;
-            private string charset4;
-            private string dictionary;
-            private string outputFileName;
-            private string outputFormatName;
-            private string sessionId;
-            private string workloadProfileName;
-            private string plain;
-            private string hash;
-            private string status;
+            private string hashTypeName = "";
+            private string bruteforceMask = "";
+            private string separator = "";
+            private string charset1 = "";
+            private string charset2 = "";
+            private string charset3 = "";
+            private string charset4 = "";
+            private string dictionary = "";
+            private string outputFileName = "";
+            private string outputFormatName = "";
+            private string sessionId = "";
+            private string workloadProfileName = "";
+            private string plain = "";
+            private string hash = "";
+            private string status = "";
             private int hashTypeCode;
             private int workloadFineTuning = 8;
             private ulong restorePosition;

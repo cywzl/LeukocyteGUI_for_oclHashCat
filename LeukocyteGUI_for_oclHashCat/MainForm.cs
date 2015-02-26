@@ -459,6 +459,10 @@ namespace LeukocyteGUI_for_oclHashCat
                 e.DrawDefault = true;
             }
         }
+        private void listViewTasks_MouseMove(object sender, MouseEventArgs e)
+        {
+            subItemTip.ShowSubItemTip(e.Location);
+        }
         private void checkBoxAppearanceUpdate(CheckBox sender)
         {
             if (sender.Checked)
@@ -545,16 +549,131 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             checkBoxPauseCracking.Checked = false;
         }
+        private void toolStripMenuItemInfo_Click(object sender, EventArgs e)
+        {
+            if (listViewTasks.SelectedIndices.Count == 0)
+            {
+                return;
+            }
+
+            CrackTaskManager.CrackTask crackTask = tskManager.CrackTasks[listViewTasks.SelectedIndices[0]];
+            string clipboardText = "";
+
+            switch ((sender as ToolStripMenuItem).Name)
+            {
+                case "toolStripMenuItemFullInfo":
+                    clipboardText = (listViewTasks.SelectedIndices[0] + 1).ToString()
+                        + ";" + crackTask.HashTypeName
+                        + ";" + crackTask.Hash
+                        + ";" + crackTask.Plain;
+
+                    switch (crackTask.AttackType)
+                    {
+                        case 0:
+                            clipboardText += ";" + crackTask.Dictionary + ";";
+                            break;
+                        case 3:
+                            clipboardText += ";" + crackTask.BruteforceMask + ";";
+                            break;
+                    }
+
+                    if (crackTask.OutputToFile)
+                    {
+                        clipboardText += crackTask.OutputFileName;
+                    }
+
+                    clipboardText += ";" + crackTask.SessionId
+                        + ";" + crackTask.Estimated
+                        + ";" + crackTask.Started
+                        + ";" + crackTask.Finished;
+
+                    break;
+
+                case "toolStripMenuItemHashType":
+                    clipboardText = crackTask.HashTypeName;
+                    break;
+
+                case "toolStripMenuItemHashTargetName":
+                    clipboardText = crackTask.Hash.Substring(crackTask.Hash.LastIndexOf("\\") + 1);
+                    break;
+
+                case "toolStripMenuItemHashTargetPath":
+                    clipboardText = crackTask.Hash;
+                    break;
+
+                case "toolStripMenuItemPlain":
+                    clipboardText = crackTask.Plain;
+                    break;
+
+                case "toolStripMenuItemTimeEstimated":
+                    clipboardText = crackTask.Estimated;
+                    break;
+
+                case "toolStripMenuItemTimeStarted":
+                    clipboardText = crackTask.Started.ToString(DateTimeFormat);
+                    break;
+
+                case "toolStripMenuItemTimeFinished":
+                    clipboardText = crackTask.Finished.ToString(DateTimeFormat);
+                    break;
+
+                case "toolStripMenuItemOutputFileName":
+                    if (crackTask.OutputToFile)
+                    {
+                        clipboardText = crackTask.OutputFileName.Substring(crackTask.OutputFileName.LastIndexOf("\\") + 1);
+                    }
+                    
+                    break;
+
+                case "toolStripMenuItemOutputFilePath":
+                    if (crackTask.OutputToFile)
+                    {
+                        clipboardText = crackTask.OutputFileName;
+                    }
+                    
+                    break;
+
+                case "toolStripMenuItemMaskDictionaryName":
+                    switch (crackTask.AttackType)
+                    {
+                        case 0:
+                            clipboardText = crackTask.Dictionary.Substring(crackTask.Dictionary.LastIndexOf("\\") + 1);
+                            break;
+                        case 3:
+                            clipboardText = crackTask.BruteforceMask.Substring(crackTask.BruteforceMask.LastIndexOf("\\") + 1);
+                            break;
+                    }
+
+                    break;
+
+                case "toolStripMenuItemMaskDictionaryPath":
+                    switch (crackTask.AttackType)
+                    {
+                        case 0:
+                            clipboardText = crackTask.Dictionary;
+                            break;
+                        case 3:
+                            clipboardText = crackTask.BruteforceMask;
+                            break;
+                    }
+                    break;
+
+                case "toolStripMenuItemSession":
+                    clipboardText = crackTask.SessionId;
+                    break;
+            }
+
+            if ((clipboardText != null) && (clipboardText != ""))
+            {
+                Clipboard.SetText(clipboardText);
+            }
+        }
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)
             {
                 WindowState = FormWindowState.Normal;
             }
-        }
-        private void listViewTasks_MouseMove(object sender, MouseEventArgs e)
-        {
-            subItemTip.ShowSubItemTip(e.Location);
         }
 
         public void CheckButtons()
@@ -590,6 +709,8 @@ namespace LeukocyteGUI_for_oclHashCat
             if (listViewTasks.SelectedIndices.Count == 1)
             {
                 int index = listViewTasks.SelectedIndices[0];
+
+                toolStripMenuItemCopyTaskInfo.Enabled = true;
 
                 if (tskManager.Cracker.CrackingTaskId != index)
                 {
@@ -665,6 +786,8 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             else
             {
+                toolStripMenuItemCopyTaskInfo.Enabled = false;
+
                 buttonUpTask.Enabled = false;
                 toolStripMenuItemMoveUp.Enabled = false;
 

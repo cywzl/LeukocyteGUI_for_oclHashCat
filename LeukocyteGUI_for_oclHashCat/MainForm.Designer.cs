@@ -96,6 +96,26 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyMessage = new LeukocyteGUI_for_oclHashCat.NotifyMessage(this.components);
+            this.toolStripMenuItemCopyTaskInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemFullInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemHashType = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemHashTargetName = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemPlain = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemTimeEstimated = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemHashTargetPath = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemTimeStarted = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemTimeFinished = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItemOutputFileName = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemOutputFilePath = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMaskDictionaryName = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemMaskDictionaryPath = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemSession = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStripTasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideocard)).BeginInit();
@@ -215,6 +235,8 @@
             // contextMenuStripTasks
             // 
             this.contextMenuStripTasks.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemCopyTaskInfo,
+            this.toolStripSeparator6,
             this.toolStripMenuItemAdd,
             this.toolStripMenuItemChange,
             this.toolStripMenuItemRemove,
@@ -228,7 +250,7 @@
             this.toolStripMenuItemPause,
             this.toolStripMenuItemStop});
             this.contextMenuStripTasks.Name = "contextMenuStripTasks";
-            this.contextMenuStripTasks.Size = new System.Drawing.Size(156, 220);
+            this.contextMenuStripTasks.Size = new System.Drawing.Size(156, 270);
             // 
             // toolStripMenuItemAdd
             // 
@@ -814,6 +836,152 @@
             this.notifyMessage.TextBackColor = System.Drawing.Color.White;
             this.notifyMessage.TextForeColor = System.Drawing.Color.Black;
             // 
+            // toolStripMenuItemCopyTaskInfo
+            // 
+            this.toolStripMenuItemCopyTaskInfo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemFullInfo,
+            this.toolStripSeparator7,
+            this.toolStripMenuItemHashType,
+            this.toolStripMenuItemHashTargetName,
+            this.toolStripMenuItemHashTargetPath,
+            this.toolStripMenuItemPlain,
+            this.toolStripSeparator8,
+            this.toolStripMenuItemTimeEstimated,
+            this.toolStripMenuItemTimeStarted,
+            this.toolStripMenuItemTimeFinished,
+            this.toolStripSeparator9,
+            this.toolStripMenuItemOutputFileName,
+            this.toolStripMenuItemOutputFilePath,
+            this.toolStripSeparator10,
+            this.toolStripMenuItemMaskDictionaryName,
+            this.toolStripMenuItemMaskDictionaryPath,
+            this.toolStripSeparator11,
+            this.toolStripMenuItemSession});
+            this.toolStripMenuItemCopyTaskInfo.Name = "toolStripMenuItemCopyTaskInfo";
+            this.toolStripMenuItemCopyTaskInfo.Size = new System.Drawing.Size(155, 22);
+            this.toolStripMenuItemCopyTaskInfo.Text = "Copy task info";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(152, 6);
+            // 
+            // toolStripMenuItemFullInfo
+            // 
+            this.toolStripMenuItemFullInfo.Name = "toolStripMenuItemFullInfo";
+            this.toolStripMenuItemFullInfo.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemFullInfo.Text = "Full info";
+            this.toolStripMenuItemFullInfo.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemHashType
+            // 
+            this.toolStripMenuItemHashType.Name = "toolStripMenuItemHashType";
+            this.toolStripMenuItemHashType.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemHashType.Text = "Hash type";
+            this.toolStripMenuItemHashType.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemHashTargetName
+            // 
+            this.toolStripMenuItemHashTargetName.Name = "toolStripMenuItemHashTargetName";
+            this.toolStripMenuItemHashTargetName.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemHashTargetName.Text = "Hash target (name)";
+            this.toolStripMenuItemHashTargetName.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemPlain
+            // 
+            this.toolStripMenuItemPlain.Name = "toolStripMenuItemPlain";
+            this.toolStripMenuItemPlain.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemPlain.Text = "Plain";
+            this.toolStripMenuItemPlain.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemTimeEstimated
+            // 
+            this.toolStripMenuItemTimeEstimated.Name = "toolStripMenuItemTimeEstimated";
+            this.toolStripMenuItemTimeEstimated.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemTimeEstimated.Text = "Time estimated";
+            this.toolStripMenuItemTimeEstimated.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemHashTargetPath
+            // 
+            this.toolStripMenuItemHashTargetPath.Name = "toolStripMenuItemHashTargetPath";
+            this.toolStripMenuItemHashTargetPath.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemHashTargetPath.Text = "Hash target (path)";
+            this.toolStripMenuItemHashTargetPath.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemTimeStarted
+            // 
+            this.toolStripMenuItemTimeStarted.Name = "toolStripMenuItemTimeStarted";
+            this.toolStripMenuItemTimeStarted.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemTimeStarted.Text = "Time started";
+            this.toolStripMenuItemTimeStarted.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemTimeFinished
+            // 
+            this.toolStripMenuItemTimeFinished.Name = "toolStripMenuItemTimeFinished";
+            this.toolStripMenuItemTimeFinished.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemTimeFinished.Text = "Time finished";
+            this.toolStripMenuItemTimeFinished.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(205, 6);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(205, 6);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(205, 6);
+            // 
+            // toolStripMenuItemOutputFileName
+            // 
+            this.toolStripMenuItemOutputFileName.Name = "toolStripMenuItemOutputFileName";
+            this.toolStripMenuItemOutputFileName.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemOutputFileName.Text = "Output file (name)";
+            this.toolStripMenuItemOutputFileName.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemOutputFilePath
+            // 
+            this.toolStripMenuItemOutputFilePath.Name = "toolStripMenuItemOutputFilePath";
+            this.toolStripMenuItemOutputFilePath.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemOutputFilePath.Text = "Output file (path)";
+            this.toolStripMenuItemOutputFilePath.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemMaskDictionaryName
+            // 
+            this.toolStripMenuItemMaskDictionaryName.Name = "toolStripMenuItemMaskDictionaryName";
+            this.toolStripMenuItemMaskDictionaryName.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemMaskDictionaryName.Text = "Mask / Dictionary (name)";
+            this.toolStripMenuItemMaskDictionaryName.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemMaskDictionaryPath
+            // 
+            this.toolStripMenuItemMaskDictionaryPath.Name = "toolStripMenuItemMaskDictionaryPath";
+            this.toolStripMenuItemMaskDictionaryPath.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemMaskDictionaryPath.Text = "Mask / Dictionary (path)";
+            this.toolStripMenuItemMaskDictionaryPath.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripMenuItemSession
+            // 
+            this.toolStripMenuItemSession.Name = "toolStripMenuItemSession";
+            this.toolStripMenuItemSession.Size = new System.Drawing.Size(208, 22);
+            this.toolStripMenuItemSession.Text = "Session";
+            this.toolStripMenuItemSession.Click += new System.EventHandler(this.toolStripMenuItemInfo_Click);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(205, 6);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(205, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -931,5 +1099,25 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemResumeCracking;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCopyTaskInfo;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFullInfo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHashType;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHashTargetName;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHashTargetPath;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemPlain;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTimeEstimated;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTimeStarted;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTimeFinished;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOutputFileName;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemOutputFilePath;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMaskDictionaryName;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemMaskDictionaryPath;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSession;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }
