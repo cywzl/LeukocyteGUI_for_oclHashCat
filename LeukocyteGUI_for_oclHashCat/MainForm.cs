@@ -41,6 +41,7 @@ namespace LeukocyteGUI_for_oclHashCat
         DictionaryManager dictManager;
         MaskManager maskManager;
         ListViewSubItemTip subItemTip;
+        ToolTip toolTip;
 
         public string DateTimeFormat { get; set; }
         public CrackTaskManager MainCrackTaskManager
@@ -73,6 +74,12 @@ namespace LeukocyteGUI_for_oclHashCat
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
             subItemTip = new ListViewSubItemTip(listViewTasks);
+            toolTip = new ToolTip();
+
+            if (Properties.Settings.Default.ShowToolTips)
+            {
+                LoadToolTips();   
+            }
 
             tskManager = new CrackTaskManager();
             tskManager.TaskAdded += tskManager_TaskAdded;
@@ -1001,6 +1008,59 @@ namespace LeukocyteGUI_for_oclHashCat
             BinaryFormatter serializer = new BinaryFormatter();
             serializer.Serialize(masksStream, maskManager.Masks);
             masksStream.Close();
+        }
+        public void LoadToolTips()
+        {
+            toolTip.SetToolTip(buttonOpenCrackTasksFile,
+                    "Select CrackTasks file and load tasks from it (current tasks will be replaced with new)");
+            toolTip.SetToolTip(buttonSaveCrackTasksFile,
+                "Save tasks to the current CrackTasks file");
+            toolTip.SetToolTip(buttonSaveCrackTasksFileAs,
+                "Save tasks to a new CrackTasks file");
+            toolTip.SetToolTip(buttonAddTask,
+                "Add a new task using TaskEditor");
+            toolTip.SetToolTip(buttonDeleteTask,
+                "Delete selected task");
+            toolTip.SetToolTip(buttonChangeTask,
+                "Change selected task using TaskEditor");
+            toolTip.SetToolTip(buttonClearTask,
+                "Delete all tasks");
+            toolTip.SetToolTip(buttonUpTask,
+                "Move selected task up");
+            toolTip.SetToolTip(buttonDownTask,
+                "Move selected task down");
+            toolTip.SetToolTip(buttonStartTask,
+                "Start/resume cracking selected task");
+            toolTip.SetToolTip(buttonPauseTask,
+                "Pause cracking current task");
+            toolTip.SetToolTip(buttonStopTask,
+                "Discard all cracking results and cracking progress");
+            toolTip.SetToolTip(buttonOpenConverter,
+                "Open .cap to .hccap converter");
+            toolTip.SetToolTip(buttonSettings,
+                "Edit settings");
+            toolTip.SetToolTip(checkBoxAllChecked,
+                "If enabled: after each task cracking process is finished, cracking process for the next selected with tick task will be started");
+            toolTip.SetToolTip(checkBoxPauseCracking,
+                "Enabling this option will suspend all cracking processes");
+            toolTip.SetToolTip(labelGPUSpeed,
+                "Current cracking speed");
+            toolTip.SetToolTip(pictureBoxSpeed,
+                "Current cracking speed");
+            toolTip.SetToolTip(labelGPUTemp,
+                "Current GPU temperature");
+            toolTip.SetToolTip(pictureBoxTemperature,
+                "Current GPU temperature");
+            toolTip.SetToolTip(labelGPUUtil,
+                "Current GPU load");
+            toolTip.SetToolTip(pictureBoxVideocard,
+                "Current GPU load");
+            toolTip.SetToolTip(labelFanSpeed,
+                "Current fan speed");
+            toolTip.SetToolTip(pictureBoxFan,
+                "Current fan speed");
+            toolTip.SetToolTip(statusStripInfo,
+                "Opened CrackTasks file");
         }
     }
 }

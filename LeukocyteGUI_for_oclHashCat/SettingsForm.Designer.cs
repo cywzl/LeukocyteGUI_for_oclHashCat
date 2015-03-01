@@ -92,6 +92,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
+            this.checkBoxShowToolTips = new System.Windows.Forms.CheckBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageDictionaries.SuspendLayout();
@@ -196,6 +197,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // tabPageMain
             // 
+            this.tabPageMain.Controls.Add(this.checkBoxShowToolTips);
             this.tabPageMain.Controls.Add(this.checkBoxMinimizeToTray);
             this.tabPageMain.Controls.Add(this.checkBoxShowNotifications);
             this.tabPageMain.Controls.Add(this.checkBoxDeleteSameWhenCracked);
@@ -635,6 +637,16 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
+            // checkBoxShowToolTips
+            // 
+            this.checkBoxShowToolTips.AutoSize = true;
+            this.checkBoxShowToolTips.Location = new System.Drawing.Point(21, 210);
+            this.checkBoxShowToolTips.Name = "checkBoxShowToolTips";
+            this.checkBoxShowToolTips.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxShowToolTips.TabIndex = 53;
+            this.checkBoxShowToolTips.Text = "Show tool tips";
+            this.checkBoxShowToolTips.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,5 +715,6 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.CheckBox checkBoxDeleteSameWhenCracked;
         private System.Windows.Forms.CheckBox checkBoxShowNotifications;
         private System.Windows.Forms.CheckBox checkBoxMinimizeToTray;
+        private System.Windows.Forms.CheckBox checkBoxShowToolTips;
     }
 }

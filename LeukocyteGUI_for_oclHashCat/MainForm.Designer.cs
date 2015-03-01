@@ -980,9 +980,9 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxAllChecked.ImageList = this.imageListCheckBox;
             this.checkBoxAllChecked.Location = new System.Drawing.Point(11, 7);
             this.checkBoxAllChecked.Name = "checkBoxAllChecked";
-            this.checkBoxAllChecked.Size = new System.Drawing.Size(154, 32);
+            this.checkBoxAllChecked.Size = new System.Drawing.Size(153, 32);
             this.checkBoxAllChecked.TabIndex = 36;
-            this.checkBoxAllChecked.Text = "  Crack all checked";
+            this.checkBoxAllChecked.Text = "  Crack all selected";
             this.checkBoxAllChecked.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.checkBoxAllChecked.UseVisualStyleBackColor = true;
             this.checkBoxAllChecked.CheckedChanged += new System.EventHandler(this.checkBoxAllChecked_CheckedChanged);
