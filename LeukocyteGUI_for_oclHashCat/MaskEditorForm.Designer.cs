@@ -71,6 +71,14 @@ namespace LeukocyteGUI_for_oclHashCat
             this.numericUpDownIncrementMin = new System.Windows.Forms.NumericUpDown();
             this.labelIncrementMin = new System.Windows.Forms.Label();
             this.checkBoxEnableIncrement = new System.Windows.Forms.CheckBox();
+            this.buttonChooseCharsetFile1 = new System.Windows.Forms.Button();
+            this.buttonChooseCharsetFile2 = new System.Windows.Forms.Button();
+            this.buttonChooseCharsetFile3 = new System.Windows.Forms.Button();
+            this.buttonChooseCharsetFile4 = new System.Windows.Forms.Button();
+            this.openFileDialogCharset1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialogCharset2 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialogCharset3 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialogCharset4 = new System.Windows.Forms.OpenFileDialog();
             this.groupBoxCharsets.SuspendLayout();
             this.groupBoxIncrement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrementMax)).BeginInit();
@@ -143,6 +151,10 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // groupBoxCharsets
             // 
+            this.groupBoxCharsets.Controls.Add(this.buttonChooseCharsetFile4);
+            this.groupBoxCharsets.Controls.Add(this.buttonChooseCharsetFile3);
+            this.groupBoxCharsets.Controls.Add(this.buttonChooseCharsetFile2);
+            this.groupBoxCharsets.Controls.Add(this.buttonChooseCharsetFile1);
             this.groupBoxCharsets.Controls.Add(this.checkBoxCharset4);
             this.groupBoxCharsets.Controls.Add(this.textBoxCharset4);
             this.groupBoxCharsets.Controls.Add(this.checkBoxCharset3);
@@ -172,7 +184,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             this.textBoxCharset4.Location = new System.Drawing.Point(58, 109);
             this.textBoxCharset4.Name = "textBoxCharset4";
-            this.textBoxCharset4.Size = new System.Drawing.Size(159, 20);
+            this.textBoxCharset4.Size = new System.Drawing.Size(128, 20);
             this.textBoxCharset4.TabIndex = 20;
             // 
             // checkBoxCharset3
@@ -189,7 +201,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             this.textBoxCharset3.Location = new System.Drawing.Point(58, 80);
             this.textBoxCharset3.Name = "textBoxCharset3";
-            this.textBoxCharset3.Size = new System.Drawing.Size(159, 20);
+            this.textBoxCharset3.Size = new System.Drawing.Size(128, 20);
             this.textBoxCharset3.TabIndex = 18;
             // 
             // checkBoxCharset2
@@ -206,7 +218,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             this.textBoxCharset2.Location = new System.Drawing.Point(58, 50);
             this.textBoxCharset2.Name = "textBoxCharset2";
-            this.textBoxCharset2.Size = new System.Drawing.Size(159, 20);
+            this.textBoxCharset2.Size = new System.Drawing.Size(128, 20);
             this.textBoxCharset2.TabIndex = 16;
             // 
             // checkBoxCharset1
@@ -223,7 +235,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             this.textBoxCharset1.Location = new System.Drawing.Point(58, 21);
             this.textBoxCharset1.Name = "textBoxCharset1";
-            this.textBoxCharset1.Size = new System.Drawing.Size(159, 20);
+            this.textBoxCharset1.Size = new System.Drawing.Size(128, 20);
             this.textBoxCharset1.TabIndex = 14;
             // 
             // groupBoxIncrement
@@ -282,6 +294,94 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxEnableIncrement.Text = "Enable Increment Mode";
             this.checkBoxEnableIncrement.UseVisualStyleBackColor = true;
             // 
+            // buttonChooseCharsetFile1
+            // 
+            this.buttonChooseCharsetFile1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile1.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile1.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile1.Location = new System.Drawing.Point(192, 19);
+            this.buttonChooseCharsetFile1.Name = "buttonChooseCharsetFile1";
+            this.buttonChooseCharsetFile1.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile1.TabIndex = 55;
+            this.buttonChooseCharsetFile1.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile1.Click += new System.EventHandler(this.buttonChooseCharsetFile1_Click);
+            // 
+            // buttonChooseCharsetFile2
+            // 
+            this.buttonChooseCharsetFile2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile2.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile2.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile2.Location = new System.Drawing.Point(192, 49);
+            this.buttonChooseCharsetFile2.Name = "buttonChooseCharsetFile2";
+            this.buttonChooseCharsetFile2.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile2.TabIndex = 56;
+            this.buttonChooseCharsetFile2.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile2.Click += new System.EventHandler(this.buttonChooseCharsetFile2_Click);
+            // 
+            // buttonChooseCharsetFile3
+            // 
+            this.buttonChooseCharsetFile3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile3.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile3.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile3.Location = new System.Drawing.Point(192, 78);
+            this.buttonChooseCharsetFile3.Name = "buttonChooseCharsetFile3";
+            this.buttonChooseCharsetFile3.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile3.TabIndex = 57;
+            this.buttonChooseCharsetFile3.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile3.Click += new System.EventHandler(this.buttonChooseCharsetFile3_Click);
+            // 
+            // buttonChooseCharsetFile4
+            // 
+            this.buttonChooseCharsetFile4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile4.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile4.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile4.Location = new System.Drawing.Point(192, 107);
+            this.buttonChooseCharsetFile4.Name = "buttonChooseCharsetFile4";
+            this.buttonChooseCharsetFile4.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile4.TabIndex = 58;
+            this.buttonChooseCharsetFile4.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile4.Click += new System.EventHandler(this.buttonChooseCharsetFile4_Click);
+            // 
+            // openFileDialogCharset1
+            // 
+            this.openFileDialogCharset1.FileName = "charset1";
+            this.openFileDialogCharset1.Filter = "Hashcat charset files (*.hcchr)|*.hcchr|Any files (*.*)|*.*";
+            this.openFileDialogCharset1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogCharset1_FileOk);
+            // 
+            // openFileDialogCharset2
+            // 
+            this.openFileDialogCharset2.FileName = "charset2";
+            this.openFileDialogCharset2.Filter = "Hashcat charset files (*.hcchr)|*.hcchr|Any files (*.*)|*.*";
+            this.openFileDialogCharset2.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogCharset2_FileOk);
+            // 
+            // openFileDialogCharset3
+            // 
+            this.openFileDialogCharset3.FileName = "charset3";
+            this.openFileDialogCharset3.Filter = "Hashcat charset files (*.hcchr)|*.hcchr|Any files (*.*)|*.*";
+            this.openFileDialogCharset3.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogCharset3_FileOk);
+            // 
+            // openFileDialogCharset4
+            // 
+            this.openFileDialogCharset4.FileName = "charset4";
+            this.openFileDialogCharset4.Filter = "Hashcat charset files (*.hcchr)|*.hcchr|Any files (*.*)|*.*";
+            this.openFileDialogCharset4.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogCharset4_FileOk);
+            // 
             // MaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,6 +433,14 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.NumericUpDown numericUpDownIncrementMin;
         private System.Windows.Forms.Label labelIncrementMin;
         private System.Windows.Forms.CheckBox checkBoxEnableIncrement;
+        private System.Windows.Forms.Button buttonChooseCharsetFile4;
+        private System.Windows.Forms.Button buttonChooseCharsetFile3;
+        private System.Windows.Forms.Button buttonChooseCharsetFile2;
+        private System.Windows.Forms.Button buttonChooseCharsetFile1;
+        private System.Windows.Forms.OpenFileDialog openFileDialogCharset1;
+        private System.Windows.Forms.OpenFileDialog openFileDialogCharset2;
+        private System.Windows.Forms.OpenFileDialog openFileDialogCharset3;
+        private System.Windows.Forms.OpenFileDialog openFileDialogCharset4;
 
     }
 }

@@ -747,22 +747,22 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 if (UseCharset1)
                 {
-                    result += " --custom-charset1=" + charset1;
+                    result += " --custom-charset1=\"" + charset1 + "\"";
                 }
 
                 if (UseCharset2)
                 {
-                    result += " --custom-charset2=" + charset2;
+                    result += " --custom-charset2=\"" + charset2 + "\"";
                 }
 
                 if (UseCharset3)
                 {
-                    result += " --custom-charset3=" + charset3;
+                    result += " --custom-charset3=\"" + charset3 + "\"";
                 }
 
                 if (UseCharset4)
                 {
-                    result += " --custom-charset4=" + charset4;
+                    result += " --custom-charset4=\"" + charset4 + "\"";
                 }
 
                 if (EnableIncrementMode)

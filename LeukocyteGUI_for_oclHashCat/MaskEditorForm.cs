@@ -80,6 +80,38 @@ namespace LeukocyteGUI_for_oclHashCat
 
             Close();
         }
+        private void buttonChooseCharsetFile1_Click(object sender, EventArgs e)
+        {
+            openFileDialogCharset1.ShowDialog();
+        }
+        private void buttonChooseCharsetFile2_Click(object sender, EventArgs e)
+        {
+            openFileDialogCharset2.ShowDialog();
+        }
+        private void buttonChooseCharsetFile3_Click(object sender, EventArgs e)
+        {
+            openFileDialogCharset3.ShowDialog();
+        }
+        private void buttonChooseCharsetFile4_Click(object sender, EventArgs e)
+        {
+            openFileDialogCharset4.ShowDialog();
+        }
+        private void openFileDialogCharset1_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxCharset1.Text = openFileDialogCharset1.FileName;
+        }
+        private void openFileDialogCharset2_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxCharset2.Text = openFileDialogCharset2.FileName;
+        }
+        private void openFileDialogCharset3_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxCharset3.Text = openFileDialogCharset3.FileName;
+        }
+        private void openFileDialogCharset4_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxCharset4.Text = openFileDialogCharset4.FileName;
+        }
 
         private void FillFormWithData()
         {
