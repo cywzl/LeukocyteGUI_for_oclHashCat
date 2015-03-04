@@ -76,6 +76,13 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             textBoxDictionary.Text = openFileDialogDictionary.FileName;
         }
+        private void textBoxDictionary_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBoxDescAutofilling.Checked)
+            {
+                textBoxDescription.Text = System.IO.Path.GetFileNameWithoutExtension(textBoxDictionary.Text);
+            }
+        }
 
         private void FillFormWithData()
         {

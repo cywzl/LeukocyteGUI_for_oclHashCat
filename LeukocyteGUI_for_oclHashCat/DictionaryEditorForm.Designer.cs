@@ -58,6 +58,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask = new System.Windows.Forms.Button();
             this.buttonSettingsOK = new System.Windows.Forms.Button();
             this.openFileDialogDictionary = new System.Windows.Forms.OpenFileDialog();
+            this.checkBoxDescAutofilling = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // labelDictionary
@@ -91,6 +92,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.textBoxDictionary.Name = "textBoxDictionary";
             this.textBoxDictionary.Size = new System.Drawing.Size(197, 20);
             this.textBoxDictionary.TabIndex = 1;
+            this.textBoxDictionary.TextChanged += new System.EventHandler(this.textBoxDictionary_TextChanged);
             // 
             // buttonChooseDictionary
             // 
@@ -116,7 +118,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
-            this.buttonCancelTask.Location = new System.Drawing.Point(278, 77);
+            this.buttonCancelTask.Location = new System.Drawing.Point(278, 93);
             this.buttonCancelTask.Name = "buttonCancelTask";
             this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
@@ -131,7 +133,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonSettingsOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonSettingsOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettingsOK.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
-            this.buttonSettingsOK.Location = new System.Drawing.Point(232, 77);
+            this.buttonSettingsOK.Location = new System.Drawing.Point(232, 93);
             this.buttonSettingsOK.Name = "buttonSettingsOK";
             this.buttonSettingsOK.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSettingsOK.Size = new System.Drawing.Size(40, 40);
@@ -146,11 +148,25 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogDictionary.Filter = "Text files (*.txt)|*.txt|Any files (*.*)|*.*";
             this.openFileDialogDictionary.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogDictionary_FileOk);
             // 
+            // checkBoxDescAutofilling
+            // 
+            this.checkBoxDescAutofilling.AutoSize = true;
+            this.checkBoxDescAutofilling.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.DictDescAutofilling;
+            this.checkBoxDescAutofilling.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDescAutofilling.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "DictDescAutofilling", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxDescAutofilling.Location = new System.Drawing.Point(81, 65);
+            this.checkBoxDescAutofilling.Name = "checkBoxDescAutofilling";
+            this.checkBoxDescAutofilling.Size = new System.Drawing.Size(126, 17);
+            this.checkBoxDescAutofilling.TabIndex = 6;
+            this.checkBoxDescAutofilling.Text = "Description autofilling";
+            this.checkBoxDescAutofilling.UseVisualStyleBackColor = true;
+            // 
             // DictionaryEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 130);
+            this.ClientSize = new System.Drawing.Size(336, 145);
+            this.Controls.Add(this.checkBoxDescAutofilling);
             this.Controls.Add(this.buttonCancelTask);
             this.Controls.Add(this.buttonSettingsOK);
             this.Controls.Add(this.buttonChooseDictionary);
@@ -179,5 +195,6 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.Button buttonCancelTask;
         private System.Windows.Forms.Button buttonSettingsOK;
         private System.Windows.Forms.OpenFileDialog openFileDialogDictionary;
+        private System.Windows.Forms.CheckBox checkBoxDescAutofilling;
     }
 }
