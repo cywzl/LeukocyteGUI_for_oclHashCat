@@ -175,6 +175,8 @@ namespace LeukocyteGUI_for_oclHashCat
                             index--;
                         }
                     }
+
+                    TaskId = actualTaskId;
                 }
                 else
                 {

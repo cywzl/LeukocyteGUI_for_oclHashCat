@@ -244,6 +244,10 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             saveFileDialogOutput.ShowDialog();
         }
+        private void buttonChooseMaskFile_Click(object sender, EventArgs e)
+        {
+            openFileDialogMask.ShowDialog();
+        }
         private void buttonChooseCharsetFile1_Click(object sender, EventArgs e)
         {
             openFileDialogCharset1.ShowDialog();
@@ -259,6 +263,10 @@ namespace LeukocyteGUI_for_oclHashCat
         private void buttonChooseCharsetFile4_Click(object sender, EventArgs e)
         {
             openFileDialogCharset4.ShowDialog();
+        }
+        private void openFileDialogMask_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxBruteforceMask.Text = openFileDialogMask.FileName;
         }
         private void openFileDialogCharset1_FileOk(object sender, CancelEventArgs e)
         {

@@ -870,7 +870,7 @@ namespace LeukocyteGUI_for_oclHashCat
                         result += " \"" + dictionary + "\"";
                         break;
                     case 3:
-                        result += " " + bruteforceMask;
+                        result += " \"" + bruteforceMask + "\"";
                         break;
                 }
 
