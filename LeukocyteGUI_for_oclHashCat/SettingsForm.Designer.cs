@@ -138,6 +138,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseWorkingDirectory
             // 
+            this.buttonChooseWorkingDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseWorkingDirectory.Enabled = false;
             this.buttonChooseWorkingDirectory.FlatAppearance.BorderSize = 0;
             this.buttonChooseWorkingDirectory.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -154,6 +155,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseHashCat
             // 
+            this.buttonChooseHashCat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseHashCat.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseHashCat.FlatAppearance.BorderSize = 0;
             this.buttonChooseHashCat.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -170,6 +172,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonSettingsOK
             // 
+            this.buttonSettingsOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSettingsOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.buttonSettingsOK.FlatAppearance.BorderSize = 0;
             this.buttonSettingsOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -186,6 +189,9 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // tabControlSettings
             // 
+            this.tabControlSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlSettings.Controls.Add(this.tabPageMain);
             this.tabControlSettings.Controls.Add(this.tabPageDictionaries);
             this.tabControlSettings.Controls.Add(this.tabPageMasks);
@@ -289,6 +295,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxHashcat
             // 
+            this.textBoxHashcat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxHashcat.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "Hashcat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxHashcat.Location = new System.Drawing.Point(105, 10);
             this.textBoxHashcat.Name = "textBoxHashcat";
@@ -299,6 +307,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxWorkingDirectory
             // 
+            this.textBoxWorkingDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxWorkingDirectory.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "WorkingDirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBoxWorkingDirectory.Enabled = false;
             this.textBoxWorkingDirectory.Location = new System.Drawing.Point(105, 40);
@@ -434,6 +444,9 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // listViewDictionaries
             // 
+            this.listViewDictionaries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewDictionaries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderNumber,
             this.columnHeaderDescription,
@@ -596,6 +609,9 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // listViewMasks
             // 
+            this.listViewMasks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewMasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderMaskNumber,
             this.columnHeaderMaskDescription,
@@ -635,6 +651,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonCancelTask
             // 
+            this.buttonCancelTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancelTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.buttonCancelTask.FlatAppearance.BorderSize = 0;
@@ -653,13 +670,12 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 327);
+            this.ClientSize = new System.Drawing.Size(490, 327);
             this.Controls.Add(this.tabControlSettings);
             this.Controls.Add(this.buttonCancelTask);
             this.Controls.Add(this.buttonSettingsOK);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(506, 366);
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LeukocyteGUI for oclHashCat - Settings";
