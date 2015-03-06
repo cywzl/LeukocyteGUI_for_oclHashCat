@@ -493,6 +493,14 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             subItemTip.ShowSubItemTip(e.Location);
         }
+        private void listViewTasks_DoubleClick(object sender, EventArgs e)
+        {
+            if (buttonChangeTask.Enabled)
+            {
+                listViewTasks.SelectedItems[0].Checked = !listViewTasks.SelectedItems[0].Checked;
+                buttonChangeTask.PerformClick();
+            }
+        }
         private void checkBoxAppearanceUpdate(CheckBox sender)
         {
             if (sender.Checked)

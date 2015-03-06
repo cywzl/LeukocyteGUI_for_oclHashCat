@@ -197,6 +197,20 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             CheckMaskButtons();
         }
+        private void listViewDictionaries_DoubleClick(object sender, EventArgs e)
+        {
+            if (buttonChangeDictionary.Enabled)
+            {
+                buttonChangeDictionary.PerformClick();
+            }
+        }
+        private void listViewMasks_DoubleClick(object sender, EventArgs e)
+        {
+            if (buttonChangeMask.Enabled)
+            {
+                buttonChangeMask.PerformClick();
+            }
+        }
         private void checkBoxAutoWorkingDirectory_CheckedChanged(object sender, EventArgs e)
         {
             TryAutoDetectWorkingDirectory();

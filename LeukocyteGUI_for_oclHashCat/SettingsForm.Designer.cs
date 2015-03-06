@@ -60,6 +60,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonSettingsOK = new System.Windows.Forms.Button();
             this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.tabPageMain = new System.Windows.Forms.TabPage();
+            this.checkBoxShowToolTips = new System.Windows.Forms.CheckBox();
             this.checkBoxMinimizeToTray = new System.Windows.Forms.CheckBox();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
             this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
@@ -92,7 +93,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
-            this.checkBoxShowToolTips = new System.Windows.Forms.CheckBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageDictionaries.SuspendLayout();
@@ -217,6 +217,16 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPageMain.TabIndex = 0;
             this.tabPageMain.Text = "Main";
             this.tabPageMain.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowToolTips
+            // 
+            this.checkBoxShowToolTips.AutoSize = true;
+            this.checkBoxShowToolTips.Location = new System.Drawing.Point(21, 210);
+            this.checkBoxShowToolTips.Name = "checkBoxShowToolTips";
+            this.checkBoxShowToolTips.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxShowToolTips.TabIndex = 53;
+            this.checkBoxShowToolTips.Text = "Show tool tips";
+            this.checkBoxShowToolTips.UseVisualStyleBackColor = true;
             // 
             // checkBoxMinimizeToTray
             // 
@@ -439,6 +449,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.listViewDictionaries.UseCompatibleStateImageBehavior = false;
             this.listViewDictionaries.View = System.Windows.Forms.View.Details;
             this.listViewDictionaries.SelectedIndexChanged += new System.EventHandler(this.listViewDictionaries_SelectedIndexChanged);
+            this.listViewDictionaries.DoubleClick += new System.EventHandler(this.listViewDictionaries_DoubleClick);
             // 
             // columnHeaderNumber
             // 
@@ -600,6 +611,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.listViewMasks.UseCompatibleStateImageBehavior = false;
             this.listViewMasks.View = System.Windows.Forms.View.Details;
             this.listViewMasks.SelectedIndexChanged += new System.EventHandler(this.listViewMasks_SelectedIndexChanged);
+            this.listViewMasks.DoubleClick += new System.EventHandler(this.listViewMasks_DoubleClick);
             // 
             // columnHeaderMaskNumber
             // 
@@ -636,16 +648,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask.TabIndex = 45;
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowToolTips
-            // 
-            this.checkBoxShowToolTips.AutoSize = true;
-            this.checkBoxShowToolTips.Location = new System.Drawing.Point(21, 210);
-            this.checkBoxShowToolTips.Name = "checkBoxShowToolTips";
-            this.checkBoxShowToolTips.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxShowToolTips.TabIndex = 53;
-            this.checkBoxShowToolTips.Text = "Show tool tips";
-            this.checkBoxShowToolTips.UseVisualStyleBackColor = true;
             // 
             // SettingsForm
             // 

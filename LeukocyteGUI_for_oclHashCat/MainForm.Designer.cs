@@ -182,6 +182,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.listViewTasks.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listViewTasks_DrawColumnHeader);
             this.listViewTasks.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listViewTasks_DrawSubItem);
             this.listViewTasks.SelectedIndexChanged += new System.EventHandler(this.listViewTasks_SelectedIndexChanged);
+            this.listViewTasks.DoubleClick += new System.EventHandler(this.listViewTasks_DoubleClick);
             this.listViewTasks.MouseMove += new System.Windows.Forms.MouseEventHandler(this.listViewTasks_MouseMove);
             // 
             // columnHeaderNumber
