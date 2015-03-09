@@ -81,6 +81,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogCharset4 = new System.Windows.Forms.OpenFileDialog();
             this.buttonChooseMaskFile = new System.Windows.Forms.Button();
             this.openFileDialogMask = new System.Windows.Forms.OpenFileDialog();
+            this.checkBoxDescAutofilling = new System.Windows.Forms.CheckBox();
             this.groupBoxCharsets.SuspendLayout();
             this.groupBoxIncrement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrementMax)).BeginInit();
@@ -93,6 +94,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.textBoxMask.Name = "textBoxMask";
             this.textBoxMask.Size = new System.Drawing.Size(119, 20);
             this.textBoxMask.TabIndex = 7;
+            this.textBoxMask.TextChanged += new System.EventHandler(this.textBoxMask_TextChanged);
             // 
             // textBoxDescription
             // 
@@ -127,7 +129,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonCancelTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCancelTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
-            this.buttonCancelTask.Location = new System.Drawing.Point(443, 168);
+            this.buttonCancelTask.Location = new System.Drawing.Point(454, 177);
             this.buttonCancelTask.Name = "buttonCancelTask";
             this.buttonCancelTask.Padding = new System.Windows.Forms.Padding(3);
             this.buttonCancelTask.Size = new System.Drawing.Size(40, 40);
@@ -142,7 +144,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonSettingsOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.buttonSettingsOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettingsOK.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
-            this.buttonSettingsOK.Location = new System.Drawing.Point(397, 168);
+            this.buttonSettingsOK.Location = new System.Drawing.Point(408, 177);
             this.buttonSettingsOK.Name = "buttonSettingsOK";
             this.buttonSettingsOK.Padding = new System.Windows.Forms.Padding(3);
             this.buttonSettingsOK.Size = new System.Drawing.Size(40, 40);
@@ -165,9 +167,9 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxCharsets.Controls.Add(this.textBoxCharset2);
             this.groupBoxCharsets.Controls.Add(this.checkBoxCharset1);
             this.groupBoxCharsets.Controls.Add(this.textBoxCharset1);
-            this.groupBoxCharsets.Location = new System.Drawing.Point(246, 9);
+            this.groupBoxCharsets.Location = new System.Drawing.Point(257, 12);
             this.groupBoxCharsets.Name = "groupBoxCharsets";
-            this.groupBoxCharsets.Size = new System.Drawing.Size(237, 142);
+            this.groupBoxCharsets.Size = new System.Drawing.Size(237, 159);
             this.groupBoxCharsets.TabIndex = 13;
             this.groupBoxCharsets.TabStop = false;
             this.groupBoxCharsets.Text = "Charsets";
@@ -311,7 +313,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxIncrement.Controls.Add(this.numericUpDownIncrementMin);
             this.groupBoxIncrement.Controls.Add(this.labelIncrementMin);
             this.groupBoxIncrement.Controls.Add(this.checkBoxEnableIncrement);
-            this.groupBoxIncrement.Location = new System.Drawing.Point(15, 70);
+            this.groupBoxIncrement.Location = new System.Drawing.Point(15, 90);
             this.groupBoxIncrement.Name = "groupBoxIncrement";
             this.groupBoxIncrement.Size = new System.Drawing.Size(225, 81);
             this.groupBoxIncrement.TabIndex = 14;
@@ -324,6 +326,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.numericUpDownIncrementMax.Name = "numericUpDownIncrementMax";
             this.numericUpDownIncrementMax.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownIncrementMax.TabIndex = 39;
+            this.numericUpDownIncrementMax.ValueChanged += new System.EventHandler(this.numericUpDownIncrementMax_ValueChanged);
             // 
             // labelIncrementMax
             // 
@@ -340,6 +343,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.numericUpDownIncrementMin.Name = "numericUpDownIncrementMin";
             this.numericUpDownIncrementMin.Size = new System.Drawing.Size(45, 20);
             this.numericUpDownIncrementMin.TabIndex = 38;
+            this.numericUpDownIncrementMin.ValueChanged += new System.EventHandler(this.numericUpDownIncrementMin_ValueChanged);
             // 
             // labelIncrementMin
             // 
@@ -359,6 +363,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxEnableIncrement.TabIndex = 37;
             this.checkBoxEnableIncrement.Text = "Enable Increment Mode";
             this.checkBoxEnableIncrement.UseVisualStyleBackColor = true;
+            this.checkBoxEnableIncrement.CheckedChanged += new System.EventHandler(this.checkBoxEnableIncrement_CheckedChanged);
             // 
             // openFileDialogCharset1
             // 
@@ -406,11 +411,25 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogMask.Filter = "Hashcat mask files (*.hcmask)|*.hcmask|Any files (*.*)|*.*";
             this.openFileDialogMask.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogMask_FileOk);
             // 
+            // checkBoxDescAutofilling
+            // 
+            this.checkBoxDescAutofilling.AutoSize = true;
+            this.checkBoxDescAutofilling.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.MaskDescAutofilling;
+            this.checkBoxDescAutofilling.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDescAutofilling.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "MaskDescAutofilling", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxDescAutofilling.Location = new System.Drawing.Point(81, 66);
+            this.checkBoxDescAutofilling.Name = "checkBoxDescAutofilling";
+            this.checkBoxDescAutofilling.Size = new System.Drawing.Size(126, 17);
+            this.checkBoxDescAutofilling.TabIndex = 60;
+            this.checkBoxDescAutofilling.Text = "Description autofilling";
+            this.checkBoxDescAutofilling.UseVisualStyleBackColor = true;
+            // 
             // MaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 220);
+            this.ClientSize = new System.Drawing.Size(510, 226);
+            this.Controls.Add(this.checkBoxDescAutofilling);
             this.Controls.Add(this.buttonChooseMaskFile);
             this.Controls.Add(this.groupBoxIncrement);
             this.Controls.Add(this.groupBoxCharsets);
@@ -468,6 +487,7 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.OpenFileDialog openFileDialogCharset4;
         private System.Windows.Forms.Button buttonChooseMaskFile;
         private System.Windows.Forms.OpenFileDialog openFileDialogMask;
+        private System.Windows.Forms.CheckBox checkBoxDescAutofilling;
 
     }
 }

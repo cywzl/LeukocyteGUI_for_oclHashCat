@@ -100,6 +100,35 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             openFileDialogCharset4.ShowDialog();
         }
+        private void textBoxMask_TextChanged(object sender, EventArgs e)
+        {
+            TryGenerateDescription();
+        }
+        private void numericUpDownIncrementMin_ValueChanged(object sender, EventArgs e)
+        {
+            TryGenerateDescription();
+        }
+        private void numericUpDownIncrementMax_ValueChanged(object sender, EventArgs e)
+        {
+            TryGenerateDescription();
+        }
+        private void checkBoxEnableIncrement_CheckedChanged(object sender, EventArgs e)
+        {
+            TryGenerateDescription();
+
+            if (checkBoxEnableIncrement.Checked)
+            {
+                if (numericUpDownIncrementMin.Value == 0)
+                {
+                    numericUpDownIncrementMin.Value = 1;
+                }
+
+                if (numericUpDownIncrementMax.Value == 0)
+                {
+                    numericUpDownIncrementMax.Value = textBoxMask.Text.Replace("?", "").Length;
+                }
+            }
+        }
         private void openFileDialogMask_FileOk(object sender, CancelEventArgs e)
         {
             textBoxMask.Text = openFileDialogMask.FileName;
@@ -136,6 +165,37 @@ namespace LeukocyteGUI_for_oclHashCat
             checkBoxEnableIncrement.Checked = maskManager.Masks[changingMaskId].EnableIncrement;
             numericUpDownIncrementMin.Value = maskManager.Masks[changingMaskId].IncrementMin;
             numericUpDownIncrementMax.Value = maskManager.Masks[changingMaskId].IncrementMax;
+        }
+        private void TryGenerateDescription()
+        {
+            if (checkBoxDescAutofilling.Checked)
+            {
+                if (textBoxMask.Text.IndexOf('?') > -1)
+                {
+                    if (checkBoxEnableIncrement.Checked)
+                    {
+                        textBoxDescription.Text =
+                            textBoxMask.Text
+                            + " ["
+                            + numericUpDownIncrementMin.Value.ToString()
+                            + '-'
+                            + numericUpDownIncrementMax.Value.ToString()
+                            + ']';
+                    }
+                    else
+                    {
+                        textBoxDescription.Text =
+                            textBoxMask.Text
+                            + " ["
+                            + textBoxMask.Text.Replace("?", "").Length.ToString()
+                            + ']';
+                    }
+                }
+                else
+                {
+                    textBoxDescription.Text = System.IO.Path.GetFileNameWithoutExtension(textBoxMask.Text);
+                }
+            }
         }
     }
 }
