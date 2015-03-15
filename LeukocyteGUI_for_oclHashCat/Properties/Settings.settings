@@ -44,5 +44,11 @@
     <Setting Name="MaskDescAutofilling" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="DebugMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LogsPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">logs/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

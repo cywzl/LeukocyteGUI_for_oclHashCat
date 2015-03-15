@@ -190,5 +190,29 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
                 this["MaskDescAutofilling"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DebugMode {
+            get {
+                return ((bool)(this["DebugMode"]));
+            }
+            set {
+                this["DebugMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("logs/")]
+        public string LogsPath {
+            get {
+                return ((string)(this["LogsPath"]));
+            }
+            set {
+                this["LogsPath"] = value;
+            }
+        }
     }
 }

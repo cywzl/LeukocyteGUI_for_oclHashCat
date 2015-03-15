@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LeukocyteGUI_for_oclHashCat.exe" size="229376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LeukocyteGUI_for_oclHashCat.exe" size="231424">
       <assemblyIdentity name="LeukocyteGUI_for_oclHashCat" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8dc70y6oz1p6yM9rAnLTLOJ36SUiZr2hTUnS370HoRE=</dsig:DigestValue>
+        <dsig:DigestValue>GBc1TEXc5uoyJaYIUPJ6oqpfHc3ddBNKiOo7J42aU2I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,13 +78,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="LeukocyteGUI_for_oclHashCat.exe.config" size="3320">
+  <file name="LeukocyteGUI_for_oclHashCat.exe.config" size="3565">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3TwRv1CLJMqwqxOHYMqZCszGjLRA1IS7FMqKwygMI9M=</dsig:DigestValue>
+      <dsig:DigestValue>tQTlsdnJbw74cfeaSnLEGmkrKdjGk3EYtG7BE0Qk/rY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="main.ico" size="104496">

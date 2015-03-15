@@ -887,8 +887,13 @@ namespace LeukocyteGUI_for_oclHashCat
             private int lastCrackingTaskId = -1;
             private bool isCracking;
             private bool isCalculatingKeyspace;
+            private string outputBuffer = "";
 
             public string Speed { get; set; }
+            public string OutputBuffer
+            {
+                get { return outputBuffer; }
+            }
             public byte Util { get; set; }
             public byte Temp { get; set; }
             public byte Fan { get; set; }
@@ -925,6 +930,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     return isCalculatingKeyspace;
                 }
             }
+            public bool SaveOutputToBuffer { get; set; }
 
             public delegate void StartedCrackingStoppedEventHandler(object sender, int TaskId);
 
@@ -947,6 +953,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 StartInfo.UseShellExecute = false;
                 StartInfo.CreateNoWindow = true;
                 StartInfo.RedirectStandardOutput = true;
+                SaveOutputToBuffer = false;
                 EnableRaisingEvents = true;
                 OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
                 ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler(Cracker_OutputDataReceived);
@@ -994,6 +1001,11 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 if (e.Data != null)
                 {
+                    if (SaveOutputToBuffer)
+                    {
+                        outputBuffer += e.Data + "\r\n";
+                    }
+
                     if (isCalculatingKeyspace)
                     {
                         uint rp;
@@ -1183,6 +1195,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 crackingTaskId = TaskId;
                 crackingTask = crackTaskManager.CrackTasks[TaskId];
+                outputBuffer = "";
 
                 if (crackTaskManager.CrackTasks[TaskId].Started == DateTime.MinValue)
                 {

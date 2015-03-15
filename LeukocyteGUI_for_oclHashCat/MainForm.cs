@@ -247,6 +247,12 @@ namespace LeukocyteGUI_for_oclHashCat
                     }
                 }
             }
+
+            if (Properties.Settings.Default.DebugMode)
+            {
+                WriteLog("Stopped cracking process...\r\nHashcat output:\r\n"
+                    + tskManager.Cracker.OutputBuffer);
+            }
         }
         private void Cracker_OnCracking(object sender, int TaskId)
         {
@@ -261,6 +267,14 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         private void Cracker_OnStart(object sender, int TaskId)
         {
+            if (Properties.Settings.Default.DebugMode)
+            {
+                WriteLog("Starting cracking process..."
+                    + "\r\n - hashcat: " + Properties.Settings.Default.Hashcat
+                    + "\r\n - working dir: " + Properties.Settings.Default.WorkingDirectory
+                    + "\r\n - hashcat params: " + tskManager.CrackTasks[TaskId].GetHashcatParams());
+            }
+
             CheckButtons();
             VisualizeTask(TaskId);
             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
@@ -1071,6 +1085,26 @@ namespace LeukocyteGUI_for_oclHashCat
                 "Current fan speed");
             toolTip.SetToolTip(statusStripInfo,
                 "Opened CrackTasks file");
+        }
+        public void WriteLog(string message)
+        {
+            try
+            {
+                DateTime now = DateTime.Now;
+                string logFile = Properties.Settings.Default.LogsPath + now.ToString("yyyy-MM-dd") + ".log";
+                string time = now.ToString("HH:mm:ss");
+
+                if (!Directory.Exists(Properties.Settings.Default.LogsPath))
+                {
+                    Directory.CreateDirectory(Properties.Settings.Default.LogsPath);
+                }
+
+                File.AppendAllText(logFile, "[" + time + "] " + message + "\r\n");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error while trying to write log. " + e.ToString());
+            }
         }
     }
 }

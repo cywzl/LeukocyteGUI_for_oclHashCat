@@ -93,10 +93,13 @@ namespace LeukocyteGUI_for_oclHashCat
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
+            this.panelCheckboxSettings = new System.Windows.Forms.Panel();
+            this.checkBoxDebugMode = new System.Windows.Forms.CheckBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPageMain.SuspendLayout();
             this.tabPageDictionaries.SuspendLayout();
             this.tabPageMasks.SuspendLayout();
+            this.panelCheckboxSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelWorkingDirectory
@@ -203,12 +206,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // tabPageMain
             // 
-            this.tabPageMain.Controls.Add(this.checkBoxShowToolTips);
-            this.tabPageMain.Controls.Add(this.checkBoxMinimizeToTray);
-            this.tabPageMain.Controls.Add(this.checkBoxShowNotifications);
-            this.tabPageMain.Controls.Add(this.checkBoxDeleteSameWhenCracked);
-            this.tabPageMain.Controls.Add(this.checkBoxLoadOnStart);
-            this.tabPageMain.Controls.Add(this.checkBoxSaveOnExit);
+            this.tabPageMain.Controls.Add(this.panelCheckboxSettings);
             this.tabPageMain.Controls.Add(this.labelOclHashcat);
             this.tabPageMain.Controls.Add(this.buttonChooseWorkingDirectory);
             this.tabPageMain.Controls.Add(this.textBoxHashcat);
@@ -227,7 +225,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // checkBoxShowToolTips
             // 
             this.checkBoxShowToolTips.AutoSize = true;
-            this.checkBoxShowToolTips.Location = new System.Drawing.Point(21, 210);
+            this.checkBoxShowToolTips.Location = new System.Drawing.Point(12, 119);
             this.checkBoxShowToolTips.Name = "checkBoxShowToolTips";
             this.checkBoxShowToolTips.Size = new System.Drawing.Size(92, 17);
             this.checkBoxShowToolTips.TabIndex = 53;
@@ -239,7 +237,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxMinimizeToTray.AutoSize = true;
             this.checkBoxMinimizeToTray.Checked = true;
             this.checkBoxMinimizeToTray.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMinimizeToTray.Location = new System.Drawing.Point(21, 187);
+            this.checkBoxMinimizeToTray.Location = new System.Drawing.Point(12, 96);
             this.checkBoxMinimizeToTray.Name = "checkBoxMinimizeToTray";
             this.checkBoxMinimizeToTray.Size = new System.Drawing.Size(98, 17);
             this.checkBoxMinimizeToTray.TabIndex = 52;
@@ -252,7 +250,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxShowNotifications.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.ShowNotifications;
             this.checkBoxShowNotifications.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxShowNotifications.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "ShowNotifications", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxShowNotifications.Location = new System.Drawing.Point(21, 164);
+            this.checkBoxShowNotifications.Location = new System.Drawing.Point(12, 73);
             this.checkBoxShowNotifications.Name = "checkBoxShowNotifications";
             this.checkBoxShowNotifications.Size = new System.Drawing.Size(189, 17);
             this.checkBoxShowNotifications.TabIndex = 51;
@@ -262,7 +260,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // checkBoxDeleteSameWhenCracked
             // 
             this.checkBoxDeleteSameWhenCracked.AutoSize = true;
-            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(21, 141);
+            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(12, 50);
             this.checkBoxDeleteSameWhenCracked.Name = "checkBoxDeleteSameWhenCracked";
             this.checkBoxDeleteSameWhenCracked.Size = new System.Drawing.Size(314, 17);
             this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
@@ -274,7 +272,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxLoadOnStart.AutoSize = true;
             this.checkBoxLoadOnStart.Checked = true;
             this.checkBoxLoadOnStart.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLoadOnStart.Location = new System.Drawing.Point(21, 118);
+            this.checkBoxLoadOnStart.Location = new System.Drawing.Point(12, 27);
             this.checkBoxLoadOnStart.Name = "checkBoxLoadOnStart";
             this.checkBoxLoadOnStart.Size = new System.Drawing.Size(227, 17);
             this.checkBoxLoadOnStart.TabIndex = 49;
@@ -286,7 +284,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxSaveOnExit.AutoSize = true;
             this.checkBoxSaveOnExit.Checked = true;
             this.checkBoxSaveOnExit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSaveOnExit.Location = new System.Drawing.Point(21, 95);
+            this.checkBoxSaveOnExit.Location = new System.Drawing.Point(12, 3);
             this.checkBoxSaveOnExit.Name = "checkBoxSaveOnExit";
             this.checkBoxSaveOnExit.Size = new System.Drawing.Size(204, 17);
             this.checkBoxSaveOnExit.TabIndex = 48;
@@ -666,6 +664,31 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
+            // panelCheckboxSettings
+            // 
+            this.panelCheckboxSettings.AutoScroll = true;
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxDebugMode);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxSaveOnExit);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxShowToolTips);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxLoadOnStart);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxMinimizeToTray);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxDeleteSameWhenCracked);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxShowNotifications);
+            this.panelCheckboxSettings.Location = new System.Drawing.Point(44, 85);
+            this.panelCheckboxSettings.Name = "panelCheckboxSettings";
+            this.panelCheckboxSettings.Size = new System.Drawing.Size(373, 130);
+            this.panelCheckboxSettings.TabIndex = 54;
+            // 
+            // checkBoxDebugMode
+            // 
+            this.checkBoxDebugMode.AutoSize = true;
+            this.checkBoxDebugMode.Location = new System.Drawing.Point(12, 142);
+            this.checkBoxDebugMode.Name = "checkBoxDebugMode";
+            this.checkBoxDebugMode.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxDebugMode.TabIndex = 54;
+            this.checkBoxDebugMode.Text = "Enable Debug Mode";
+            this.checkBoxDebugMode.UseVisualStyleBackColor = true;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -685,6 +708,8 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPageMain.PerformLayout();
             this.tabPageDictionaries.ResumeLayout(false);
             this.tabPageMasks.ResumeLayout(false);
+            this.panelCheckboxSettings.ResumeLayout(false);
+            this.panelCheckboxSettings.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -734,5 +759,7 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.CheckBox checkBoxShowNotifications;
         private System.Windows.Forms.CheckBox checkBoxMinimizeToTray;
         private System.Windows.Forms.CheckBox checkBoxShowToolTips;
+        private System.Windows.Forms.Panel panelCheckboxSettings;
+        private System.Windows.Forms.CheckBox checkBoxDebugMode;
     }
 }

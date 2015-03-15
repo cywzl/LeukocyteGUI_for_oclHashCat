@@ -58,6 +58,7 @@ namespace LeukocyteGUI_for_oclHashCat
             checkBoxDeleteSameWhenCracked.Checked = Properties.Settings.Default.DeleteRelatedTasksWhenCracked;
             checkBoxMinimizeToTray.Checked = Properties.Settings.Default.MinimizeToTray;
             checkBoxShowToolTips.Checked = Properties.Settings.Default.ShowToolTips;
+            checkBoxDebugMode.Checked = Properties.Settings.Default.DebugMode;
         }
 
         private void buttonSettingsOK_Click(object sender, EventArgs e)
@@ -69,7 +70,10 @@ namespace LeukocyteGUI_for_oclHashCat
             Properties.Settings.Default.DeleteRelatedTasksWhenCracked = checkBoxDeleteSameWhenCracked.Checked;
             Properties.Settings.Default.MinimizeToTray = checkBoxMinimizeToTray.Checked;
             Properties.Settings.Default.ShowToolTips = checkBoxShowToolTips.Checked;
+            Properties.Settings.Default.DebugMode = checkBoxDebugMode.Checked;
             Properties.Settings.Default.Save();
+
+            mainForm.MainCrackTaskManager.Cracker.SaveOutputToBuffer = checkBoxDebugMode.Checked;
 
             Close();
         }
