@@ -6,7 +6,7 @@
       <Value Profile="(Default)">aircrack-ng.exe</Value>
     </Setting>
     <Setting Name="hccapOutputPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">hccap/</Value>
+      <Value Profile="(Default)">hccap\</Value>
     </Setting>
     <Setting Name="Hashcat" Type="System.String" Scope="User">
       <Value Profile="(Default)">oclHashcat64.exe</Value>
@@ -48,7 +48,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LogsPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">logs/</Value>
+      <Value Profile="(Default)">logs\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

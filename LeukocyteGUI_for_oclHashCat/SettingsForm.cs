@@ -53,6 +53,9 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             textBoxHashcat.Text = Properties.Settings.Default.Hashcat;
             textBoxWorkingDirectory.Text = Properties.Settings.Default.WorkingDirectory;
+            textBoxAircrack.Text = Properties.Settings.Default.capConverter;
+            textBoxConverterOutput.Text = Properties.Settings.Default.hccapOutputPath;
+            textBoxLogFilesPath.Text = Properties.Settings.Default.LogsPath;
             checkBoxSaveOnExit.Checked = Properties.Settings.Default.SaveBeforeExit;
             checkBoxLoadOnStart.Checked = Properties.Settings.Default.LoadOnStartup;
             checkBoxDeleteSameWhenCracked.Checked = Properties.Settings.Default.DeleteRelatedTasksWhenCracked;
@@ -65,6 +68,9 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             Properties.Settings.Default.Hashcat = textBoxHashcat.Text;
             Properties.Settings.Default.WorkingDirectory = textBoxWorkingDirectory.Text;
+            Properties.Settings.Default.capConverter = textBoxAircrack.Text;
+            Properties.Settings.Default.hccapOutputPath = textBoxConverterOutput.Text;
+            Properties.Settings.Default.LogsPath = textBoxLogFilesPath.Text;
             Properties.Settings.Default.SaveBeforeExit = checkBoxSaveOnExit.Checked;
             Properties.Settings.Default.LoadOnStartup = checkBoxLoadOnStart.Checked;
             Properties.Settings.Default.DeleteRelatedTasksWhenCracked = checkBoxDeleteSameWhenCracked.Checked;
@@ -77,6 +83,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             Close();
         }
+
         private void buttonChooseHashCat_Click(object sender, EventArgs e)
         {
             openFileDialogHashCat.ShowDialog();
@@ -86,6 +93,24 @@ namespace LeukocyteGUI_for_oclHashCat
             if (folderBrowserDialogWorkingDirectory.ShowDialog() == DialogResult.OK)
             {
                 textBoxWorkingDirectory.Text = folderBrowserDialogWorkingDirectory.SelectedPath + "\\";
+            }
+        }
+        private void buttonChooseAircrack_Click(object sender, EventArgs e)
+        {
+            openFileDialogConverter.ShowDialog();
+        }
+        private void buttonChooseConverterOutput_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialogOutput.ShowDialog() == DialogResult.OK)
+            {
+                textBoxConverterOutput.Text = folderBrowserDialogOutput.SelectedPath + "\\";
+            }
+        }
+        private void buttonChooseLogFilesPath_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialogLogFiles.ShowDialog() == DialogResult.OK)
+            {
+                textBoxLogFilesPath.Text = folderBrowserDialogLogFiles.SelectedPath + "\\";
             }
         }
 
@@ -222,6 +247,10 @@ namespace LeukocyteGUI_for_oclHashCat
         private void openFileDialogHashCat_FileOk(object sender, CancelEventArgs e)
         {
             textBoxHashcat.Text = openFileDialogHashCat.FileName;
+        }
+        private void openFileDialogConverter_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxAircrack.Text = openFileDialogConverter.FileName;
         }
 
         private void TryAutoDetectWorkingDirectory()

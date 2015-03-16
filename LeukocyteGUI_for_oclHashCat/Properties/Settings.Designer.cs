@@ -37,7 +37,7 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("hccap/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("hccap\\")]
         public string hccapOutputPath {
             get {
                 return ((string)(this["hccapOutputPath"]));
@@ -205,7 +205,7 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("logs/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("logs\\")]
         public string LogsPath {
             get {
                 return ((string)(this["LogsPath"]));
