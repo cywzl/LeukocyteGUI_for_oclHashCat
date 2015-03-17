@@ -40,12 +40,28 @@ namespace LeukocyteGUI_for_oclHashCat
             int changingMaskId = -1)
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.UseSavedSizes)
+            {
+                Width = Properties.Settings.Default.MaskEditorWidth;
+                Height = Properties.Settings.Default.MaskEditorHeight;
+            }
+
             this.maskManager = maskManager;
             this.changingMaskId = changingMaskId;
 
             if (changingMaskId > -1)
             {
                 FillFormWithData();
+            }
+        }
+
+        private void MaskEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Properties.Settings.Default.SaveFormsSizes)
+            {
+                Properties.Settings.Default.MaskEditorWidth = Width;
+                Properties.Settings.Default.MaskEditorHeight = Height;
             }
         }
 
@@ -100,10 +116,12 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             openFileDialogCharset4.ShowDialog();
         }
+
         private void textBoxMask_TextChanged(object sender, EventArgs e)
         {
             TryGenerateDescription();
         }
+
         private void numericUpDownIncrementMin_ValueChanged(object sender, EventArgs e)
         {
             TryGenerateDescription();
@@ -112,6 +130,7 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             TryGenerateDescription();
         }
+
         private void checkBoxEnableIncrement_CheckedChanged(object sender, EventArgs e)
         {
             TryGenerateDescription();
@@ -129,6 +148,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
         }
+
         private void openFileDialogMask_FileOk(object sender, CancelEventArgs e)
         {
             textBoxMask.Text = openFileDialogMask.FileName;

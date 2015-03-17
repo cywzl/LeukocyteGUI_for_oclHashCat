@@ -50,5 +50,47 @@
     <Setting Name="LogsPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">logs\</Value>
     </Setting>
+    <Setting Name="SaveFormsSizes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="MainWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">900</Value>
+    </Setting>
+    <Setting Name="MainHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">515</Value>
+    </Setting>
+    <Setting Name="TaskEditorWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">822</Value>
+    </Setting>
+    <Setting Name="TaskEditorHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">580</Value>
+    </Setting>
+    <Setting Name="SettingsWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">510</Value>
+    </Setting>
+    <Setting Name="SettingsHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">386</Value>
+    </Setting>
+    <Setting Name="ConverterWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">379</Value>
+    </Setting>
+    <Setting Name="ConverterHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">372</Value>
+    </Setting>
+    <Setting Name="DictionaryEditorWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">352</Value>
+    </Setting>
+    <Setting Name="DictionaryEditorHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">184</Value>
+    </Setting>
+    <Setting Name="MaskEditorWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">526</Value>
+    </Setting>
+    <Setting Name="MaskEditorHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">265</Value>
+    </Setting>
+    <Setting Name="UseSavedSizes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

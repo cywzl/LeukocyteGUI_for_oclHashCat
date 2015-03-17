@@ -41,6 +41,12 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             InitializeComponent();
 
+            if (Properties.Settings.Default.UseSavedSizes)
+            {
+                Width = Properties.Settings.Default.SettingsWidth;
+                Height = Properties.Settings.Default.SettingsHeight;
+            }
+
             this.mainForm = mainForm;
             dictionaryManager = mainForm.DictionaryManager;
             maskManager = mainForm.MaskManager;
@@ -56,12 +62,36 @@ namespace LeukocyteGUI_for_oclHashCat
             textBoxAircrack.Text = Properties.Settings.Default.capConverter;
             textBoxConverterOutput.Text = Properties.Settings.Default.hccapOutputPath;
             textBoxLogFilesPath.Text = Properties.Settings.Default.LogsPath;
+
             checkBoxSaveOnExit.Checked = Properties.Settings.Default.SaveBeforeExit;
             checkBoxLoadOnStart.Checked = Properties.Settings.Default.LoadOnStartup;
             checkBoxDeleteSameWhenCracked.Checked = Properties.Settings.Default.DeleteRelatedTasksWhenCracked;
             checkBoxMinimizeToTray.Checked = Properties.Settings.Default.MinimizeToTray;
             checkBoxShowToolTips.Checked = Properties.Settings.Default.ShowToolTips;
             checkBoxDebugMode.Checked = Properties.Settings.Default.DebugMode;
+            checkBoxSaveFormsSizes.Checked = Properties.Settings.Default.SaveFormsSizes;
+            checkBoxUseSavedSizes.Checked = Properties.Settings.Default.UseSavedSizes;
+
+            numericUpDownMainWidth.Value = Properties.Settings.Default.MainWidth;
+            numericUpDownMainHeight.Value = Properties.Settings.Default.MainHeight;
+            numericUpDownTaskEditorWidth.Value = Properties.Settings.Default.TaskEditorWidth;
+            numericUpDownTaskEditorHeight.Value = Properties.Settings.Default.TaskEditorHeight;
+            numericUpDownSettingsWidth.Value = Properties.Settings.Default.SettingsWidth;
+            numericUpDownSettingsHeight.Value = Properties.Settings.Default.SettingsHeight;
+            numericUpDownConverterWidth.Value = Properties.Settings.Default.ConverterWidth;
+            numericUpDownConverterHeight.Value = Properties.Settings.Default.ConverterHeight;
+            numericUpDownDictionaryEditorWidth.Value = Properties.Settings.Default.DictionaryEditorWidth;
+            numericUpDownDictionaryEditorHeight.Value = Properties.Settings.Default.DictionaryEditorHeight;
+            numericUpDownMaskEditorWidth.Value = Properties.Settings.Default.MaskEditorWidth;
+            numericUpDownMaskEditorHeight.Value = Properties.Settings.Default.MaskEditorHeight;
+        }
+        private void SettingsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Properties.Settings.Default.SaveFormsSizes)
+            {
+                Properties.Settings.Default.SettingsWidth = Width;
+                Properties.Settings.Default.SettingsHeight = Height;
+            }
         }
 
         private void buttonSettingsOK_Click(object sender, EventArgs e)
@@ -71,12 +101,29 @@ namespace LeukocyteGUI_for_oclHashCat
             Properties.Settings.Default.capConverter = textBoxAircrack.Text;
             Properties.Settings.Default.hccapOutputPath = textBoxConverterOutput.Text;
             Properties.Settings.Default.LogsPath = textBoxLogFilesPath.Text;
+
             Properties.Settings.Default.SaveBeforeExit = checkBoxSaveOnExit.Checked;
             Properties.Settings.Default.LoadOnStartup = checkBoxLoadOnStart.Checked;
             Properties.Settings.Default.DeleteRelatedTasksWhenCracked = checkBoxDeleteSameWhenCracked.Checked;
             Properties.Settings.Default.MinimizeToTray = checkBoxMinimizeToTray.Checked;
             Properties.Settings.Default.ShowToolTips = checkBoxShowToolTips.Checked;
             Properties.Settings.Default.DebugMode = checkBoxDebugMode.Checked;
+            Properties.Settings.Default.SaveFormsSizes = checkBoxSaveFormsSizes.Checked;
+            Properties.Settings.Default.UseSavedSizes = checkBoxUseSavedSizes.Checked;
+
+            Properties.Settings.Default.MainWidth = (int)numericUpDownMainWidth.Value;
+            Properties.Settings.Default.MainHeight = (int)numericUpDownMainHeight.Value;
+            Properties.Settings.Default.TaskEditorWidth = (int)numericUpDownTaskEditorWidth.Value;
+            Properties.Settings.Default.TaskEditorHeight = (int)numericUpDownTaskEditorHeight.Value;
+            Properties.Settings.Default.SettingsWidth = (int)numericUpDownSettingsWidth.Value;
+            Properties.Settings.Default.SettingsHeight = (int)numericUpDownSettingsHeight.Value;
+            Properties.Settings.Default.ConverterWidth = (int)numericUpDownConverterWidth.Value;
+            Properties.Settings.Default.ConverterHeight = (int)numericUpDownConverterHeight.Value;
+            Properties.Settings.Default.DictionaryEditorWidth = (int)numericUpDownDictionaryEditorWidth.Value;
+            Properties.Settings.Default.DictionaryEditorHeight = (int)numericUpDownDictionaryEditorHeight.Value;
+            Properties.Settings.Default.MaskEditorWidth = (int)numericUpDownMaskEditorWidth.Value;
+            Properties.Settings.Default.MaskEditorHeight = (int)numericUpDownMaskEditorHeight.Value;
+
             Properties.Settings.Default.Save();
 
             mainForm.MainCrackTaskManager.Cracker.SaveOutputToBuffer = checkBoxDebugMode.Checked;

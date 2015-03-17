@@ -60,6 +60,26 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonSettingsOK = new System.Windows.Forms.Button();
             this.tabControlSettings = new System.Windows.Forms.TabControl();
             this.tabPagePathes = new System.Windows.Forms.TabPage();
+            this.groupBoxSystem = new System.Windows.Forms.GroupBox();
+            this.buttonChooseLogFilesPath = new System.Windows.Forms.Button();
+            this.labelLogFilesPath = new System.Windows.Forms.Label();
+            this.textBoxLogFilesPath = new System.Windows.Forms.TextBox();
+            this.groupBoxConverter = new System.Windows.Forms.GroupBox();
+            this.buttonChooseAircrack = new System.Windows.Forms.Button();
+            this.buttonChooseConverterOutput = new System.Windows.Forms.Button();
+            this.labelAircrack = new System.Windows.Forms.Label();
+            this.textBoxAircrack = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxConverterOutput = new System.Windows.Forms.TextBox();
+            this.groupBoxHashcat = new System.Windows.Forms.GroupBox();
+            this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.panelCheckboxSettings = new System.Windows.Forms.Panel();
+            this.checkBoxDebugMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxSaveOnExit = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowToolTips = new System.Windows.Forms.CheckBox();
+            this.checkBoxLoadOnStart = new System.Windows.Forms.CheckBox();
+            this.checkBoxMinimizeToTray = new System.Windows.Forms.CheckBox();
+            this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
             this.tabPageDictionaries = new System.Windows.Forms.TabPage();
             this.buttonAddDictionary = new System.Windows.Forms.Button();
             this.buttonDeleteDictionary = new System.Windows.Forms.Button();
@@ -85,41 +105,73 @@ namespace LeukocyteGUI_for_oclHashCat
             this.columnHeaderMask = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderCharsets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonCancelTask = new System.Windows.Forms.Button();
-            this.tabPageOptions = new System.Windows.Forms.TabPage();
-            this.panelCheckboxSettings = new System.Windows.Forms.Panel();
-            this.checkBoxDebugMode = new System.Windows.Forms.CheckBox();
-            this.checkBoxSaveOnExit = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowToolTips = new System.Windows.Forms.CheckBox();
-            this.checkBoxLoadOnStart = new System.Windows.Forms.CheckBox();
-            this.checkBoxMinimizeToTray = new System.Windows.Forms.CheckBox();
-            this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
-            this.textBoxLogFilesPath = new System.Windows.Forms.TextBox();
-            this.labelLogFilesPath = new System.Windows.Forms.Label();
-            this.labelAircrack = new System.Windows.Forms.Label();
-            this.textBoxAircrack = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxConverterOutput = new System.Windows.Forms.TextBox();
-            this.groupBoxHashcat = new System.Windows.Forms.GroupBox();
-            this.groupBoxConverter = new System.Windows.Forms.GroupBox();
-            this.groupBoxSystem = new System.Windows.Forms.GroupBox();
             this.folderBrowserDialogOutput = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialogConverter = new System.Windows.Forms.OpenFileDialog();
-            this.buttonChooseAircrack = new System.Windows.Forms.Button();
-            this.buttonChooseConverterOutput = new System.Windows.Forms.Button();
-            this.buttonChooseLogFilesPath = new System.Windows.Forms.Button();
             this.folderBrowserDialogLogFiles = new System.Windows.Forms.FolderBrowserDialog();
+            this.checkBoxSaveFormsSizes = new System.Windows.Forms.CheckBox();
+            this.tabPageSizes = new System.Windows.Forms.TabPage();
+            this.groupBoxMainSizes = new System.Windows.Forms.GroupBox();
+            this.labelMainWidth = new System.Windows.Forms.Label();
+            this.numericUpDownMainWidth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownMainHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelMainHeight = new System.Windows.Forms.Label();
+            this.groupBoxTaskEditorSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownTaskEditorHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelTaskEditorHeight = new System.Windows.Forms.Label();
+            this.numericUpDownTaskEditorWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelTaskEditorWidth = new System.Windows.Forms.Label();
+            this.groupBoxSettingsSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownSettingsHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelSettingsHeight = new System.Windows.Forms.Label();
+            this.numericUpDownSettingsWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelSettingsWidth = new System.Windows.Forms.Label();
+            this.checkBoxUseSavedSizes = new System.Windows.Forms.CheckBox();
+            this.groupBoxConverterSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownConverterHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelConverterHeight = new System.Windows.Forms.Label();
+            this.numericUpDownConverterWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelConverterWidth = new System.Windows.Forms.Label();
+            this.groupBoxDictionaryEditorSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownDictionaryEditorHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelDictionaryEditorHeight = new System.Windows.Forms.Label();
+            this.numericUpDownDictionaryEditorWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelDictionaryEditorWidth = new System.Windows.Forms.Label();
+            this.groupBoxMaskEditorSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownMaskEditorHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelMaskEditorHeight = new System.Windows.Forms.Label();
+            this.numericUpDownMaskEditorWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelMaskEditorWidth = new System.Windows.Forms.Label();
             this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
             this.textBoxHashcat = new System.Windows.Forms.TextBox();
             this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPagePathes.SuspendLayout();
-            this.tabPageDictionaries.SuspendLayout();
-            this.tabPageMasks.SuspendLayout();
+            this.groupBoxSystem.SuspendLayout();
+            this.groupBoxConverter.SuspendLayout();
+            this.groupBoxHashcat.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelCheckboxSettings.SuspendLayout();
-            this.groupBoxHashcat.SuspendLayout();
-            this.groupBoxConverter.SuspendLayout();
-            this.groupBoxSystem.SuspendLayout();
+            this.tabPageDictionaries.SuspendLayout();
+            this.tabPageMasks.SuspendLayout();
+            this.tabPageSizes.SuspendLayout();
+            this.groupBoxMainSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainHeight)).BeginInit();
+            this.groupBoxTaskEditorSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorWidth)).BeginInit();
+            this.groupBoxSettingsSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsWidth)).BeginInit();
+            this.groupBoxConverterSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterWidth)).BeginInit();
+            this.groupBoxDictionaryEditorSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorWidth)).BeginInit();
+            this.groupBoxMaskEditorSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorWidth)).BeginInit();
             this.SuspendLayout();
             // 
             // labelWorkingDirectory
@@ -217,6 +269,7 @@ namespace LeukocyteGUI_for_oclHashCat
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlSettings.Controls.Add(this.tabPagePathes);
             this.tabControlSettings.Controls.Add(this.tabPageOptions);
+            this.tabControlSettings.Controls.Add(this.tabPageSizes);
             this.tabControlSettings.Controls.Add(this.tabPageDictionaries);
             this.tabControlSettings.Controls.Add(this.tabPageMasks);
             this.tabControlSettings.Location = new System.Drawing.Point(12, 12);
@@ -238,6 +291,252 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPagePathes.Text = "Pathes";
             this.tabPagePathes.UseVisualStyleBackColor = true;
             // 
+            // groupBoxSystem
+            // 
+            this.groupBoxSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxSystem.Controls.Add(this.buttonChooseLogFilesPath);
+            this.groupBoxSystem.Controls.Add(this.labelLogFilesPath);
+            this.groupBoxSystem.Controls.Add(this.textBoxLogFilesPath);
+            this.groupBoxSystem.Location = new System.Drawing.Point(6, 193);
+            this.groupBoxSystem.Name = "groupBoxSystem";
+            this.groupBoxSystem.Size = new System.Drawing.Size(453, 51);
+            this.groupBoxSystem.TabIndex = 56;
+            this.groupBoxSystem.TabStop = false;
+            this.groupBoxSystem.Text = "System";
+            // 
+            // buttonChooseLogFilesPath
+            // 
+            this.buttonChooseLogFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChooseLogFilesPath.FlatAppearance.BorderSize = 0;
+            this.buttonChooseLogFilesPath.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseLogFilesPath.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseLogFilesPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseLogFilesPath.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder16;
+            this.buttonChooseLogFilesPath.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseLogFilesPath.Location = new System.Drawing.Point(413, 17);
+            this.buttonChooseLogFilesPath.Name = "buttonChooseLogFilesPath";
+            this.buttonChooseLogFilesPath.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseLogFilesPath.TabIndex = 56;
+            this.buttonChooseLogFilesPath.UseVisualStyleBackColor = true;
+            this.buttonChooseLogFilesPath.Click += new System.EventHandler(this.buttonChooseLogFilesPath_Click);
+            // 
+            // labelLogFilesPath
+            // 
+            this.labelLogFilesPath.AutoSize = true;
+            this.labelLogFilesPath.Location = new System.Drawing.Point(16, 21);
+            this.labelLogFilesPath.Name = "labelLogFilesPath";
+            this.labelLogFilesPath.Size = new System.Drawing.Size(73, 13);
+            this.labelLogFilesPath.TabIndex = 49;
+            this.labelLogFilesPath.Text = "Log files path:";
+            // 
+            // textBoxLogFilesPath
+            // 
+            this.textBoxLogFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLogFilesPath.Location = new System.Drawing.Point(115, 18);
+            this.textBoxLogFilesPath.Name = "textBoxLogFilesPath";
+            this.textBoxLogFilesPath.Size = new System.Drawing.Size(292, 20);
+            this.textBoxLogFilesPath.TabIndex = 48;
+            // 
+            // groupBoxConverter
+            // 
+            this.groupBoxConverter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxConverter.Controls.Add(this.buttonChooseAircrack);
+            this.groupBoxConverter.Controls.Add(this.buttonChooseConverterOutput);
+            this.groupBoxConverter.Controls.Add(this.labelAircrack);
+            this.groupBoxConverter.Controls.Add(this.textBoxAircrack);
+            this.groupBoxConverter.Controls.Add(this.label2);
+            this.groupBoxConverter.Controls.Add(this.textBoxConverterOutput);
+            this.groupBoxConverter.Location = new System.Drawing.Point(6, 107);
+            this.groupBoxConverter.Name = "groupBoxConverter";
+            this.groupBoxConverter.Size = new System.Drawing.Size(453, 80);
+            this.groupBoxConverter.TabIndex = 55;
+            this.groupBoxConverter.TabStop = false;
+            this.groupBoxConverter.Text = "Converter";
+            // 
+            // buttonChooseAircrack
+            // 
+            this.buttonChooseAircrack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChooseAircrack.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseAircrack.FlatAppearance.BorderSize = 0;
+            this.buttonChooseAircrack.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseAircrack.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseAircrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseAircrack.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseAircrack.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseAircrack.Location = new System.Drawing.Point(413, 17);
+            this.buttonChooseAircrack.Name = "buttonChooseAircrack";
+            this.buttonChooseAircrack.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseAircrack.TabIndex = 54;
+            this.buttonChooseAircrack.UseVisualStyleBackColor = true;
+            this.buttonChooseAircrack.Click += new System.EventHandler(this.buttonChooseAircrack_Click);
+            // 
+            // buttonChooseConverterOutput
+            // 
+            this.buttonChooseConverterOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChooseConverterOutput.FlatAppearance.BorderSize = 0;
+            this.buttonChooseConverterOutput.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseConverterOutput.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseConverterOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseConverterOutput.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder16;
+            this.buttonChooseConverterOutput.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseConverterOutput.Location = new System.Drawing.Point(413, 47);
+            this.buttonChooseConverterOutput.Name = "buttonChooseConverterOutput";
+            this.buttonChooseConverterOutput.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseConverterOutput.TabIndex = 55;
+            this.buttonChooseConverterOutput.UseVisualStyleBackColor = true;
+            this.buttonChooseConverterOutput.Click += new System.EventHandler(this.buttonChooseConverterOutput_Click);
+            // 
+            // labelAircrack
+            // 
+            this.labelAircrack.AutoSize = true;
+            this.labelAircrack.Location = new System.Drawing.Point(16, 21);
+            this.labelAircrack.Name = "labelAircrack";
+            this.labelAircrack.Size = new System.Drawing.Size(83, 13);
+            this.labelAircrack.TabIndex = 51;
+            this.labelAircrack.Text = "aircrack-ng.exe:";
+            // 
+            // textBoxAircrack
+            // 
+            this.textBoxAircrack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAircrack.Location = new System.Drawing.Point(115, 18);
+            this.textBoxAircrack.Name = "textBoxAircrack";
+            this.textBoxAircrack.Size = new System.Drawing.Size(292, 20);
+            this.textBoxAircrack.TabIndex = 50;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 53;
+            this.label2.Text = "Output path:";
+            // 
+            // textBoxConverterOutput
+            // 
+            this.textBoxConverterOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxConverterOutput.Location = new System.Drawing.Point(115, 48);
+            this.textBoxConverterOutput.Name = "textBoxConverterOutput";
+            this.textBoxConverterOutput.Size = new System.Drawing.Size(292, 20);
+            this.textBoxConverterOutput.TabIndex = 52;
+            // 
+            // groupBoxHashcat
+            // 
+            this.groupBoxHashcat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxHashcat.Controls.Add(this.labelOclHashcat);
+            this.groupBoxHashcat.Controls.Add(this.checkBoxAutoWorkingDirectory);
+            this.groupBoxHashcat.Controls.Add(this.labelWorkingDirectory);
+            this.groupBoxHashcat.Controls.Add(this.textBoxWorkingDirectory);
+            this.groupBoxHashcat.Controls.Add(this.buttonChooseHashCat);
+            this.groupBoxHashcat.Controls.Add(this.textBoxHashcat);
+            this.groupBoxHashcat.Controls.Add(this.buttonChooseWorkingDirectory);
+            this.groupBoxHashcat.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxHashcat.Name = "groupBoxHashcat";
+            this.groupBoxHashcat.Size = new System.Drawing.Size(453, 95);
+            this.groupBoxHashcat.TabIndex = 54;
+            this.groupBoxHashcat.TabStop = false;
+            this.groupBoxHashcat.Text = "Hashcat";
+            // 
+            // tabPageOptions
+            // 
+            this.tabPageOptions.Controls.Add(this.panelCheckboxSettings);
+            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOptions.Name = "tabPageOptions";
+            this.tabPageOptions.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOptions.Size = new System.Drawing.Size(466, 251);
+            this.tabPageOptions.TabIndex = 3;
+            this.tabPageOptions.Text = "Options";
+            this.tabPageOptions.UseVisualStyleBackColor = true;
+            // 
+            // panelCheckboxSettings
+            // 
+            this.panelCheckboxSettings.AutoScroll = true;
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxUseSavedSizes);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxSaveFormsSizes);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxDebugMode);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxSaveOnExit);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxShowToolTips);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxLoadOnStart);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxMinimizeToTray);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxDeleteSameWhenCracked);
+            this.panelCheckboxSettings.Controls.Add(this.checkBoxShowNotifications);
+            this.panelCheckboxSettings.Location = new System.Drawing.Point(0, 3);
+            this.panelCheckboxSettings.Name = "panelCheckboxSettings";
+            this.panelCheckboxSettings.Size = new System.Drawing.Size(456, 225);
+            this.panelCheckboxSettings.TabIndex = 55;
+            // 
+            // checkBoxDebugMode
+            // 
+            this.checkBoxDebugMode.AutoSize = true;
+            this.checkBoxDebugMode.Location = new System.Drawing.Point(15, 151);
+            this.checkBoxDebugMode.Name = "checkBoxDebugMode";
+            this.checkBoxDebugMode.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxDebugMode.TabIndex = 54;
+            this.checkBoxDebugMode.Text = "Enable Debug Mode";
+            this.checkBoxDebugMode.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSaveOnExit
+            // 
+            this.checkBoxSaveOnExit.AutoSize = true;
+            this.checkBoxSaveOnExit.Checked = true;
+            this.checkBoxSaveOnExit.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxSaveOnExit.Location = new System.Drawing.Point(15, 12);
+            this.checkBoxSaveOnExit.Name = "checkBoxSaveOnExit";
+            this.checkBoxSaveOnExit.Size = new System.Drawing.Size(204, 17);
+            this.checkBoxSaveOnExit.TabIndex = 48;
+            this.checkBoxSaveOnExit.Text = "Save tasks before exiting the program";
+            this.checkBoxSaveOnExit.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowToolTips
+            // 
+            this.checkBoxShowToolTips.AutoSize = true;
+            this.checkBoxShowToolTips.Location = new System.Drawing.Point(15, 128);
+            this.checkBoxShowToolTips.Name = "checkBoxShowToolTips";
+            this.checkBoxShowToolTips.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxShowToolTips.TabIndex = 53;
+            this.checkBoxShowToolTips.Text = "Show tool tips";
+            this.checkBoxShowToolTips.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxLoadOnStart
+            // 
+            this.checkBoxLoadOnStart.AutoSize = true;
+            this.checkBoxLoadOnStart.Checked = true;
+            this.checkBoxLoadOnStart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxLoadOnStart.Location = new System.Drawing.Point(15, 36);
+            this.checkBoxLoadOnStart.Name = "checkBoxLoadOnStart";
+            this.checkBoxLoadOnStart.Size = new System.Drawing.Size(227, 17);
+            this.checkBoxLoadOnStart.TabIndex = 49;
+            this.checkBoxLoadOnStart.Text = "Load the last CrackingTasks file on startup";
+            this.checkBoxLoadOnStart.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMinimizeToTray
+            // 
+            this.checkBoxMinimizeToTray.AutoSize = true;
+            this.checkBoxMinimizeToTray.Checked = true;
+            this.checkBoxMinimizeToTray.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMinimizeToTray.Location = new System.Drawing.Point(15, 105);
+            this.checkBoxMinimizeToTray.Name = "checkBoxMinimizeToTray";
+            this.checkBoxMinimizeToTray.Size = new System.Drawing.Size(98, 17);
+            this.checkBoxMinimizeToTray.TabIndex = 52;
+            this.checkBoxMinimizeToTray.Text = "Minimize to tray";
+            this.checkBoxMinimizeToTray.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDeleteSameWhenCracked
+            // 
+            this.checkBoxDeleteSameWhenCracked.AutoSize = true;
+            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(15, 59);
+            this.checkBoxDeleteSameWhenCracked.Name = "checkBoxDeleteSameWhenCracked";
+            this.checkBoxDeleteSameWhenCracked.Size = new System.Drawing.Size(314, 17);
+            this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
+            this.checkBoxDeleteSameWhenCracked.Text = "When task is cracked, delete other tasks with the same hash";
+            this.checkBoxDeleteSameWhenCracked.UseVisualStyleBackColor = true;
+            // 
             // tabPageDictionaries
             // 
             this.tabPageDictionaries.Controls.Add(this.buttonAddDictionary);
@@ -250,7 +549,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPageDictionaries.Location = new System.Drawing.Point(4, 22);
             this.tabPageDictionaries.Name = "tabPageDictionaries";
             this.tabPageDictionaries.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDictionaries.Size = new System.Drawing.Size(463, 251);
+            this.tabPageDictionaries.Size = new System.Drawing.Size(466, 251);
             this.tabPageDictionaries.TabIndex = 1;
             this.tabPageDictionaries.Text = "Dictionaries";
             this.tabPageDictionaries.UseVisualStyleBackColor = true;
@@ -415,7 +714,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPageMasks.Controls.Add(this.listViewMasks);
             this.tabPageMasks.Location = new System.Drawing.Point(4, 22);
             this.tabPageMasks.Name = "tabPageMasks";
-            this.tabPageMasks.Size = new System.Drawing.Size(463, 251);
+            this.tabPageMasks.Size = new System.Drawing.Size(466, 251);
             this.tabPageMasks.TabIndex = 2;
             this.tabPageMasks.Text = "Masks";
             this.tabPageMasks.UseVisualStyleBackColor = true;
@@ -587,255 +886,376 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonCancelTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonCancelTask.UseVisualStyleBackColor = true;
             // 
-            // tabPageOptions
-            // 
-            this.tabPageOptions.Controls.Add(this.panelCheckboxSettings);
-            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOptions.Size = new System.Drawing.Size(464, 251);
-            this.tabPageOptions.TabIndex = 3;
-            this.tabPageOptions.Text = "Options";
-            this.tabPageOptions.UseVisualStyleBackColor = true;
-            // 
-            // panelCheckboxSettings
-            // 
-            this.panelCheckboxSettings.AutoScroll = true;
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxDebugMode);
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxSaveOnExit);
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxShowToolTips);
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxLoadOnStart);
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxMinimizeToTray);
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxDeleteSameWhenCracked);
-            this.panelCheckboxSettings.Controls.Add(this.checkBoxShowNotifications);
-            this.panelCheckboxSettings.Location = new System.Drawing.Point(0, 3);
-            this.panelCheckboxSettings.Name = "panelCheckboxSettings";
-            this.panelCheckboxSettings.Size = new System.Drawing.Size(456, 225);
-            this.panelCheckboxSettings.TabIndex = 55;
-            // 
-            // checkBoxDebugMode
-            // 
-            this.checkBoxDebugMode.AutoSize = true;
-            this.checkBoxDebugMode.Location = new System.Drawing.Point(15, 151);
-            this.checkBoxDebugMode.Name = "checkBoxDebugMode";
-            this.checkBoxDebugMode.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxDebugMode.TabIndex = 54;
-            this.checkBoxDebugMode.Text = "Enable Debug Mode";
-            this.checkBoxDebugMode.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxSaveOnExit
-            // 
-            this.checkBoxSaveOnExit.AutoSize = true;
-            this.checkBoxSaveOnExit.Checked = true;
-            this.checkBoxSaveOnExit.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxSaveOnExit.Location = new System.Drawing.Point(15, 12);
-            this.checkBoxSaveOnExit.Name = "checkBoxSaveOnExit";
-            this.checkBoxSaveOnExit.Size = new System.Drawing.Size(204, 17);
-            this.checkBoxSaveOnExit.TabIndex = 48;
-            this.checkBoxSaveOnExit.Text = "Save tasks before exiting the program";
-            this.checkBoxSaveOnExit.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowToolTips
-            // 
-            this.checkBoxShowToolTips.AutoSize = true;
-            this.checkBoxShowToolTips.Location = new System.Drawing.Point(15, 128);
-            this.checkBoxShowToolTips.Name = "checkBoxShowToolTips";
-            this.checkBoxShowToolTips.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxShowToolTips.TabIndex = 53;
-            this.checkBoxShowToolTips.Text = "Show tool tips";
-            this.checkBoxShowToolTips.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxLoadOnStart
-            // 
-            this.checkBoxLoadOnStart.AutoSize = true;
-            this.checkBoxLoadOnStart.Checked = true;
-            this.checkBoxLoadOnStart.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxLoadOnStart.Location = new System.Drawing.Point(15, 36);
-            this.checkBoxLoadOnStart.Name = "checkBoxLoadOnStart";
-            this.checkBoxLoadOnStart.Size = new System.Drawing.Size(227, 17);
-            this.checkBoxLoadOnStart.TabIndex = 49;
-            this.checkBoxLoadOnStart.Text = "Load the last CrackingTasks file on startup";
-            this.checkBoxLoadOnStart.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMinimizeToTray
-            // 
-            this.checkBoxMinimizeToTray.AutoSize = true;
-            this.checkBoxMinimizeToTray.Checked = true;
-            this.checkBoxMinimizeToTray.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMinimizeToTray.Location = new System.Drawing.Point(15, 105);
-            this.checkBoxMinimizeToTray.Name = "checkBoxMinimizeToTray";
-            this.checkBoxMinimizeToTray.Size = new System.Drawing.Size(98, 17);
-            this.checkBoxMinimizeToTray.TabIndex = 52;
-            this.checkBoxMinimizeToTray.Text = "Minimize to tray";
-            this.checkBoxMinimizeToTray.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDeleteSameWhenCracked
-            // 
-            this.checkBoxDeleteSameWhenCracked.AutoSize = true;
-            this.checkBoxDeleteSameWhenCracked.Location = new System.Drawing.Point(15, 59);
-            this.checkBoxDeleteSameWhenCracked.Name = "checkBoxDeleteSameWhenCracked";
-            this.checkBoxDeleteSameWhenCracked.Size = new System.Drawing.Size(314, 17);
-            this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
-            this.checkBoxDeleteSameWhenCracked.Text = "When task is cracked, delete other tasks with the same hash";
-            this.checkBoxDeleteSameWhenCracked.UseVisualStyleBackColor = true;
-            // 
-            // textBoxLogFilesPath
-            // 
-            this.textBoxLogFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLogFilesPath.Location = new System.Drawing.Point(115, 18);
-            this.textBoxLogFilesPath.Name = "textBoxLogFilesPath";
-            this.textBoxLogFilesPath.Size = new System.Drawing.Size(292, 20);
-            this.textBoxLogFilesPath.TabIndex = 48;
-            // 
-            // labelLogFilesPath
-            // 
-            this.labelLogFilesPath.AutoSize = true;
-            this.labelLogFilesPath.Location = new System.Drawing.Point(16, 21);
-            this.labelLogFilesPath.Name = "labelLogFilesPath";
-            this.labelLogFilesPath.Size = new System.Drawing.Size(73, 13);
-            this.labelLogFilesPath.TabIndex = 49;
-            this.labelLogFilesPath.Text = "Log files path:";
-            // 
-            // labelAircrack
-            // 
-            this.labelAircrack.AutoSize = true;
-            this.labelAircrack.Location = new System.Drawing.Point(16, 21);
-            this.labelAircrack.Name = "labelAircrack";
-            this.labelAircrack.Size = new System.Drawing.Size(83, 13);
-            this.labelAircrack.TabIndex = 51;
-            this.labelAircrack.Text = "aircrack-ng.exe:";
-            // 
-            // textBoxAircrack
-            // 
-            this.textBoxAircrack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAircrack.Location = new System.Drawing.Point(115, 18);
-            this.textBoxAircrack.Name = "textBoxAircrack";
-            this.textBoxAircrack.Size = new System.Drawing.Size(292, 20);
-            this.textBoxAircrack.TabIndex = 50;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 53;
-            this.label2.Text = "Output path:";
-            // 
-            // textBoxConverterOutput
-            // 
-            this.textBoxConverterOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxConverterOutput.Location = new System.Drawing.Point(115, 48);
-            this.textBoxConverterOutput.Name = "textBoxConverterOutput";
-            this.textBoxConverterOutput.Size = new System.Drawing.Size(292, 20);
-            this.textBoxConverterOutput.TabIndex = 52;
-            // 
-            // groupBoxHashcat
-            // 
-            this.groupBoxHashcat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxHashcat.Controls.Add(this.labelOclHashcat);
-            this.groupBoxHashcat.Controls.Add(this.checkBoxAutoWorkingDirectory);
-            this.groupBoxHashcat.Controls.Add(this.labelWorkingDirectory);
-            this.groupBoxHashcat.Controls.Add(this.textBoxWorkingDirectory);
-            this.groupBoxHashcat.Controls.Add(this.buttonChooseHashCat);
-            this.groupBoxHashcat.Controls.Add(this.textBoxHashcat);
-            this.groupBoxHashcat.Controls.Add(this.buttonChooseWorkingDirectory);
-            this.groupBoxHashcat.Location = new System.Drawing.Point(6, 6);
-            this.groupBoxHashcat.Name = "groupBoxHashcat";
-            this.groupBoxHashcat.Size = new System.Drawing.Size(453, 95);
-            this.groupBoxHashcat.TabIndex = 54;
-            this.groupBoxHashcat.TabStop = false;
-            this.groupBoxHashcat.Text = "Hashcat";
-            // 
-            // groupBoxConverter
-            // 
-            this.groupBoxConverter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxConverter.Controls.Add(this.buttonChooseAircrack);
-            this.groupBoxConverter.Controls.Add(this.buttonChooseConverterOutput);
-            this.groupBoxConverter.Controls.Add(this.labelAircrack);
-            this.groupBoxConverter.Controls.Add(this.textBoxAircrack);
-            this.groupBoxConverter.Controls.Add(this.label2);
-            this.groupBoxConverter.Controls.Add(this.textBoxConverterOutput);
-            this.groupBoxConverter.Location = new System.Drawing.Point(6, 107);
-            this.groupBoxConverter.Name = "groupBoxConverter";
-            this.groupBoxConverter.Size = new System.Drawing.Size(453, 80);
-            this.groupBoxConverter.TabIndex = 55;
-            this.groupBoxConverter.TabStop = false;
-            this.groupBoxConverter.Text = "Converter";
-            // 
-            // groupBoxSystem
-            // 
-            this.groupBoxSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxSystem.Controls.Add(this.buttonChooseLogFilesPath);
-            this.groupBoxSystem.Controls.Add(this.labelLogFilesPath);
-            this.groupBoxSystem.Controls.Add(this.textBoxLogFilesPath);
-            this.groupBoxSystem.Location = new System.Drawing.Point(6, 193);
-            this.groupBoxSystem.Name = "groupBoxSystem";
-            this.groupBoxSystem.Size = new System.Drawing.Size(453, 51);
-            this.groupBoxSystem.TabIndex = 56;
-            this.groupBoxSystem.TabStop = false;
-            this.groupBoxSystem.Text = "System";
-            // 
             // openFileDialogConverter
             // 
             this.openFileDialogConverter.FileName = "aircrack-ng.exe";
             this.openFileDialogConverter.Filter = "Executable files|*.exe";
             this.openFileDialogConverter.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogConverter_FileOk);
             // 
-            // buttonChooseAircrack
+            // checkBoxSaveFormsSizes
             // 
-            this.buttonChooseAircrack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonChooseAircrack.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseAircrack.FlatAppearance.BorderSize = 0;
-            this.buttonChooseAircrack.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseAircrack.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseAircrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseAircrack.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseAircrack.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseAircrack.Location = new System.Drawing.Point(413, 17);
-            this.buttonChooseAircrack.Name = "buttonChooseAircrack";
-            this.buttonChooseAircrack.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseAircrack.TabIndex = 54;
-            this.buttonChooseAircrack.UseVisualStyleBackColor = true;
-            this.buttonChooseAircrack.Click += new System.EventHandler(this.buttonChooseAircrack_Click);
+            this.checkBoxSaveFormsSizes.AutoSize = true;
+            this.checkBoxSaveFormsSizes.Location = new System.Drawing.Point(15, 174);
+            this.checkBoxSaveFormsSizes.Name = "checkBoxSaveFormsSizes";
+            this.checkBoxSaveFormsSizes.Size = new System.Drawing.Size(191, 17);
+            this.checkBoxSaveFormsSizes.TabIndex = 55;
+            this.checkBoxSaveFormsSizes.Text = "Save form size when form is closed";
+            this.checkBoxSaveFormsSizes.UseVisualStyleBackColor = true;
             // 
-            // buttonChooseConverterOutput
+            // tabPageSizes
             // 
-            this.buttonChooseConverterOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonChooseConverterOutput.FlatAppearance.BorderSize = 0;
-            this.buttonChooseConverterOutput.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseConverterOutput.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseConverterOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseConverterOutput.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder16;
-            this.buttonChooseConverterOutput.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseConverterOutput.Location = new System.Drawing.Point(413, 47);
-            this.buttonChooseConverterOutput.Name = "buttonChooseConverterOutput";
-            this.buttonChooseConverterOutput.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseConverterOutput.TabIndex = 55;
-            this.buttonChooseConverterOutput.UseVisualStyleBackColor = true;
-            this.buttonChooseConverterOutput.Click += new System.EventHandler(this.buttonChooseConverterOutput_Click);
+            this.tabPageSizes.Controls.Add(this.groupBoxMaskEditorSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxDictionaryEditorSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxConverterSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxSettingsSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxTaskEditorSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxMainSizes);
+            this.tabPageSizes.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSizes.Name = "tabPageSizes";
+            this.tabPageSizes.Size = new System.Drawing.Size(466, 251);
+            this.tabPageSizes.TabIndex = 4;
+            this.tabPageSizes.Text = "Sizes";
+            this.tabPageSizes.UseVisualStyleBackColor = true;
             // 
-            // buttonChooseLogFilesPath
+            // groupBoxMainSizes
             // 
-            this.buttonChooseLogFilesPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonChooseLogFilesPath.FlatAppearance.BorderSize = 0;
-            this.buttonChooseLogFilesPath.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseLogFilesPath.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseLogFilesPath.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseLogFilesPath.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_add_folder16;
-            this.buttonChooseLogFilesPath.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseLogFilesPath.Location = new System.Drawing.Point(413, 17);
-            this.buttonChooseLogFilesPath.Name = "buttonChooseLogFilesPath";
-            this.buttonChooseLogFilesPath.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseLogFilesPath.TabIndex = 56;
-            this.buttonChooseLogFilesPath.UseVisualStyleBackColor = true;
-            this.buttonChooseLogFilesPath.Click += new System.EventHandler(this.buttonChooseLogFilesPath_Click);
+            this.groupBoxMainSizes.Controls.Add(this.numericUpDownMainHeight);
+            this.groupBoxMainSizes.Controls.Add(this.labelMainHeight);
+            this.groupBoxMainSizes.Controls.Add(this.numericUpDownMainWidth);
+            this.groupBoxMainSizes.Controls.Add(this.labelMainWidth);
+            this.groupBoxMainSizes.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxMainSizes.Name = "groupBoxMainSizes";
+            this.groupBoxMainSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxMainSizes.TabIndex = 0;
+            this.groupBoxMainSizes.TabStop = false;
+            this.groupBoxMainSizes.Text = "Main Form";
+            // 
+            // labelMainWidth
+            // 
+            this.labelMainWidth.AutoSize = true;
+            this.labelMainWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelMainWidth.Name = "labelMainWidth";
+            this.labelMainWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelMainWidth.TabIndex = 0;
+            this.labelMainWidth.Text = "Width:";
+            // 
+            // numericUpDownMainWidth
+            // 
+            this.numericUpDownMainWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownMainWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownMainWidth.Name = "numericUpDownMainWidth";
+            this.numericUpDownMainWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMainWidth.TabIndex = 1;
+            // 
+            // numericUpDownMainHeight
+            // 
+            this.numericUpDownMainHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownMainHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownMainHeight.Name = "numericUpDownMainHeight";
+            this.numericUpDownMainHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMainHeight.TabIndex = 3;
+            // 
+            // labelMainHeight
+            // 
+            this.labelMainHeight.AutoSize = true;
+            this.labelMainHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelMainHeight.Name = "labelMainHeight";
+            this.labelMainHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelMainHeight.TabIndex = 2;
+            this.labelMainHeight.Text = "Height:";
+            // 
+            // groupBoxTaskEditorSizes
+            // 
+            this.groupBoxTaskEditorSizes.Controls.Add(this.numericUpDownTaskEditorHeight);
+            this.groupBoxTaskEditorSizes.Controls.Add(this.labelTaskEditorHeight);
+            this.groupBoxTaskEditorSizes.Controls.Add(this.numericUpDownTaskEditorWidth);
+            this.groupBoxTaskEditorSizes.Controls.Add(this.labelTaskEditorWidth);
+            this.groupBoxTaskEditorSizes.Location = new System.Drawing.Point(157, 12);
+            this.groupBoxTaskEditorSizes.Name = "groupBoxTaskEditorSizes";
+            this.groupBoxTaskEditorSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxTaskEditorSizes.TabIndex = 1;
+            this.groupBoxTaskEditorSizes.TabStop = false;
+            this.groupBoxTaskEditorSizes.Text = "Task Editor Form";
+            // 
+            // numericUpDownTaskEditorHeight
+            // 
+            this.numericUpDownTaskEditorHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownTaskEditorHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownTaskEditorHeight.Name = "numericUpDownTaskEditorHeight";
+            this.numericUpDownTaskEditorHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownTaskEditorHeight.TabIndex = 3;
+            // 
+            // labelTaskEditorHeight
+            // 
+            this.labelTaskEditorHeight.AutoSize = true;
+            this.labelTaskEditorHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelTaskEditorHeight.Name = "labelTaskEditorHeight";
+            this.labelTaskEditorHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelTaskEditorHeight.TabIndex = 2;
+            this.labelTaskEditorHeight.Text = "Height:";
+            // 
+            // numericUpDownTaskEditorWidth
+            // 
+            this.numericUpDownTaskEditorWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownTaskEditorWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownTaskEditorWidth.Name = "numericUpDownTaskEditorWidth";
+            this.numericUpDownTaskEditorWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownTaskEditorWidth.TabIndex = 1;
+            // 
+            // labelTaskEditorWidth
+            // 
+            this.labelTaskEditorWidth.AutoSize = true;
+            this.labelTaskEditorWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelTaskEditorWidth.Name = "labelTaskEditorWidth";
+            this.labelTaskEditorWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelTaskEditorWidth.TabIndex = 0;
+            this.labelTaskEditorWidth.Text = "Width:";
+            // 
+            // groupBoxSettingsSizes
+            // 
+            this.groupBoxSettingsSizes.Controls.Add(this.numericUpDownSettingsHeight);
+            this.groupBoxSettingsSizes.Controls.Add(this.labelSettingsHeight);
+            this.groupBoxSettingsSizes.Controls.Add(this.numericUpDownSettingsWidth);
+            this.groupBoxSettingsSizes.Controls.Add(this.labelSettingsWidth);
+            this.groupBoxSettingsSizes.Location = new System.Drawing.Point(302, 12);
+            this.groupBoxSettingsSizes.Name = "groupBoxSettingsSizes";
+            this.groupBoxSettingsSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxSettingsSizes.TabIndex = 2;
+            this.groupBoxSettingsSizes.TabStop = false;
+            this.groupBoxSettingsSizes.Text = "Settings Form";
+            // 
+            // numericUpDownSettingsHeight
+            // 
+            this.numericUpDownSettingsHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownSettingsHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownSettingsHeight.Name = "numericUpDownSettingsHeight";
+            this.numericUpDownSettingsHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownSettingsHeight.TabIndex = 3;
+            // 
+            // labelSettingsHeight
+            // 
+            this.labelSettingsHeight.AutoSize = true;
+            this.labelSettingsHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelSettingsHeight.Name = "labelSettingsHeight";
+            this.labelSettingsHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelSettingsHeight.TabIndex = 2;
+            this.labelSettingsHeight.Text = "Height:";
+            // 
+            // numericUpDownSettingsWidth
+            // 
+            this.numericUpDownSettingsWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownSettingsWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownSettingsWidth.Name = "numericUpDownSettingsWidth";
+            this.numericUpDownSettingsWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownSettingsWidth.TabIndex = 1;
+            // 
+            // labelSettingsWidth
+            // 
+            this.labelSettingsWidth.AutoSize = true;
+            this.labelSettingsWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelSettingsWidth.Name = "labelSettingsWidth";
+            this.labelSettingsWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelSettingsWidth.TabIndex = 0;
+            this.labelSettingsWidth.Text = "Width:";
+            // 
+            // checkBoxUseSavedSizes
+            // 
+            this.checkBoxUseSavedSizes.AutoSize = true;
+            this.checkBoxUseSavedSizes.Location = new System.Drawing.Point(15, 197);
+            this.checkBoxUseSavedSizes.Name = "checkBoxUseSavedSizes";
+            this.checkBoxUseSavedSizes.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxUseSavedSizes.TabIndex = 56;
+            this.checkBoxUseSavedSizes.Text = "Use saved sizes";
+            this.checkBoxUseSavedSizes.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxConverterSizes
+            // 
+            this.groupBoxConverterSizes.Controls.Add(this.numericUpDownConverterHeight);
+            this.groupBoxConverterSizes.Controls.Add(this.labelConverterHeight);
+            this.groupBoxConverterSizes.Controls.Add(this.numericUpDownConverterWidth);
+            this.groupBoxConverterSizes.Controls.Add(this.labelConverterWidth);
+            this.groupBoxConverterSizes.Location = new System.Drawing.Point(12, 102);
+            this.groupBoxConverterSizes.Name = "groupBoxConverterSizes";
+            this.groupBoxConverterSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxConverterSizes.TabIndex = 3;
+            this.groupBoxConverterSizes.TabStop = false;
+            this.groupBoxConverterSizes.Text = "Converter Form";
+            // 
+            // numericUpDownConverterHeight
+            // 
+            this.numericUpDownConverterHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownConverterHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownConverterHeight.Name = "numericUpDownConverterHeight";
+            this.numericUpDownConverterHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownConverterHeight.TabIndex = 3;
+            // 
+            // labelConverterHeight
+            // 
+            this.labelConverterHeight.AutoSize = true;
+            this.labelConverterHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelConverterHeight.Name = "labelConverterHeight";
+            this.labelConverterHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelConverterHeight.TabIndex = 2;
+            this.labelConverterHeight.Text = "Height:";
+            // 
+            // numericUpDownConverterWidth
+            // 
+            this.numericUpDownConverterWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownConverterWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownConverterWidth.Name = "numericUpDownConverterWidth";
+            this.numericUpDownConverterWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownConverterWidth.TabIndex = 1;
+            // 
+            // labelConverterWidth
+            // 
+            this.labelConverterWidth.AutoSize = true;
+            this.labelConverterWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelConverterWidth.Name = "labelConverterWidth";
+            this.labelConverterWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelConverterWidth.TabIndex = 0;
+            this.labelConverterWidth.Text = "Width:";
+            // 
+            // groupBoxDictionaryEditorSizes
+            // 
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.numericUpDownDictionaryEditorHeight);
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.labelDictionaryEditorHeight);
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.numericUpDownDictionaryEditorWidth);
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.labelDictionaryEditorWidth);
+            this.groupBoxDictionaryEditorSizes.Location = new System.Drawing.Point(157, 102);
+            this.groupBoxDictionaryEditorSizes.Name = "groupBoxDictionaryEditorSizes";
+            this.groupBoxDictionaryEditorSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxDictionaryEditorSizes.TabIndex = 4;
+            this.groupBoxDictionaryEditorSizes.TabStop = false;
+            this.groupBoxDictionaryEditorSizes.Text = "Dictionary Editor Form";
+            // 
+            // numericUpDownDictionaryEditorHeight
+            // 
+            this.numericUpDownDictionaryEditorHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownDictionaryEditorHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownDictionaryEditorHeight.Name = "numericUpDownDictionaryEditorHeight";
+            this.numericUpDownDictionaryEditorHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownDictionaryEditorHeight.TabIndex = 3;
+            // 
+            // labelDictionaryEditorHeight
+            // 
+            this.labelDictionaryEditorHeight.AutoSize = true;
+            this.labelDictionaryEditorHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelDictionaryEditorHeight.Name = "labelDictionaryEditorHeight";
+            this.labelDictionaryEditorHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelDictionaryEditorHeight.TabIndex = 2;
+            this.labelDictionaryEditorHeight.Text = "Height:";
+            // 
+            // numericUpDownDictionaryEditorWidth
+            // 
+            this.numericUpDownDictionaryEditorWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownDictionaryEditorWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownDictionaryEditorWidth.Name = "numericUpDownDictionaryEditorWidth";
+            this.numericUpDownDictionaryEditorWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownDictionaryEditorWidth.TabIndex = 1;
+            // 
+            // labelDictionaryEditorWidth
+            // 
+            this.labelDictionaryEditorWidth.AutoSize = true;
+            this.labelDictionaryEditorWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelDictionaryEditorWidth.Name = "labelDictionaryEditorWidth";
+            this.labelDictionaryEditorWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelDictionaryEditorWidth.TabIndex = 0;
+            this.labelDictionaryEditorWidth.Text = "Width:";
+            // 
+            // groupBoxMaskEditorSizes
+            // 
+            this.groupBoxMaskEditorSizes.Controls.Add(this.numericUpDownMaskEditorHeight);
+            this.groupBoxMaskEditorSizes.Controls.Add(this.labelMaskEditorHeight);
+            this.groupBoxMaskEditorSizes.Controls.Add(this.numericUpDownMaskEditorWidth);
+            this.groupBoxMaskEditorSizes.Controls.Add(this.labelMaskEditorWidth);
+            this.groupBoxMaskEditorSizes.Location = new System.Drawing.Point(302, 102);
+            this.groupBoxMaskEditorSizes.Name = "groupBoxMaskEditorSizes";
+            this.groupBoxMaskEditorSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxMaskEditorSizes.TabIndex = 5;
+            this.groupBoxMaskEditorSizes.TabStop = false;
+            this.groupBoxMaskEditorSizes.Text = "Mask Editor Form";
+            // 
+            // numericUpDownMaskEditorHeight
+            // 
+            this.numericUpDownMaskEditorHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownMaskEditorHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownMaskEditorHeight.Name = "numericUpDownMaskEditorHeight";
+            this.numericUpDownMaskEditorHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMaskEditorHeight.TabIndex = 3;
+            // 
+            // labelMaskEditorHeight
+            // 
+            this.labelMaskEditorHeight.AutoSize = true;
+            this.labelMaskEditorHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelMaskEditorHeight.Name = "labelMaskEditorHeight";
+            this.labelMaskEditorHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelMaskEditorHeight.TabIndex = 2;
+            this.labelMaskEditorHeight.Text = "Height:";
+            // 
+            // numericUpDownMaskEditorWidth
+            // 
+            this.numericUpDownMaskEditorWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownMaskEditorWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownMaskEditorWidth.Name = "numericUpDownMaskEditorWidth";
+            this.numericUpDownMaskEditorWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMaskEditorWidth.TabIndex = 1;
+            // 
+            // labelMaskEditorWidth
+            // 
+            this.labelMaskEditorWidth.AutoSize = true;
+            this.labelMaskEditorWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelMaskEditorWidth.Name = "labelMaskEditorWidth";
+            this.labelMaskEditorWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelMaskEditorWidth.TabIndex = 0;
+            this.labelMaskEditorWidth.Text = "Width:";
             // 
             // textBoxWorkingDirectory
             // 
@@ -887,20 +1307,46 @@ namespace LeukocyteGUI_for_oclHashCat
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LeukocyteGUI for oclHashCat - Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsForm_FormClosing);
             this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.tabControlSettings.ResumeLayout(false);
             this.tabPagePathes.ResumeLayout(false);
-            this.tabPageDictionaries.ResumeLayout(false);
-            this.tabPageMasks.ResumeLayout(false);
+            this.groupBoxSystem.ResumeLayout(false);
+            this.groupBoxSystem.PerformLayout();
+            this.groupBoxConverter.ResumeLayout(false);
+            this.groupBoxConverter.PerformLayout();
+            this.groupBoxHashcat.ResumeLayout(false);
+            this.groupBoxHashcat.PerformLayout();
             this.tabPageOptions.ResumeLayout(false);
             this.panelCheckboxSettings.ResumeLayout(false);
             this.panelCheckboxSettings.PerformLayout();
-            this.groupBoxHashcat.ResumeLayout(false);
-            this.groupBoxHashcat.PerformLayout();
-            this.groupBoxConverter.ResumeLayout(false);
-            this.groupBoxConverter.PerformLayout();
-            this.groupBoxSystem.ResumeLayout(false);
-            this.groupBoxSystem.PerformLayout();
+            this.tabPageDictionaries.ResumeLayout(false);
+            this.tabPageMasks.ResumeLayout(false);
+            this.tabPageSizes.ResumeLayout(false);
+            this.groupBoxMainSizes.ResumeLayout(false);
+            this.groupBoxMainSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainHeight)).EndInit();
+            this.groupBoxTaskEditorSizes.ResumeLayout(false);
+            this.groupBoxTaskEditorSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorWidth)).EndInit();
+            this.groupBoxSettingsSizes.ResumeLayout(false);
+            this.groupBoxSettingsSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsWidth)).EndInit();
+            this.groupBoxConverterSizes.ResumeLayout(false);
+            this.groupBoxConverterSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterWidth)).EndInit();
+            this.groupBoxDictionaryEditorSizes.ResumeLayout(false);
+            this.groupBoxDictionaryEditorSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorWidth)).EndInit();
+            this.groupBoxMaskEditorSizes.ResumeLayout(false);
+            this.groupBoxMaskEditorSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorWidth)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -968,5 +1414,38 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogOutput;
         private System.Windows.Forms.OpenFileDialog openFileDialogConverter;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogLogFiles;
+        private System.Windows.Forms.CheckBox checkBoxSaveFormsSizes;
+        private System.Windows.Forms.TabPage tabPageSizes;
+        private System.Windows.Forms.GroupBox groupBoxTaskEditorSizes;
+        private System.Windows.Forms.NumericUpDown numericUpDownTaskEditorHeight;
+        private System.Windows.Forms.Label labelTaskEditorHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownTaskEditorWidth;
+        private System.Windows.Forms.Label labelTaskEditorWidth;
+        private System.Windows.Forms.GroupBox groupBoxMainSizes;
+        private System.Windows.Forms.NumericUpDown numericUpDownMainHeight;
+        private System.Windows.Forms.Label labelMainHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownMainWidth;
+        private System.Windows.Forms.Label labelMainWidth;
+        private System.Windows.Forms.GroupBox groupBoxSettingsSizes;
+        private System.Windows.Forms.NumericUpDown numericUpDownSettingsHeight;
+        private System.Windows.Forms.Label labelSettingsHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownSettingsWidth;
+        private System.Windows.Forms.Label labelSettingsWidth;
+        private System.Windows.Forms.CheckBox checkBoxUseSavedSizes;
+        private System.Windows.Forms.GroupBox groupBoxMaskEditorSizes;
+        private System.Windows.Forms.NumericUpDown numericUpDownMaskEditorHeight;
+        private System.Windows.Forms.Label labelMaskEditorHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownMaskEditorWidth;
+        private System.Windows.Forms.Label labelMaskEditorWidth;
+        private System.Windows.Forms.GroupBox groupBoxDictionaryEditorSizes;
+        private System.Windows.Forms.NumericUpDown numericUpDownDictionaryEditorHeight;
+        private System.Windows.Forms.Label labelDictionaryEditorHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownDictionaryEditorWidth;
+        private System.Windows.Forms.Label labelDictionaryEditorWidth;
+        private System.Windows.Forms.GroupBox groupBoxConverterSizes;
+        private System.Windows.Forms.NumericUpDown numericUpDownConverterHeight;
+        private System.Windows.Forms.Label labelConverterHeight;
+        private System.Windows.Forms.NumericUpDown numericUpDownConverterWidth;
+        private System.Windows.Forms.Label labelConverterWidth;
     }
 }

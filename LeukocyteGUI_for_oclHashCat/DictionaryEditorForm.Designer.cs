@@ -180,6 +180,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.Name = "DictionaryEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dictionary Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DictionaryEditorForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

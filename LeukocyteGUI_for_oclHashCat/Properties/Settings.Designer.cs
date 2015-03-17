@@ -214,5 +214,173 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
                 this["LogsPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SaveFormsSizes {
+            get {
+                return ((bool)(this["SaveFormsSizes"]));
+            }
+            set {
+                this["SaveFormsSizes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("900")]
+        public int MainWidth {
+            get {
+                return ((int)(this["MainWidth"]));
+            }
+            set {
+                this["MainWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("515")]
+        public int MainHeight {
+            get {
+                return ((int)(this["MainHeight"]));
+            }
+            set {
+                this["MainHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("822")]
+        public int TaskEditorWidth {
+            get {
+                return ((int)(this["TaskEditorWidth"]));
+            }
+            set {
+                this["TaskEditorWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("580")]
+        public int TaskEditorHeight {
+            get {
+                return ((int)(this["TaskEditorHeight"]));
+            }
+            set {
+                this["TaskEditorHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("510")]
+        public int SettingsWidth {
+            get {
+                return ((int)(this["SettingsWidth"]));
+            }
+            set {
+                this["SettingsWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("386")]
+        public int SettingsHeight {
+            get {
+                return ((int)(this["SettingsHeight"]));
+            }
+            set {
+                this["SettingsHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("379")]
+        public int ConverterWidth {
+            get {
+                return ((int)(this["ConverterWidth"]));
+            }
+            set {
+                this["ConverterWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("372")]
+        public int ConverterHeight {
+            get {
+                return ((int)(this["ConverterHeight"]));
+            }
+            set {
+                this["ConverterHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("352")]
+        public int DictionaryEditorWidth {
+            get {
+                return ((int)(this["DictionaryEditorWidth"]));
+            }
+            set {
+                this["DictionaryEditorWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("184")]
+        public int DictionaryEditorHeight {
+            get {
+                return ((int)(this["DictionaryEditorHeight"]));
+            }
+            set {
+                this["DictionaryEditorHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("526")]
+        public int MaskEditorWidth {
+            get {
+                return ((int)(this["MaskEditorWidth"]));
+            }
+            set {
+                this["MaskEditorWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("265")]
+        public int MaskEditorHeight {
+            get {
+                return ((int)(this["MaskEditorHeight"]));
+            }
+            set {
+                this["MaskEditorHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseSavedSizes {
+            get {
+                return ((bool)(this["UseSavedSizes"]));
+            }
+            set {
+                this["UseSavedSizes"] = value;
+            }
+        }
     }
 }

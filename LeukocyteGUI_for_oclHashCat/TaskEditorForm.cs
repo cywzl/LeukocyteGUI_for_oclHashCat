@@ -41,6 +41,12 @@ namespace LeukocyteGUI_for_oclHashCat
         public TaskEditorForm()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.UseSavedSizes)
+            {
+                Width = Properties.Settings.Default.TaskEditorWidth;
+                Height = Properties.Settings.Default.TaskEditorHeight;
+            }
         }
         public TaskEditorForm(int ChangingTaskId)
             : this()
@@ -65,6 +71,15 @@ namespace LeukocyteGUI_for_oclHashCat
                 checkedListBoxMask.Items.Add(maskManager.Masks[index].Description);
             }
         }
+        private void TaskEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Properties.Settings.Default.SaveFormsSizes)
+            {
+                Properties.Settings.Default.TaskEditorWidth = Width;
+                Properties.Settings.Default.TaskEditorHeight = Height;
+            }
+        }
+
         private void buttonSubmitTask_Click(object sender, EventArgs e)
         {
             string[] Data;
@@ -264,6 +279,7 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             openFileDialogCharset4.ShowDialog();
         }
+
         private void openFileDialogMask_FileOk(object sender, CancelEventArgs e)
         {
             textBoxBruteforceMask.Text = openFileDialogMask.FileName;

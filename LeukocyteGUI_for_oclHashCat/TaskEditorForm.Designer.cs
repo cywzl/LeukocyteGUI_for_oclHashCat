@@ -54,6 +54,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.radioButtonAttackTypeBrute = new System.Windows.Forms.RadioButton();
             this.radioButtonAttackTypeDictionary = new System.Windows.Forms.RadioButton();
             this.groupBoxAttackType = new System.Windows.Forms.GroupBox();
+            this.buttonChooseMaskFile = new System.Windows.Forms.Button();
             this.buttonChooseCharsetFile4 = new System.Windows.Forms.Button();
             this.buttonChooseCharsetFile3 = new System.Windows.Forms.Button();
             this.buttonChooseCharsetFile2 = new System.Windows.Forms.Button();
@@ -131,7 +132,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogCharset2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogCharset3 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogCharset4 = new System.Windows.Forms.OpenFileDialog();
-            this.buttonChooseMaskFile = new System.Windows.Forms.Button();
             this.openFileDialogMask = new System.Windows.Forms.OpenFileDialog();
             this.groupBoxAttackType.SuspendLayout();
             this.groupBoxHash.SuspendLayout();
@@ -206,6 +206,22 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxAttackType.TabIndex = 1;
             this.groupBoxAttackType.TabStop = false;
             this.groupBoxAttackType.Text = "Attack type";
+            // 
+            // buttonChooseMaskFile
+            // 
+            this.buttonChooseMaskFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseMaskFile.FlatAppearance.BorderSize = 0;
+            this.buttonChooseMaskFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseMaskFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseMaskFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseMaskFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseMaskFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseMaskFile.Location = new System.Drawing.Point(228, 92);
+            this.buttonChooseMaskFile.Name = "buttonChooseMaskFile";
+            this.buttonChooseMaskFile.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseMaskFile.TabIndex = 58;
+            this.buttonChooseMaskFile.UseVisualStyleBackColor = true;
+            this.buttonChooseMaskFile.Click += new System.EventHandler(this.buttonChooseMaskFile_Click);
             // 
             // buttonChooseCharsetFile4
             // 
@@ -1149,22 +1165,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogCharset4.Filter = "Hashcat charset files (*.hcchr)|*.hcchr|Any files (*.*)|*.*";
             this.openFileDialogCharset4.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogCharset4_FileOk);
             // 
-            // buttonChooseMaskFile
-            // 
-            this.buttonChooseMaskFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseMaskFile.FlatAppearance.BorderSize = 0;
-            this.buttonChooseMaskFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseMaskFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseMaskFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseMaskFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseMaskFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseMaskFile.Location = new System.Drawing.Point(228, 92);
-            this.buttonChooseMaskFile.Name = "buttonChooseMaskFile";
-            this.buttonChooseMaskFile.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseMaskFile.TabIndex = 58;
-            this.buttonChooseMaskFile.UseVisualStyleBackColor = true;
-            this.buttonChooseMaskFile.Click += new System.EventHandler(this.buttonChooseMaskFile_Click);
-            // 
             // openFileDialogMask
             // 
             this.openFileDialogMask.FileName = "mask";
@@ -1192,6 +1192,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.Name = "TaskEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LeukocyteGUI for oclHashCat - Task Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskEditorForm_FormClosing);
             this.Load += new System.EventHandler(this.TaskEditorForm_Load);
             this.groupBoxAttackType.ResumeLayout(false);
             this.groupBoxAttackType.PerformLayout();

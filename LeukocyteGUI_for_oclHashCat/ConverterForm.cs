@@ -36,14 +36,28 @@ namespace LeukocyteGUI_for_oclHashCat
         public ConverterForm()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.UseSavedSizes)
+            {
+                Width = Properties.Settings.Default.ConverterWidth;
+                Height = Properties.Settings.Default.ConverterHeight;
+            }
         }
 
         private void ConverterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.capConverter = textBoxConverter.Text;
             Properties.Settings.Default.hccapOutputPath = textBoxOutput.Text;
+
+            if (Properties.Settings.Default.SaveFormsSizes)
+            {
+                Properties.Settings.Default.ConverterWidth = Width;
+                Properties.Settings.Default.ConverterHeight = Height;
+            }
+
             Properties.Settings.Default.Save();
         }
+
         private void listBoxFilenames_DragDrop(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData("FileDrop", false);
@@ -81,6 +95,7 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             UpdateInterface();
         }
+
         private void buttonConvert_Click(object sender, EventArgs e)
         {
             Converter converter = new Converter(textBoxOutput.Text, textBoxConverter.Text);

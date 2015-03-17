@@ -443,6 +443,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.Name = "MaskEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mask Editor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MaskEditorForm_FormClosing);
             this.groupBoxCharsets.ResumeLayout(false);
             this.groupBoxCharsets.PerformLayout();
             this.groupBoxIncrement.ResumeLayout(false);

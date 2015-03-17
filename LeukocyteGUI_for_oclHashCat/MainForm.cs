@@ -71,6 +71,12 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             InitializeComponent();
 
+            if (Properties.Settings.Default.UseSavedSizes)
+            {
+                Width = Properties.Settings.Default.MainWidth;
+                Height = Properties.Settings.Default.MainHeight;
+            }
+
             DateTimeFormat = "dd-MM-yyyy HH:mm:ss";
 
             subItemTip = new ListViewSubItemTip(listViewTasks);
@@ -113,6 +119,51 @@ namespace LeukocyteGUI_for_oclHashCat
 
             VisualizeTasks();
             CheckButtons();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tskManager.Cracker.IsCracking)
+            {
+                tskManager.Cracker.PauseCracking();
+            }
+
+            if (Properties.Settings.Default.SaveBeforeExit)
+            {
+                SaveTasks();
+            }
+
+            SaveDictionaries();
+            SaveMasks();
+
+            if (Properties.Settings.Default.SaveFormsSizes)
+            {
+                Properties.Settings.Default.MainWidth = Width;
+                Properties.Settings.Default.MainHeight = Height;
+            }
+
+            Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
+            Properties.Settings.Default.Save();
+        }
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.MinimizeToTray)
+            {
+                if (WindowState == FormWindowState.Minimized)
+                {
+                    if (ShowInTaskbar)
+                    {
+                        ShowInTaskbar = false;
+                    }
+                }
+                else
+                {
+                    if (!ShowInTaskbar)
+                    {
+                        ShowInTaskbar = true;
+                    }
+                }
+            }
         }
 
         private void Cracker_BeforeStart(object sender, int TaskId)
@@ -279,6 +330,7 @@ namespace LeukocyteGUI_for_oclHashCat
             VisualizeTask(TaskId);
             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal);
         }
+
         private void tskManager_TaskAdded(object sender, int TaskId)
         {
             VisualizeNewTask();
@@ -449,6 +501,7 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             (new SettingsForm(this)).ShowDialog(this);
         }
+
         private void listViewTasks_SelectedIndexChanged(object sender, EventArgs e)
         {
             CheckButtons();
@@ -515,6 +568,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 buttonChangeTask.PerformClick();
             }
         }
+
         private void checkBoxAppearanceUpdate(CheckBox sender)
         {
             if (sender.Checked)
@@ -554,44 +608,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
         }
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (tskManager.Cracker.IsCracking)
-            {
-                tskManager.Cracker.PauseCracking();
-            }
 
-            if (Properties.Settings.Default.SaveBeforeExit)
-            {
-                SaveTasks();
-            }
-
-            SaveDictionaries();
-            SaveMasks();
-
-            Properties.Settings.Default.CrackAllChecked = checkBoxAllChecked.Checked;
-            Properties.Settings.Default.Save();
-        }
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.MinimizeToTray)
-            {
-                if (WindowState == FormWindowState.Minimized)
-                {
-                    if (ShowInTaskbar)
-                    {
-                        ShowInTaskbar = false;
-                    }
-                }
-                else
-                {
-                    if (!ShowInTaskbar)
-                    {
-                        ShowInTaskbar = true;
-                    }
-                }
-            }
-        }
         private void openFileDialogCrackTasks_FileOk(object sender, CancelEventArgs e)
         {
             Properties.Settings.Default.CrackTasksFile = openFileDialogCrackTasks.FileName;
@@ -602,6 +619,7 @@ namespace LeukocyteGUI_for_oclHashCat
             Properties.Settings.Default.CrackTasksFile = saveFileDialogCrackTasks.FileName;
             SaveTasks();
         }
+
         private void toolStripMenuItemExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -740,6 +758,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 Clipboard.SetText(clipboardText);
             }
         }
+
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Minimized)

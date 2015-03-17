@@ -40,12 +40,28 @@ namespace LeukocyteGUI_for_oclHashCat
             int changingDictId = -1)
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.UseSavedSizes)
+            {
+                Width = Properties.Settings.Default.DictionaryEditorWidth;
+                Height = Properties.Settings.Default.DictionaryEditorHeight;
+            }
+
             this.dictionaryManager = dictionaryManager;
             this.changingDictId = changingDictId;
 
             if (changingDictId > -1)
             {
                 FillFormWithData();
+            }
+        }
+
+        private void DictionaryEditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Properties.Settings.Default.SaveFormsSizes)
+            {
+                Properties.Settings.Default.DictionaryEditorWidth = Width;
+                Properties.Settings.Default.DictionaryEditorHeight = Height;
             }
         }
 
@@ -72,16 +88,18 @@ namespace LeukocyteGUI_for_oclHashCat
 
             Close();
         }
-        private void openFileDialogDictionary_FileOk(object sender, CancelEventArgs e)
-        {
-            textBoxDictionary.Text = openFileDialogDictionary.FileName;
-        }
+
         private void textBoxDictionary_TextChanged(object sender, EventArgs e)
         {
             if (checkBoxDescAutofilling.Checked)
             {
                 textBoxDescription.Text = System.IO.Path.GetFileNameWithoutExtension(textBoxDictionary.Text);
             }
+        }
+
+        private void openFileDialogDictionary_FileOk(object sender, CancelEventArgs e)
+        {
+            textBoxDictionary.Text = openFileDialogDictionary.FileName;
         }
 
         private void FillFormWithData()
