@@ -863,7 +863,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
 
                 if (tskManager.Cracker.IsCracking
-                    || tskManager.Cracker.IsCalculatingKeyspace
                     || tskManager.CrackTasks[index].Status == "Cracked")
                 {
                     buttonStartTask.Enabled = false;

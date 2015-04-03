@@ -718,7 +718,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 CrackTask CrackTaskCopy = (CrackTask)this.MemberwiseClone();
                 return CrackTaskCopy;
             }
-            public string GetHashcatParams(bool GenerateKeyspace = false)
+            public string GetHashcatParams()
             {
                 string result = "";
 
@@ -726,16 +726,12 @@ namespace LeukocyteGUI_for_oclHashCat
                    += " --hash-type=" + hashTypeCode.ToString()
                     + " --attack-mode=" + attackType.ToString()
                     + " --status"
-                    + " --status-timer=" + "1"
+                    + " --status-timer=1"
                     + " --separator=" + separator;
 
-                if (GenerateKeyspace)
+                if (Restore)
                 {
-                    result += " --keyspace";
-                }
-                else
-                {
-                    result += " --skip=" + restorePosition.ToString();
+                    result += " --restore";
                 }
 
                 if (OutputToFile)
@@ -883,10 +879,10 @@ namespace LeukocyteGUI_for_oclHashCat
             private CrackTaskManager crackTaskManager;
             private CrackTask crackingTask;
             private CultureInfo culture;
+            private RestoreFile restoreFile;
             private int crackingTaskId = -1;
             private int lastCrackingTaskId = -1;
             private bool isCracking;
-            private bool isCalculatingKeyspace;
             private string outputBuffer = "";
 
             public string Speed { get; set; }
@@ -921,13 +917,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 get
                 {
                     return isCracking;
-                }
-            }
-            public bool IsCalculatingKeyspace
-            {
-                get
-                {
-                    return isCalculatingKeyspace;
                 }
             }
             public bool SaveOutputToBuffer { get; set; }
@@ -1004,18 +993,6 @@ namespace LeukocyteGUI_for_oclHashCat
                     if (SaveOutputToBuffer)
                     {
                         outputBuffer += e.Data + "\r\n";
-                    }
-
-                    if (isCalculatingKeyspace)
-                    {
-                        uint rp;
-
-                        if (uint.TryParse(e.Data, out rp))
-                        {
-                            crackingTask.Keyspace = rp;
-                        }
-
-                        return;
                     }
 
                     string[] parameters = e.Data.Split(':');
@@ -1155,38 +1132,22 @@ namespace LeukocyteGUI_for_oclHashCat
                         }
                     }
 
-                    if (crackingTask.Restore)
-                    {
-                        crackingTask.RestorePosition = (uint)(crackingTask.Keyspace * crackingTask.Progress / 100);
-                    }
-                    else
-                    {
-                        crackingTask.RestorePosition = 0;
-                    }
-
                     lastCrackingTaskId = crackingTaskId;
                 }
 
                 CancelOutputRead();
                 Close();
 
-                if (isCalculatingKeyspace)
-                {
-                    isCalculatingKeyspace = false;
-                    crackingTask.Restore = true;
-                    Crack(crackingTaskId);
-                }
-                else
-                {
-                    Temp = 0;
-                    Util = 0;
-                    Fan = 0;
-                    Speed = "0 h/s";
-                    isCracking = false;
-                    crackingTask.Finished = DateTime.Now;
-                    crackingTaskId = -1;
-                    OnStop(this, lastCrackingTaskId);
-                }
+                Temp = 0;
+                Util = 0;
+                Fan = 0;
+                Speed = "0 h/s";
+                isCracking = false;
+                crackingTask.Finished = DateTime.Now;
+                crackingTaskId = -1;
+                restoreFile.LoadRestoreParams();
+                restoreFile.SaveRestoreParams();
+                OnStop(this, lastCrackingTaskId);
             }
 
             public void Crack(int TaskId)
@@ -1204,24 +1165,13 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 try
                 {
-                    if (!crackingTask.Restore)
-                    {
-                        isCalculatingKeyspace = true;
-                        crackingTask.RestorePosition = 0;
-                        StartInfo.Arguments = crackingTask.GetHashcatParams(true);
-                        Start();
-                        BeginOutputReadLine();
-                        crackingTask.Status = "Calculating keyspace";
-                    }
-                    else
-                    {
-                        StartInfo.Arguments = crackingTask.GetHashcatParams();
-                        Start();
-                        BeginOutputReadLine();
-                        isCracking = true;
-                        crackingTask.Restore = true;
-                        crackingTask.Status = "Cracking";
-                    }
+                    restoreFile = new RestoreFile(StartInfo.WorkingDirectory + "\\" + crackingTask.SessionId, crackingTask.Restore);
+                    StartInfo.Arguments = crackingTask.GetHashcatParams();
+                    Start();
+                    BeginOutputReadLine();
+                    isCracking = true;
+                    crackingTask.Restore = true;
+                    crackingTask.Status = "Cracking";
 
                     OnStart(this, crackingTaskId);
                 }
@@ -1297,6 +1247,125 @@ namespace LeukocyteGUI_for_oclHashCat
                 StartInfo.WorkingDirectory = WorkingDirectory;
 
                 return result;
+            }
+
+            public class RestoreFile
+            {
+                string fileName = "";
+                UInt32 version_bin = 0;
+                char[] cwd = {};
+                UInt32 pid = 0;
+                UInt32 dictpos = 0;
+                UInt32 maskpos = 0;
+                UInt64 pw_cur = 0;
+
+                public string FileName
+                {
+                    get { return fileName; }
+                }
+                public UInt32 Version
+                {
+                    get { return version_bin; }
+                    set { version_bin = value; }
+                }
+                public string WorkingDir
+                {
+                    get { return new String(cwd); }
+                    set { cwd = value.ToCharArray(); }
+                }
+                public UInt32 ProcessId
+                {
+                    get { return pid; }
+                    set { pid = value; }
+                }
+                public UInt32 DictionaryPosition
+                {
+                    get { return dictpos; }
+                    set
+                    {
+                        if (value > dictpos)
+                        {
+                            dictpos = value;
+                        }
+                    }
+                }
+                public UInt32 MaskPosition
+                {
+                    get { return maskpos; }
+                    set
+                    {
+                        if (value > maskpos)
+                        {
+                            maskpos = value;
+                        }
+                    }
+                }
+                public UInt64 LastPosition
+                {
+                    get { return pw_cur; }
+                    set
+                    {
+                        if (value > pw_cur)
+                        {
+                            pw_cur = value;
+                        }
+                    }
+                }
+
+                public RestoreFile(string fileName, bool readRestoreParams = true)
+                {
+                    if (Path.GetExtension(fileName) == "")
+                    {
+                        this.fileName = fileName + ".restore";
+                    }
+                    else
+                    {
+                        this.fileName = fileName;
+                    }
+
+                    if (readRestoreParams)
+                    {
+                        LoadRestoreParams();
+                    }
+                }
+
+                public bool LoadRestoreParams()
+                {
+                    bool result = false;
+
+                    if ((!File.Exists(fileName)) || (File.ReadAllBytes(fileName).Length == 0))
+                    {
+                        return false;
+                    }
+
+                    BinaryReader reader = new BinaryReader(File.Open(fileName, FileMode.Open));
+
+                    if (reader.BaseStream.Length > 24)
+                    {
+                        version_bin = reader.ReadUInt32();
+                        cwd = reader.ReadChars(256);
+                        pid = reader.ReadUInt32();
+                        DictionaryPosition = reader.ReadUInt32();
+                        MaskPosition = reader.ReadUInt32();
+                        LastPosition = reader.ReadUInt64();
+                        result = true;
+                    }
+
+                    reader.Close();
+
+                    return result;
+                }
+                public void SaveRestoreParams()
+                {
+                    BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.OpenOrCreate));
+                    writer.Write(version_bin);
+                    writer.Write(cwd);
+                    writer.Write(pid);
+                    writer.Write(dictpos);
+                    writer.Write(maskpos);
+                    writer.Write(pw_cur);
+                    writer.Close();
+                }
             }
         }
     }
