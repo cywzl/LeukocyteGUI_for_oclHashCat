@@ -280,6 +280,54 @@ namespace LeukocyteGUI_for_oclHashCat
             openFileDialogCharset4.ShowDialog();
         }
 
+        private void textBoxHashFileName_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBoxDetectHashType.Checked)
+            {
+                string ext = System.IO.Path.GetExtension(textBoxHashFileName.Text).ToLower();
+                int index = 0;
+
+                if (ext != "")
+                {
+                    switch (ext)
+                    {
+                        case ".md5":
+                            index = comboBoxHashType.FindString("0 = MD5");
+                            break;
+                        case ".md4":
+                            index = comboBoxHashType.FindString("900 = MD4");
+                            break;
+                        case ".hccap":
+                            index = comboBoxHashType.FindString("2500 = WPA");
+                            break;
+                        case ".ntlm":
+                            index = comboBoxHashType.FindString("1000 = NTLM");
+                            break;
+                        case ".lm":
+                            index = comboBoxHashType.FindString("3000 = LM");
+                            break;
+                        case ".sha1":
+                            index = comboBoxHashType.FindString("100 = SHA1");
+                            break;
+                        case ".sha256":
+                            index = comboBoxHashType.FindString("1400 = SHA256");
+                            break;
+                        case ".sha512":
+                            index = comboBoxHashType.FindString("1700 = SHA512");
+                            break;
+                        case ".des":
+                            index = comboBoxHashType.FindString("1500 = descrypt");
+                            break;
+                    }
+                }
+
+                if (index > -1)
+                {
+                    comboBoxHashType.SelectedIndex = index;
+                }
+            }
+        }
+
         private void openFileDialogMask_FileOk(object sender, CancelEventArgs e)
         {
             textBoxBruteforceMask.Text = openFileDialogMask.FileName;
