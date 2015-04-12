@@ -1234,6 +1234,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // listViewMasks
             // 
+            this.listViewMasks.AllowDrop = true;
             this.listViewMasks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1252,6 +1253,8 @@ namespace LeukocyteGUI_for_oclHashCat
             this.listViewMasks.UseCompatibleStateImageBehavior = false;
             this.listViewMasks.View = System.Windows.Forms.View.Details;
             this.listViewMasks.SelectedIndexChanged += new System.EventHandler(this.listViewMasks_SelectedIndexChanged);
+            this.listViewMasks.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewMasks_DragDrop);
+            this.listViewMasks.DragEnter += new System.Windows.Forms.DragEventHandler(this.listViewMasks_DragEnter);
             this.listViewMasks.DoubleClick += new System.EventHandler(this.listViewMasks_DoubleClick);
             // 
             // columnHeaderMaskNumber

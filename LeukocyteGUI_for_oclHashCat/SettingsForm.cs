@@ -311,6 +311,16 @@ namespace LeukocyteGUI_for_oclHashCat
             dictionaryManager.AddDictionariesFromList(dictFiles);
             VisualizeAllDictionaries();
         }
+        private void listViewMasks_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+        private void listViewMasks_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] maskFiles = (string[])e.Data.GetData("FileDrop", false);
+            maskManager.AddMasksFromList(maskFiles);
+            VisualizeAllMasks();
+        }
 
         private void TryAutoDetectWorkingDirectory()
         {

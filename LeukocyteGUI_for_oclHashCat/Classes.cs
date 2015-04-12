@@ -1406,7 +1406,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 if (File.Exists(dictCurFile))
                 {
                     DictionaryManager.Dictionary newDict = new DictionaryManager.Dictionary(dictCurFile);
-                    newDict.Description = Path.GetFileNameWithoutExtension(dictCurFile);
+                    newDict.Description = GenerateDescription(dictCurFile);
                     AddDictionary(newDict);
                 }
                 else if ((Directory.Exists(dictCurFile)) && (canGoDipper))
@@ -1489,6 +1489,10 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return result;
         }
+        public string GenerateDescription(string dictionary)
+        {
+            return Path.GetFileNameWithoutExtension(dictionary);
+        }
 
         [Serializable()]
         public class Dictionary
@@ -1569,6 +1573,37 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return Masks.Length;
         }
+        public Mask[] AddMasksFromList(string[] maskList, bool canGoDipper = true)
+        {
+            int startIndex = Masks.Length;
+
+            for (int index = 0; index < maskList.Length; index++)
+            {
+                string maskCurFile = maskList[index].Replace("\\", "/");
+
+                if (File.Exists(maskCurFile))
+                {
+                    MaskManager.Mask newMask = new MaskManager.Mask();
+                    newMask.BruteMask = maskCurFile;
+                    newMask.Description = GenerateDescription(maskCurFile);
+                    AddMask(newMask);
+                }
+                else if ((Directory.Exists(maskCurFile)) && (canGoDipper))
+                {
+                    string[] dirMaskFiles = Directory.GetFiles(maskCurFile);
+                    AddMasksFromList(dirMaskFiles, false);
+                }
+            }
+
+            Mask[] newMasks = new Mask[Masks.Length - startIndex];
+
+            for (int index = 0; index < newMasks.Length; index++)
+            {
+                newMasks[index] = Masks[startIndex + index];
+            }
+
+            return newMasks;
+        }
         public bool UpdateMask(int Index, Mask UpdatedMask)
         {
             bool result = false;
@@ -1632,6 +1667,10 @@ namespace LeukocyteGUI_for_oclHashCat
             }
 
             return result;
+        }
+        public string GenerateDescription(string mask)
+        {
+            return Path.GetFileNameWithoutExtension(mask);
         }
 
         [Serializable()]
