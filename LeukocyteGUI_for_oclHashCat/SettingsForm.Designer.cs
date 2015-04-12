@@ -72,14 +72,50 @@ namespace LeukocyteGUI_for_oclHashCat
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxConverterOutput = new System.Windows.Forms.TextBox();
             this.groupBoxHashcat = new System.Windows.Forms.GroupBox();
+            this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
+            this.textBoxHashcat = new System.Windows.Forms.TextBox();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
             this.panelCheckboxSettings = new System.Windows.Forms.Panel();
+            this.checkBoxUseSavedSizes = new System.Windows.Forms.CheckBox();
+            this.checkBoxSaveFormsSizes = new System.Windows.Forms.CheckBox();
             this.checkBoxDebugMode = new System.Windows.Forms.CheckBox();
             this.checkBoxSaveOnExit = new System.Windows.Forms.CheckBox();
             this.checkBoxShowToolTips = new System.Windows.Forms.CheckBox();
             this.checkBoxLoadOnStart = new System.Windows.Forms.CheckBox();
             this.checkBoxMinimizeToTray = new System.Windows.Forms.CheckBox();
             this.checkBoxDeleteSameWhenCracked = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
+            this.tabPageSizes = new System.Windows.Forms.TabPage();
+            this.groupBoxMaskEditorSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownMaskEditorHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelMaskEditorHeight = new System.Windows.Forms.Label();
+            this.numericUpDownMaskEditorWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelMaskEditorWidth = new System.Windows.Forms.Label();
+            this.groupBoxDictionaryEditorSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownDictionaryEditorHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelDictionaryEditorHeight = new System.Windows.Forms.Label();
+            this.numericUpDownDictionaryEditorWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelDictionaryEditorWidth = new System.Windows.Forms.Label();
+            this.groupBoxConverterSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownConverterHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelConverterHeight = new System.Windows.Forms.Label();
+            this.numericUpDownConverterWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelConverterWidth = new System.Windows.Forms.Label();
+            this.groupBoxSettingsSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownSettingsHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelSettingsHeight = new System.Windows.Forms.Label();
+            this.numericUpDownSettingsWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelSettingsWidth = new System.Windows.Forms.Label();
+            this.groupBoxTaskEditorSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownTaskEditorHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelTaskEditorHeight = new System.Windows.Forms.Label();
+            this.numericUpDownTaskEditorWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelTaskEditorWidth = new System.Windows.Forms.Label();
+            this.groupBoxMainSizes = new System.Windows.Forms.GroupBox();
+            this.numericUpDownMainHeight = new System.Windows.Forms.NumericUpDown();
+            this.labelMainHeight = new System.Windows.Forms.Label();
+            this.numericUpDownMainWidth = new System.Windows.Forms.NumericUpDown();
+            this.labelMainWidth = new System.Windows.Forms.Label();
             this.tabPageDictionaries = new System.Windows.Forms.TabPage();
             this.buttonAddDictionary = new System.Windows.Forms.Button();
             this.buttonDeleteDictionary = new System.Windows.Forms.Button();
@@ -108,42 +144,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.folderBrowserDialogOutput = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialogConverter = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogLogFiles = new System.Windows.Forms.FolderBrowserDialog();
-            this.checkBoxSaveFormsSizes = new System.Windows.Forms.CheckBox();
-            this.tabPageSizes = new System.Windows.Forms.TabPage();
-            this.groupBoxMainSizes = new System.Windows.Forms.GroupBox();
-            this.labelMainWidth = new System.Windows.Forms.Label();
-            this.numericUpDownMainWidth = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMainHeight = new System.Windows.Forms.NumericUpDown();
-            this.labelMainHeight = new System.Windows.Forms.Label();
-            this.groupBoxTaskEditorSizes = new System.Windows.Forms.GroupBox();
-            this.numericUpDownTaskEditorHeight = new System.Windows.Forms.NumericUpDown();
-            this.labelTaskEditorHeight = new System.Windows.Forms.Label();
-            this.numericUpDownTaskEditorWidth = new System.Windows.Forms.NumericUpDown();
-            this.labelTaskEditorWidth = new System.Windows.Forms.Label();
-            this.groupBoxSettingsSizes = new System.Windows.Forms.GroupBox();
-            this.numericUpDownSettingsHeight = new System.Windows.Forms.NumericUpDown();
-            this.labelSettingsHeight = new System.Windows.Forms.Label();
-            this.numericUpDownSettingsWidth = new System.Windows.Forms.NumericUpDown();
-            this.labelSettingsWidth = new System.Windows.Forms.Label();
-            this.checkBoxUseSavedSizes = new System.Windows.Forms.CheckBox();
-            this.groupBoxConverterSizes = new System.Windows.Forms.GroupBox();
-            this.numericUpDownConverterHeight = new System.Windows.Forms.NumericUpDown();
-            this.labelConverterHeight = new System.Windows.Forms.Label();
-            this.numericUpDownConverterWidth = new System.Windows.Forms.NumericUpDown();
-            this.labelConverterWidth = new System.Windows.Forms.Label();
-            this.groupBoxDictionaryEditorSizes = new System.Windows.Forms.GroupBox();
-            this.numericUpDownDictionaryEditorHeight = new System.Windows.Forms.NumericUpDown();
-            this.labelDictionaryEditorHeight = new System.Windows.Forms.Label();
-            this.numericUpDownDictionaryEditorWidth = new System.Windows.Forms.NumericUpDown();
-            this.labelDictionaryEditorWidth = new System.Windows.Forms.Label();
-            this.groupBoxMaskEditorSizes = new System.Windows.Forms.GroupBox();
-            this.numericUpDownMaskEditorHeight = new System.Windows.Forms.NumericUpDown();
-            this.labelMaskEditorHeight = new System.Windows.Forms.Label();
-            this.numericUpDownMaskEditorWidth = new System.Windows.Forms.NumericUpDown();
-            this.labelMaskEditorWidth = new System.Windows.Forms.Label();
-            this.textBoxWorkingDirectory = new System.Windows.Forms.TextBox();
-            this.textBoxHashcat = new System.Windows.Forms.TextBox();
-            this.checkBoxShowNotifications = new System.Windows.Forms.CheckBox();
             this.tabControlSettings.SuspendLayout();
             this.tabPagePathes.SuspendLayout();
             this.groupBoxSystem.SuspendLayout();
@@ -151,27 +151,27 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxHashcat.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.panelCheckboxSettings.SuspendLayout();
-            this.tabPageDictionaries.SuspendLayout();
-            this.tabPageMasks.SuspendLayout();
             this.tabPageSizes.SuspendLayout();
-            this.groupBoxMainSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainHeight)).BeginInit();
-            this.groupBoxTaskEditorSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorWidth)).BeginInit();
-            this.groupBoxSettingsSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsWidth)).BeginInit();
-            this.groupBoxConverterSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterWidth)).BeginInit();
-            this.groupBoxDictionaryEditorSizes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorWidth)).BeginInit();
             this.groupBoxMaskEditorSizes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorWidth)).BeginInit();
+            this.groupBoxDictionaryEditorSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorWidth)).BeginInit();
+            this.groupBoxConverterSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterWidth)).BeginInit();
+            this.groupBoxSettingsSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsWidth)).BeginInit();
+            this.groupBoxTaskEditorSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorWidth)).BeginInit();
+            this.groupBoxMainSizes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainWidth)).BeginInit();
+            this.tabPageDictionaries.SuspendLayout();
+            this.tabPageMasks.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelWorkingDirectory
@@ -443,6 +443,30 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxHashcat.TabStop = false;
             this.groupBoxHashcat.Text = "Hashcat";
             // 
+            // textBoxWorkingDirectory
+            // 
+            this.textBoxWorkingDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxWorkingDirectory.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "WorkingDirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxWorkingDirectory.Enabled = false;
+            this.textBoxWorkingDirectory.Location = new System.Drawing.Point(115, 48);
+            this.textBoxWorkingDirectory.Name = "textBoxWorkingDirectory";
+            this.textBoxWorkingDirectory.Size = new System.Drawing.Size(292, 20);
+            this.textBoxWorkingDirectory.TabIndex = 33;
+            this.textBoxWorkingDirectory.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.WorkingDirectory;
+            // 
+            // textBoxHashcat
+            // 
+            this.textBoxHashcat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxHashcat.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "Hashcat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBoxHashcat.Location = new System.Drawing.Point(115, 18);
+            this.textBoxHashcat.Name = "textBoxHashcat";
+            this.textBoxHashcat.Size = new System.Drawing.Size(292, 20);
+            this.textBoxHashcat.TabIndex = 31;
+            this.textBoxHashcat.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.Hashcat;
+            this.textBoxHashcat.TextChanged += new System.EventHandler(this.textBoxHashcat_TextChanged);
+            // 
             // tabPageOptions
             // 
             this.tabPageOptions.Controls.Add(this.panelCheckboxSettings);
@@ -470,6 +494,26 @@ namespace LeukocyteGUI_for_oclHashCat
             this.panelCheckboxSettings.Name = "panelCheckboxSettings";
             this.panelCheckboxSettings.Size = new System.Drawing.Size(456, 225);
             this.panelCheckboxSettings.TabIndex = 55;
+            // 
+            // checkBoxUseSavedSizes
+            // 
+            this.checkBoxUseSavedSizes.AutoSize = true;
+            this.checkBoxUseSavedSizes.Location = new System.Drawing.Point(15, 197);
+            this.checkBoxUseSavedSizes.Name = "checkBoxUseSavedSizes";
+            this.checkBoxUseSavedSizes.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxUseSavedSizes.TabIndex = 56;
+            this.checkBoxUseSavedSizes.Text = "Use saved sizes";
+            this.checkBoxUseSavedSizes.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSaveFormsSizes
+            // 
+            this.checkBoxSaveFormsSizes.AutoSize = true;
+            this.checkBoxSaveFormsSizes.Location = new System.Drawing.Point(15, 174);
+            this.checkBoxSaveFormsSizes.Name = "checkBoxSaveFormsSizes";
+            this.checkBoxSaveFormsSizes.Size = new System.Drawing.Size(191, 17);
+            this.checkBoxSaveFormsSizes.TabIndex = 55;
+            this.checkBoxSaveFormsSizes.Text = "Save form size when form is closed";
+            this.checkBoxSaveFormsSizes.UseVisualStyleBackColor = true;
             // 
             // checkBoxDebugMode
             // 
@@ -536,6 +580,364 @@ namespace LeukocyteGUI_for_oclHashCat
             this.checkBoxDeleteSameWhenCracked.TabIndex = 50;
             this.checkBoxDeleteSameWhenCracked.Text = "When task is cracked, delete other tasks with the same hash";
             this.checkBoxDeleteSameWhenCracked.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowNotifications
+            // 
+            this.checkBoxShowNotifications.AutoSize = true;
+            this.checkBoxShowNotifications.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.ShowNotifications;
+            this.checkBoxShowNotifications.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowNotifications.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "ShowNotifications", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxShowNotifications.Location = new System.Drawing.Point(15, 82);
+            this.checkBoxShowNotifications.Name = "checkBoxShowNotifications";
+            this.checkBoxShowNotifications.Size = new System.Drawing.Size(189, 17);
+            this.checkBoxShowNotifications.TabIndex = 51;
+            this.checkBoxShowNotifications.Text = "Show cracking results notifications";
+            this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
+            // 
+            // tabPageSizes
+            // 
+            this.tabPageSizes.Controls.Add(this.groupBoxMaskEditorSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxDictionaryEditorSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxConverterSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxSettingsSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxTaskEditorSizes);
+            this.tabPageSizes.Controls.Add(this.groupBoxMainSizes);
+            this.tabPageSizes.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSizes.Name = "tabPageSizes";
+            this.tabPageSizes.Size = new System.Drawing.Size(466, 251);
+            this.tabPageSizes.TabIndex = 4;
+            this.tabPageSizes.Text = "Sizes";
+            this.tabPageSizes.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxMaskEditorSizes
+            // 
+            this.groupBoxMaskEditorSizes.Controls.Add(this.numericUpDownMaskEditorHeight);
+            this.groupBoxMaskEditorSizes.Controls.Add(this.labelMaskEditorHeight);
+            this.groupBoxMaskEditorSizes.Controls.Add(this.numericUpDownMaskEditorWidth);
+            this.groupBoxMaskEditorSizes.Controls.Add(this.labelMaskEditorWidth);
+            this.groupBoxMaskEditorSizes.Location = new System.Drawing.Point(302, 102);
+            this.groupBoxMaskEditorSizes.Name = "groupBoxMaskEditorSizes";
+            this.groupBoxMaskEditorSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxMaskEditorSizes.TabIndex = 5;
+            this.groupBoxMaskEditorSizes.TabStop = false;
+            this.groupBoxMaskEditorSizes.Text = "Mask Editor Form";
+            // 
+            // numericUpDownMaskEditorHeight
+            // 
+            this.numericUpDownMaskEditorHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownMaskEditorHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownMaskEditorHeight.Name = "numericUpDownMaskEditorHeight";
+            this.numericUpDownMaskEditorHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMaskEditorHeight.TabIndex = 3;
+            // 
+            // labelMaskEditorHeight
+            // 
+            this.labelMaskEditorHeight.AutoSize = true;
+            this.labelMaskEditorHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelMaskEditorHeight.Name = "labelMaskEditorHeight";
+            this.labelMaskEditorHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelMaskEditorHeight.TabIndex = 2;
+            this.labelMaskEditorHeight.Text = "Height:";
+            // 
+            // numericUpDownMaskEditorWidth
+            // 
+            this.numericUpDownMaskEditorWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownMaskEditorWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownMaskEditorWidth.Name = "numericUpDownMaskEditorWidth";
+            this.numericUpDownMaskEditorWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMaskEditorWidth.TabIndex = 1;
+            // 
+            // labelMaskEditorWidth
+            // 
+            this.labelMaskEditorWidth.AutoSize = true;
+            this.labelMaskEditorWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelMaskEditorWidth.Name = "labelMaskEditorWidth";
+            this.labelMaskEditorWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelMaskEditorWidth.TabIndex = 0;
+            this.labelMaskEditorWidth.Text = "Width:";
+            // 
+            // groupBoxDictionaryEditorSizes
+            // 
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.numericUpDownDictionaryEditorHeight);
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.labelDictionaryEditorHeight);
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.numericUpDownDictionaryEditorWidth);
+            this.groupBoxDictionaryEditorSizes.Controls.Add(this.labelDictionaryEditorWidth);
+            this.groupBoxDictionaryEditorSizes.Location = new System.Drawing.Point(157, 102);
+            this.groupBoxDictionaryEditorSizes.Name = "groupBoxDictionaryEditorSizes";
+            this.groupBoxDictionaryEditorSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxDictionaryEditorSizes.TabIndex = 4;
+            this.groupBoxDictionaryEditorSizes.TabStop = false;
+            this.groupBoxDictionaryEditorSizes.Text = "Dictionary Editor Form";
+            // 
+            // numericUpDownDictionaryEditorHeight
+            // 
+            this.numericUpDownDictionaryEditorHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownDictionaryEditorHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownDictionaryEditorHeight.Name = "numericUpDownDictionaryEditorHeight";
+            this.numericUpDownDictionaryEditorHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownDictionaryEditorHeight.TabIndex = 3;
+            // 
+            // labelDictionaryEditorHeight
+            // 
+            this.labelDictionaryEditorHeight.AutoSize = true;
+            this.labelDictionaryEditorHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelDictionaryEditorHeight.Name = "labelDictionaryEditorHeight";
+            this.labelDictionaryEditorHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelDictionaryEditorHeight.TabIndex = 2;
+            this.labelDictionaryEditorHeight.Text = "Height:";
+            // 
+            // numericUpDownDictionaryEditorWidth
+            // 
+            this.numericUpDownDictionaryEditorWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownDictionaryEditorWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownDictionaryEditorWidth.Name = "numericUpDownDictionaryEditorWidth";
+            this.numericUpDownDictionaryEditorWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownDictionaryEditorWidth.TabIndex = 1;
+            // 
+            // labelDictionaryEditorWidth
+            // 
+            this.labelDictionaryEditorWidth.AutoSize = true;
+            this.labelDictionaryEditorWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelDictionaryEditorWidth.Name = "labelDictionaryEditorWidth";
+            this.labelDictionaryEditorWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelDictionaryEditorWidth.TabIndex = 0;
+            this.labelDictionaryEditorWidth.Text = "Width:";
+            // 
+            // groupBoxConverterSizes
+            // 
+            this.groupBoxConverterSizes.Controls.Add(this.numericUpDownConverterHeight);
+            this.groupBoxConverterSizes.Controls.Add(this.labelConverterHeight);
+            this.groupBoxConverterSizes.Controls.Add(this.numericUpDownConverterWidth);
+            this.groupBoxConverterSizes.Controls.Add(this.labelConverterWidth);
+            this.groupBoxConverterSizes.Location = new System.Drawing.Point(12, 102);
+            this.groupBoxConverterSizes.Name = "groupBoxConverterSizes";
+            this.groupBoxConverterSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxConverterSizes.TabIndex = 3;
+            this.groupBoxConverterSizes.TabStop = false;
+            this.groupBoxConverterSizes.Text = "Converter Form";
+            // 
+            // numericUpDownConverterHeight
+            // 
+            this.numericUpDownConverterHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownConverterHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownConverterHeight.Name = "numericUpDownConverterHeight";
+            this.numericUpDownConverterHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownConverterHeight.TabIndex = 3;
+            // 
+            // labelConverterHeight
+            // 
+            this.labelConverterHeight.AutoSize = true;
+            this.labelConverterHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelConverterHeight.Name = "labelConverterHeight";
+            this.labelConverterHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelConverterHeight.TabIndex = 2;
+            this.labelConverterHeight.Text = "Height:";
+            // 
+            // numericUpDownConverterWidth
+            // 
+            this.numericUpDownConverterWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownConverterWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownConverterWidth.Name = "numericUpDownConverterWidth";
+            this.numericUpDownConverterWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownConverterWidth.TabIndex = 1;
+            // 
+            // labelConverterWidth
+            // 
+            this.labelConverterWidth.AutoSize = true;
+            this.labelConverterWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelConverterWidth.Name = "labelConverterWidth";
+            this.labelConverterWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelConverterWidth.TabIndex = 0;
+            this.labelConverterWidth.Text = "Width:";
+            // 
+            // groupBoxSettingsSizes
+            // 
+            this.groupBoxSettingsSizes.Controls.Add(this.numericUpDownSettingsHeight);
+            this.groupBoxSettingsSizes.Controls.Add(this.labelSettingsHeight);
+            this.groupBoxSettingsSizes.Controls.Add(this.numericUpDownSettingsWidth);
+            this.groupBoxSettingsSizes.Controls.Add(this.labelSettingsWidth);
+            this.groupBoxSettingsSizes.Location = new System.Drawing.Point(302, 12);
+            this.groupBoxSettingsSizes.Name = "groupBoxSettingsSizes";
+            this.groupBoxSettingsSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxSettingsSizes.TabIndex = 2;
+            this.groupBoxSettingsSizes.TabStop = false;
+            this.groupBoxSettingsSizes.Text = "Settings Form";
+            // 
+            // numericUpDownSettingsHeight
+            // 
+            this.numericUpDownSettingsHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownSettingsHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownSettingsHeight.Name = "numericUpDownSettingsHeight";
+            this.numericUpDownSettingsHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownSettingsHeight.TabIndex = 3;
+            // 
+            // labelSettingsHeight
+            // 
+            this.labelSettingsHeight.AutoSize = true;
+            this.labelSettingsHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelSettingsHeight.Name = "labelSettingsHeight";
+            this.labelSettingsHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelSettingsHeight.TabIndex = 2;
+            this.labelSettingsHeight.Text = "Height:";
+            // 
+            // numericUpDownSettingsWidth
+            // 
+            this.numericUpDownSettingsWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownSettingsWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownSettingsWidth.Name = "numericUpDownSettingsWidth";
+            this.numericUpDownSettingsWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownSettingsWidth.TabIndex = 1;
+            // 
+            // labelSettingsWidth
+            // 
+            this.labelSettingsWidth.AutoSize = true;
+            this.labelSettingsWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelSettingsWidth.Name = "labelSettingsWidth";
+            this.labelSettingsWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelSettingsWidth.TabIndex = 0;
+            this.labelSettingsWidth.Text = "Width:";
+            // 
+            // groupBoxTaskEditorSizes
+            // 
+            this.groupBoxTaskEditorSizes.Controls.Add(this.numericUpDownTaskEditorHeight);
+            this.groupBoxTaskEditorSizes.Controls.Add(this.labelTaskEditorHeight);
+            this.groupBoxTaskEditorSizes.Controls.Add(this.numericUpDownTaskEditorWidth);
+            this.groupBoxTaskEditorSizes.Controls.Add(this.labelTaskEditorWidth);
+            this.groupBoxTaskEditorSizes.Location = new System.Drawing.Point(157, 12);
+            this.groupBoxTaskEditorSizes.Name = "groupBoxTaskEditorSizes";
+            this.groupBoxTaskEditorSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxTaskEditorSizes.TabIndex = 1;
+            this.groupBoxTaskEditorSizes.TabStop = false;
+            this.groupBoxTaskEditorSizes.Text = "Task Editor Form";
+            // 
+            // numericUpDownTaskEditorHeight
+            // 
+            this.numericUpDownTaskEditorHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownTaskEditorHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownTaskEditorHeight.Name = "numericUpDownTaskEditorHeight";
+            this.numericUpDownTaskEditorHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownTaskEditorHeight.TabIndex = 3;
+            // 
+            // labelTaskEditorHeight
+            // 
+            this.labelTaskEditorHeight.AutoSize = true;
+            this.labelTaskEditorHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelTaskEditorHeight.Name = "labelTaskEditorHeight";
+            this.labelTaskEditorHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelTaskEditorHeight.TabIndex = 2;
+            this.labelTaskEditorHeight.Text = "Height:";
+            // 
+            // numericUpDownTaskEditorWidth
+            // 
+            this.numericUpDownTaskEditorWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownTaskEditorWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownTaskEditorWidth.Name = "numericUpDownTaskEditorWidth";
+            this.numericUpDownTaskEditorWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownTaskEditorWidth.TabIndex = 1;
+            // 
+            // labelTaskEditorWidth
+            // 
+            this.labelTaskEditorWidth.AutoSize = true;
+            this.labelTaskEditorWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelTaskEditorWidth.Name = "labelTaskEditorWidth";
+            this.labelTaskEditorWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelTaskEditorWidth.TabIndex = 0;
+            this.labelTaskEditorWidth.Text = "Width:";
+            // 
+            // groupBoxMainSizes
+            // 
+            this.groupBoxMainSizes.Controls.Add(this.numericUpDownMainHeight);
+            this.groupBoxMainSizes.Controls.Add(this.labelMainHeight);
+            this.groupBoxMainSizes.Controls.Add(this.numericUpDownMainWidth);
+            this.groupBoxMainSizes.Controls.Add(this.labelMainWidth);
+            this.groupBoxMainSizes.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxMainSizes.Name = "groupBoxMainSizes";
+            this.groupBoxMainSizes.Size = new System.Drawing.Size(139, 84);
+            this.groupBoxMainSizes.TabIndex = 0;
+            this.groupBoxMainSizes.TabStop = false;
+            this.groupBoxMainSizes.Text = "Main Form";
+            // 
+            // numericUpDownMainHeight
+            // 
+            this.numericUpDownMainHeight.Location = new System.Drawing.Point(62, 47);
+            this.numericUpDownMainHeight.Maximum = new decimal(new int[] {
+            1080,
+            0,
+            0,
+            0});
+            this.numericUpDownMainHeight.Name = "numericUpDownMainHeight";
+            this.numericUpDownMainHeight.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMainHeight.TabIndex = 3;
+            // 
+            // labelMainHeight
+            // 
+            this.labelMainHeight.AutoSize = true;
+            this.labelMainHeight.Location = new System.Drawing.Point(15, 49);
+            this.labelMainHeight.Name = "labelMainHeight";
+            this.labelMainHeight.Size = new System.Drawing.Size(41, 13);
+            this.labelMainHeight.TabIndex = 2;
+            this.labelMainHeight.Text = "Height:";
+            // 
+            // numericUpDownMainWidth
+            // 
+            this.numericUpDownMainWidth.Location = new System.Drawing.Point(62, 21);
+            this.numericUpDownMainWidth.Maximum = new decimal(new int[] {
+            1920,
+            0,
+            0,
+            0});
+            this.numericUpDownMainWidth.Name = "numericUpDownMainWidth";
+            this.numericUpDownMainWidth.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDownMainWidth.TabIndex = 1;
+            // 
+            // labelMainWidth
+            // 
+            this.labelMainWidth.AutoSize = true;
+            this.labelMainWidth.Location = new System.Drawing.Point(15, 23);
+            this.labelMainWidth.Name = "labelMainWidth";
+            this.labelMainWidth.Size = new System.Drawing.Size(38, 13);
+            this.labelMainWidth.TabIndex = 0;
+            this.labelMainWidth.Text = "Width:";
             // 
             // tabPageDictionaries
             // 
@@ -664,6 +1066,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // listViewDictionaries
             // 
+            this.listViewDictionaries.AllowDrop = true;
             this.listViewDictionaries.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -682,6 +1085,8 @@ namespace LeukocyteGUI_for_oclHashCat
             this.listViewDictionaries.UseCompatibleStateImageBehavior = false;
             this.listViewDictionaries.View = System.Windows.Forms.View.Details;
             this.listViewDictionaries.SelectedIndexChanged += new System.EventHandler(this.listViewDictionaries_SelectedIndexChanged);
+            this.listViewDictionaries.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewDictionaries_DragDrop);
+            this.listViewDictionaries.DragEnter += new System.Windows.Forms.DragEventHandler(this.listViewDictionaries_DragEnter);
             this.listViewDictionaries.DoubleClick += new System.EventHandler(this.listViewDictionaries_DoubleClick);
             // 
             // columnHeaderNumber
@@ -892,408 +1297,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogConverter.Filter = "Executable files|*.exe";
             this.openFileDialogConverter.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogConverter_FileOk);
             // 
-            // checkBoxSaveFormsSizes
-            // 
-            this.checkBoxSaveFormsSizes.AutoSize = true;
-            this.checkBoxSaveFormsSizes.Location = new System.Drawing.Point(15, 174);
-            this.checkBoxSaveFormsSizes.Name = "checkBoxSaveFormsSizes";
-            this.checkBoxSaveFormsSizes.Size = new System.Drawing.Size(191, 17);
-            this.checkBoxSaveFormsSizes.TabIndex = 55;
-            this.checkBoxSaveFormsSizes.Text = "Save form size when form is closed";
-            this.checkBoxSaveFormsSizes.UseVisualStyleBackColor = true;
-            // 
-            // tabPageSizes
-            // 
-            this.tabPageSizes.Controls.Add(this.groupBoxMaskEditorSizes);
-            this.tabPageSizes.Controls.Add(this.groupBoxDictionaryEditorSizes);
-            this.tabPageSizes.Controls.Add(this.groupBoxConverterSizes);
-            this.tabPageSizes.Controls.Add(this.groupBoxSettingsSizes);
-            this.tabPageSizes.Controls.Add(this.groupBoxTaskEditorSizes);
-            this.tabPageSizes.Controls.Add(this.groupBoxMainSizes);
-            this.tabPageSizes.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSizes.Name = "tabPageSizes";
-            this.tabPageSizes.Size = new System.Drawing.Size(466, 251);
-            this.tabPageSizes.TabIndex = 4;
-            this.tabPageSizes.Text = "Sizes";
-            this.tabPageSizes.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxMainSizes
-            // 
-            this.groupBoxMainSizes.Controls.Add(this.numericUpDownMainHeight);
-            this.groupBoxMainSizes.Controls.Add(this.labelMainHeight);
-            this.groupBoxMainSizes.Controls.Add(this.numericUpDownMainWidth);
-            this.groupBoxMainSizes.Controls.Add(this.labelMainWidth);
-            this.groupBoxMainSizes.Location = new System.Drawing.Point(12, 12);
-            this.groupBoxMainSizes.Name = "groupBoxMainSizes";
-            this.groupBoxMainSizes.Size = new System.Drawing.Size(139, 84);
-            this.groupBoxMainSizes.TabIndex = 0;
-            this.groupBoxMainSizes.TabStop = false;
-            this.groupBoxMainSizes.Text = "Main Form";
-            // 
-            // labelMainWidth
-            // 
-            this.labelMainWidth.AutoSize = true;
-            this.labelMainWidth.Location = new System.Drawing.Point(15, 23);
-            this.labelMainWidth.Name = "labelMainWidth";
-            this.labelMainWidth.Size = new System.Drawing.Size(38, 13);
-            this.labelMainWidth.TabIndex = 0;
-            this.labelMainWidth.Text = "Width:";
-            // 
-            // numericUpDownMainWidth
-            // 
-            this.numericUpDownMainWidth.Location = new System.Drawing.Point(62, 21);
-            this.numericUpDownMainWidth.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.numericUpDownMainWidth.Name = "numericUpDownMainWidth";
-            this.numericUpDownMainWidth.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownMainWidth.TabIndex = 1;
-            // 
-            // numericUpDownMainHeight
-            // 
-            this.numericUpDownMainHeight.Location = new System.Drawing.Point(62, 47);
-            this.numericUpDownMainHeight.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.numericUpDownMainHeight.Name = "numericUpDownMainHeight";
-            this.numericUpDownMainHeight.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownMainHeight.TabIndex = 3;
-            // 
-            // labelMainHeight
-            // 
-            this.labelMainHeight.AutoSize = true;
-            this.labelMainHeight.Location = new System.Drawing.Point(15, 49);
-            this.labelMainHeight.Name = "labelMainHeight";
-            this.labelMainHeight.Size = new System.Drawing.Size(41, 13);
-            this.labelMainHeight.TabIndex = 2;
-            this.labelMainHeight.Text = "Height:";
-            // 
-            // groupBoxTaskEditorSizes
-            // 
-            this.groupBoxTaskEditorSizes.Controls.Add(this.numericUpDownTaskEditorHeight);
-            this.groupBoxTaskEditorSizes.Controls.Add(this.labelTaskEditorHeight);
-            this.groupBoxTaskEditorSizes.Controls.Add(this.numericUpDownTaskEditorWidth);
-            this.groupBoxTaskEditorSizes.Controls.Add(this.labelTaskEditorWidth);
-            this.groupBoxTaskEditorSizes.Location = new System.Drawing.Point(157, 12);
-            this.groupBoxTaskEditorSizes.Name = "groupBoxTaskEditorSizes";
-            this.groupBoxTaskEditorSizes.Size = new System.Drawing.Size(139, 84);
-            this.groupBoxTaskEditorSizes.TabIndex = 1;
-            this.groupBoxTaskEditorSizes.TabStop = false;
-            this.groupBoxTaskEditorSizes.Text = "Task Editor Form";
-            // 
-            // numericUpDownTaskEditorHeight
-            // 
-            this.numericUpDownTaskEditorHeight.Location = new System.Drawing.Point(62, 47);
-            this.numericUpDownTaskEditorHeight.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.numericUpDownTaskEditorHeight.Name = "numericUpDownTaskEditorHeight";
-            this.numericUpDownTaskEditorHeight.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownTaskEditorHeight.TabIndex = 3;
-            // 
-            // labelTaskEditorHeight
-            // 
-            this.labelTaskEditorHeight.AutoSize = true;
-            this.labelTaskEditorHeight.Location = new System.Drawing.Point(15, 49);
-            this.labelTaskEditorHeight.Name = "labelTaskEditorHeight";
-            this.labelTaskEditorHeight.Size = new System.Drawing.Size(41, 13);
-            this.labelTaskEditorHeight.TabIndex = 2;
-            this.labelTaskEditorHeight.Text = "Height:";
-            // 
-            // numericUpDownTaskEditorWidth
-            // 
-            this.numericUpDownTaskEditorWidth.Location = new System.Drawing.Point(62, 21);
-            this.numericUpDownTaskEditorWidth.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.numericUpDownTaskEditorWidth.Name = "numericUpDownTaskEditorWidth";
-            this.numericUpDownTaskEditorWidth.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownTaskEditorWidth.TabIndex = 1;
-            // 
-            // labelTaskEditorWidth
-            // 
-            this.labelTaskEditorWidth.AutoSize = true;
-            this.labelTaskEditorWidth.Location = new System.Drawing.Point(15, 23);
-            this.labelTaskEditorWidth.Name = "labelTaskEditorWidth";
-            this.labelTaskEditorWidth.Size = new System.Drawing.Size(38, 13);
-            this.labelTaskEditorWidth.TabIndex = 0;
-            this.labelTaskEditorWidth.Text = "Width:";
-            // 
-            // groupBoxSettingsSizes
-            // 
-            this.groupBoxSettingsSizes.Controls.Add(this.numericUpDownSettingsHeight);
-            this.groupBoxSettingsSizes.Controls.Add(this.labelSettingsHeight);
-            this.groupBoxSettingsSizes.Controls.Add(this.numericUpDownSettingsWidth);
-            this.groupBoxSettingsSizes.Controls.Add(this.labelSettingsWidth);
-            this.groupBoxSettingsSizes.Location = new System.Drawing.Point(302, 12);
-            this.groupBoxSettingsSizes.Name = "groupBoxSettingsSizes";
-            this.groupBoxSettingsSizes.Size = new System.Drawing.Size(139, 84);
-            this.groupBoxSettingsSizes.TabIndex = 2;
-            this.groupBoxSettingsSizes.TabStop = false;
-            this.groupBoxSettingsSizes.Text = "Settings Form";
-            // 
-            // numericUpDownSettingsHeight
-            // 
-            this.numericUpDownSettingsHeight.Location = new System.Drawing.Point(62, 47);
-            this.numericUpDownSettingsHeight.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.numericUpDownSettingsHeight.Name = "numericUpDownSettingsHeight";
-            this.numericUpDownSettingsHeight.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownSettingsHeight.TabIndex = 3;
-            // 
-            // labelSettingsHeight
-            // 
-            this.labelSettingsHeight.AutoSize = true;
-            this.labelSettingsHeight.Location = new System.Drawing.Point(15, 49);
-            this.labelSettingsHeight.Name = "labelSettingsHeight";
-            this.labelSettingsHeight.Size = new System.Drawing.Size(41, 13);
-            this.labelSettingsHeight.TabIndex = 2;
-            this.labelSettingsHeight.Text = "Height:";
-            // 
-            // numericUpDownSettingsWidth
-            // 
-            this.numericUpDownSettingsWidth.Location = new System.Drawing.Point(62, 21);
-            this.numericUpDownSettingsWidth.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.numericUpDownSettingsWidth.Name = "numericUpDownSettingsWidth";
-            this.numericUpDownSettingsWidth.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownSettingsWidth.TabIndex = 1;
-            // 
-            // labelSettingsWidth
-            // 
-            this.labelSettingsWidth.AutoSize = true;
-            this.labelSettingsWidth.Location = new System.Drawing.Point(15, 23);
-            this.labelSettingsWidth.Name = "labelSettingsWidth";
-            this.labelSettingsWidth.Size = new System.Drawing.Size(38, 13);
-            this.labelSettingsWidth.TabIndex = 0;
-            this.labelSettingsWidth.Text = "Width:";
-            // 
-            // checkBoxUseSavedSizes
-            // 
-            this.checkBoxUseSavedSizes.AutoSize = true;
-            this.checkBoxUseSavedSizes.Location = new System.Drawing.Point(15, 197);
-            this.checkBoxUseSavedSizes.Name = "checkBoxUseSavedSizes";
-            this.checkBoxUseSavedSizes.Size = new System.Drawing.Size(103, 17);
-            this.checkBoxUseSavedSizes.TabIndex = 56;
-            this.checkBoxUseSavedSizes.Text = "Use saved sizes";
-            this.checkBoxUseSavedSizes.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxConverterSizes
-            // 
-            this.groupBoxConverterSizes.Controls.Add(this.numericUpDownConverterHeight);
-            this.groupBoxConverterSizes.Controls.Add(this.labelConverterHeight);
-            this.groupBoxConverterSizes.Controls.Add(this.numericUpDownConverterWidth);
-            this.groupBoxConverterSizes.Controls.Add(this.labelConverterWidth);
-            this.groupBoxConverterSizes.Location = new System.Drawing.Point(12, 102);
-            this.groupBoxConverterSizes.Name = "groupBoxConverterSizes";
-            this.groupBoxConverterSizes.Size = new System.Drawing.Size(139, 84);
-            this.groupBoxConverterSizes.TabIndex = 3;
-            this.groupBoxConverterSizes.TabStop = false;
-            this.groupBoxConverterSizes.Text = "Converter Form";
-            // 
-            // numericUpDownConverterHeight
-            // 
-            this.numericUpDownConverterHeight.Location = new System.Drawing.Point(62, 47);
-            this.numericUpDownConverterHeight.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.numericUpDownConverterHeight.Name = "numericUpDownConverterHeight";
-            this.numericUpDownConverterHeight.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownConverterHeight.TabIndex = 3;
-            // 
-            // labelConverterHeight
-            // 
-            this.labelConverterHeight.AutoSize = true;
-            this.labelConverterHeight.Location = new System.Drawing.Point(15, 49);
-            this.labelConverterHeight.Name = "labelConverterHeight";
-            this.labelConverterHeight.Size = new System.Drawing.Size(41, 13);
-            this.labelConverterHeight.TabIndex = 2;
-            this.labelConverterHeight.Text = "Height:";
-            // 
-            // numericUpDownConverterWidth
-            // 
-            this.numericUpDownConverterWidth.Location = new System.Drawing.Point(62, 21);
-            this.numericUpDownConverterWidth.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.numericUpDownConverterWidth.Name = "numericUpDownConverterWidth";
-            this.numericUpDownConverterWidth.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownConverterWidth.TabIndex = 1;
-            // 
-            // labelConverterWidth
-            // 
-            this.labelConverterWidth.AutoSize = true;
-            this.labelConverterWidth.Location = new System.Drawing.Point(15, 23);
-            this.labelConverterWidth.Name = "labelConverterWidth";
-            this.labelConverterWidth.Size = new System.Drawing.Size(38, 13);
-            this.labelConverterWidth.TabIndex = 0;
-            this.labelConverterWidth.Text = "Width:";
-            // 
-            // groupBoxDictionaryEditorSizes
-            // 
-            this.groupBoxDictionaryEditorSizes.Controls.Add(this.numericUpDownDictionaryEditorHeight);
-            this.groupBoxDictionaryEditorSizes.Controls.Add(this.labelDictionaryEditorHeight);
-            this.groupBoxDictionaryEditorSizes.Controls.Add(this.numericUpDownDictionaryEditorWidth);
-            this.groupBoxDictionaryEditorSizes.Controls.Add(this.labelDictionaryEditorWidth);
-            this.groupBoxDictionaryEditorSizes.Location = new System.Drawing.Point(157, 102);
-            this.groupBoxDictionaryEditorSizes.Name = "groupBoxDictionaryEditorSizes";
-            this.groupBoxDictionaryEditorSizes.Size = new System.Drawing.Size(139, 84);
-            this.groupBoxDictionaryEditorSizes.TabIndex = 4;
-            this.groupBoxDictionaryEditorSizes.TabStop = false;
-            this.groupBoxDictionaryEditorSizes.Text = "Dictionary Editor Form";
-            // 
-            // numericUpDownDictionaryEditorHeight
-            // 
-            this.numericUpDownDictionaryEditorHeight.Location = new System.Drawing.Point(62, 47);
-            this.numericUpDownDictionaryEditorHeight.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.numericUpDownDictionaryEditorHeight.Name = "numericUpDownDictionaryEditorHeight";
-            this.numericUpDownDictionaryEditorHeight.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownDictionaryEditorHeight.TabIndex = 3;
-            // 
-            // labelDictionaryEditorHeight
-            // 
-            this.labelDictionaryEditorHeight.AutoSize = true;
-            this.labelDictionaryEditorHeight.Location = new System.Drawing.Point(15, 49);
-            this.labelDictionaryEditorHeight.Name = "labelDictionaryEditorHeight";
-            this.labelDictionaryEditorHeight.Size = new System.Drawing.Size(41, 13);
-            this.labelDictionaryEditorHeight.TabIndex = 2;
-            this.labelDictionaryEditorHeight.Text = "Height:";
-            // 
-            // numericUpDownDictionaryEditorWidth
-            // 
-            this.numericUpDownDictionaryEditorWidth.Location = new System.Drawing.Point(62, 21);
-            this.numericUpDownDictionaryEditorWidth.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.numericUpDownDictionaryEditorWidth.Name = "numericUpDownDictionaryEditorWidth";
-            this.numericUpDownDictionaryEditorWidth.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownDictionaryEditorWidth.TabIndex = 1;
-            // 
-            // labelDictionaryEditorWidth
-            // 
-            this.labelDictionaryEditorWidth.AutoSize = true;
-            this.labelDictionaryEditorWidth.Location = new System.Drawing.Point(15, 23);
-            this.labelDictionaryEditorWidth.Name = "labelDictionaryEditorWidth";
-            this.labelDictionaryEditorWidth.Size = new System.Drawing.Size(38, 13);
-            this.labelDictionaryEditorWidth.TabIndex = 0;
-            this.labelDictionaryEditorWidth.Text = "Width:";
-            // 
-            // groupBoxMaskEditorSizes
-            // 
-            this.groupBoxMaskEditorSizes.Controls.Add(this.numericUpDownMaskEditorHeight);
-            this.groupBoxMaskEditorSizes.Controls.Add(this.labelMaskEditorHeight);
-            this.groupBoxMaskEditorSizes.Controls.Add(this.numericUpDownMaskEditorWidth);
-            this.groupBoxMaskEditorSizes.Controls.Add(this.labelMaskEditorWidth);
-            this.groupBoxMaskEditorSizes.Location = new System.Drawing.Point(302, 102);
-            this.groupBoxMaskEditorSizes.Name = "groupBoxMaskEditorSizes";
-            this.groupBoxMaskEditorSizes.Size = new System.Drawing.Size(139, 84);
-            this.groupBoxMaskEditorSizes.TabIndex = 5;
-            this.groupBoxMaskEditorSizes.TabStop = false;
-            this.groupBoxMaskEditorSizes.Text = "Mask Editor Form";
-            // 
-            // numericUpDownMaskEditorHeight
-            // 
-            this.numericUpDownMaskEditorHeight.Location = new System.Drawing.Point(62, 47);
-            this.numericUpDownMaskEditorHeight.Maximum = new decimal(new int[] {
-            1080,
-            0,
-            0,
-            0});
-            this.numericUpDownMaskEditorHeight.Name = "numericUpDownMaskEditorHeight";
-            this.numericUpDownMaskEditorHeight.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownMaskEditorHeight.TabIndex = 3;
-            // 
-            // labelMaskEditorHeight
-            // 
-            this.labelMaskEditorHeight.AutoSize = true;
-            this.labelMaskEditorHeight.Location = new System.Drawing.Point(15, 49);
-            this.labelMaskEditorHeight.Name = "labelMaskEditorHeight";
-            this.labelMaskEditorHeight.Size = new System.Drawing.Size(41, 13);
-            this.labelMaskEditorHeight.TabIndex = 2;
-            this.labelMaskEditorHeight.Text = "Height:";
-            // 
-            // numericUpDownMaskEditorWidth
-            // 
-            this.numericUpDownMaskEditorWidth.Location = new System.Drawing.Point(62, 21);
-            this.numericUpDownMaskEditorWidth.Maximum = new decimal(new int[] {
-            1920,
-            0,
-            0,
-            0});
-            this.numericUpDownMaskEditorWidth.Name = "numericUpDownMaskEditorWidth";
-            this.numericUpDownMaskEditorWidth.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDownMaskEditorWidth.TabIndex = 1;
-            // 
-            // labelMaskEditorWidth
-            // 
-            this.labelMaskEditorWidth.AutoSize = true;
-            this.labelMaskEditorWidth.Location = new System.Drawing.Point(15, 23);
-            this.labelMaskEditorWidth.Name = "labelMaskEditorWidth";
-            this.labelMaskEditorWidth.Size = new System.Drawing.Size(38, 13);
-            this.labelMaskEditorWidth.TabIndex = 0;
-            this.labelMaskEditorWidth.Text = "Width:";
-            // 
-            // textBoxWorkingDirectory
-            // 
-            this.textBoxWorkingDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxWorkingDirectory.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "WorkingDirectory", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxWorkingDirectory.Enabled = false;
-            this.textBoxWorkingDirectory.Location = new System.Drawing.Point(115, 48);
-            this.textBoxWorkingDirectory.Name = "textBoxWorkingDirectory";
-            this.textBoxWorkingDirectory.Size = new System.Drawing.Size(292, 20);
-            this.textBoxWorkingDirectory.TabIndex = 33;
-            this.textBoxWorkingDirectory.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.WorkingDirectory;
-            // 
-            // textBoxHashcat
-            // 
-            this.textBoxHashcat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxHashcat.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "Hashcat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxHashcat.Location = new System.Drawing.Point(115, 18);
-            this.textBoxHashcat.Name = "textBoxHashcat";
-            this.textBoxHashcat.Size = new System.Drawing.Size(292, 20);
-            this.textBoxHashcat.TabIndex = 31;
-            this.textBoxHashcat.Text = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.Hashcat;
-            this.textBoxHashcat.TextChanged += new System.EventHandler(this.textBoxHashcat_TextChanged);
-            // 
-            // checkBoxShowNotifications
-            // 
-            this.checkBoxShowNotifications.AutoSize = true;
-            this.checkBoxShowNotifications.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.ShowNotifications;
-            this.checkBoxShowNotifications.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowNotifications.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "ShowNotifications", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxShowNotifications.Location = new System.Drawing.Point(15, 82);
-            this.checkBoxShowNotifications.Name = "checkBoxShowNotifications";
-            this.checkBoxShowNotifications.Size = new System.Drawing.Size(189, 17);
-            this.checkBoxShowNotifications.TabIndex = 51;
-            this.checkBoxShowNotifications.Text = "Show cracking results notifications";
-            this.checkBoxShowNotifications.UseVisualStyleBackColor = true;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1320,33 +1323,33 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPageOptions.ResumeLayout(false);
             this.panelCheckboxSettings.ResumeLayout(false);
             this.panelCheckboxSettings.PerformLayout();
-            this.tabPageDictionaries.ResumeLayout(false);
-            this.tabPageMasks.ResumeLayout(false);
             this.tabPageSizes.ResumeLayout(false);
-            this.groupBoxMainSizes.ResumeLayout(false);
-            this.groupBoxMainSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainHeight)).EndInit();
-            this.groupBoxTaskEditorSizes.ResumeLayout(false);
-            this.groupBoxTaskEditorSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorWidth)).EndInit();
-            this.groupBoxSettingsSizes.ResumeLayout(false);
-            this.groupBoxSettingsSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsWidth)).EndInit();
-            this.groupBoxConverterSizes.ResumeLayout(false);
-            this.groupBoxConverterSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterWidth)).EndInit();
-            this.groupBoxDictionaryEditorSizes.ResumeLayout(false);
-            this.groupBoxDictionaryEditorSizes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorWidth)).EndInit();
             this.groupBoxMaskEditorSizes.ResumeLayout(false);
             this.groupBoxMaskEditorSizes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaskEditorWidth)).EndInit();
+            this.groupBoxDictionaryEditorSizes.ResumeLayout(false);
+            this.groupBoxDictionaryEditorSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDictionaryEditorWidth)).EndInit();
+            this.groupBoxConverterSizes.ResumeLayout(false);
+            this.groupBoxConverterSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownConverterWidth)).EndInit();
+            this.groupBoxSettingsSizes.ResumeLayout(false);
+            this.groupBoxSettingsSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSettingsWidth)).EndInit();
+            this.groupBoxTaskEditorSizes.ResumeLayout(false);
+            this.groupBoxTaskEditorSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTaskEditorWidth)).EndInit();
+            this.groupBoxMainSizes.ResumeLayout(false);
+            this.groupBoxMainSizes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMainWidth)).EndInit();
+            this.tabPageDictionaries.ResumeLayout(false);
+            this.tabPageMasks.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

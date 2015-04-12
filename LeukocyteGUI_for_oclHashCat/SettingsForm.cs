@@ -28,6 +28,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
@@ -298,6 +299,17 @@ namespace LeukocyteGUI_for_oclHashCat
         private void openFileDialogConverter_FileOk(object sender, CancelEventArgs e)
         {
             textBoxAircrack.Text = openFileDialogConverter.FileName;
+        }
+
+        private void listViewDictionaries_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+        private void listViewDictionaries_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] dictFiles = (string[])e.Data.GetData("FileDrop", false);
+            dictionaryManager.AddDictionariesFromList(dictFiles);
+            VisualizeAllDictionaries();
         }
 
         private void TryAutoDetectWorkingDirectory()

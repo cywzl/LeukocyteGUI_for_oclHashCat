@@ -1395,6 +1395,36 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return Dictionaries.Length;
         }
+        public Dictionary[] AddDictionariesFromList(string[] dictList, bool canGoDipper = true)
+        {
+            int startIndex = Dictionaries.Length;
+
+            for (int index = 0; index < dictList.Length; index++)
+            {
+                string dictCurFile = dictList[index].Replace("\\", "/");
+
+                if (File.Exists(dictCurFile))
+                {
+                    DictionaryManager.Dictionary newDict = new DictionaryManager.Dictionary(dictCurFile);
+                    newDict.Description = Path.GetFileNameWithoutExtension(dictCurFile);
+                    AddDictionary(newDict);
+                }
+                else if ((Directory.Exists(dictCurFile)) && (canGoDipper))
+                {
+                    string[] dirDictFiles = Directory.GetFiles(dictCurFile);
+                    AddDictionariesFromList(dirDictFiles, false);
+                }
+            }
+
+            Dictionary[] newDictionaries = new Dictionary[Dictionaries.Length - startIndex];
+
+            for (int index = 0; index < newDictionaries.Length; index++)
+            {
+                newDictionaries[index] = Dictionaries[startIndex + index];
+            }
+
+            return newDictionaries;
+        }
         public bool UpdateDictionary(int Index, Dictionary UpdatedDictionary)
         {
             bool result = false;
