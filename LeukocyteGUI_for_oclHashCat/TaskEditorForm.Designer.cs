@@ -74,13 +74,14 @@ namespace LeukocyteGUI_for_oclHashCat
             this.textBoxCharset4 = new System.Windows.Forms.TextBox();
             this.checkBoxCharset4 = new System.Windows.Forms.CheckBox();
             this.tabPageAttackTypeMultiple = new System.Windows.Forms.TabPage();
+            this.listViewMultipleAttacks = new System.Windows.Forms.ListView();
+            this.columnHeaderId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderAttackType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderMaskDictionary = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderInfo = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.radioButtonAttackTypeMulti = new System.Windows.Forms.RadioButton();
-            this.labelMasks = new System.Windows.Forms.Label();
-            this.checkedListBoxDictionary = new System.Windows.Forms.CheckedListBox();
-            this.labelDictionaries = new System.Windows.Forms.Label();
-            this.checkedListBoxMask = new System.Windows.Forms.CheckedListBox();
             this.groupBoxHash = new System.Windows.Forms.GroupBox();
-            this.checkBoxDetectHashType = new System.Windows.Forms.CheckBox();
             this.buttonChooseHashFile = new System.Windows.Forms.Button();
             this.labelSeparator = new System.Windows.Forms.Label();
             this.textBoxSeparator = new System.Windows.Forms.TextBox();
@@ -138,6 +139,8 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogCharset3 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogCharset4 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogMask = new System.Windows.Forms.OpenFileDialog();
+            this.checkBoxAutoChooseAttackType = new System.Windows.Forms.CheckBox();
+            this.checkBoxDetectHashType = new System.Windows.Forms.CheckBox();
             this.groupBoxAttackType.SuspendLayout();
             this.tabControlAttackType.SuspendLayout();
             this.tabPageAttackTypeDictionary.SuspendLayout();
@@ -166,27 +169,33 @@ namespace LeukocyteGUI_for_oclHashCat
             // radioButtonAttackTypeBrute
             // 
             this.radioButtonAttackTypeBrute.AutoSize = true;
-            this.radioButtonAttackTypeBrute.Checked = true;
             this.radioButtonAttackTypeBrute.Location = new System.Drawing.Point(6, 6);
             this.radioButtonAttackTypeBrute.Name = "radioButtonAttackTypeBrute";
             this.radioButtonAttackTypeBrute.Size = new System.Drawing.Size(54, 17);
             this.radioButtonAttackTypeBrute.TabIndex = 3;
-            this.radioButtonAttackTypeBrute.TabStop = true;
             this.radioButtonAttackTypeBrute.Text = "Mask:";
             this.radioButtonAttackTypeBrute.UseVisualStyleBackColor = true;
+            this.radioButtonAttackTypeBrute.CheckedChanged += new System.EventHandler(this.radioButtonAttackTypeBrute_CheckedChanged);
             // 
             // radioButtonAttackTypeDictionary
             // 
             this.radioButtonAttackTypeDictionary.AutoSize = true;
+            this.radioButtonAttackTypeDictionary.Checked = true;
             this.radioButtonAttackTypeDictionary.Location = new System.Drawing.Point(6, 6);
             this.radioButtonAttackTypeDictionary.Name = "radioButtonAttackTypeDictionary";
             this.radioButtonAttackTypeDictionary.Size = new System.Drawing.Size(75, 17);
             this.radioButtonAttackTypeDictionary.TabIndex = 13;
+            this.radioButtonAttackTypeDictionary.TabStop = true;
             this.radioButtonAttackTypeDictionary.Text = "Dictionary:";
             this.radioButtonAttackTypeDictionary.UseVisualStyleBackColor = true;
+            this.radioButtonAttackTypeDictionary.CheckedChanged += new System.EventHandler(this.radioButtonAttackTypeDictionary_CheckedChanged);
             // 
             // groupBoxAttackType
             // 
+            this.groupBoxAttackType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxAttackType.Controls.Add(this.checkBoxAutoChooseAttackType);
             this.groupBoxAttackType.Controls.Add(this.tabControlAttackType);
             this.groupBoxAttackType.Location = new System.Drawing.Point(13, 117);
             this.groupBoxAttackType.Name = "groupBoxAttackType";
@@ -197,6 +206,9 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // tabControlAttackType
             // 
+            this.tabControlAttackType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlAttackType.Controls.Add(this.tabPageAttackTypeDictionary);
             this.tabControlAttackType.Controls.Add(this.tabPageAttackTypeMask);
             this.tabControlAttackType.Controls.Add(this.tabPageAttackTypeMultiple);
@@ -205,6 +217,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabControlAttackType.SelectedIndex = 0;
             this.tabControlAttackType.Size = new System.Drawing.Size(472, 232);
             this.tabControlAttackType.TabIndex = 59;
+            this.tabControlAttackType.SelectedIndexChanged += new System.EventHandler(this.tabControlAttackType_SelectedIndexChanged);
             // 
             // tabPageAttackTypeDictionary
             // 
@@ -221,6 +234,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxDictionary
             // 
+            this.textBoxDictionary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxDictionary.Location = new System.Drawing.Point(15, 27);
             this.textBoxDictionary.Name = "textBoxDictionary";
             this.textBoxDictionary.Size = new System.Drawing.Size(408, 20);
@@ -228,6 +243,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseDictionaryFile
             // 
+            this.buttonChooseDictionaryFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseDictionaryFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseDictionaryFile.FlatAppearance.BorderSize = 0;
             this.buttonChooseDictionaryFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -269,6 +285,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseMaskFile
             // 
+            this.buttonChooseMaskFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseMaskFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseMaskFile.FlatAppearance.BorderSize = 0;
             this.buttonChooseMaskFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -285,6 +302,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxBruteforceMask
             // 
+            this.textBoxBruteforceMask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBruteforceMask.Location = new System.Drawing.Point(15, 27);
             this.textBoxBruteforceMask.Name = "textBoxBruteforceMask";
             this.textBoxBruteforceMask.Size = new System.Drawing.Size(403, 20);
@@ -292,6 +311,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseCharsetFile4
             // 
+            this.buttonChooseCharsetFile4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseCharsetFile4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseCharsetFile4.FlatAppearance.BorderSize = 0;
             this.buttonChooseCharsetFile4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -308,6 +328,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxCharset1
             // 
+            this.textBoxCharset1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCharset1.Location = new System.Drawing.Point(95, 56);
             this.textBoxCharset1.Name = "textBoxCharset1";
             this.textBoxCharset1.Size = new System.Drawing.Size(323, 20);
@@ -315,6 +337,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseCharsetFile3
             // 
+            this.buttonChooseCharsetFile3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseCharsetFile3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseCharsetFile3.FlatAppearance.BorderSize = 0;
             this.buttonChooseCharsetFile3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -341,6 +364,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseCharsetFile2
             // 
+            this.buttonChooseCharsetFile2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseCharsetFile2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseCharsetFile2.FlatAppearance.BorderSize = 0;
             this.buttonChooseCharsetFile2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -357,6 +381,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxCharset2
             // 
+            this.textBoxCharset2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCharset2.Location = new System.Drawing.Point(95, 85);
             this.textBoxCharset2.Name = "textBoxCharset2";
             this.textBoxCharset2.Size = new System.Drawing.Size(323, 20);
@@ -364,6 +390,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonChooseCharsetFile1
             // 
+            this.buttonChooseCharsetFile1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonChooseCharsetFile1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonChooseCharsetFile1.FlatAppearance.BorderSize = 0;
             this.buttonChooseCharsetFile1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -390,6 +417,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxCharset3
             // 
+            this.textBoxCharset3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCharset3.Location = new System.Drawing.Point(95, 114);
             this.textBoxCharset3.Name = "textBoxCharset3";
             this.textBoxCharset3.Size = new System.Drawing.Size(323, 20);
@@ -407,6 +436,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // textBoxCharset4
             // 
+            this.textBoxCharset4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCharset4.Location = new System.Drawing.Point(95, 143);
             this.textBoxCharset4.Name = "textBoxCharset4";
             this.textBoxCharset4.Size = new System.Drawing.Size(323, 20);
@@ -424,11 +455,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // tabPageAttackTypeMultiple
             // 
+            this.tabPageAttackTypeMultiple.Controls.Add(this.listViewMultipleAttacks);
             this.tabPageAttackTypeMultiple.Controls.Add(this.radioButtonAttackTypeMulti);
-            this.tabPageAttackTypeMultiple.Controls.Add(this.labelMasks);
-            this.tabPageAttackTypeMultiple.Controls.Add(this.checkedListBoxDictionary);
-            this.tabPageAttackTypeMultiple.Controls.Add(this.labelDictionaries);
-            this.tabPageAttackTypeMultiple.Controls.Add(this.checkedListBoxMask);
             this.tabPageAttackTypeMultiple.Location = new System.Drawing.Point(4, 22);
             this.tabPageAttackTypeMultiple.Name = "tabPageAttackTypeMultiple";
             this.tabPageAttackTypeMultiple.Padding = new System.Windows.Forms.Padding(3);
@@ -436,6 +464,50 @@ namespace LeukocyteGUI_for_oclHashCat
             this.tabPageAttackTypeMultiple.TabIndex = 2;
             this.tabPageAttackTypeMultiple.Text = "Multiple";
             this.tabPageAttackTypeMultiple.UseVisualStyleBackColor = true;
+            // 
+            // listViewMultipleAttacks
+            // 
+            this.listViewMultipleAttacks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewMultipleAttacks.CheckBoxes = true;
+            this.listViewMultipleAttacks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderId,
+            this.columnHeaderAttackType,
+            this.columnHeaderDescription,
+            this.columnHeaderMaskDictionary,
+            this.columnHeaderInfo});
+            this.listViewMultipleAttacks.Location = new System.Drawing.Point(12, 29);
+            this.listViewMultipleAttacks.Name = "listViewMultipleAttacks";
+            this.listViewMultipleAttacks.Size = new System.Drawing.Size(437, 167);
+            this.listViewMultipleAttacks.TabIndex = 54;
+            this.listViewMultipleAttacks.UseCompatibleStateImageBehavior = false;
+            this.listViewMultipleAttacks.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderId
+            // 
+            this.columnHeaderId.Text = "№";
+            this.columnHeaderId.Width = 39;
+            // 
+            // columnHeaderAttackType
+            // 
+            this.columnHeaderAttackType.Text = "Attack type";
+            this.columnHeaderAttackType.Width = 67;
+            // 
+            // columnHeaderDescription
+            // 
+            this.columnHeaderDescription.Text = "Description";
+            this.columnHeaderDescription.Width = 104;
+            // 
+            // columnHeaderMaskDictionary
+            // 
+            this.columnHeaderMaskDictionary.Text = "Mask / Dictionary";
+            this.columnHeaderMaskDictionary.Width = 132;
+            // 
+            // columnHeaderInfo
+            // 
+            this.columnHeaderInfo.Text = "Info";
+            this.columnHeaderInfo.Width = 85;
             // 
             // radioButtonAttackTypeMulti
             // 
@@ -446,45 +518,12 @@ namespace LeukocyteGUI_for_oclHashCat
             this.radioButtonAttackTypeMulti.TabIndex = 51;
             this.radioButtonAttackTypeMulti.Text = "Multiple attacks:";
             this.radioButtonAttackTypeMulti.UseVisualStyleBackColor = true;
-            // 
-            // labelMasks
-            // 
-            this.labelMasks.AutoSize = true;
-            this.labelMasks.Location = new System.Drawing.Point(217, 30);
-            this.labelMasks.Name = "labelMasks";
-            this.labelMasks.Size = new System.Drawing.Size(41, 13);
-            this.labelMasks.TabIndex = 53;
-            this.labelMasks.Text = "Masks:";
-            // 
-            // checkedListBoxDictionary
-            // 
-            this.checkedListBoxDictionary.CheckOnClick = true;
-            this.checkedListBoxDictionary.FormattingEnabled = true;
-            this.checkedListBoxDictionary.Location = new System.Drawing.Point(12, 46);
-            this.checkedListBoxDictionary.Name = "checkedListBoxDictionary";
-            this.checkedListBoxDictionary.Size = new System.Drawing.Size(195, 79);
-            this.checkedListBoxDictionary.TabIndex = 49;
-            // 
-            // labelDictionaries
-            // 
-            this.labelDictionaries.AutoSize = true;
-            this.labelDictionaries.Location = new System.Drawing.Point(9, 30);
-            this.labelDictionaries.Name = "labelDictionaries";
-            this.labelDictionaries.Size = new System.Drawing.Size(65, 13);
-            this.labelDictionaries.TabIndex = 52;
-            this.labelDictionaries.Text = "Dictionaries:";
-            // 
-            // checkedListBoxMask
-            // 
-            this.checkedListBoxMask.CheckOnClick = true;
-            this.checkedListBoxMask.FormattingEnabled = true;
-            this.checkedListBoxMask.Location = new System.Drawing.Point(220, 46);
-            this.checkedListBoxMask.Name = "checkedListBoxMask";
-            this.checkedListBoxMask.Size = new System.Drawing.Size(195, 79);
-            this.checkedListBoxMask.TabIndex = 50;
+            this.radioButtonAttackTypeMulti.CheckedChanged += new System.EventHandler(this.radioButtonAttackTypeMulti_CheckedChanged);
             // 
             // groupBoxHash
             // 
+            this.groupBoxHash.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxHash.Controls.Add(this.checkBoxDetectHashType);
             this.groupBoxHash.Controls.Add(this.buttonChooseHashFile);
             this.groupBoxHash.Controls.Add(this.labelSeparator);
@@ -499,19 +538,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxHash.TabIndex = 0;
             this.groupBoxHash.TabStop = false;
             this.groupBoxHash.Text = "Hash";
-            // 
-            // checkBoxDetectHashType
-            // 
-            this.checkBoxDetectHashType.AutoSize = true;
-            this.checkBoxDetectHashType.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.DetectHashType;
-            this.checkBoxDetectHashType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDetectHashType.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "DetectHashType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxDetectHashType.Location = new System.Drawing.Point(78, 71);
-            this.checkBoxDetectHashType.Name = "checkBoxDetectHashType";
-            this.checkBoxDetectHashType.Size = new System.Drawing.Size(199, 17);
-            this.checkBoxDetectHashType.TabIndex = 48;
-            this.checkBoxDetectHashType.Text = "Try to detect hash type automatically";
-            this.checkBoxDetectHashType.UseVisualStyleBackColor = true;
             // 
             // buttonChooseHashFile
             // 
@@ -690,6 +716,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // groupBoxIncrement
             // 
+            this.groupBoxIncrement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxIncrement.Controls.Add(this.numericUpDownIncrementMax);
             this.groupBoxIncrement.Controls.Add(this.labelIncrementMax);
             this.groupBoxIncrement.Controls.Add(this.numericUpDownIncrementMin);
@@ -746,6 +773,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // groupBoxOptions
             // 
+            this.groupBoxOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxOptions.Controls.Add(this.textBoxSessionId);
             this.groupBoxOptions.Controls.Add(this.labelSessionId);
             this.groupBoxOptions.Controls.Add(this.checkBoxDisableLog);
@@ -861,6 +889,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // groupBoxOutput
             // 
+            this.groupBoxOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxOutput.Controls.Add(this.buttonChooseOutputFile);
             this.groupBoxOutput.Controls.Add(this.checkBoxOutputToFile);
             this.groupBoxOutput.Controls.Add(this.comboBoxOutputFormat);
@@ -951,6 +980,8 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // groupBoxGPUResources
             // 
+            this.groupBoxGPUResources.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxGPUResources.Controls.Add(this.checkBoxDisablePowertune);
             this.groupBoxGPUResources.Controls.Add(this.numericUpDownTempRetain);
             this.groupBoxGPUResources.Controls.Add(this.labelCelsiusAMD);
@@ -1145,6 +1176,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonCancelTask
             // 
+            this.buttonCancelTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancelTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancelTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.buttonCancelTask.FlatAppearance.BorderSize = 0;
@@ -1162,6 +1194,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonSubmitTask
             // 
+            this.buttonSubmitTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSubmitTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.buttonSubmitTask.FlatAppearance.BorderSize = 0;
             this.buttonSubmitTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -1178,6 +1211,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // buttonClearTask
             // 
+            this.buttonClearTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClearTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Highlight;
             this.buttonClearTask.FlatAppearance.BorderSize = 0;
             this.buttonClearTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -1237,6 +1271,32 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogMask.Filter = "Hashcat mask files (*.hcmask)|*.hcmask|Any files (*.*)|*.*";
             this.openFileDialogMask.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogMask_FileOk);
             // 
+            // checkBoxAutoChooseAttackType
+            // 
+            this.checkBoxAutoChooseAttackType.AutoSize = true;
+            this.checkBoxAutoChooseAttackType.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.AutoChooseAttackType;
+            this.checkBoxAutoChooseAttackType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxAutoChooseAttackType.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "AutoChooseAttackType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxAutoChooseAttackType.Location = new System.Drawing.Point(214, 21);
+            this.checkBoxAutoChooseAttackType.Name = "checkBoxAutoChooseAttackType";
+            this.checkBoxAutoChooseAttackType.Size = new System.Drawing.Size(269, 17);
+            this.checkBoxAutoChooseAttackType.TabIndex = 55;
+            this.checkBoxAutoChooseAttackType.Text = "Automatically choose attack type of the opened tab";
+            this.checkBoxAutoChooseAttackType.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDetectHashType
+            // 
+            this.checkBoxDetectHashType.AutoSize = true;
+            this.checkBoxDetectHashType.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.DetectHashType;
+            this.checkBoxDetectHashType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDetectHashType.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "DetectHashType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxDetectHashType.Location = new System.Drawing.Point(78, 71);
+            this.checkBoxDetectHashType.Name = "checkBoxDetectHashType";
+            this.checkBoxDetectHashType.Size = new System.Drawing.Size(199, 17);
+            this.checkBoxDetectHashType.TabIndex = 48;
+            this.checkBoxDetectHashType.Text = "Try to detect hash type automatically";
+            this.checkBoxDetectHashType.UseVisualStyleBackColor = true;
+            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1252,15 +1312,14 @@ namespace LeukocyteGUI_for_oclHashCat
             this.Controls.Add(this.groupBoxIncrement);
             this.Controls.Add(this.groupBoxHash);
             this.Controls.Add(this.groupBoxAttackType);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.Name = "TaskEditorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LeukocyteGUI for oclHashCat - Task Editor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskEditorForm_FormClosing);
             this.Load += new System.EventHandler(this.TaskEditorForm_Load);
             this.groupBoxAttackType.ResumeLayout(false);
+            this.groupBoxAttackType.PerformLayout();
             this.tabControlAttackType.ResumeLayout(false);
             this.tabPageAttackTypeDictionary.ResumeLayout(false);
             this.tabPageAttackTypeDictionary.PerformLayout();
@@ -1357,11 +1416,7 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.OpenFileDialog openFileDialogDictionary;
         private System.Windows.Forms.Button buttonChooseOutputFile;
         private System.Windows.Forms.SaveFileDialog saveFileDialogOutput;
-        private System.Windows.Forms.Label labelMasks;
-        private System.Windows.Forms.Label labelDictionaries;
         private System.Windows.Forms.RadioButton radioButtonAttackTypeMulti;
-        private System.Windows.Forms.CheckedListBox checkedListBoxMask;
-        private System.Windows.Forms.CheckedListBox checkedListBoxDictionary;
         private System.Windows.Forms.Button buttonChooseCharsetFile4;
         private System.Windows.Forms.Button buttonChooseCharsetFile3;
         private System.Windows.Forms.Button buttonChooseCharsetFile2;
@@ -1377,5 +1432,12 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.TabPage tabPageAttackTypeDictionary;
         private System.Windows.Forms.TabPage tabPageAttackTypeMask;
         private System.Windows.Forms.TabPage tabPageAttackTypeMultiple;
+        private System.Windows.Forms.ListView listViewMultipleAttacks;
+        private System.Windows.Forms.ColumnHeader columnHeaderId;
+        private System.Windows.Forms.ColumnHeader columnHeaderAttackType;
+        private System.Windows.Forms.ColumnHeader columnHeaderDescription;
+        private System.Windows.Forms.ColumnHeader columnHeaderMaskDictionary;
+        private System.Windows.Forms.ColumnHeader columnHeaderInfo;
+        private System.Windows.Forms.CheckBox checkBoxAutoChooseAttackType;
     }
 }

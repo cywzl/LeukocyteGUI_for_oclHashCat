@@ -61,14 +61,42 @@ namespace LeukocyteGUI_for_oclHashCat
             maskManager = (this.Owner as MainForm).MaskManager;
             FillFormWithTaskData();
 
-            for (int index = 0; index < dictManager.Dictionaries.Length; index++)
+            //for (int index = 0; index < dictManager.Dictionaries.Length; index++)
+            //{
+            //    checkedListBoxDictionary.Items.Add(dictManager.Dictionaries[index].Description);
+            //}
+
+            //for (int index = 0; index < maskManager.Masks.Length; index++)
+            //{
+            //    checkedListBoxMask.Items.Add(maskManager.Masks[index].Description);
+            //}
+
+            int indexer = 1;
+
+            for (int dictIndex = 0; dictIndex < dictManager.Dictionaries.Length; dictIndex++, indexer++)
             {
-                checkedListBoxDictionary.Items.Add(dictManager.Dictionaries[index].Description);
+                string[] items = {
+                                     indexer.ToString(),
+                                     "Dictionary",
+                                     dictManager.Dictionaries[dictIndex].Description,
+                                     dictManager.Dictionaries[dictIndex].FileName,
+                                     dictManager.Dictionaries[dictIndex].FormattedSize
+                                 };
+
+                (listViewMultipleAttacks.Items.Add(new ListViewItem(items))).Tag = dictIndex;
             }
 
-            for (int index = 0; index < maskManager.Masks.Length; index++)
+            for (int maskIndex = 0; maskIndex < maskManager.Masks.Length; maskIndex++, indexer++)
             {
-                checkedListBoxMask.Items.Add(maskManager.Masks[index].Description);
+                string[] items = {
+                                     indexer.ToString(),
+                                     "Mask",
+                                     maskManager.Masks[maskIndex].Description,
+                                     maskManager.Masks[maskIndex].BruteMask,
+                                     maskManager.Masks[maskIndex].CharsetString
+                                 };
+
+                (listViewMultipleAttacks.Items.Add(new ListViewItem(items))).Tag = maskIndex;
             }
         }
         private void TaskEditorForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -77,6 +105,50 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 Properties.Settings.Default.TaskEditorWidth = Width;
                 Properties.Settings.Default.TaskEditorHeight = Height;
+            }
+        }
+
+        private void tabControlAttackType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.AutoChooseAttackType)
+            {
+                switch (tabControlAttackType.SelectedTab.Text)
+                {
+                    case "Dictionary":
+                        radioButtonAttackTypeDictionary.Checked = true;
+                        break;
+                    case "Mask":
+                        radioButtonAttackTypeBrute.Checked = true;
+                        break;
+                    case "Multiple":
+                        radioButtonAttackTypeMulti.Checked = true;
+                        break;
+                }
+            }
+        }
+
+        private void radioButtonAttackTypeDictionary_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAttackTypeDictionary.Checked)
+            {
+                radioButtonAttackTypeBrute.Checked = false;
+                radioButtonAttackTypeMulti.Checked = false;
+            }
+        }
+        private void radioButtonAttackTypeBrute_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAttackTypeBrute.Checked)
+            {
+                radioButtonAttackTypeDictionary.Checked = false;
+                radioButtonAttackTypeMulti.Checked = false;
+            }
+        }
+        private void radioButtonAttackTypeMulti_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAttackTypeMulti.Checked)
+            {
+                radioButtonAttackTypeDictionary.Checked = false;
+                radioButtonAttackTypeBrute.Checked = false;
             }
         }
 
@@ -168,35 +240,39 @@ namespace LeukocyteGUI_for_oclHashCat
 
             if (radioButtonAttackTypeMulti.Checked)
             {
-                if((checkedListBoxDictionary.CheckedIndices.Count > 0)
-                    || (checkedListBoxMask.CheckedIndices.Count > 0))
-                {
-                    foreach (int dictId in checkedListBoxDictionary.CheckedIndices)
-                    {
-                        CrackTaskManager.CrackTask curTask = CrackTask.DeepCopy();
-                        curTask.SetAttackType(0);
-                        curTask.SetDictionary(dictManager.Dictionaries[dictId].FileName, true);
-                        tskManager.AddTask(curTask);
-                    }
+                //if((checkedListBoxDictionary.CheckedIndices.Count > 0)
+                //    || (checkedListBoxMask.CheckedIndices.Count > 0))
+                //{
+                //    foreach (int dictId in checkedListBoxDictionary.CheckedIndices)
+                //    {
+                //        CrackTaskManager.CrackTask curTask = CrackTask.DeepCopy();
+                //        curTask.SetAttackType(0);
+                //        curTask.SetDictionary(dictManager.Dictionaries[dictId].FileName, true);
+                //        tskManager.AddTask(curTask);
+                //    }
 
-                    foreach (int maskId in checkedListBoxMask.CheckedIndices)
-                    {
-                        CrackTaskManager.CrackTask curTask = CrackTask.DeepCopy();
-                        curTask.SetAttackType(3);
-                        curTask.SetBruteforceMask(maskManager.Masks[maskId].BruteMask);
-                        curTask.SetCharset1(maskManager.Masks[maskId].Charset1);
-                        curTask.SetCharset2(maskManager.Masks[maskId].Charset2);
-                        curTask.SetCharset3(maskManager.Masks[maskId].Charset3);
-                        curTask.SetCharset4(maskManager.Masks[maskId].Charset4);
-                        curTask.UseCharset1 = maskManager.Masks[maskId].UseCharset1;
-                        curTask.UseCharset2 = maskManager.Masks[maskId].UseCharset2;
-                        curTask.UseCharset3 = maskManager.Masks[maskId].UseCharset3;
-                        curTask.UseCharset4 = maskManager.Masks[maskId].UseCharset4;
-                        curTask.EnableIncrementMode = maskManager.Masks[maskId].EnableIncrement;
-                        curTask.SetStartLength(maskManager.Masks[maskId].IncrementMin);
-                        curTask.SetMaxLength(maskManager.Masks[maskId].IncrementMax);
-                        tskManager.AddTask(curTask);
-                    }
+                //    foreach (int maskId in checkedListBoxMask.CheckedIndices)
+                //    {
+                //        CrackTaskManager.CrackTask curTask = CrackTask.DeepCopy();
+                //        curTask.SetAttackType(3);
+                //        curTask.SetBruteforceMask(maskManager.Masks[maskId].BruteMask);
+                //        curTask.SetCharset1(maskManager.Masks[maskId].Charset1);
+                //        curTask.SetCharset2(maskManager.Masks[maskId].Charset2);
+                //        curTask.SetCharset3(maskManager.Masks[maskId].Charset3);
+                //        curTask.SetCharset4(maskManager.Masks[maskId].Charset4);
+                //        curTask.UseCharset1 = maskManager.Masks[maskId].UseCharset1;
+                //        curTask.UseCharset2 = maskManager.Masks[maskId].UseCharset2;
+                //        curTask.UseCharset3 = maskManager.Masks[maskId].UseCharset3;
+                //        curTask.UseCharset4 = maskManager.Masks[maskId].UseCharset4;
+                //        curTask.EnableIncrementMode = maskManager.Masks[maskId].EnableIncrement;
+                //        curTask.SetStartLength(maskManager.Masks[maskId].IncrementMin);
+                //        curTask.SetMaxLength(maskManager.Masks[maskId].IncrementMax);
+                //        tskManager.AddTask(curTask);
+                //    }
+                //}
+                if (listViewMultipleAttacks.SelectedIndices.Count > 0)
+                {
+
                 }
                 else
                 {
@@ -373,7 +449,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
                 textBoxHashFileName.Text = "";
                 textBoxSeparator.Text = ":";
-                radioButtonAttackTypeBrute.Checked = true;
+                //radioButtonAttackTypeBrute.Checked = true;
 
                 textBoxBruteforceMask.Text = "";
                 textBoxDictionary.Text = "";

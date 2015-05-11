@@ -394,5 +394,17 @@ namespace LeukocyteGUI_for_oclHashCat.Properties {
                 this["DetectHashType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoChooseAttackType {
+            get {
+                return ((bool)(this["AutoChooseAttackType"]));
+            }
+            set {
+                this["AutoChooseAttackType"] = value;
+            }
+        }
     }
 }
