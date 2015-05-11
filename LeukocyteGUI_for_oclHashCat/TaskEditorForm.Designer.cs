@@ -54,28 +54,33 @@ namespace LeukocyteGUI_for_oclHashCat
             this.radioButtonAttackTypeBrute = new System.Windows.Forms.RadioButton();
             this.radioButtonAttackTypeDictionary = new System.Windows.Forms.RadioButton();
             this.groupBoxAttackType = new System.Windows.Forms.GroupBox();
-            this.buttonChooseMaskFile = new System.Windows.Forms.Button();
-            this.buttonChooseCharsetFile4 = new System.Windows.Forms.Button();
-            this.buttonChooseCharsetFile3 = new System.Windows.Forms.Button();
-            this.buttonChooseCharsetFile2 = new System.Windows.Forms.Button();
-            this.buttonChooseCharsetFile1 = new System.Windows.Forms.Button();
-            this.labelMasks = new System.Windows.Forms.Label();
-            this.labelDictionaries = new System.Windows.Forms.Label();
-            this.radioButtonAttackTypeMulti = new System.Windows.Forms.RadioButton();
-            this.checkedListBoxMask = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBoxDictionary = new System.Windows.Forms.CheckedListBox();
-            this.buttonChooseDictionaryFile = new System.Windows.Forms.Button();
-            this.checkBoxCharset4 = new System.Windows.Forms.CheckBox();
-            this.textBoxCharset4 = new System.Windows.Forms.TextBox();
-            this.checkBoxCharset3 = new System.Windows.Forms.CheckBox();
-            this.textBoxCharset3 = new System.Windows.Forms.TextBox();
-            this.checkBoxCharset2 = new System.Windows.Forms.CheckBox();
-            this.textBoxCharset2 = new System.Windows.Forms.TextBox();
-            this.checkBoxCharset1 = new System.Windows.Forms.CheckBox();
-            this.textBoxCharset1 = new System.Windows.Forms.TextBox();
+            this.tabControlAttackType = new System.Windows.Forms.TabControl();
+            this.tabPageAttackTypeDictionary = new System.Windows.Forms.TabPage();
             this.textBoxDictionary = new System.Windows.Forms.TextBox();
+            this.buttonChooseDictionaryFile = new System.Windows.Forms.Button();
+            this.tabPageAttackTypeMask = new System.Windows.Forms.TabPage();
+            this.buttonChooseMaskFile = new System.Windows.Forms.Button();
             this.textBoxBruteforceMask = new System.Windows.Forms.TextBox();
+            this.buttonChooseCharsetFile4 = new System.Windows.Forms.Button();
+            this.textBoxCharset1 = new System.Windows.Forms.TextBox();
+            this.buttonChooseCharsetFile3 = new System.Windows.Forms.Button();
+            this.checkBoxCharset1 = new System.Windows.Forms.CheckBox();
+            this.buttonChooseCharsetFile2 = new System.Windows.Forms.Button();
+            this.textBoxCharset2 = new System.Windows.Forms.TextBox();
+            this.buttonChooseCharsetFile1 = new System.Windows.Forms.Button();
+            this.checkBoxCharset2 = new System.Windows.Forms.CheckBox();
+            this.textBoxCharset3 = new System.Windows.Forms.TextBox();
+            this.checkBoxCharset3 = new System.Windows.Forms.CheckBox();
+            this.textBoxCharset4 = new System.Windows.Forms.TextBox();
+            this.checkBoxCharset4 = new System.Windows.Forms.CheckBox();
+            this.tabPageAttackTypeMultiple = new System.Windows.Forms.TabPage();
+            this.radioButtonAttackTypeMulti = new System.Windows.Forms.RadioButton();
+            this.labelMasks = new System.Windows.Forms.Label();
+            this.checkedListBoxDictionary = new System.Windows.Forms.CheckedListBox();
+            this.labelDictionaries = new System.Windows.Forms.Label();
+            this.checkedListBoxMask = new System.Windows.Forms.CheckedListBox();
             this.groupBoxHash = new System.Windows.Forms.GroupBox();
+            this.checkBoxDetectHashType = new System.Windows.Forms.CheckBox();
             this.buttonChooseHashFile = new System.Windows.Forms.Button();
             this.labelSeparator = new System.Windows.Forms.Label();
             this.textBoxSeparator = new System.Windows.Forms.TextBox();
@@ -133,8 +138,11 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogCharset3 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogCharset4 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialogMask = new System.Windows.Forms.OpenFileDialog();
-            this.checkBoxDetectHashType = new System.Windows.Forms.CheckBox();
             this.groupBoxAttackType.SuspendLayout();
+            this.tabControlAttackType.SuspendLayout();
+            this.tabPageAttackTypeDictionary.SuspendLayout();
+            this.tabPageAttackTypeMask.SuspendLayout();
+            this.tabPageAttackTypeMultiple.SuspendLayout();
             this.groupBoxHash.SuspendLayout();
             this.groupBoxIncrement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrementMax)).BeginInit();
@@ -159,7 +167,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             this.radioButtonAttackTypeBrute.AutoSize = true;
             this.radioButtonAttackTypeBrute.Checked = true;
-            this.radioButtonAttackTypeBrute.Location = new System.Drawing.Point(16, 74);
+            this.radioButtonAttackTypeBrute.Location = new System.Drawing.Point(6, 6);
             this.radioButtonAttackTypeBrute.Name = "radioButtonAttackTypeBrute";
             this.radioButtonAttackTypeBrute.Size = new System.Drawing.Size(54, 17);
             this.radioButtonAttackTypeBrute.TabIndex = 3;
@@ -170,7 +178,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // radioButtonAttackTypeDictionary
             // 
             this.radioButtonAttackTypeDictionary.AutoSize = true;
-            this.radioButtonAttackTypeDictionary.Location = new System.Drawing.Point(16, 24);
+            this.radioButtonAttackTypeDictionary.Location = new System.Drawing.Point(6, 6);
             this.radioButtonAttackTypeDictionary.Name = "radioButtonAttackTypeDictionary";
             this.radioButtonAttackTypeDictionary.Size = new System.Drawing.Size(75, 17);
             this.radioButtonAttackTypeDictionary.TabIndex = 13;
@@ -179,29 +187,7 @@ namespace LeukocyteGUI_for_oclHashCat
             // 
             // groupBoxAttackType
             // 
-            this.groupBoxAttackType.Controls.Add(this.buttonChooseMaskFile);
-            this.groupBoxAttackType.Controls.Add(this.buttonChooseCharsetFile4);
-            this.groupBoxAttackType.Controls.Add(this.buttonChooseCharsetFile3);
-            this.groupBoxAttackType.Controls.Add(this.buttonChooseCharsetFile2);
-            this.groupBoxAttackType.Controls.Add(this.buttonChooseCharsetFile1);
-            this.groupBoxAttackType.Controls.Add(this.labelMasks);
-            this.groupBoxAttackType.Controls.Add(this.labelDictionaries);
-            this.groupBoxAttackType.Controls.Add(this.radioButtonAttackTypeMulti);
-            this.groupBoxAttackType.Controls.Add(this.checkedListBoxMask);
-            this.groupBoxAttackType.Controls.Add(this.checkedListBoxDictionary);
-            this.groupBoxAttackType.Controls.Add(this.buttonChooseDictionaryFile);
-            this.groupBoxAttackType.Controls.Add(this.checkBoxCharset4);
-            this.groupBoxAttackType.Controls.Add(this.textBoxCharset4);
-            this.groupBoxAttackType.Controls.Add(this.checkBoxCharset3);
-            this.groupBoxAttackType.Controls.Add(this.textBoxCharset3);
-            this.groupBoxAttackType.Controls.Add(this.checkBoxCharset2);
-            this.groupBoxAttackType.Controls.Add(this.textBoxCharset2);
-            this.groupBoxAttackType.Controls.Add(this.checkBoxCharset1);
-            this.groupBoxAttackType.Controls.Add(this.textBoxCharset1);
-            this.groupBoxAttackType.Controls.Add(this.textBoxDictionary);
-            this.groupBoxAttackType.Controls.Add(this.textBoxBruteforceMask);
-            this.groupBoxAttackType.Controls.Add(this.radioButtonAttackTypeBrute);
-            this.groupBoxAttackType.Controls.Add(this.radioButtonAttackTypeDictionary);
+            this.groupBoxAttackType.Controls.Add(this.tabControlAttackType);
             this.groupBoxAttackType.Location = new System.Drawing.Point(13, 117);
             this.groupBoxAttackType.Name = "groupBoxAttackType";
             this.groupBoxAttackType.Size = new System.Drawing.Size(503, 266);
@@ -209,131 +195,36 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxAttackType.TabStop = false;
             this.groupBoxAttackType.Text = "Attack type";
             // 
-            // buttonChooseMaskFile
+            // tabControlAttackType
             // 
-            this.buttonChooseMaskFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseMaskFile.FlatAppearance.BorderSize = 0;
-            this.buttonChooseMaskFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseMaskFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseMaskFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseMaskFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseMaskFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseMaskFile.Location = new System.Drawing.Point(228, 92);
-            this.buttonChooseMaskFile.Name = "buttonChooseMaskFile";
-            this.buttonChooseMaskFile.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseMaskFile.TabIndex = 58;
-            this.buttonChooseMaskFile.UseVisualStyleBackColor = true;
-            this.buttonChooseMaskFile.Click += new System.EventHandler(this.buttonChooseMaskFile_Click);
+            this.tabControlAttackType.Controls.Add(this.tabPageAttackTypeDictionary);
+            this.tabControlAttackType.Controls.Add(this.tabPageAttackTypeMask);
+            this.tabControlAttackType.Controls.Add(this.tabPageAttackTypeMultiple);
+            this.tabControlAttackType.Location = new System.Drawing.Point(16, 19);
+            this.tabControlAttackType.Name = "tabControlAttackType";
+            this.tabControlAttackType.SelectedIndex = 0;
+            this.tabControlAttackType.Size = new System.Drawing.Size(472, 232);
+            this.tabControlAttackType.TabIndex = 59;
             // 
-            // buttonChooseCharsetFile4
+            // tabPageAttackTypeDictionary
             // 
-            this.buttonChooseCharsetFile4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseCharsetFile4.FlatAppearance.BorderSize = 0;
-            this.buttonChooseCharsetFile4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseCharsetFile4.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseCharsetFile4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseCharsetFile4.Location = new System.Drawing.Point(228, 210);
-            this.buttonChooseCharsetFile4.Name = "buttonChooseCharsetFile4";
-            this.buttonChooseCharsetFile4.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseCharsetFile4.TabIndex = 57;
-            this.buttonChooseCharsetFile4.UseVisualStyleBackColor = true;
-            this.buttonChooseCharsetFile4.Click += new System.EventHandler(this.buttonChooseCharsetFile4_Click);
+            this.tabPageAttackTypeDictionary.Controls.Add(this.radioButtonAttackTypeDictionary);
+            this.tabPageAttackTypeDictionary.Controls.Add(this.textBoxDictionary);
+            this.tabPageAttackTypeDictionary.Controls.Add(this.buttonChooseDictionaryFile);
+            this.tabPageAttackTypeDictionary.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAttackTypeDictionary.Name = "tabPageAttackTypeDictionary";
+            this.tabPageAttackTypeDictionary.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAttackTypeDictionary.Size = new System.Drawing.Size(464, 206);
+            this.tabPageAttackTypeDictionary.TabIndex = 0;
+            this.tabPageAttackTypeDictionary.Text = "Dictionary";
+            this.tabPageAttackTypeDictionary.UseVisualStyleBackColor = true;
             // 
-            // buttonChooseCharsetFile3
+            // textBoxDictionary
             // 
-            this.buttonChooseCharsetFile3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseCharsetFile3.FlatAppearance.BorderSize = 0;
-            this.buttonChooseCharsetFile3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseCharsetFile3.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseCharsetFile3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseCharsetFile3.Location = new System.Drawing.Point(228, 181);
-            this.buttonChooseCharsetFile3.Name = "buttonChooseCharsetFile3";
-            this.buttonChooseCharsetFile3.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseCharsetFile3.TabIndex = 56;
-            this.buttonChooseCharsetFile3.UseVisualStyleBackColor = true;
-            this.buttonChooseCharsetFile3.Click += new System.EventHandler(this.buttonChooseCharsetFile3_Click);
-            // 
-            // buttonChooseCharsetFile2
-            // 
-            this.buttonChooseCharsetFile2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseCharsetFile2.FlatAppearance.BorderSize = 0;
-            this.buttonChooseCharsetFile2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseCharsetFile2.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseCharsetFile2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseCharsetFile2.Location = new System.Drawing.Point(228, 152);
-            this.buttonChooseCharsetFile2.Name = "buttonChooseCharsetFile2";
-            this.buttonChooseCharsetFile2.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseCharsetFile2.TabIndex = 55;
-            this.buttonChooseCharsetFile2.UseVisualStyleBackColor = true;
-            this.buttonChooseCharsetFile2.Click += new System.EventHandler(this.buttonChooseCharsetFile2_Click);
-            // 
-            // buttonChooseCharsetFile1
-            // 
-            this.buttonChooseCharsetFile1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
-            this.buttonChooseCharsetFile1.FlatAppearance.BorderSize = 0;
-            this.buttonChooseCharsetFile1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.buttonChooseCharsetFile1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChooseCharsetFile1.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
-            this.buttonChooseCharsetFile1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseCharsetFile1.Location = new System.Drawing.Point(228, 123);
-            this.buttonChooseCharsetFile1.Name = "buttonChooseCharsetFile1";
-            this.buttonChooseCharsetFile1.Size = new System.Drawing.Size(34, 22);
-            this.buttonChooseCharsetFile1.TabIndex = 54;
-            this.buttonChooseCharsetFile1.UseVisualStyleBackColor = true;
-            this.buttonChooseCharsetFile1.Click += new System.EventHandler(this.buttonChooseCharsetFile1_Click);
-            // 
-            // labelMasks
-            // 
-            this.labelMasks.AutoSize = true;
-            this.labelMasks.Location = new System.Drawing.Point(287, 155);
-            this.labelMasks.Name = "labelMasks";
-            this.labelMasks.Size = new System.Drawing.Size(41, 13);
-            this.labelMasks.TabIndex = 53;
-            this.labelMasks.Text = "Masks:";
-            // 
-            // labelDictionaries
-            // 
-            this.labelDictionaries.AutoSize = true;
-            this.labelDictionaries.Location = new System.Drawing.Point(287, 48);
-            this.labelDictionaries.Name = "labelDictionaries";
-            this.labelDictionaries.Size = new System.Drawing.Size(65, 13);
-            this.labelDictionaries.TabIndex = 52;
-            this.labelDictionaries.Text = "Dictionaries:";
-            // 
-            // radioButtonAttackTypeMulti
-            // 
-            this.radioButtonAttackTypeMulti.AutoSize = true;
-            this.radioButtonAttackTypeMulti.Location = new System.Drawing.Point(284, 24);
-            this.radioButtonAttackTypeMulti.Name = "radioButtonAttackTypeMulti";
-            this.radioButtonAttackTypeMulti.Size = new System.Drawing.Size(102, 17);
-            this.radioButtonAttackTypeMulti.TabIndex = 51;
-            this.radioButtonAttackTypeMulti.Text = "Multiple attacks:";
-            this.radioButtonAttackTypeMulti.UseVisualStyleBackColor = true;
-            // 
-            // checkedListBoxMask
-            // 
-            this.checkedListBoxMask.CheckOnClick = true;
-            this.checkedListBoxMask.FormattingEnabled = true;
-            this.checkedListBoxMask.Location = new System.Drawing.Point(290, 171);
-            this.checkedListBoxMask.Name = "checkedListBoxMask";
-            this.checkedListBoxMask.Size = new System.Drawing.Size(195, 79);
-            this.checkedListBoxMask.TabIndex = 50;
-            // 
-            // checkedListBoxDictionary
-            // 
-            this.checkedListBoxDictionary.CheckOnClick = true;
-            this.checkedListBoxDictionary.FormattingEnabled = true;
-            this.checkedListBoxDictionary.Location = new System.Drawing.Point(290, 64);
-            this.checkedListBoxDictionary.Name = "checkedListBoxDictionary";
-            this.checkedListBoxDictionary.Size = new System.Drawing.Size(195, 79);
-            this.checkedListBoxDictionary.TabIndex = 49;
+            this.textBoxDictionary.Location = new System.Drawing.Point(15, 27);
+            this.textBoxDictionary.Name = "textBoxDictionary";
+            this.textBoxDictionary.Size = new System.Drawing.Size(408, 20);
+            this.textBoxDictionary.TabIndex = 14;
             // 
             // buttonChooseDictionaryFile
             // 
@@ -344,94 +235,253 @@ namespace LeukocyteGUI_for_oclHashCat
             this.buttonChooseDictionaryFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonChooseDictionaryFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
             this.buttonChooseDictionaryFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonChooseDictionaryFile.Location = new System.Drawing.Point(228, 45);
+            this.buttonChooseDictionaryFile.Location = new System.Drawing.Point(424, 26);
             this.buttonChooseDictionaryFile.Name = "buttonChooseDictionaryFile";
             this.buttonChooseDictionaryFile.Size = new System.Drawing.Size(34, 22);
             this.buttonChooseDictionaryFile.TabIndex = 48;
             this.buttonChooseDictionaryFile.UseVisualStyleBackColor = true;
             this.buttonChooseDictionaryFile.Click += new System.EventHandler(this.buttonChooseDictionaryFile_Click);
             // 
-            // checkBoxCharset4
+            // tabPageAttackTypeMask
             // 
-            this.checkBoxCharset4.AutoSize = true;
-            this.checkBoxCharset4.Location = new System.Drawing.Point(25, 213);
-            this.checkBoxCharset4.Name = "checkBoxCharset4";
-            this.checkBoxCharset4.Size = new System.Drawing.Size(74, 17);
-            this.checkBoxCharset4.TabIndex = 11;
-            this.checkBoxCharset4.Text = "Charset 4:";
-            this.checkBoxCharset4.UseVisualStyleBackColor = true;
+            this.tabPageAttackTypeMask.Controls.Add(this.radioButtonAttackTypeBrute);
+            this.tabPageAttackTypeMask.Controls.Add(this.buttonChooseMaskFile);
+            this.tabPageAttackTypeMask.Controls.Add(this.textBoxBruteforceMask);
+            this.tabPageAttackTypeMask.Controls.Add(this.buttonChooseCharsetFile4);
+            this.tabPageAttackTypeMask.Controls.Add(this.textBoxCharset1);
+            this.tabPageAttackTypeMask.Controls.Add(this.buttonChooseCharsetFile3);
+            this.tabPageAttackTypeMask.Controls.Add(this.checkBoxCharset1);
+            this.tabPageAttackTypeMask.Controls.Add(this.buttonChooseCharsetFile2);
+            this.tabPageAttackTypeMask.Controls.Add(this.textBoxCharset2);
+            this.tabPageAttackTypeMask.Controls.Add(this.buttonChooseCharsetFile1);
+            this.tabPageAttackTypeMask.Controls.Add(this.checkBoxCharset2);
+            this.tabPageAttackTypeMask.Controls.Add(this.textBoxCharset3);
+            this.tabPageAttackTypeMask.Controls.Add(this.checkBoxCharset3);
+            this.tabPageAttackTypeMask.Controls.Add(this.textBoxCharset4);
+            this.tabPageAttackTypeMask.Controls.Add(this.checkBoxCharset4);
+            this.tabPageAttackTypeMask.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAttackTypeMask.Name = "tabPageAttackTypeMask";
+            this.tabPageAttackTypeMask.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAttackTypeMask.Size = new System.Drawing.Size(464, 206);
+            this.tabPageAttackTypeMask.TabIndex = 1;
+            this.tabPageAttackTypeMask.Text = "Mask";
+            this.tabPageAttackTypeMask.UseVisualStyleBackColor = true;
             // 
-            // textBoxCharset4
+            // buttonChooseMaskFile
             // 
-            this.textBoxCharset4.Location = new System.Drawing.Point(105, 211);
-            this.textBoxCharset4.Name = "textBoxCharset4";
-            this.textBoxCharset4.Size = new System.Drawing.Size(117, 20);
-            this.textBoxCharset4.TabIndex = 12;
+            this.buttonChooseMaskFile.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseMaskFile.FlatAppearance.BorderSize = 0;
+            this.buttonChooseMaskFile.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseMaskFile.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseMaskFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseMaskFile.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseMaskFile.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseMaskFile.Location = new System.Drawing.Point(424, 25);
+            this.buttonChooseMaskFile.Name = "buttonChooseMaskFile";
+            this.buttonChooseMaskFile.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseMaskFile.TabIndex = 58;
+            this.buttonChooseMaskFile.UseVisualStyleBackColor = true;
+            this.buttonChooseMaskFile.Click += new System.EventHandler(this.buttonChooseMaskFile_Click);
             // 
-            // checkBoxCharset3
+            // textBoxBruteforceMask
             // 
-            this.checkBoxCharset3.AutoSize = true;
-            this.checkBoxCharset3.Location = new System.Drawing.Point(25, 184);
-            this.checkBoxCharset3.Name = "checkBoxCharset3";
-            this.checkBoxCharset3.Size = new System.Drawing.Size(74, 17);
-            this.checkBoxCharset3.TabIndex = 9;
-            this.checkBoxCharset3.Text = "Charset 3:";
-            this.checkBoxCharset3.UseVisualStyleBackColor = true;
+            this.textBoxBruteforceMask.Location = new System.Drawing.Point(15, 27);
+            this.textBoxBruteforceMask.Name = "textBoxBruteforceMask";
+            this.textBoxBruteforceMask.Size = new System.Drawing.Size(403, 20);
+            this.textBoxBruteforceMask.TabIndex = 4;
             // 
-            // textBoxCharset3
+            // buttonChooseCharsetFile4
             // 
-            this.textBoxCharset3.Location = new System.Drawing.Point(105, 182);
-            this.textBoxCharset3.Name = "textBoxCharset3";
-            this.textBoxCharset3.Size = new System.Drawing.Size(117, 20);
-            this.textBoxCharset3.TabIndex = 10;
+            this.buttonChooseCharsetFile4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile4.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile4.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile4.Location = new System.Drawing.Point(424, 142);
+            this.buttonChooseCharsetFile4.Name = "buttonChooseCharsetFile4";
+            this.buttonChooseCharsetFile4.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile4.TabIndex = 57;
+            this.buttonChooseCharsetFile4.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile4.Click += new System.EventHandler(this.buttonChooseCharsetFile4_Click);
             // 
-            // checkBoxCharset2
+            // textBoxCharset1
             // 
-            this.checkBoxCharset2.AutoSize = true;
-            this.checkBoxCharset2.Location = new System.Drawing.Point(25, 155);
-            this.checkBoxCharset2.Name = "checkBoxCharset2";
-            this.checkBoxCharset2.Size = new System.Drawing.Size(74, 17);
-            this.checkBoxCharset2.TabIndex = 7;
-            this.checkBoxCharset2.Text = "Charset 2:";
-            this.checkBoxCharset2.UseVisualStyleBackColor = true;
+            this.textBoxCharset1.Location = new System.Drawing.Point(95, 56);
+            this.textBoxCharset1.Name = "textBoxCharset1";
+            this.textBoxCharset1.Size = new System.Drawing.Size(323, 20);
+            this.textBoxCharset1.TabIndex = 6;
             // 
-            // textBoxCharset2
+            // buttonChooseCharsetFile3
             // 
-            this.textBoxCharset2.Location = new System.Drawing.Point(105, 153);
-            this.textBoxCharset2.Name = "textBoxCharset2";
-            this.textBoxCharset2.Size = new System.Drawing.Size(117, 20);
-            this.textBoxCharset2.TabIndex = 8;
+            this.buttonChooseCharsetFile3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile3.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile3.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile3.Location = new System.Drawing.Point(424, 113);
+            this.buttonChooseCharsetFile3.Name = "buttonChooseCharsetFile3";
+            this.buttonChooseCharsetFile3.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile3.TabIndex = 56;
+            this.buttonChooseCharsetFile3.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile3.Click += new System.EventHandler(this.buttonChooseCharsetFile3_Click);
             // 
             // checkBoxCharset1
             // 
             this.checkBoxCharset1.AutoSize = true;
-            this.checkBoxCharset1.Location = new System.Drawing.Point(25, 126);
+            this.checkBoxCharset1.Location = new System.Drawing.Point(15, 58);
             this.checkBoxCharset1.Name = "checkBoxCharset1";
             this.checkBoxCharset1.Size = new System.Drawing.Size(74, 17);
             this.checkBoxCharset1.TabIndex = 5;
             this.checkBoxCharset1.Text = "Charset 1:";
             this.checkBoxCharset1.UseVisualStyleBackColor = true;
             // 
-            // textBoxCharset1
+            // buttonChooseCharsetFile2
             // 
-            this.textBoxCharset1.Location = new System.Drawing.Point(105, 124);
-            this.textBoxCharset1.Name = "textBoxCharset1";
-            this.textBoxCharset1.Size = new System.Drawing.Size(117, 20);
-            this.textBoxCharset1.TabIndex = 6;
+            this.buttonChooseCharsetFile2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile2.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile2.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile2.Location = new System.Drawing.Point(424, 84);
+            this.buttonChooseCharsetFile2.Name = "buttonChooseCharsetFile2";
+            this.buttonChooseCharsetFile2.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile2.TabIndex = 55;
+            this.buttonChooseCharsetFile2.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile2.Click += new System.EventHandler(this.buttonChooseCharsetFile2_Click);
             // 
-            // textBoxDictionary
+            // textBoxCharset2
             // 
-            this.textBoxDictionary.Location = new System.Drawing.Point(25, 45);
-            this.textBoxDictionary.Name = "textBoxDictionary";
-            this.textBoxDictionary.Size = new System.Drawing.Size(197, 20);
-            this.textBoxDictionary.TabIndex = 14;
+            this.textBoxCharset2.Location = new System.Drawing.Point(95, 85);
+            this.textBoxCharset2.Name = "textBoxCharset2";
+            this.textBoxCharset2.Size = new System.Drawing.Size(323, 20);
+            this.textBoxCharset2.TabIndex = 8;
             // 
-            // textBoxBruteforceMask
+            // buttonChooseCharsetFile1
             // 
-            this.textBoxBruteforceMask.Location = new System.Drawing.Point(25, 93);
-            this.textBoxBruteforceMask.Name = "textBoxBruteforceMask";
-            this.textBoxBruteforceMask.Size = new System.Drawing.Size(197, 20);
-            this.textBoxBruteforceMask.TabIndex = 4;
+            this.buttonChooseCharsetFile1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonChooseCharsetFile1.FlatAppearance.BorderSize = 0;
+            this.buttonChooseCharsetFile1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.buttonChooseCharsetFile1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChooseCharsetFile1.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_open_exe16;
+            this.buttonChooseCharsetFile1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.buttonChooseCharsetFile1.Location = new System.Drawing.Point(424, 55);
+            this.buttonChooseCharsetFile1.Name = "buttonChooseCharsetFile1";
+            this.buttonChooseCharsetFile1.Size = new System.Drawing.Size(34, 22);
+            this.buttonChooseCharsetFile1.TabIndex = 54;
+            this.buttonChooseCharsetFile1.UseVisualStyleBackColor = true;
+            this.buttonChooseCharsetFile1.Click += new System.EventHandler(this.buttonChooseCharsetFile1_Click);
+            // 
+            // checkBoxCharset2
+            // 
+            this.checkBoxCharset2.AutoSize = true;
+            this.checkBoxCharset2.Location = new System.Drawing.Point(15, 87);
+            this.checkBoxCharset2.Name = "checkBoxCharset2";
+            this.checkBoxCharset2.Size = new System.Drawing.Size(74, 17);
+            this.checkBoxCharset2.TabIndex = 7;
+            this.checkBoxCharset2.Text = "Charset 2:";
+            this.checkBoxCharset2.UseVisualStyleBackColor = true;
+            // 
+            // textBoxCharset3
+            // 
+            this.textBoxCharset3.Location = new System.Drawing.Point(95, 114);
+            this.textBoxCharset3.Name = "textBoxCharset3";
+            this.textBoxCharset3.Size = new System.Drawing.Size(323, 20);
+            this.textBoxCharset3.TabIndex = 10;
+            // 
+            // checkBoxCharset3
+            // 
+            this.checkBoxCharset3.AutoSize = true;
+            this.checkBoxCharset3.Location = new System.Drawing.Point(15, 116);
+            this.checkBoxCharset3.Name = "checkBoxCharset3";
+            this.checkBoxCharset3.Size = new System.Drawing.Size(74, 17);
+            this.checkBoxCharset3.TabIndex = 9;
+            this.checkBoxCharset3.Text = "Charset 3:";
+            this.checkBoxCharset3.UseVisualStyleBackColor = true;
+            // 
+            // textBoxCharset4
+            // 
+            this.textBoxCharset4.Location = new System.Drawing.Point(95, 143);
+            this.textBoxCharset4.Name = "textBoxCharset4";
+            this.textBoxCharset4.Size = new System.Drawing.Size(323, 20);
+            this.textBoxCharset4.TabIndex = 12;
+            // 
+            // checkBoxCharset4
+            // 
+            this.checkBoxCharset4.AutoSize = true;
+            this.checkBoxCharset4.Location = new System.Drawing.Point(15, 145);
+            this.checkBoxCharset4.Name = "checkBoxCharset4";
+            this.checkBoxCharset4.Size = new System.Drawing.Size(74, 17);
+            this.checkBoxCharset4.TabIndex = 11;
+            this.checkBoxCharset4.Text = "Charset 4:";
+            this.checkBoxCharset4.UseVisualStyleBackColor = true;
+            // 
+            // tabPageAttackTypeMultiple
+            // 
+            this.tabPageAttackTypeMultiple.Controls.Add(this.radioButtonAttackTypeMulti);
+            this.tabPageAttackTypeMultiple.Controls.Add(this.labelMasks);
+            this.tabPageAttackTypeMultiple.Controls.Add(this.checkedListBoxDictionary);
+            this.tabPageAttackTypeMultiple.Controls.Add(this.labelDictionaries);
+            this.tabPageAttackTypeMultiple.Controls.Add(this.checkedListBoxMask);
+            this.tabPageAttackTypeMultiple.Location = new System.Drawing.Point(4, 22);
+            this.tabPageAttackTypeMultiple.Name = "tabPageAttackTypeMultiple";
+            this.tabPageAttackTypeMultiple.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageAttackTypeMultiple.Size = new System.Drawing.Size(464, 206);
+            this.tabPageAttackTypeMultiple.TabIndex = 2;
+            this.tabPageAttackTypeMultiple.Text = "Multiple";
+            this.tabPageAttackTypeMultiple.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAttackTypeMulti
+            // 
+            this.radioButtonAttackTypeMulti.AutoSize = true;
+            this.radioButtonAttackTypeMulti.Location = new System.Drawing.Point(6, 6);
+            this.radioButtonAttackTypeMulti.Name = "radioButtonAttackTypeMulti";
+            this.radioButtonAttackTypeMulti.Size = new System.Drawing.Size(102, 17);
+            this.radioButtonAttackTypeMulti.TabIndex = 51;
+            this.radioButtonAttackTypeMulti.Text = "Multiple attacks:";
+            this.radioButtonAttackTypeMulti.UseVisualStyleBackColor = true;
+            // 
+            // labelMasks
+            // 
+            this.labelMasks.AutoSize = true;
+            this.labelMasks.Location = new System.Drawing.Point(217, 30);
+            this.labelMasks.Name = "labelMasks";
+            this.labelMasks.Size = new System.Drawing.Size(41, 13);
+            this.labelMasks.TabIndex = 53;
+            this.labelMasks.Text = "Masks:";
+            // 
+            // checkedListBoxDictionary
+            // 
+            this.checkedListBoxDictionary.CheckOnClick = true;
+            this.checkedListBoxDictionary.FormattingEnabled = true;
+            this.checkedListBoxDictionary.Location = new System.Drawing.Point(12, 46);
+            this.checkedListBoxDictionary.Name = "checkedListBoxDictionary";
+            this.checkedListBoxDictionary.Size = new System.Drawing.Size(195, 79);
+            this.checkedListBoxDictionary.TabIndex = 49;
+            // 
+            // labelDictionaries
+            // 
+            this.labelDictionaries.AutoSize = true;
+            this.labelDictionaries.Location = new System.Drawing.Point(9, 30);
+            this.labelDictionaries.Name = "labelDictionaries";
+            this.labelDictionaries.Size = new System.Drawing.Size(65, 13);
+            this.labelDictionaries.TabIndex = 52;
+            this.labelDictionaries.Text = "Dictionaries:";
+            // 
+            // checkedListBoxMask
+            // 
+            this.checkedListBoxMask.CheckOnClick = true;
+            this.checkedListBoxMask.FormattingEnabled = true;
+            this.checkedListBoxMask.Location = new System.Drawing.Point(220, 46);
+            this.checkedListBoxMask.Name = "checkedListBoxMask";
+            this.checkedListBoxMask.Size = new System.Drawing.Size(195, 79);
+            this.checkedListBoxMask.TabIndex = 50;
             // 
             // groupBoxHash
             // 
@@ -449,6 +499,19 @@ namespace LeukocyteGUI_for_oclHashCat
             this.groupBoxHash.TabIndex = 0;
             this.groupBoxHash.TabStop = false;
             this.groupBoxHash.Text = "Hash";
+            // 
+            // checkBoxDetectHashType
+            // 
+            this.checkBoxDetectHashType.AutoSize = true;
+            this.checkBoxDetectHashType.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.DetectHashType;
+            this.checkBoxDetectHashType.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDetectHashType.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "DetectHashType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxDetectHashType.Location = new System.Drawing.Point(78, 71);
+            this.checkBoxDetectHashType.Name = "checkBoxDetectHashType";
+            this.checkBoxDetectHashType.Size = new System.Drawing.Size(199, 17);
+            this.checkBoxDetectHashType.TabIndex = 48;
+            this.checkBoxDetectHashType.Text = "Try to detect hash type automatically";
+            this.checkBoxDetectHashType.UseVisualStyleBackColor = true;
             // 
             // buttonChooseHashFile
             // 
@@ -1174,19 +1237,6 @@ namespace LeukocyteGUI_for_oclHashCat
             this.openFileDialogMask.Filter = "Hashcat mask files (*.hcmask)|*.hcmask|Any files (*.*)|*.*";
             this.openFileDialogMask.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialogMask_FileOk);
             // 
-            // checkBoxDetectHashType
-            // 
-            this.checkBoxDetectHashType.AutoSize = true;
-            this.checkBoxDetectHashType.Checked = global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default.DetectHashType;
-            this.checkBoxDetectHashType.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDetectHashType.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::LeukocyteGUI_for_oclHashCat.Properties.Settings.Default, "DetectHashType", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxDetectHashType.Location = new System.Drawing.Point(78, 71);
-            this.checkBoxDetectHashType.Name = "checkBoxDetectHashType";
-            this.checkBoxDetectHashType.Size = new System.Drawing.Size(199, 17);
-            this.checkBoxDetectHashType.TabIndex = 48;
-            this.checkBoxDetectHashType.Text = "Try to detect hash type automatically";
-            this.checkBoxDetectHashType.UseVisualStyleBackColor = true;
-            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1211,7 +1261,13 @@ namespace LeukocyteGUI_for_oclHashCat
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskEditorForm_FormClosing);
             this.Load += new System.EventHandler(this.TaskEditorForm_Load);
             this.groupBoxAttackType.ResumeLayout(false);
-            this.groupBoxAttackType.PerformLayout();
+            this.tabControlAttackType.ResumeLayout(false);
+            this.tabPageAttackTypeDictionary.ResumeLayout(false);
+            this.tabPageAttackTypeDictionary.PerformLayout();
+            this.tabPageAttackTypeMask.ResumeLayout(false);
+            this.tabPageAttackTypeMask.PerformLayout();
+            this.tabPageAttackTypeMultiple.ResumeLayout(false);
+            this.tabPageAttackTypeMultiple.PerformLayout();
             this.groupBoxHash.ResumeLayout(false);
             this.groupBoxHash.PerformLayout();
             this.groupBoxIncrement.ResumeLayout(false);
@@ -1317,5 +1373,9 @@ namespace LeukocyteGUI_for_oclHashCat
         private System.Windows.Forms.Button buttonChooseMaskFile;
         private System.Windows.Forms.OpenFileDialog openFileDialogMask;
         private System.Windows.Forms.CheckBox checkBoxDetectHashType;
+        private System.Windows.Forms.TabControl tabControlAttackType;
+        private System.Windows.Forms.TabPage tabPageAttackTypeDictionary;
+        private System.Windows.Forms.TabPage tabPageAttackTypeMask;
+        private System.Windows.Forms.TabPage tabPageAttackTypeMultiple;
     }
 }
