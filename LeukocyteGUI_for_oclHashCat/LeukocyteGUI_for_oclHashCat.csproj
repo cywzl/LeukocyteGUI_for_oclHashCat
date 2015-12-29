@@ -91,80 +91,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ConverterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConverterForm.Designer.cs">
-      <DependentUpon>ConverterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConvertationStatisticsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConvertationStatisticsForm.Designer.cs">
-      <DependentUpon>ConvertationStatisticsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DictionaryEditorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DictionaryEditorForm.Designer.cs">
-      <DependentUpon>DictionaryEditorForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MaskEditorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MaskEditorForm.Designer.cs">
-      <DependentUpon>MaskEditorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TaskEditorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TaskEditorForm.Designer.cs">
-      <DependentUpon>TaskEditorForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsForm.Designer.cs">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ConverterForm.resx">
-      <DependentUpon>ConverterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConvertationStatisticsForm.resx">
-      <DependentUpon>ConvertationStatisticsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DictionaryEditorForm.resx">
-      <DependentUpon>DictionaryEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MaskEditorForm.resx">
-      <DependentUpon>MaskEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TaskEditorForm.resx">
-      <DependentUpon>TaskEditorForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="LeukocyteGUI_for_oclHashCat_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
