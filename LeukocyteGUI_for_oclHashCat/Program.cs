@@ -38,6 +38,8 @@ namespace LeukocyteGUI_for_oclHashCat
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
+            CrackManager m = new CrackManager("");
+            m.SwapTasks(0, 1);
         }
     }
 }

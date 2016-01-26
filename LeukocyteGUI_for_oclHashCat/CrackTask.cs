@@ -85,7 +85,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if (value < 0)
                 {
-                    throw new ArgumentException("HashType should be a non-negative value.");
+                    throw new ArgumentOutOfRangeException("HashType should be a non-negative value.");
                 }
 
                 hashType = value;
@@ -259,7 +259,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("WeakHashThreshold should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("WeakHashThreshold should be a positive integer value or -1 if not used.");
                 }
 
                 weakHashThreshold = value;
@@ -349,7 +349,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("MarkovThreshold should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("MarkovThreshold should be a positive integer value or -1 if not used.");
                 }
 
                 markovThreshold = value;
@@ -376,7 +376,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("RunTime should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("RunTime should be a positive integer value or -1 if not used.");
                 }
 
                 runTime = value;
@@ -487,7 +487,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("OutFileFormat should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("OutFileFormat should be a positive integer value or -1 if not used.");
                 }
 
                 outFileFormat = value;
@@ -533,7 +533,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("OutFileCheckTimer should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("OutFileCheckTimer should be a positive integer value or -1 if not used.");
                 }
 
                 outFileCheckTimer = value;
@@ -663,7 +663,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("RemoveTimer should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("RemoveTimer should be a positive integer value or -1 if not used.");
                 }
 
                 removeTimer = value;
@@ -838,7 +838,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("SegmentSize should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("SegmentSize should be a positive integer value or -1 if not used.");
                 }
 
                 segmentSize = value;
@@ -863,7 +863,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if (value <= 0)
                 {
-                    throw new ArgumentException("BitmapMin should be a positive integer value.");
+                    throw new ArgumentOutOfRangeException("BitmapMin should be a positive integer value.");
                 }
 
                 bitmapMin = value;
@@ -888,7 +888,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("BitmapMax should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("BitmapMax should be a positive integer value or -1 if not used.");
                 }
 
                 bitmapMax = value;
@@ -997,7 +997,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GpuAcceleration should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GpuAcceleration should be a positive integer value or -1 if not used.");
                 }
 
                 gpuAcceleration = value;
@@ -1022,7 +1022,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if (((value < 8) || (value > 1024)) && (value != -1))
                 {
-                    throw new ArgumentException("GpuLoops should be from 8 to 1024 or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GpuLoops should be from 8 to 1024 or -1 if not used.");
                 }
 
                 gpuLoops = value;
@@ -1068,7 +1068,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GpuTempAbort should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GpuTempAbort should be a positive integer value or -1 if not used.");
                 }
 
                 gpuTempAbort = value;
@@ -1093,7 +1093,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GpuTempRetain should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GpuTempRetain should be a positive integer value or -1 if not used.");
                 }
 
                 gpuTempRetain = value;
@@ -1162,7 +1162,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("Skip should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("Skip should be a positive integer value or -1 if not used.");
                 }
 
                 skip = value;
@@ -1187,7 +1187,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("Limit should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("Limit should be a positive integer value or -1 if not used.");
                 }
 
                 segmentSize = value;
@@ -1298,7 +1298,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GenerateRules should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GenerateRules should be a positive integer value or -1 if not used.");
                 }
 
                 generateRules = value;
@@ -1323,7 +1323,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GenerateRulesFuncMin should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GenerateRulesFuncMin should be a positive integer value or -1 if not used.");
                 }
 
                 generateRulesFuncMin = value;
@@ -1348,7 +1348,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GenerateRulesFuncMax should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GenerateRulesFuncMax should be a positive integer value or -1 if not used.");
                 }
 
                 generateRulesFuncMax = value;
@@ -1373,7 +1373,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("GenerateRulesSeed should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("GenerateRulesSeed should be a positive integer value or -1 if not used.");
                 }
 
                 generateRulesSeed = value;
@@ -1591,7 +1591,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("IncrementMin should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("IncrementMin should be a positive integer value or -1 if not used.");
                 }
 
                 incrementMin = value;
@@ -1616,7 +1616,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
                 if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentException("IncrementMax should be a positive integer value or -1 if not used.");
+                    throw new ArgumentOutOfRangeException("IncrementMax should be a positive integer value or -1 if not used.");
                 }
 
                 incrementMax = value;
