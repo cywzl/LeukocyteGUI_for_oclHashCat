@@ -9,7 +9,8 @@ namespace LeukocyteGUI_for_oclHashCat
         Paused,
         Cracking,
         Cracked,
-        Exausted
+        Exausted,
+        Queued
     }
 
     public enum AttackModes

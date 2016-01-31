@@ -181,6 +181,66 @@ namespace LeukocyteGUI_for_oclHashCat
             CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(secondCrackTask,
                 secondCrackTaskId, firstCrackTaskId));
         }
+        public bool TrySwapTasks(int firstCrackTaskId, int secondCrackTaskId)
+        {
+            try
+            {
+                SwapTasks(firstCrackTaskId, secondCrackTaskId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public void MoveTask(int crackTaskId, int newCrackTaskId)
+        {
+            if (crackTaskId < 0)
+            {
+                throw new ArgumentOutOfRangeException("firstCrackTaskId", "TaskId cannot be less than 0.");
+            }
+            if (crackTaskId >= crackTasks.Count)
+            {
+                throw new ArgumentOutOfRangeException("firstCrackTaskId", "TaskId cannot be greater than last task's id.");
+            }
+            if (newCrackTaskId < 0)
+            {
+                throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be less than 0.");
+            }
+            if (newCrackTaskId > crackTasks.Count)
+            {
+                throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be greater than last task's id more than by 1.");
+            }
+            if (crackTaskId == newCrackTaskId)
+            {
+                throw new ArgumentException("NewCrackTask cannot be the same as CrackTaskId.", "newCrackTaskId");
+            }
+
+            CrackTask crackTask = crackTasks[crackTaskId];
+            crackTasks.RemoveAt(crackTaskId);
+            crackTasks.Insert(newCrackTaskId, crackTask);
+            
+            if(newCrackTaskId < crackTaskId)
+            {
+                CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(crackTask, crackTaskId, newCrackTaskId));
+
+                for(int i = newCrackTaskId; i < crackTaskId; i++)
+                {
+                    CrackTask curCrackTask = crackTasks[i + 1];
+                    CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(curCrackTask, i, i + 1));
+                }
+            }
+            else
+            {
+                CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(crackTask, crackTaskId, newCrackTaskId - 1));
+
+                for(int i = crackTaskId + 1; i < newCrackTaskId; i++)
+                {
+                    CrackTask curCrackTask = crackTasks[i - 1];
+                    CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(curCrackTask, i, i - 1));
+                }
+            }
+        }
 
         private void Cracker_Exited(object sender, EventArgs e)
         {
