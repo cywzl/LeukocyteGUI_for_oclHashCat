@@ -79,11 +79,55 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public event CrackManagerTaskChangedEventHandler CrackTaskAdded = delegate { };
         public event CrackManagerTaskChangedEventHandler CrackTaskRemoved = delegate { };
+        public event CrackManagerTaskChangedEventHandler CrackTaskChanged = delegate { };
         public event CrackManagerTaskMovedEventHandler CrackTaskMoved = delegate { };
         public event CrackManagerEventHandler CrackTasksCleared = delegate { };
-
-        private Process cracker;
         
+        private Process cracker;
+        private int runningTaskId;
+        private CrackTask RunningTask
+        {
+            get
+            {
+                if (runningTaskId == -1)
+                {
+                    return null;
+                }
+                else
+                {
+                    return crackTasks[runningTaskId];
+                }
+            }
+        }
+        private List<CrackTask> crackTasks;
+
+        /// <summary>
+        /// Id of the task that is currently being cracked, or -1 if cracker is not running.
+        /// </summary>
+        public int RunningTaskId
+        {
+            get
+            {
+                return runningTaskId;
+            }
+            set
+            {
+                if(value < -1)
+                {
+                    throw new ArgumentOutOfRangeException("RunningTaskId", "TaskId cannot be less than -1.");
+                }
+                if (value >= crackTasks.Count)
+                {
+                    throw new ArgumentOutOfRangeException("RunningTaskId", "TaskId cannot be greater than last task's id.");
+                }
+
+                runningTaskId = value;
+            }
+        }
+        
+        /// <summary>
+        /// List of crack tasks
+        /// </summary>
         public ReadOnlyCollection<CrackTask> CrackTasks
         {
             get
@@ -91,7 +135,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 return crackTasks.AsReadOnly();
             }
         }
-        private List<CrackTask> crackTasks;
+
 
         public CrackManager(string crackerFile, string workingDirectory = "")
         {
@@ -111,6 +155,25 @@ namespace LeukocyteGUI_for_oclHashCat
             crackTasks = new List<CrackTask>();
         }
 
+        private void CheckCrackTaskIdException(int crackTaskId)
+        {
+            if (crackTaskId < 0)
+            {
+                throw new ArgumentOutOfRangeException("TaskId cannot be less than 0.");
+            }
+            if (crackTaskId >= crackTasks.Count)
+            {
+                throw new ArgumentOutOfRangeException("TaskId cannot be greater than last task's id.");
+            }
+        }
+        private void CheckTaskRunningException(int crackTaskId)
+        {
+            if(crackTaskId == runningTaskId)
+            {
+                throw new InvalidOperationException("Cannot interact with the running task.");
+            }
+        }
+
         public void AddTask(CrackTask crackTask)
         {
             crackTasks.Add(crackTask);
@@ -124,6 +187,12 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 crackTasks.RemoveAt(index);
                 CrackTaskRemoved(this, new CrackManagerTaskChangedEventArgs(crackTask, index));
+
+                for(int i = index; i < crackTasks.Count; i++)
+                {
+                    CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(crackTasks[i], i + 1, i));
+                }
+
                 return true;
             }
             else
@@ -133,18 +202,16 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public void RemoveTaskAt(int crackTaskId)
         {
-            if (crackTaskId < 0)
-            {
-                throw new ArgumentOutOfRangeException("crackTaskId", "TaskId cannot be less than 0.");
-            }
-            if (crackTaskId >= crackTasks.Count)
-            {
-                throw new ArgumentOutOfRangeException("crackTaskId", "TaskId cannot be greater than last task's id.");
-            }
+            CheckCrackTaskIdException(crackTaskId);
 
             CrackTask crackTask = crackTasks[crackTaskId];
             crackTasks.RemoveAt(crackTaskId);
             CrackTaskRemoved(this, new CrackManagerTaskChangedEventArgs(crackTask, crackTaskId));
+
+            for (int i = crackTaskId; i < crackTasks.Count; i++)
+            {
+                CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(crackTasks[i], i + 1, i));
+            }
         }
         public void ClearTasks()
         {
@@ -153,22 +220,8 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public void SwapTasks(int firstCrackTaskId, int secondCrackTaskId)
         {
-            if (firstCrackTaskId < 0)
-            {
-                throw new ArgumentOutOfRangeException("firstCrackTaskId", "TaskId cannot be less than 0.");
-            }
-            if (firstCrackTaskId >= crackTasks.Count)
-            {
-                throw new ArgumentOutOfRangeException("firstCrackTaskId", "TaskId cannot be greater than last task's id.");
-            }
-            if (secondCrackTaskId < 0)
-            {
-                throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be less than 0.");
-            }
-            if (secondCrackTaskId >= crackTasks.Count)
-            {
-                throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be greater than last task's id.");
-            }
+            CheckCrackTaskIdException(firstCrackTaskId);
+            CheckCrackTaskIdException(secondCrackTaskId);
 
             CrackTask firstCrackTask = crackTasks[firstCrackTaskId];
             CrackTask secondCrackTask = crackTasks[secondCrackTaskId];
@@ -195,14 +248,8 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public void MoveTask(int crackTaskId, int newCrackTaskId)
         {
-            if (crackTaskId < 0)
-            {
-                throw new ArgumentOutOfRangeException("firstCrackTaskId", "TaskId cannot be less than 0.");
-            }
-            if (crackTaskId >= crackTasks.Count)
-            {
-                throw new ArgumentOutOfRangeException("firstCrackTaskId", "TaskId cannot be greater than last task's id.");
-            }
+            CheckCrackTaskIdException(crackTaskId);
+
             if (newCrackTaskId < 0)
             {
                 throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be less than 0.");
@@ -240,6 +287,30 @@ namespace LeukocyteGUI_for_oclHashCat
                     CrackTaskMoved(this, new CrackManagerTaskMovedEventArgs(curCrackTask, i, i - 1));
                 }
             }
+        }
+        public void UpdateTask(int crackTaskId, CrackTask crackTask)
+        {
+            CheckCrackTaskIdException(crackTaskId);
+            CheckTaskRunningException(crackTaskId);
+
+            crackTasks[crackTaskId] = crackTask;
+        }
+        public bool TryUpdateTask(int crackTaskId, CrackTask crackTask)
+        {
+            try
+            {
+                UpdateTask(crackTaskId, crackTask);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+        public void Crack(int crackTaskId)
+        {
+
         }
 
         private void Cracker_Exited(object sender, EventArgs e)

@@ -137,6 +137,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private int weakHashThreshold = -1;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>MiscSettings objects</returns>
+        public MiscSettings DeepCopy()
+        {
+            return (MiscSettings)MemberwiseClone();
+        }
     }
     public class MarkovSettings
     {
@@ -208,6 +217,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private int markovThreshold = -1;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>MarkovSettings object</returns>
+        public MarkovSettings DeepCopy()
+        {
+            return (MarkovSettings)MemberwiseClone();
+        }
     }
     public class SessionSettings
     {
@@ -279,6 +297,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private bool restoreDisable;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>SessionSettings object</returns>
+        public SessionSettings DeepCopy()
+        {
+            return (SessionSettings)MemberwiseClone();
+        }
     }
     public class FilesSettings
     {
@@ -569,6 +596,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private List<string> trueCryptKeyFiles;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>FilesSettings object</returns>
+        public FilesSettings DeepCopy()
+        {
+            return (FilesSettings)MemberwiseClone();
+        }
     }
     public class ResourcesSettings
     {
@@ -830,6 +866,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private int scriptTMTO = -1;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>ResourcesSettings object</returns>
+        public ResourcesSettings DeepCopy()
+        {
+            return (ResourcesSettings)MemberwiseClone();
+        }
     }
     public class DistributedSettings
     {
@@ -890,6 +935,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private bool keyspace;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>DistributedSettings object</returns>
+        public DistributedSettings DeepCopy()
+        {
+            return (DistributedSettings)MemberwiseClone();
+        }
     }
     public class RulesSettings
     {
@@ -1024,6 +1078,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private int generateRulesSeed;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>RulesSettings object</returns>
+        public RulesSettings DeepCopy()
+        {
+            return (RulesSettings)MemberwiseClone();
+        }
     }
     public class CustomCharsetsSettings
     {
@@ -1154,6 +1217,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private bool useCharset4;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>CustomCharsetsSettings object</returns>
+        public CustomCharsetsSettings DeepCopy()
+        {
+            return (CustomCharsetsSettings)MemberwiseClone();
+        }
     }
     public class IncrementSettings
     {
@@ -1214,6 +1286,15 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
         private int incrementMax = -1;
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>IncrementSettings object</returns>
+        public IncrementSettings DeepCopy()
+        {
+            return (IncrementSettings)MemberwiseClone();
+        }
     }
 
     [Serializable()]
@@ -1757,6 +1838,27 @@ namespace LeukocyteGUI_for_oclHashCat
             // Target Part
             " " + crackTarget +
             " " + crackDataSource;
+        }
+
+        /// <summary>
+        /// Returns deep copy of the object
+        /// </summary>
+        /// <returns>CrackTask object</returns>
+        public CrackTask DeepCopy()
+        {
+            CrackTask crackTaskCopy = (CrackTask)MemberwiseClone();
+
+            crackTaskCopy.MiscSettings = miscSettings.DeepCopy();
+            crackTaskCopy.MarkovSettings = markovSettings.DeepCopy();
+            crackTaskCopy.SessionSettings = sessionSettings.DeepCopy();
+            crackTaskCopy.FilesSettings = filesSettings.DeepCopy();
+            crackTaskCopy.ResourcesSettings = resourcesSettings.DeepCopy();
+            crackTaskCopy.DistributedSettings = distributedSettings.DeepCopy();
+            crackTaskCopy.RulesSettings = rulesSettings.DeepCopy();
+            crackTaskCopy.CustomCharsetsSettings = customCharsetsSettings.DeepCopy();
+            crackTaskCopy.IncrementSettings = incrementSettings.DeepCopy();
+
+            return crackTaskCopy;
         }
     }
 }
