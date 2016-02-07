@@ -200,6 +200,7 @@ namespace LeukocyteGUI_for_oclHashCat
             }
 
             crackTasks.Insert(crackTaskId, crackTask);
+            CrackTaskAdded(this, new CrackTasksListTaskChangedEventArgs(crackTask, crackTaskId));
 
             for (int i = crackTaskId + 1; i < crackTasks.Count; i++)
             {
