@@ -91,6 +91,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cracker.cs" />
     <Compile Include="CrackTasksList.cs" />
     <Compile Include="CrackTask.cs" />
     <Compile Include="DataManager.cs" />
