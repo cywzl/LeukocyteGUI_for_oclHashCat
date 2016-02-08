@@ -115,7 +115,16 @@ namespace LeukocyteGUI_for_oclHashCat
             crackTasks = new List<CrackTask>();
         }
 
-        void CheckCrackTaskIdException(int crackTaskId)
+        IEnumerator<CrackTask> IEnumerable<CrackTask>.GetEnumerator()
+        {
+            return crackTasks.GetEnumerator();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return crackTasks.GetEnumerator();
+        }
+
+        public void CheckCrackTaskIdException(int crackTaskId)
         {
             if (crackTaskId < 0)
             {
@@ -126,16 +135,6 @@ namespace LeukocyteGUI_for_oclHashCat
                 throw new ArgumentOutOfRangeException("TaskId cannot be greater than last task's id.");
             }
         }
-
-        IEnumerator<CrackTask> IEnumerable<CrackTask>.GetEnumerator()
-        {
-            return crackTasks.GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return crackTasks.GetEnumerator();
-        }
-
         public void Add(CrackTask crackTask)
         {
             crackTasks.Add(crackTask);

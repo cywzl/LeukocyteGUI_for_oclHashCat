@@ -1860,5 +1860,22 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return crackTaskCopy;
         }
+
+        /// <summary>
+        /// Clears all cracking results, returns CrackTask to initial state.
+        /// </summary>
+        public void ClearResults()
+        {
+            crackStatus = CrackStatuses.Stopped;
+            plain = "";
+            progress = 0;
+            currentLength = 0;
+            recoveredDigests = 0;
+            recoveredSalts = 0;
+            timeEstimated = "";
+            started = DateTime.MinValue;
+            finished = DateTime.MinValue;
+            sessionSettings.Restore = false;
+        }
     }
 }
