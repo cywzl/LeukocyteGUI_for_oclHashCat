@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 return crackTask;
             }
         }
-        
+
         public CrackerEventArgs(CrackTask crackTask, int crackTaskId)
         {
             this.crackTask = crackTask;
@@ -36,6 +37,25 @@ namespace LeukocyteGUI_for_oclHashCat
 
     class Cracker
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool GenerateConsoleCtrlEvent(ConsoleCtrlEvent sigevent, int dwProcessGroupId);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool AttachConsole(uint dwProcessId);
+        [DllImport("kernel32.dll")]
+        static extern bool SetConsoleCtrlHandler(ConsoleCtrlDelegate HandlerRoutine, bool Add);
+        [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true)]
+        static extern bool FreeConsole();
+
+        public enum ConsoleCtrlEvent
+        {
+            CTRL_C = 0,
+            CTRL_BREAK = 1,
+            CTRL_CLOSE = 2,
+            CTRL_LOGOFF = 5,
+            CTRL_SHUTDOWN = 6
+        }
+
+        delegate bool ConsoleCtrlDelegate(ConsoleCtrlEvent CtrlType);
         public delegate void CrackerEventHandler(object sender, EventArgs e);
         public delegate void CrackerStateChangedEventHandler(object sender, CrackerEventArgs e);
 
@@ -50,7 +70,9 @@ namespace LeukocyteGUI_for_oclHashCat
         byte util;
         byte temp;
         byte fan;
-        int processingTaskId;
+        int processingTaskId = -1;
+        int lastProcessedTaskId = -1;
+        bool processNextQueued = true;
 
         public CrackTasksList CrackTasks
         {
@@ -117,7 +139,7 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             get
             {
-                if(processingTaskId > -1)
+                if (processingTaskId > -1)
                 {
                     return crackTasks[processingTaskId];
                 }
@@ -125,6 +147,45 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     return null;
                 }
+            }
+        }
+        public int LastProcessedTaskId
+        {
+            get
+            {
+                return lastProcessedTaskId;
+            }
+        }
+        public CrackTask LastProcessedTask
+        {
+            get
+            {
+                if (lastProcessedTaskId > -1)
+                {
+                    return crackTasks[lastProcessedTaskId];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+        public bool IsRunning
+        {
+            get
+            {
+                return processingTaskId != -1;
+            }
+        }
+        public bool ProcessNextQueued
+        {
+            get
+            {
+                return processNextQueued;
+            }
+            set
+            {
+                processNextQueued = value;
             }
         }
 
@@ -154,7 +215,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void CrackTasks_CrackTaskMoved(object sender, CrackTasksListTaskMovedEventArgs e)
         {
-            if(e.CrackTaskOldId == processingTaskId)
+            if (e.CrackTaskOldId == processingTaskId)
             {
                 processingTaskId = e.CrackTaskNewId;
             }
@@ -165,9 +226,9 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         private void Cracker_Exited(object sender, EventArgs e)
         {
-            if(ProcessingTask.CrackStatus == CrackStatuses.Cracking)
+            if (ProcessingTask.CrackStatus == CrackStatuses.Cracking)
             {
-                if(ProcessingTask.SessionSettings.Restore)
+                if (ProcessingTask.SessionSettings.Restore)
                 {
                     ProcessingTask.CrackStatus = CrackStatuses.Paused;
                 }
@@ -175,12 +236,26 @@ namespace LeukocyteGUI_for_oclHashCat
                 {
                     ProcessingTask.CrackStatus = CrackStatuses.Stopped;
                 }
-                
+
             }
 
             Stopped(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
 
+            if(processNextQueued)
+            {
+                lastProcessedTaskId = processingTaskId;
+            }
+            else
+            {
+                lastProcessedTaskId = -1;
+            }
+
             ClearAfterCracking();
+
+            if(processNextQueued)
+            {
+                CrackNextQueued();
+            }
         }
         private void Cracker_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
@@ -199,7 +274,14 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         private void CrackingProcessCleanKill()
         {
-
+            if (AttachConsole((uint)cracker.Id))
+            {
+                SetConsoleCtrlHandler(null, true);
+                GenerateConsoleCtrlEvent(ConsoleCtrlEvent.CTRL_C, 0);
+                cracker.WaitForExit(1000);
+                FreeConsole();
+                SetConsoleCtrlHandler(null, false);
+            }
         }
 
         public void Crack(int crackTaskId)
@@ -209,7 +291,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             BeforeStart(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
 
-            if(ProcessingTask.Started == DateTime.MinValue)
+            if (ProcessingTask.Started == DateTime.MinValue)
             {
                 ProcessingTask.Started = DateTime.Now;
             }
@@ -222,8 +304,20 @@ namespace LeukocyteGUI_for_oclHashCat
 
             Started(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
         }
-        public void Stop()
+        public void CrackNextQueued()
         {
+            for (int i = lastProcessedTaskId + 1; i < crackTasks.Count; i++)
+            {
+                if(crackTasks[i].CrackStatus == CrackStatuses.Queued)
+                {
+                    Crack(i);
+                    break;
+                }
+            }
+        }
+        public void Stop(bool processNextQueued = true)
+        {
+            this.processNextQueued = processNextQueued;
             CrackingProcessCleanKill();
         }
     }
