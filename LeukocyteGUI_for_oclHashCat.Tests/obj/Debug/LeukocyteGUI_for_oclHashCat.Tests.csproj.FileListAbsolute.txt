@@ -1,0 +1,8 @@
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\bin\Debug\LeukocyteGUI_for_oclHashCat.Tests.dll
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\bin\Debug\LeukocyteGUI_for_oclHashCat.Tests.pdb
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\bin\Debug\LeukocyteGUI_for_oclHashCat.exe
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\bin\Debug\LeukocyteGUI_for_oclHashCat.pdb
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\obj\Debug\LeukocyteGUI_for_oclHashCat.Tests.csprojResolveAssemblyReference.cache
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\obj\Debug\LeukocyteGUI_for_oclHashCat.Tests.dll
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.Tests\obj\Debug\LeukocyteGUI_for_oclHashCat.Tests.pdb

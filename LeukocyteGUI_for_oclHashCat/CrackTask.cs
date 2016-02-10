@@ -163,7 +163,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 markovHcstat = value;
             }
         }
-        private string markovHcstat;
+        private string markovHcstat = "";
 
         /// <summary>
         /// Disables markov-chains, emulates classic brute-force
@@ -264,7 +264,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 session = value;
             }
         }
-        private string session;
+        private string session = "";
 
         /// <summary>
         /// Restore session from <see cref="Session"/>
@@ -323,7 +323,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 outFile = value;
             }
         }
-        private string outFile;
+        private string outFile = "";
 
         /// <summary>
         /// Define outfile-format for recovered hash
@@ -531,7 +531,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 debugFile = value;
             }
         }
-        private string debugFile;
+        private string debugFile = "";
 
         /// <summary>
         /// Specify induction directory to use, default is $session.induct
@@ -547,7 +547,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 inductionDir = value;
             }
         }
-        private string inductionDir;
+        private string inductionDir = "";
 
         /// <summary>
         /// Specify the outfile directory which should be monitored, default is $session.outfiles
@@ -563,7 +563,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 outFileCheckDir = value;
             }
         }
-        private string outFileCheckDir;
+        private string outFileCheckDir = "";
 
         /// <summary>
         /// Disable the logfile
@@ -595,7 +595,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 trueCryptKeyFiles = value;
             }
         }
-        private List<string> trueCryptKeyFiles;
+        private List<string> trueCryptKeyFiles = new List<string>();
 
         /// <summary>
         /// Returns deep copy of the object
@@ -685,7 +685,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 cpuAffinity = value;
             }
         }
-        private List<string> cpuAffinity;
+        private List<string> cpuAffinity = new List<string>();
 
         /// <summary>
         /// Use non-blocking async calls (NV only)
@@ -717,7 +717,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 gpuDevices = value;
             }
         }
-        private List<string> gpuDevices;
+        private List<string> gpuDevices = new List<string>();
 
         /// <summary>
         /// Enable a specific workload profile
@@ -961,7 +961,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 ruleLeft = value;
             }
         }
-        private string ruleLeft;
+        private string ruleLeft = "";
 
         /// <summary>
         /// Single rule applied to each word from right dict
@@ -977,7 +977,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 ruleRight = value;
             }
         }
-        private string ruleRight;
+        private string ruleRight = "";
 
         /// <summary>
         /// Rules-files
@@ -993,7 +993,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 rulesFiles = value;
             }
         }
-        private List<string> rulesFiles;
+        private List<string> rulesFiles = new List<string>();
 
         /// <summary>
         /// Generate NUM random rules
@@ -1035,7 +1035,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 generateRulesFuncMin = value;
             }
         }
-        private int generateRulesFuncMin;
+        private int generateRulesFuncMin = -1;
 
         /// <summary>
         /// Force NUM functions per random rule max
@@ -1056,7 +1056,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 generateRulesFuncMax = value;
             }
         }
-        private int generateRulesFuncMax;
+        private int generateRulesFuncMax = -1;
 
         /// <summary>
         /// Force RNG seed to NUM
@@ -1077,7 +1077,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 generateRulesSeed = value;
             }
         }
-        private int generateRulesSeed;
+        private int generateRulesSeed = -1;
 
         /// <summary>
         /// Returns deep copy of the object
@@ -1104,7 +1104,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 charset1 = value;
             }
         }
-        private string charset1;
+        private string charset1 = "";
 
         /// <summary>
         /// User-defined charset 2
@@ -1120,7 +1120,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 charset2 = value;
             }
         }
-        private string charset2;
+        private string charset2 = "";
 
         /// <summary>
         /// User-defined charset 3
@@ -1136,7 +1136,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 charset3 = value;
             }
         }
-        private string charset3;
+        private string charset3 = "";
 
         /// <summary>
         /// User-defined charset 4
@@ -1152,7 +1152,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 charset4 = value;
             }
         }
-        private string charset4;
+        private string charset4 = "";
 
         /// <summary>
         /// Enables or disables usage of the user-defined charset 1
@@ -1326,7 +1326,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 crackTarget = value;
             }
         }
-        private string crackTarget;
+        private string crackTarget = "";
 
         /// <summary>
         /// Hash-type
@@ -1393,7 +1393,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 crackDataSource = value;
             }
         }
-        private string crackDataSource;
+        private string crackDataSource = "";
 
         /* Hashcat settings */
 
@@ -1562,7 +1562,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 plain = value;
             }
         }
-        private string plain;
+        private string plain = "";
 
         /// <summary>
         /// Current crack status of the task
@@ -1615,7 +1615,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 timeEstimated = value;
             }
         }
-        private string timeEstimated;
+        private string timeEstimated = "";
 
         /// <summary>
         /// Total number of digests
@@ -1745,10 +1745,15 @@ namespace LeukocyteGUI_for_oclHashCat
         /// <returns>String of arguments for oclHashcat</returns>
         public override string ToString()
         {
+            if(SessionSettings.Restore)
+            {
+                return "--restore " + ((SessionSettings.Session != "") ? ("--session=" + SessionSettings.Session) : "");
+            }
+
             return
 
             // General
-            "-a "  + attackMode +
+            "-a "  + (int)attackMode +
             " -m " + hashType   +
 
             // Misc
@@ -1768,7 +1773,6 @@ namespace LeukocyteGUI_for_oclHashCat
             // Session
             ((SessionSettings.RunTime > -1)                     ? " --runtime="                 + SessionSettings.RunTime           : "") +
             ((SessionSettings.Session != "")                    ? " --session="                 + SessionSettings.Session                               : "") +
-            (SessionSettings.Restore                            ? " --restore"                                                      : "") +
             (SessionSettings.RestoreDisable                     ? " --restore-disable"                                              : "") +
 
             // Files
@@ -1800,7 +1804,7 @@ namespace LeukocyteGUI_for_oclHashCat
             (ResourcesSettings.GpuAsync                         ? " --gpu-async"                                                    : "") +
             ((ResourcesSettings.GpuDevices.Count > 0)           ? " --gpu-devices="             + string.Join(",",
                                                                                                     ResourcesSettings.GpuDevices)   : "") +
-                                                                  " --workload-profile="        + ResourcesSettings.WorkloadProfile       +
+                                                                  " --workload-profile="        + (int)ResourcesSettings.WorkloadProfile  +
             ((ResourcesSettings.GpuAcceleration > -1)           ? " --gpu-accel="               + ResourcesSettings.GpuAcceleration : "") +
             ((ResourcesSettings.GpuLoops > -1)                  ? " --gpu-loops="               + ResourcesSettings.GpuLoops        : "") +
             (ResourcesSettings.GpuTempDisable                   ? " --gpu-temp-disable"                                             : "") +
