@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using LeukocyteGUI_for_oclHashCat;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LeukocyteGUI_for_oclHashCat.Tests
 {

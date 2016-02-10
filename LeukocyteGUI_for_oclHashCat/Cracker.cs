@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
-    class CrackerEventArgs
+    public class CrackerEventArgs
     {
         private int crackTaskId;
         private CrackTask crackTask;
@@ -36,7 +36,7 @@ namespace LeukocyteGUI_for_oclHashCat
         }
     }
 
-    class Cracker
+    public class Cracker
     {
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool GenerateConsoleCtrlEvent(ConsoleCtrlEvent sigevent, int dwProcessGroupId);

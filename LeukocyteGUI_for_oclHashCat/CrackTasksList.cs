@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
-    class CrackTasksListTaskChangedEventArgs : EventArgs
+    public class CrackTasksListTaskChangedEventArgs : EventArgs
     {
         public int CrackTaskId
         {
@@ -30,7 +30,7 @@ namespace LeukocyteGUI_for_oclHashCat
             this.crackTaskId = crackTaskId;
         }
     }
-    class CrackTasksListTaskMovedEventArgs : EventArgs
+    public class CrackTasksListTaskMovedEventArgs : EventArgs
     {
         public int CrackTaskOldId
         {
@@ -67,7 +67,7 @@ namespace LeukocyteGUI_for_oclHashCat
         }
     }
 
-    class CrackTasksList : IList<CrackTask>
+    public class CrackTasksList : IList<CrackTask>
     {
         public delegate void CrackTasksListTaskChangedEventHandler(object sender, CrackTasksListTaskChangedEventArgs e);
         public delegate void CrackTasksListTaskMovedEventHandler(object sender, CrackTasksListTaskMovedEventArgs e);
