@@ -235,7 +235,7 @@ namespace LeukocyteGUI_for_oclHashCat
                     case "Time.Estimated.":
                         int startE = parts[1].IndexOf('(') + 1;
 
-                        if(startE > 0)
+                        if (startE > 0)
                         {
                             int lengthE = parts[1].IndexOf(')') - startE;
                             ProcessingTask.TimeEstimated = parts[1].Substring(startE, lengthE);
@@ -370,6 +370,19 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             this.processNextQueued = processNextQueued;
             CrackingProcessCleanKill();
+        }
+        public void WaitForStop()
+        {
+            cracker.WaitForExit();
+        }
+        public bool WaitForStop(int milliseconds)
+        {
+            if (milliseconds <= 0)
+            {
+                throw new ArgumentOutOfRangeException("milliseconds", "Time to wait value must be bigger than 0.");
+            }
+
+            return cracker.WaitForExit(milliseconds);
         }
     }
 }
