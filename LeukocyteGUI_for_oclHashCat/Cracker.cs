@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -76,6 +77,7 @@ namespace LeukocyteGUI_for_oclHashCat
         bool processNextQueued = true;
         Regex recoveredRegex = new Regex(@"(.*?)/(.*?) \(.*?\%\) Digests, (.*?)/(.*?) \(.*?\%\) Salts");
         Regex monitorRegex = new Regex(@"(.*?)% Util, (.*?)c Temp, (.*?)% Fan");
+        CultureInfo cultureInfo;
 
 
         public CrackTasksList CrackTasks
@@ -195,6 +197,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public Cracker()
         {
+            cultureInfo = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            cultureInfo.NumberFormat.CurrencyDecimalSeparator = ".";
+
             crackTasks = new CrackTasksList();
             crackTasks.CrackTaskMoved += CrackTasks_CrackTaskMoved;
 
@@ -204,7 +209,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 CreateNoWindow = true,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
-                UseShellExecute = true
+                UseShellExecute = false
             };
             cracker.EnableRaisingEvents = true;
             cracker.ErrorDataReceived += Cracker_ErrorDataReceived;
@@ -226,12 +231,25 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         private void Cracker_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if ((e.Data != null) && (e.Data.Length > 17))
+            if ((e.Data != null) && (e.Data.Length > 0))
             {
                 string[] parts = e.Data.Split(new string[] { ": " }, 2, StringSplitOptions.None);
 
                 switch (parts[0])
                 {
+                    case "Status.........":
+                        switch(parts[1])
+                        {
+                            case "Cracked":
+                                ProcessingTask.CrackStatus = CrackStatuses.Cracked;
+                                break;
+                            case "Exhausted":
+                                ProcessingTask.CrackStatus = CrackStatuses.Exausted;
+                                break;
+                        }
+
+                        break;
+
                     case "Time.Estimated.":
                         int startE = parts[1].IndexOf('(') + 1;
 
@@ -246,9 +264,11 @@ namespace LeukocyteGUI_for_oclHashCat
                         }
 
                         break;
+
                     case "Speed.GPU.#1...":
                         speed = parts[1].TrimStart(' ');
                         break;
+
                     case "Recovered......":
                         Match matchRecovered = recoveredRegex.Match(parts[1]);
                         ProcessingTask.RecoveredDigests = int.Parse(matchRecovered.Groups[1].Value);
@@ -256,28 +276,55 @@ namespace LeukocyteGUI_for_oclHashCat
                         ProcessingTask.RecoveredSalts = int.Parse(matchRecovered.Groups[3].Value);
                         ProcessingTask.Salts = int.Parse(matchRecovered.Groups[4].Value);
                         break;
+
                     case "Input.Mode.....":
                         int startL = parts[1].IndexOf('[') + 1;
                         int lengthL = parts[1].IndexOf(']') - startL;
-                        ProcessingTask.CurrentLength = byte.Parse(parts[1].Substring(startL, lengthL));
+
+                        if((startL > -1) && (lengthL > 0))
+                        {
+                            ProcessingTask.CurrentLength = byte.Parse(parts[1].Substring(startL, lengthL));
+                        }
+                        
                         break;
+
                     case "Progress.......":
                         int startP = parts[1].IndexOf('(') + 1;
                         int lengthP = parts[1].IndexOf('%') - startP;
-                        ProcessingTask.Progress = float.Parse(parts[1].Substring(startP, lengthP));
+
+                        if ((startP > -1) && (lengthP > 0))
+                        {
+                            ProcessingTask.Progress = float.Parse(parts[1].Substring(startP, lengthP),
+                                NumberStyles.Any, cultureInfo);
+                        }
+
                         break;
+
                     case "HWMon.GPU.#1...":
                         Match matchMonitor = monitorRegex.Match(parts[1]);
                         util = byte.Parse(matchMonitor.Groups[1].Value);
                         temp = byte.Parse(matchMonitor.Groups[2].Value);
                         fan = byte.Parse(matchMonitor.Groups[3].Value);
                         break;
+
+                    default:
+                        if((parts.Length == 1)
+                            && (ProcessingTask.FilesSettings.OutFileFormat == -1))
+                        {
+                            parts = e.Data.Split(':');
+
+                            if(parts[0] == ProcessingTask.CrackTarget)
+                            {
+                                ProcessingTask.Plain = parts[1];
+                            }
+                        }
+                        break;
                 }
             }
         }
         private void Cracker_Exited(object sender, EventArgs e)
         {
-            if (ProcessingTask.CrackStatus == CrackStatuses.Cracking)
+            if (ProcessingTask?.CrackStatus == CrackStatuses.Cracking)
             {
                 if (ProcessingTask.SessionSettings.Restore)
                 {
@@ -310,13 +357,18 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         private void Cracker_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         private void ClearAfterCracking()
         {
-            cracker.Close();
-            cracker.CancelOutputRead();
-            cracker.CancelErrorRead();
+            try
+            {
+                cracker.Close();
+                cracker.CancelOutputRead();
+                cracker.CancelErrorRead();
+            }
+            catch { }
+            
             speed = "";
             util = 0;
             temp = 0;
@@ -349,6 +401,8 @@ namespace LeukocyteGUI_for_oclHashCat
 
             cracker.StartInfo.Arguments = ProcessingTask.ToString();
             cracker.Start();
+            cracker.BeginErrorReadLine();
+            cracker.BeginOutputReadLine();
 
             ProcessingTask.SessionSettings.Restore = !ProcessingTask.SessionSettings.RestoreDisable;
             ProcessingTask.CrackStatus = CrackStatuses.Cracking;
