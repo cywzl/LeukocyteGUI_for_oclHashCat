@@ -233,122 +233,138 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             if ((e.Data != null) && (e.Data.Length > 0))
             {
-                string[] parts = e.Data.Split(new string[] { ": " }, 2, StringSplitOptions.None);
-
-                switch (parts[0])
+                lock (ProcessingTask)
                 {
-                    case "Status.........":
-                        switch(parts[1])
-                        {
-                            case "Cracked":
-                                ProcessingTask.CrackStatus = CrackStatuses.Cracked;
-                                break;
-                            case "Exhausted":
-                                ProcessingTask.CrackStatus = CrackStatuses.Exausted;
-                                break;
-                        }
+                    if (ProcessingTask == null)
+                    {
+                        return;
+                    }
 
-                        break;
+                    string[] parts = e.Data.Split(new string[] { ": " }, 2, StringSplitOptions.None);
 
-                    case "Time.Estimated.":
-                        int startE = parts[1].IndexOf('(') + 1;
-
-                        if (startE > 0)
-                        {
-                            int lengthE = parts[1].IndexOf(')') - startE;
-                            ProcessingTask.TimeEstimated = parts[1].Substring(startE, lengthE);
-                        }
-                        else
-                        {
-                            ProcessingTask.TimeEstimated = parts[1];
-                        }
-
-                        break;
-
-                    case "Speed.GPU.#1...":
-                        speed = parts[1].TrimStart(' ');
-                        break;
-
-                    case "Recovered......":
-                        Match matchRecovered = recoveredRegex.Match(parts[1]);
-                        ProcessingTask.RecoveredDigests = int.Parse(matchRecovered.Groups[1].Value);
-                        ProcessingTask.Digests = int.Parse(matchRecovered.Groups[2].Value);
-                        ProcessingTask.RecoveredSalts = int.Parse(matchRecovered.Groups[3].Value);
-                        ProcessingTask.Salts = int.Parse(matchRecovered.Groups[4].Value);
-                        break;
-
-                    case "Input.Mode.....":
-                        int startL = parts[1].IndexOf('[') + 1;
-                        int lengthL = parts[1].IndexOf(']') - startL;
-
-                        if((startL > -1) && (lengthL > 0))
-                        {
-                            ProcessingTask.CurrentLength = byte.Parse(parts[1].Substring(startL, lengthL));
-                        }
-                        
-                        break;
-
-                    case "Progress.......":
-                        int startP = parts[1].IndexOf('(') + 1;
-                        int lengthP = parts[1].IndexOf('%') - startP;
-
-                        if ((startP > -1) && (lengthP > 0))
-                        {
-                            ProcessingTask.Progress = float.Parse(parts[1].Substring(startP, lengthP),
-                                NumberStyles.Any, cultureInfo);
-                        }
-
-                        break;
-
-                    case "HWMon.GPU.#1...":
-                        Match matchMonitor = monitorRegex.Match(parts[1]);
-                        util = byte.Parse(matchMonitor.Groups[1].Value);
-                        temp = byte.Parse(matchMonitor.Groups[2].Value);
-                        fan = byte.Parse(matchMonitor.Groups[3].Value);
-                        break;
-
-                    default:
-                        if((parts.Length == 1)
-                            && (ProcessingTask.FilesSettings.OutFileFormat == -1))
-                        {
-                            parts = e.Data.Split(':');
-
-                            if(parts[0] == ProcessingTask.CrackTarget)
+                    switch (parts[0])
+                    {
+                        case "Status.........":
+                            switch (parts[1])
                             {
-                                ProcessingTask.Plain = parts[1];
+                                case "Cracked":
+                                    ProcessingTask.CrackStatus = CrackStatuses.Cracked;
+                                    break;
+                                case "Exhausted":
+                                    ProcessingTask.CrackStatus = CrackStatuses.Exausted;
+                                    break;
                             }
-                        }
-                        break;
+
+                            break;
+
+                        case "Time.Estimated.":
+                            int startE = parts[1].IndexOf('(') + 1;
+
+                            if (startE > 0)
+                            {
+                                int lengthE = parts[1].IndexOf(')') - startE;
+                                ProcessingTask.TimeEstimated = parts[1].Substring(startE, lengthE);
+                            }
+                            else
+                            {
+                                ProcessingTask.TimeEstimated = parts[1];
+                            }
+
+                            break;
+
+                        case "Speed.GPU.#1...":
+                            speed = parts[1].TrimStart(' ');
+                            break;
+
+                        case "Recovered......":
+                            Match matchRecovered = recoveredRegex.Match(parts[1]);
+                            ProcessingTask.RecoveredDigests = int.Parse(matchRecovered.Groups[1].Value);
+                            ProcessingTask.Digests = int.Parse(matchRecovered.Groups[2].Value);
+                            ProcessingTask.RecoveredSalts = int.Parse(matchRecovered.Groups[3].Value);
+                            ProcessingTask.Salts = int.Parse(matchRecovered.Groups[4].Value);
+                            break;
+
+                        case "Input.Mode.....":
+                            int startL = parts[1].IndexOf('[') + 1;
+                            int lengthL = parts[1].IndexOf(']') - startL;
+
+                            if ((startL > -1) && (lengthL > 0))
+                            {
+                                ProcessingTask.CurrentLength = byte.Parse(parts[1].Substring(startL, lengthL));
+                            }
+
+                            break;
+
+                        case "Progress.......":
+                            int startP = parts[1].IndexOf('(') + 1;
+                            int lengthP = parts[1].IndexOf('%') - startP;
+
+                            if ((startP > -1) && (lengthP > 0))
+                            {
+                                ProcessingTask.Progress = float.Parse(parts[1].Substring(startP, lengthP),
+                                    NumberStyles.Any, cultureInfo);
+                            }
+
+                            break;
+
+                        case "HWMon.GPU.#1...":
+                            Match matchMonitor = monitorRegex.Match(parts[1]);
+                            util = byte.Parse(matchMonitor.Groups[1].Value);
+                            temp = byte.Parse(matchMonitor.Groups[2].Value);
+                            fan = byte.Parse(matchMonitor.Groups[3].Value);
+                            break;
+
+                        default:
+                            if ((parts.Length == 1)
+                                && (ProcessingTask.FilesSettings.OutFileFormat == -1))
+                            {
+                                parts = e.Data.Split(':');
+
+                                if (parts[0] == ProcessingTask.CrackTarget)
+                                {
+                                    ProcessingTask.Plain = parts[1];
+                                }
+                            }
+                            break;
+                    }
                 }
             }
         }
         private void Cracker_Exited(object sender, EventArgs e)
         {
-            if (ProcessingTask?.CrackStatus == CrackStatuses.Cracking)
+            lock (ProcessingTask)
             {
-                if (ProcessingTask.SessionSettings.Restore)
+                if (ProcessingTask == null)
                 {
-                    ProcessingTask.CrackStatus = CrackStatuses.Paused;
+                    return;
+                }
+
+                if (ProcessingTask.CrackStatus == CrackStatuses.Cracking)
+                {
+                    if (ProcessingTask.SessionSettings.Restore)
+                    {
+                        ProcessingTask.CrackStatus = CrackStatuses.Paused;
+                    }
+                    else
+                    {
+                        ProcessingTask.CrackStatus = CrackStatuses.Stopped;
+                    }
+
+                }
+
+                Stopped(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
+
+                if (processNextQueued)
+                {
+                    lastProcessedTaskId = processingTaskId;
                 }
                 else
                 {
-                    ProcessingTask.CrackStatus = CrackStatuses.Stopped;
+                    lastProcessedTaskId = -1;
                 }
 
+                ClearAfterCracking();
             }
-
-            Stopped(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
-
-            if (processNextQueued)
-            {
-                lastProcessedTaskId = processingTaskId;
-            }
-            else
-            {
-                lastProcessedTaskId = -1;
-            }
-
-            ClearAfterCracking();
 
             if (processNextQueued)
             {
@@ -368,7 +384,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 cracker.CancelErrorRead();
             }
             catch { }
-            
+
             speed = "";
             util = 0;
             temp = 0;
