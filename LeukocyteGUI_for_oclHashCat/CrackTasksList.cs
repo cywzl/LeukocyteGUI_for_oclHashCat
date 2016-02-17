@@ -67,6 +67,7 @@ namespace LeukocyteGUI_for_oclHashCat
         }
     }
 
+    [Serializable()]
     public class CrackTasksList : IList<CrackTask>
     {
         public delegate void CrackTasksListTaskChangedEventHandler(object sender, CrackTasksListTaskChangedEventArgs e);

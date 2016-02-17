@@ -56,6 +56,7 @@
     <Compile Include="CrackTaskTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CrackerTests.cs" />
+    <Compile Include="DataManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.csproj">
