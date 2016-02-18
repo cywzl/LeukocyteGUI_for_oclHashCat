@@ -15,7 +15,7 @@ namespace LeukocyteGUI_for_oclHashCat.Tests
             CrackTasksList crackTasksList = new CrackTasksList();
             ClearDirectory();
 
-            DataManager.SaveToFile(crackTasksList, crackTasksListFileName);
+            DataManager.SaveToFile(crackTasksList.ToArray(), crackTasksListFileName);
 
             Assert.IsTrue(File.Exists(crackTasksListFileName));
         }
@@ -29,8 +29,9 @@ namespace LeukocyteGUI_for_oclHashCat.Tests
             crackTasksList.Add(crackTask);
             ClearDirectory();
             
-            DataManager.SaveToFile(crackTasksList, crackTasksListFileName);
-            crackTasksList = DataManager.GetFromFile<CrackTasksList>(crackTasksListFileName);
+            DataManager.SaveToFile(crackTasksList.ToArray(), crackTasksListFileName);
+            CrackTask[] crackTasks = DataManager.GetFromFile<CrackTask[]>(crackTasksListFileName);
+            crackTasksList = new CrackTasksList(crackTasks);
 
             Assert.AreEqual(crackTask.SessionSettings.Session, crackTasksList[0].SessionSettings.Session);
         }
