@@ -115,6 +115,10 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             crackTasks = new List<CrackTask>();
         }
+        public CrackTasksList(IEnumerable<CrackTask> collection)
+        {
+            crackTasks = new List<CrackTask>(collection);
+        }
 
         IEnumerator<CrackTask> IEnumerable<CrackTask>.GetEnumerator()
         {
@@ -298,6 +302,10 @@ namespace LeukocyteGUI_for_oclHashCat
             }
 
             return true;
+        }
+        public CrackTask[] ToArray()
+        {
+            return crackTasks.ToArray();
         }
     }
 }
