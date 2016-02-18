@@ -35,6 +35,7 @@ namespace LeukocyteGUI_for_oclHashCat
         SaveOriginalWordRuleAndModifiedPlain = 4
     }
 
+    [Serializable()]
     public class MiscSettings
     {
         /// <summary>
@@ -147,6 +148,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (MiscSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class MarkovSettings
     {
         /// <summary>
@@ -227,6 +229,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (MarkovSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class SessionSettings
     {
         /// <summary>
@@ -307,6 +310,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (SessionSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class FilesSettings
     {
         /// <summary>
@@ -606,6 +610,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (FilesSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class ResourcesSettings
     {
         /// <summary>
@@ -876,6 +881,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (ResourcesSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class DistributedSettings
     {
         /// <summary>
@@ -945,6 +951,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (DistributedSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class RulesSettings
     {
         /// <summary>
@@ -1088,6 +1095,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (RulesSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class CustomCharsetsSettings
     {
         /// <summary>
@@ -1227,6 +1235,7 @@ namespace LeukocyteGUI_for_oclHashCat
             return (CustomCharsetsSettings)MemberwiseClone();
         }
     }
+    [Serializable()]
     public class IncrementSettings
     {
         /// <summary>

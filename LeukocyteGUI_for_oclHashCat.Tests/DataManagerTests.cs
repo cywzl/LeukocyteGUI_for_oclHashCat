@@ -20,6 +20,21 @@ namespace LeukocyteGUI_for_oclHashCat.Tests
             Assert.IsTrue(File.Exists(crackTasksListFileName));
         }
 
+        [TestMethod]
+        public void SaveToFile_GetFromFile_CorrectlyRestored()
+        {
+            CrackTasksList crackTasksList = new CrackTasksList();
+            CrackTask crackTask = new CrackTask();
+            crackTask.SessionSettings.Session = "test_task";
+            crackTasksList.Add(crackTask);
+            ClearDirectory();
+            
+            DataManager.SaveToFile(crackTasksList, crackTasksListFileName);
+            crackTasksList = DataManager.GetFromFile<CrackTasksList>(crackTasksListFileName);
+
+            Assert.AreEqual(crackTask.SessionSettings.Session, crackTasksList[0].SessionSettings.Session);
+        }
+
         private void ClearDirectory()
         {
             if (File.Exists(crackTasksListFileName))
