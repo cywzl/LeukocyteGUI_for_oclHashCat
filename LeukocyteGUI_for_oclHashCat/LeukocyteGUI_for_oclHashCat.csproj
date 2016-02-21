@@ -149,7 +149,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\fan.png" />
+    <None Include="icons\glyph_fan.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\glyph_delete.png" />
