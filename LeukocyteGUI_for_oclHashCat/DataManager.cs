@@ -10,6 +10,37 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public static class DataManager
     {
+        static CrackTask[] crackTasks = new CrackTask[0];
+        static string crackTasksFile = "CrackTasks.dat";
+
+        public static CrackTask[] CrackTasks
+        {
+            get
+            {
+                return crackTasks;
+            }
+            set
+            {
+                crackTasks = value;
+            }
+        }
+        public static string CrackTasksFile
+        {
+            get
+            {
+                return crackTasksFile;
+            }
+            set
+            {
+                if(string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "CrackTasksFile");
+                }
+
+                crackTasksFile = value;
+            }
+        }
+
         /// <summary>
         /// Saves any serializable object to file.
         /// </summary>
@@ -35,6 +66,25 @@ namespace LeukocyteGUI_for_oclHashCat
             T deserealizedObject = (T)deserializer.Deserialize(fileStream);
 
             return deserealizedObject;
+        }
+
+        public static void LoadCrackTasks()
+        {
+            crackTasks = GetFromFile<CrackTask[]>(crackTasksFile);
+        }
+        public static void LoadCrackTasks(string fileName)
+        {
+            crackTasksFile = fileName;
+            LoadCrackTasks();
+        }
+        public static void SaveCrackTasks()
+        {
+            SaveToFile(crackTasks, crackTasksFile);
+        }
+        public static void SaveCrackTasks(string fileName)
+        {
+            crackTasksFile = fileName;
+            SaveCrackTasks();
         }
     }
 }
