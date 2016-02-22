@@ -91,16 +91,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrackDataSource.cs" />
     <Compile Include="Cracker.cs" />
     <Compile Include="CrackTasksList.cs" />
     <Compile Include="CrackTask.cs" />
     <Compile Include="DataManager.cs" />
+    <Compile Include="Dictionary.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mask.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
