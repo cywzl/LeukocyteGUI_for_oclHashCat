@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public class CrackDataSource
     {
-        string name = "";
-        string description = "";
-        string source = "";
+        protected string name = "";
+        protected string description = "";
+        protected string source = "";
 
         public string Name
         {
@@ -44,6 +45,11 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 source = value;
             }
+        }
+
+        public void GenerateDescription()
+        {
+            description = Path.GetFileNameWithoutExtension(source);
         }
     }
 }
