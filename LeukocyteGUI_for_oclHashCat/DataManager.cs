@@ -8,10 +8,21 @@ using System.Threading.Tasks;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
+    public enum DataTypes
+    {
+        CrackTasks,
+        Dictionaries,
+        Masks
+    }
+
     public static class DataManager
     {
         static CrackTask[] crackTasks = new CrackTask[0];
+        static Dictionary[] dictionaries = new Dictionary[0];
+        static Mask[] masks = new Mask[0];
         static string crackTasksFile = "CrackTasks.dat";
+        static string dictionariesFile = "Dictionaries.dat";
+        static string masksFile = "Masks.dat";
 
         public static CrackTask[] CrackTasks
         {
@@ -22,6 +33,28 @@ namespace LeukocyteGUI_for_oclHashCat
             set
             {
                 crackTasks = value;
+            }
+        }
+        public static Dictionary[] Dictionaries
+        {
+            get
+            {
+                return dictionaries;
+            }
+            set
+            {
+                dictionaries = value;
+            }
+        }
+        public static Mask[] Masks
+        {
+            get
+            {
+                return masks;
+            }
+            set
+            {
+                masks = value;
             }
         }
         public static string CrackTasksFile
@@ -38,6 +71,38 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
 
                 crackTasksFile = value;
+            }
+        }
+        public static string DictionariesFile
+        {
+            get
+            {
+                return dictionariesFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "CrackTasksFile");
+                }
+
+                dictionariesFile = value;
+            }
+        }
+        public static string MasksFile
+        {
+            get
+            {
+                return masksFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "CrackTasksFile");
+                }
+
+                masksFile = value;
             }
         }
 
@@ -68,23 +133,52 @@ namespace LeukocyteGUI_for_oclHashCat
             return deserealizedObject;
         }
 
-        public static void LoadCrackTasks()
+        public static void LoadData(DataTypes dataType)
         {
-            crackTasks = GetFromFile<CrackTask[]>(crackTasksFile);
+            switch(dataType)
+            {
+                case DataTypes.CrackTasks:
+                    crackTasks = GetFromFile<CrackTask[]>(crackTasksFile);
+                    break;
+                case DataTypes.Dictionaries:
+                    dictionaries = GetFromFile<Dictionary[]>(dictionariesFile);
+                    break;
+                case DataTypes.Masks:
+                    masks = GetFromFile<Mask[]>(masksFile);
+                    break;
+            }
         }
-        public static void LoadCrackTasks(string fileName)
+        public static void LoadData(DataTypes dataType, string fileName)
         {
-            crackTasksFile = fileName;
-            LoadCrackTasks();
+            switch(dataType)
+            {
+                case DataTypes.CrackTasks:
+                    CrackTasksFile = fileName;
+                    break;
+                case DataTypes.Dictionaries:
+                    DictionariesFile = fileName;
+                    break;
+                case DataTypes.Masks:
+                    MasksFile = fileName;
+                    break;
+            }
+
+            LoadData(dataType);
         }
-        public static void SaveCrackTasks()
+        public static void SaveData(DataTypes dataType, object data)
         {
-            SaveToFile(crackTasks, crackTasksFile);
-        }
-        public static void SaveCrackTasks(string fileName)
-        {
-            crackTasksFile = fileName;
-            SaveCrackTasks();
+            switch (dataType)
+            {
+                case DataTypes.CrackTasks:
+                    SaveToFile(data, crackTasksFile);
+                    break;
+                case DataTypes.Dictionaries:
+                    SaveToFile(data, dictionariesFile);
+                    break;
+                case DataTypes.Masks:
+                    SaveToFile(data, masksFile);
+                    break;
+            }
         }
     }
 }
