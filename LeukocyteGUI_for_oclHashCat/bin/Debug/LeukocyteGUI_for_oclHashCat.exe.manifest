@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LeukocyteGUI_for_oclHashCat.exe" size="81920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LeukocyteGUI_for_oclHashCat.exe" size="88064">
       <assemblyIdentity name="LeukocyteGUI_for_oclHashCat" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LdpJEHrE94tqpuFIzC2Ntx8ztWE4sFsr77C4H7Tv9Tg=</dsig:DigestValue>
+        <dsig:DigestValue>aSuDm9h6Cj24eQyeti6IIo/wQtG/ZMF9Pl2qfUM9BAE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
