@@ -36,6 +36,52 @@ namespace LeukocyteGUI_for_oclHashCat
     }
 
     [Serializable()]
+    public class HashType
+    {
+        /// <summary>
+        /// An oclHashcat HashType name or description
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
+        private string name;
+
+        /// <summary>
+        /// An oclHashcat HashType code
+        /// </summary>
+        public int Code
+        {
+            get
+            {
+                return code;
+            }
+            set
+            {
+                if(code < 0)
+                {
+                    throw new ArgumentOutOfRangeException("HashType Code must be 0 or bigger.");
+                }
+
+                code = value;
+            }
+        }
+        private int code;
+
+        public HashType(string name, int code)
+        {
+            Name = name;
+            Code = code;
+        }
+    }
+    [Serializable()]
     public class MiscSettings
     {
         /// <summary>
@@ -1340,7 +1386,7 @@ namespace LeukocyteGUI_for_oclHashCat
         /// <summary>
         /// Hash-type
         /// </summary>
-        public int HashType
+        public HashType HashType
         {
             get
             {
@@ -1348,19 +1394,10 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             set
             {
-                if (IsRunning)
-                {
-                    throw new InvalidOperationException("Cannot change CrackTask's property while it's being cracked.");
-                }
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("HashType should be a non-negative value.");
-                }
-
                 hashType = value;
             }
         }
-        private int hashType = 0;
+        private HashType hashType = new HashType("", 0);
 
         /// <summary>
         /// Attack-mode
@@ -1763,7 +1800,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             // General
             "-a "  + (int)attackMode +
-            " -m " + hashType   +
+            " -m " + hashType.Code   +
 
             // Misc
             (MiscSettings.HexCharset                            ? " --hex-charset"                                                  : "") +
@@ -1844,9 +1881,9 @@ namespace LeukocyteGUI_for_oclHashCat
             (CustomCharsetsSettings.UseCharset4                 ? " --custom-charset4="         + CustomCharsetsSettings.Charset4   : "") +
 
             // Increment
-            (IncrementSettings.Increment                          ? " --increment"                                                  : "") +
-            ((IncrementSettings.IncrementMin > -1)                ? " --increment-min="           + IncrementSettings.IncrementMin  : "") +
-            ((IncrementSettings.IncrementMax > -1)                ? " --increment-max="           + IncrementSettings.IncrementMax  : "") +
+            (IncrementSettings.Increment                        ? " --increment"                                                    : "") +
+            ((IncrementSettings.IncrementMin > -1)              ? " --increment-min="           + IncrementSettings.IncrementMin    : "") +
+            ((IncrementSettings.IncrementMax > -1)              ? " --increment-max="           + IncrementSettings.IncrementMax    : "") +
 
             // Target Part
             " " + crackTarget +

@@ -12,7 +12,8 @@ namespace LeukocyteGUI_for_oclHashCat
     {
         CrackTasks,
         Dictionaries,
-        Masks
+        Masks,
+        HashTypes
     }
 
     public static class DataManager
@@ -20,9 +21,11 @@ namespace LeukocyteGUI_for_oclHashCat
         static CrackTask[] crackTasks = new CrackTask[0];
         static Dictionary[] dictionaries = new Dictionary[0];
         static Mask[] masks = new Mask[0];
+        static HashType[] hashTypes = new HashType[0];
         static string crackTasksFile = "CrackTasks.dat";
         static string dictionariesFile = "Dictionaries.dat";
         static string masksFile = "Masks.dat";
+        static string hashTypesFile = "HashTypes.dat";
 
         public static CrackTask[] CrackTasks
         {
@@ -55,6 +58,17 @@ namespace LeukocyteGUI_for_oclHashCat
             set
             {
                 masks = value;
+            }
+        }
+        public static HashType[] HashTypes
+        {
+            get
+            {
+                return hashTypes;
+            }
+            set
+            {
+                hashTypes = value;
             }
         }
         public static string CrackTasksFile
@@ -105,6 +119,22 @@ namespace LeukocyteGUI_for_oclHashCat
                 masksFile = value;
             }
         }
+        public static string HashTypesFile
+        {
+            get
+            {
+                return hashTypesFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "CrackTasksFile");
+                }
+
+                hashTypesFile = value;
+            }
+        }
 
         /// <summary>
         /// Saves any serializable object to file.
@@ -146,6 +176,9 @@ namespace LeukocyteGUI_for_oclHashCat
                 case DataTypes.Masks:
                     masks = GetFromFile<Mask[]>(masksFile);
                     break;
+                case DataTypes.HashTypes:
+                    hashTypes = GetFromFile<HashType[]>(hashTypesFile);
+                    break;
             }
         }
         public static void LoadData(DataTypes dataType, string fileName)
@@ -161,6 +194,9 @@ namespace LeukocyteGUI_for_oclHashCat
                 case DataTypes.Masks:
                     MasksFile = fileName;
                     break;
+                case DataTypes.HashTypes:
+                    HashTypesFile = fileName;
+                    break; 
             }
 
             LoadData(dataType);
