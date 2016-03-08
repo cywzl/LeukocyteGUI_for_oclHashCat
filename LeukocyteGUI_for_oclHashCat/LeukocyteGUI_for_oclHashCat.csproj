@@ -95,6 +95,7 @@
     <Compile Include="Cracker.cs" />
     <Compile Include="CrackTasksList.cs" />
     <Compile Include="CrackTask.cs" />
+    <Compile Include="CrackTaskTemplate.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="Dictionary.cs" />
     <Compile Include="MainForm.cs">

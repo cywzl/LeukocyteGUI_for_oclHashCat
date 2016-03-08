@@ -13,7 +13,8 @@ namespace LeukocyteGUI_for_oclHashCat
         CrackTasks,
         Dictionaries,
         Masks,
-        HashTypes
+        HashTypes,
+        CrackTaskTemplates
     }
 
     public static class DataManager
@@ -22,10 +23,12 @@ namespace LeukocyteGUI_for_oclHashCat
         static Dictionary[] dictionaries = new Dictionary[0];
         static Mask[] masks = new Mask[0];
         static HashType[] hashTypes = new HashType[0];
+        static CrackTaskTemplate[] crackTaskTemplates = new CrackTaskTemplate[0];
         static string crackTasksFile = "CrackTasks.dat";
         static string dictionariesFile = "Dictionaries.dat";
         static string masksFile = "Masks.dat";
         static string hashTypesFile = "HashTypes.dat";
+        static string crackTaskTemplatesFile = "CrackTaskTemplates.dat";
 
         public static CrackTask[] CrackTasks
         {
@@ -69,6 +72,17 @@ namespace LeukocyteGUI_for_oclHashCat
             set
             {
                 hashTypes = value;
+            }
+        }
+        public static CrackTaskTemplate[] CrackTaskTemplates
+        {
+            get
+            {
+                return crackTaskTemplates;
+            }
+            set
+            {
+                crackTaskTemplates = value;
             }
         }
         public static string CrackTasksFile
@@ -129,10 +143,26 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Filename cannot be empty.", "CrackTasksFile");
+                    throw new ArgumentException("Filename cannot be empty.", "MasksFile");
                 }
 
                 hashTypesFile = value;
+            }
+        }
+        public static string CrackTaskTemplatesFile
+        {
+            get
+            {
+                return crackTaskTemplatesFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "CrackTaskTemplatesFile");
+                }
+
+                crackTaskTemplatesFile = value;
             }
         }
 
@@ -179,6 +209,9 @@ namespace LeukocyteGUI_for_oclHashCat
                 case DataTypes.HashTypes:
                     hashTypes = GetFromFile<HashType[]>(hashTypesFile);
                     break;
+                case DataTypes.CrackTaskTemplates:
+                    crackTaskTemplates = GetFromFile<CrackTaskTemplate[]>(crackTaskTemplatesFile);
+                    break;
             }
         }
         public static void LoadData(DataTypes dataType, string fileName)
@@ -196,7 +229,10 @@ namespace LeukocyteGUI_for_oclHashCat
                     break;
                 case DataTypes.HashTypes:
                     HashTypesFile = fileName;
-                    break; 
+                    break;
+                case DataTypes.CrackTaskTemplates:
+                    CrackTaskTemplatesFile = fileName;
+                    break;
             }
 
             LoadData(dataType);
@@ -213,6 +249,12 @@ namespace LeukocyteGUI_for_oclHashCat
                     break;
                 case DataTypes.Masks:
                     SaveToFile(data, masksFile);
+                    break;
+                case DataTypes.HashTypes:
+                    SaveToFile(data, hashTypesFile);
+                    break;
+                case DataTypes.CrackTaskTemplates:
+                    SaveToFile(data, crackTaskTemplatesFile);
                     break;
             }
         }
