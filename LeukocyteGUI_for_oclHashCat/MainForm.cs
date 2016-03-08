@@ -16,5 +16,10 @@ namespace LeukocyteGUI_for_oclHashCat
         {
             InitializeComponent();
         }
+
+        private void btnAddTask_Click(object sender, EventArgs e)
+        {
+            new TaskEditorForm().Show();
+        }
     }
 }

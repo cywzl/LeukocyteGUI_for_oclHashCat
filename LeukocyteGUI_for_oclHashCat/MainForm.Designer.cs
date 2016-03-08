@@ -178,6 +178,7 @@
             this.btnAddTask.Size = new System.Drawing.Size(36, 36);
             this.btnAddTask.TabIndex = 2;
             this.btnAddTask.UseVisualStyleBackColor = true;
+            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
             // 
             // btnRemoveTask
             // 
