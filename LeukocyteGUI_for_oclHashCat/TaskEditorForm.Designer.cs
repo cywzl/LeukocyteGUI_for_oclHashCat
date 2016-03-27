@@ -30,13 +30,26 @@
         {
             this.tcTaskOptions = new System.Windows.Forms.TabControl();
             this.tpMain = new System.Windows.Forms.TabPage();
+            this.gbIncrementMode = new System.Windows.Forms.GroupBox();
+            this.nudIncrementMax = new System.Windows.Forms.NumericUpDown();
+            this.nudIncrementMin = new System.Windows.Forms.NumericUpDown();
+            this.lblIncrementMax = new System.Windows.Forms.Label();
+            this.lblIncrementMin = new System.Windows.Forms.Label();
+            this.cbIncrementMode = new System.Windows.Forms.CheckBox();
+            this.gbCharsets = new System.Windows.Forms.GroupBox();
+            this.cbCharset4 = new System.Windows.Forms.CheckBox();
+            this.cbCharset3 = new System.Windows.Forms.CheckBox();
+            this.cbCharset2 = new System.Windows.Forms.CheckBox();
+            this.cbCharset1 = new System.Windows.Forms.CheckBox();
             this.gbAttackSource = new System.Windows.Forms.GroupBox();
+            this.lblRightSource = new System.Windows.Forms.Label();
+            this.lblLeftSource = new System.Windows.Forms.Label();
             this.gbAttackType = new System.Windows.Forms.GroupBox();
             this.rbMaskDict = new System.Windows.Forms.RadioButton();
             this.rbDictMask = new System.Windows.Forms.RadioButton();
             this.rbBruteforce = new System.Windows.Forms.RadioButton();
             this.rbCombination = new System.Windows.Forms.RadioButton();
-            this.rbStaight = new System.Windows.Forms.RadioButton();
+            this.rbStraight = new System.Windows.Forms.RadioButton();
             this.tpMisc = new System.Windows.Forms.TabPage();
             this.nudWeakHashThreshold = new System.Windows.Forms.NumericUpDown();
             this.lblWeakHashThreshold = new System.Windows.Forms.Label();
@@ -168,32 +181,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lblHashType = new System.Windows.Forms.Label();
-            this.cbHashType = new System.Windows.Forms.ComboBox();
+            this.cmbHashType = new System.Windows.Forms.ComboBox();
             this.lblTarget = new System.Windows.Forms.Label();
-            this.cbTarget = new System.Windows.Forms.ComboBox();
+            this.cmbTarget = new System.Windows.Forms.ComboBox();
             this.lblTemplate = new System.Windows.Forms.Label();
-            this.cbTemplate = new System.Windows.Forms.ComboBox();
-            this.gbCharsets = new System.Windows.Forms.GroupBox();
-            this.gbIncrementMode = new System.Windows.Forms.GroupBox();
-            this.lblLeftSource = new System.Windows.Forms.Label();
-            this.tbLeftSource = new System.Windows.Forms.TextBox();
-            this.tbRightSource = new System.Windows.Forms.TextBox();
-            this.lblRightSource = new System.Windows.Forms.Label();
-            this.cbIncrementMode = new System.Windows.Forms.CheckBox();
-            this.lblIncrementMin = new System.Windows.Forms.Label();
-            this.lblIncrementMax = new System.Windows.Forms.Label();
-            this.nudIncrementMin = new System.Windows.Forms.NumericUpDown();
-            this.nudIncrementMax = new System.Windows.Forms.NumericUpDown();
-            this.cbCharset1 = new System.Windows.Forms.CheckBox();
-            this.tbCharset1 = new System.Windows.Forms.TextBox();
-            this.tbCharset2 = new System.Windows.Forms.TextBox();
-            this.cbCharset2 = new System.Windows.Forms.CheckBox();
-            this.tbCharset3 = new System.Windows.Forms.TextBox();
-            this.cbCharset3 = new System.Windows.Forms.CheckBox();
-            this.tbCharset4 = new System.Windows.Forms.TextBox();
-            this.cbCharset4 = new System.Windows.Forms.CheckBox();
+            this.cmbTemplate = new System.Windows.Forms.ComboBox();
+            this.cmbLeftSource = new System.Windows.Forms.ComboBox();
+            this.cmbRightSource = new System.Windows.Forms.ComboBox();
+            this.cmbCharset1 = new System.Windows.Forms.ComboBox();
+            this.cmbCharset2 = new System.Windows.Forms.ComboBox();
+            this.cmbCharset3 = new System.Windows.Forms.ComboBox();
+            this.cmbCharset4 = new System.Windows.Forms.ComboBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.tcTaskOptions.SuspendLayout();
             this.tpMain.SuspendLayout();
+            this.gbIncrementMode.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMin)).BeginInit();
+            this.gbCharsets.SuspendLayout();
             this.gbAttackSource.SuspendLayout();
             this.gbAttackType.SuspendLayout();
             this.tpMisc.SuspendLayout();
@@ -225,10 +230,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            this.gbCharsets.SuspendLayout();
-            this.gbIncrementMode.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMax)).BeginInit();
             this.SuspendLayout();
             // 
             // tcTaskOptions
@@ -264,11 +265,160 @@
             this.tpMain.Text = "Main";
             this.tpMain.UseVisualStyleBackColor = true;
             // 
+            // gbIncrementMode
+            // 
+            this.gbIncrementMode.Controls.Add(this.nudIncrementMax);
+            this.gbIncrementMode.Controls.Add(this.nudIncrementMin);
+            this.gbIncrementMode.Controls.Add(this.lblIncrementMax);
+            this.gbIncrementMode.Controls.Add(this.lblIncrementMin);
+            this.gbIncrementMode.Controls.Add(this.cbIncrementMode);
+            this.gbIncrementMode.Enabled = false;
+            this.gbIncrementMode.Location = new System.Drawing.Point(18, 142);
+            this.gbIncrementMode.Name = "gbIncrementMode";
+            this.gbIncrementMode.Size = new System.Drawing.Size(208, 138);
+            this.gbIncrementMode.TabIndex = 3;
+            this.gbIncrementMode.TabStop = false;
+            this.gbIncrementMode.Text = "Increment mode";
+            // 
+            // nudIncrementMax
+            // 
+            this.nudIncrementMax.Location = new System.Drawing.Point(150, 102);
+            this.nudIncrementMax.Maximum = new decimal(new int[] {
+            54,
+            0,
+            0,
+            0});
+            this.nudIncrementMax.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudIncrementMax.Name = "nudIncrementMax";
+            this.nudIncrementMax.Size = new System.Drawing.Size(44, 20);
+            this.nudIncrementMax.TabIndex = 10;
+            this.nudIncrementMax.Value = new decimal(new int[] {
+            54,
+            0,
+            0,
+            0});
+            // 
+            // nudIncrementMin
+            // 
+            this.nudIncrementMin.Location = new System.Drawing.Point(150, 65);
+            this.nudIncrementMin.Maximum = new decimal(new int[] {
+            55,
+            0,
+            0,
+            0});
+            this.nudIncrementMin.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudIncrementMin.Name = "nudIncrementMin";
+            this.nudIncrementMin.Size = new System.Drawing.Size(44, 20);
+            this.nudIncrementMin.TabIndex = 9;
+            this.nudIncrementMin.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblIncrementMax
+            // 
+            this.lblIncrementMax.AutoSize = true;
+            this.lblIncrementMax.Location = new System.Drawing.Point(12, 98);
+            this.lblIncrementMax.Name = "lblIncrementMax";
+            this.lblIncrementMax.Size = new System.Drawing.Size(132, 26);
+            this.lblIncrementMax.TabIndex = 2;
+            this.lblIncrementMax.Text = "Stop incrementing at NUM\r\n( --increment-max=NUM ):";
+            // 
+            // lblIncrementMin
+            // 
+            this.lblIncrementMin.AutoSize = true;
+            this.lblIncrementMin.Location = new System.Drawing.Point(12, 61);
+            this.lblIncrementMin.Name = "lblIncrementMin";
+            this.lblIncrementMin.Size = new System.Drawing.Size(132, 26);
+            this.lblIncrementMin.TabIndex = 1;
+            this.lblIncrementMin.Text = "Start incrementing at NUM\r\n( --increment-min=NUM ):";
+            // 
+            // cbIncrementMode
+            // 
+            this.cbIncrementMode.AutoSize = true;
+            this.cbIncrementMode.Location = new System.Drawing.Point(15, 19);
+            this.cbIncrementMode.Name = "cbIncrementMode";
+            this.cbIncrementMode.Size = new System.Drawing.Size(137, 30);
+            this.cbIncrementMode.TabIndex = 0;
+            this.cbIncrementMode.Text = "Enable increment mode\r\n( -i,  --increment )";
+            this.cbIncrementMode.UseVisualStyleBackColor = true;
+            // 
+            // gbCharsets
+            // 
+            this.gbCharsets.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbCharsets.Controls.Add(this.cmbCharset4);
+            this.gbCharsets.Controls.Add(this.cmbCharset3);
+            this.gbCharsets.Controls.Add(this.cmbCharset2);
+            this.gbCharsets.Controls.Add(this.cmbCharset1);
+            this.gbCharsets.Controls.Add(this.cbCharset4);
+            this.gbCharsets.Controls.Add(this.cbCharset3);
+            this.gbCharsets.Controls.Add(this.cbCharset2);
+            this.gbCharsets.Controls.Add(this.cbCharset1);
+            this.gbCharsets.Enabled = false;
+            this.gbCharsets.Location = new System.Drawing.Point(241, 142);
+            this.gbCharsets.Name = "gbCharsets";
+            this.gbCharsets.Size = new System.Drawing.Size(286, 138);
+            this.gbCharsets.TabIndex = 2;
+            this.gbCharsets.TabStop = false;
+            this.gbCharsets.Text = "Charsets";
+            // 
+            // cbCharset4
+            // 
+            this.cbCharset4.AutoSize = true;
+            this.cbCharset4.Location = new System.Drawing.Point(19, 104);
+            this.cbCharset4.Name = "cbCharset4";
+            this.cbCharset4.Size = new System.Drawing.Size(35, 17);
+            this.cbCharset4.TabIndex = 9;
+            this.cbCharset4.Text = "-4";
+            this.cbCharset4.UseVisualStyleBackColor = true;
+            // 
+            // cbCharset3
+            // 
+            this.cbCharset3.AutoSize = true;
+            this.cbCharset3.Location = new System.Drawing.Point(19, 77);
+            this.cbCharset3.Name = "cbCharset3";
+            this.cbCharset3.Size = new System.Drawing.Size(35, 17);
+            this.cbCharset3.TabIndex = 7;
+            this.cbCharset3.Text = "-3";
+            this.cbCharset3.UseVisualStyleBackColor = true;
+            // 
+            // cbCharset2
+            // 
+            this.cbCharset2.AutoSize = true;
+            this.cbCharset2.Location = new System.Drawing.Point(19, 50);
+            this.cbCharset2.Name = "cbCharset2";
+            this.cbCharset2.Size = new System.Drawing.Size(35, 17);
+            this.cbCharset2.TabIndex = 5;
+            this.cbCharset2.Text = "-2";
+            this.cbCharset2.UseVisualStyleBackColor = true;
+            // 
+            // cbCharset1
+            // 
+            this.cbCharset1.AutoSize = true;
+            this.cbCharset1.Location = new System.Drawing.Point(19, 23);
+            this.cbCharset1.Name = "cbCharset1";
+            this.cbCharset1.Size = new System.Drawing.Size(35, 17);
+            this.cbCharset1.TabIndex = 0;
+            this.cbCharset1.Text = "-1";
+            this.cbCharset1.UseVisualStyleBackColor = true;
+            // 
             // gbAttackSource
             // 
-            this.gbAttackSource.Controls.Add(this.tbRightSource);
+            this.gbAttackSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbAttackSource.Controls.Add(this.cmbRightSource);
+            this.gbAttackSource.Controls.Add(this.cmbLeftSource);
             this.gbAttackSource.Controls.Add(this.lblRightSource);
-            this.gbAttackSource.Controls.Add(this.tbLeftSource);
             this.gbAttackSource.Controls.Add(this.lblLeftSource);
             this.gbAttackSource.Location = new System.Drawing.Point(241, 14);
             this.gbAttackSource.Name = "gbAttackSource";
@@ -277,13 +427,32 @@
             this.gbAttackSource.TabStop = false;
             this.gbAttackSource.Text = "Attack Source";
             // 
+            // lblRightSource
+            // 
+            this.lblRightSource.AutoSize = true;
+            this.lblRightSource.Enabled = false;
+            this.lblRightSource.Location = new System.Drawing.Point(16, 66);
+            this.lblRightSource.Name = "lblRightSource";
+            this.lblRightSource.Size = new System.Drawing.Size(85, 13);
+            this.lblRightSource.TabIndex = 2;
+            this.lblRightSource.Text = "Right Dictionary:";
+            // 
+            // lblLeftSource
+            // 
+            this.lblLeftSource.AutoSize = true;
+            this.lblLeftSource.Location = new System.Drawing.Point(16, 22);
+            this.lblLeftSource.Name = "lblLeftSource";
+            this.lblLeftSource.Size = new System.Drawing.Size(57, 13);
+            this.lblLeftSource.TabIndex = 0;
+            this.lblLeftSource.Text = "Dictionary:";
+            // 
             // gbAttackType
             // 
             this.gbAttackType.Controls.Add(this.rbMaskDict);
             this.gbAttackType.Controls.Add(this.rbDictMask);
             this.gbAttackType.Controls.Add(this.rbBruteforce);
             this.gbAttackType.Controls.Add(this.rbCombination);
-            this.gbAttackType.Controls.Add(this.rbStaight);
+            this.gbAttackType.Controls.Add(this.rbStraight);
             this.gbAttackType.Location = new System.Drawing.Point(18, 14);
             this.gbAttackType.Name = "gbAttackType";
             this.gbAttackType.Size = new System.Drawing.Size(208, 122);
@@ -300,6 +469,7 @@
             this.rbMaskDict.TabIndex = 4;
             this.rbMaskDict.Text = "(7) Hybrid mask + dict";
             this.rbMaskDict.UseVisualStyleBackColor = true;
+            this.rbMaskDict.CheckedChanged += new System.EventHandler(this.rbAttackType_CheckedChanged);
             // 
             // rbDictMask
             // 
@@ -310,6 +480,7 @@
             this.rbDictMask.TabIndex = 3;
             this.rbDictMask.Text = "(6) Hybrid dict + mask";
             this.rbDictMask.UseVisualStyleBackColor = true;
+            this.rbDictMask.CheckedChanged += new System.EventHandler(this.rbAttackType_CheckedChanged);
             // 
             // rbBruteforce
             // 
@@ -320,6 +491,7 @@
             this.rbBruteforce.TabIndex = 2;
             this.rbBruteforce.Text = "(3) Brute-force";
             this.rbBruteforce.UseVisualStyleBackColor = true;
+            this.rbBruteforce.CheckedChanged += new System.EventHandler(this.rbAttackType_CheckedChanged);
             // 
             // rbCombination
             // 
@@ -330,18 +502,20 @@
             this.rbCombination.TabIndex = 1;
             this.rbCombination.Text = "(1) Combination";
             this.rbCombination.UseVisualStyleBackColor = true;
+            this.rbCombination.CheckedChanged += new System.EventHandler(this.rbAttackType_CheckedChanged);
             // 
-            // rbStaight
+            // rbStraight
             // 
-            this.rbStaight.AutoSize = true;
-            this.rbStaight.Checked = true;
-            this.rbStaight.Location = new System.Drawing.Point(15, 19);
-            this.rbStaight.Name = "rbStaight";
-            this.rbStaight.Size = new System.Drawing.Size(76, 17);
-            this.rbStaight.TabIndex = 0;
-            this.rbStaight.TabStop = true;
-            this.rbStaight.Text = "(0) Straight";
-            this.rbStaight.UseVisualStyleBackColor = true;
+            this.rbStraight.AutoSize = true;
+            this.rbStraight.Checked = true;
+            this.rbStraight.Location = new System.Drawing.Point(15, 19);
+            this.rbStraight.Name = "rbStraight";
+            this.rbStraight.Size = new System.Drawing.Size(76, 17);
+            this.rbStraight.TabIndex = 0;
+            this.rbStraight.TabStop = true;
+            this.rbStraight.Text = "(0) Straight";
+            this.rbStraight.UseVisualStyleBackColor = true;
+            this.rbStraight.CheckedChanged += new System.EventHandler(this.rbAttackType_CheckedChanged);
             // 
             // tpMisc
             // 
@@ -356,7 +530,7 @@
             this.tpMisc.Location = new System.Drawing.Point(4, 22);
             this.tpMisc.Name = "tpMisc";
             this.tpMisc.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMisc.Size = new System.Drawing.Size(547, 295);
+            this.tpMisc.Size = new System.Drawing.Size(547, 293);
             this.tpMisc.TabIndex = 1;
             this.tpMisc.Text = "Misc";
             this.tpMisc.UseVisualStyleBackColor = true;
@@ -459,7 +633,7 @@
             this.tpMarkov.Controls.Add(this.cbMarkovHcstat);
             this.tpMarkov.Location = new System.Drawing.Point(4, 22);
             this.tpMarkov.Name = "tpMarkov";
-            this.tpMarkov.Size = new System.Drawing.Size(547, 295);
+            this.tpMarkov.Size = new System.Drawing.Size(547, 293);
             this.tpMarkov.TabIndex = 2;
             this.tpMarkov.Text = "Markov";
             this.tpMarkov.UseVisualStyleBackColor = true;
@@ -554,7 +728,7 @@
             this.tpSession.Controls.Add(this.cbRuntime);
             this.tpSession.Location = new System.Drawing.Point(4, 22);
             this.tpSession.Name = "tpSession";
-            this.tpSession.Size = new System.Drawing.Size(547, 295);
+            this.tpSession.Size = new System.Drawing.Size(547, 293);
             this.tpSession.TabIndex = 3;
             this.tpSession.Text = "Session";
             this.tpSession.UseVisualStyleBackColor = true;
@@ -670,7 +844,7 @@
             this.tpFiles.Controls.Add(this.cbOutfileFormat);
             this.tpFiles.Location = new System.Drawing.Point(4, 22);
             this.tpFiles.Name = "tpFiles";
-            this.tpFiles.Size = new System.Drawing.Size(547, 295);
+            this.tpFiles.Size = new System.Drawing.Size(547, 293);
             this.tpFiles.TabIndex = 4;
             this.tpFiles.Text = "Files";
             this.tpFiles.UseVisualStyleBackColor = true;
@@ -1074,7 +1248,7 @@
             this.tpResources.Controls.Add(this.cbSegmentSize);
             this.tpResources.Location = new System.Drawing.Point(4, 22);
             this.tpResources.Name = "tpResources";
-            this.tpResources.Size = new System.Drawing.Size(547, 295);
+            this.tpResources.Size = new System.Drawing.Size(547, 293);
             this.tpResources.TabIndex = 5;
             this.tpResources.Text = "Resources";
             this.tpResources.UseVisualStyleBackColor = true;
@@ -1474,7 +1648,7 @@
             this.tpDistributed.Controls.Add(this.cbSkip);
             this.tpDistributed.Location = new System.Drawing.Point(4, 22);
             this.tpDistributed.Name = "tpDistributed";
-            this.tpDistributed.Size = new System.Drawing.Size(547, 295);
+            this.tpDistributed.Size = new System.Drawing.Size(547, 293);
             this.tpDistributed.TabIndex = 6;
             this.tpDistributed.Text = "Distributed";
             this.tpDistributed.UseVisualStyleBackColor = true;
@@ -1568,7 +1742,7 @@
             this.tpRules.Controls.Add(this.checkBox1);
             this.tpRules.Location = new System.Drawing.Point(4, 22);
             this.tpRules.Name = "tpRules";
-            this.tpRules.Size = new System.Drawing.Size(547, 295);
+            this.tpRules.Size = new System.Drawing.Size(547, 293);
             this.tpRules.TabIndex = 7;
             this.tpRules.Text = "Rules";
             this.tpRules.UseVisualStyleBackColor = true;
@@ -1784,13 +1958,13 @@
             this.lblHashType.TabIndex = 5;
             this.lblHashType.Text = "Hash type:";
             // 
-            // cbHashType
+            // cmbHashType
             // 
-            this.cbHashType.FormattingEnabled = true;
-            this.cbHashType.Location = new System.Drawing.Point(73, 66);
-            this.cbHashType.Name = "cbHashType";
-            this.cbHashType.Size = new System.Drawing.Size(201, 21);
-            this.cbHashType.TabIndex = 4;
+            this.cmbHashType.FormattingEnabled = true;
+            this.cmbHashType.Location = new System.Drawing.Point(73, 66);
+            this.cmbHashType.Name = "cmbHashType";
+            this.cmbHashType.Size = new System.Drawing.Size(201, 21);
+            this.cmbHashType.TabIndex = 4;
             // 
             // lblTarget
             // 
@@ -1801,13 +1975,13 @@
             this.lblTarget.TabIndex = 3;
             this.lblTarget.Text = "Target:";
             // 
-            // cbTarget
+            // cmbTarget
             // 
-            this.cbTarget.FormattingEnabled = true;
-            this.cbTarget.Location = new System.Drawing.Point(73, 39);
-            this.cbTarget.Name = "cbTarget";
-            this.cbTarget.Size = new System.Drawing.Size(201, 21);
-            this.cbTarget.TabIndex = 2;
+            this.cmbTarget.FormattingEnabled = true;
+            this.cmbTarget.Location = new System.Drawing.Point(73, 39);
+            this.cmbTarget.Name = "cmbTarget";
+            this.cmbTarget.Size = new System.Drawing.Size(201, 21);
+            this.cmbTarget.TabIndex = 2;
             // 
             // lblTemplate
             // 
@@ -1818,233 +1992,107 @@
             this.lblTemplate.TabIndex = 1;
             this.lblTemplate.Text = "Template:";
             // 
-            // cbTemplate
+            // cmbTemplate
             // 
-            this.cbTemplate.FormattingEnabled = true;
-            this.cbTemplate.Location = new System.Drawing.Point(73, 12);
-            this.cbTemplate.Name = "cbTemplate";
-            this.cbTemplate.Size = new System.Drawing.Size(201, 21);
-            this.cbTemplate.TabIndex = 0;
+            this.cmbTemplate.FormattingEnabled = true;
+            this.cmbTemplate.Location = new System.Drawing.Point(73, 12);
+            this.cmbTemplate.Name = "cmbTemplate";
+            this.cmbTemplate.Size = new System.Drawing.Size(201, 21);
+            this.cmbTemplate.TabIndex = 0;
             // 
-            // gbCharsets
+            // cmbLeftSource
             // 
-            this.gbCharsets.Controls.Add(this.tbCharset4);
-            this.gbCharsets.Controls.Add(this.cbCharset4);
-            this.gbCharsets.Controls.Add(this.tbCharset3);
-            this.gbCharsets.Controls.Add(this.cbCharset3);
-            this.gbCharsets.Controls.Add(this.tbCharset2);
-            this.gbCharsets.Controls.Add(this.cbCharset2);
-            this.gbCharsets.Controls.Add(this.tbCharset1);
-            this.gbCharsets.Controls.Add(this.cbCharset1);
-            this.gbCharsets.Location = new System.Drawing.Point(241, 142);
-            this.gbCharsets.Name = "gbCharsets";
-            this.gbCharsets.Size = new System.Drawing.Size(286, 138);
-            this.gbCharsets.TabIndex = 2;
-            this.gbCharsets.TabStop = false;
-            this.gbCharsets.Text = "Charsets";
+            this.cmbLeftSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbLeftSource.FormattingEnabled = true;
+            this.cmbLeftSource.Location = new System.Drawing.Point(39, 41);
+            this.cmbLeftSource.Name = "cmbLeftSource";
+            this.cmbLeftSource.Size = new System.Drawing.Size(225, 21);
+            this.cmbLeftSource.TabIndex = 6;
             // 
-            // gbIncrementMode
+            // cmbRightSource
             // 
-            this.gbIncrementMode.Controls.Add(this.nudIncrementMax);
-            this.gbIncrementMode.Controls.Add(this.nudIncrementMin);
-            this.gbIncrementMode.Controls.Add(this.lblIncrementMax);
-            this.gbIncrementMode.Controls.Add(this.lblIncrementMin);
-            this.gbIncrementMode.Controls.Add(this.cbIncrementMode);
-            this.gbIncrementMode.Location = new System.Drawing.Point(18, 142);
-            this.gbIncrementMode.Name = "gbIncrementMode";
-            this.gbIncrementMode.Size = new System.Drawing.Size(208, 138);
-            this.gbIncrementMode.TabIndex = 3;
-            this.gbIncrementMode.TabStop = false;
-            this.gbIncrementMode.Text = "Increment mode";
+            this.cmbRightSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbRightSource.Enabled = false;
+            this.cmbRightSource.FormattingEnabled = true;
+            this.cmbRightSource.Location = new System.Drawing.Point(39, 85);
+            this.cmbRightSource.Name = "cmbRightSource";
+            this.cmbRightSource.Size = new System.Drawing.Size(225, 21);
+            this.cmbRightSource.TabIndex = 7;
             // 
-            // lblLeftSource
+            // cmbCharset1
             // 
-            this.lblLeftSource.AutoSize = true;
-            this.lblLeftSource.Location = new System.Drawing.Point(16, 22);
-            this.lblLeftSource.Name = "lblLeftSource";
-            this.lblLeftSource.Size = new System.Drawing.Size(78, 13);
-            this.lblLeftSource.TabIndex = 0;
-            this.lblLeftSource.Text = "Left Dictionary:";
+            this.cmbCharset1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset1.FormattingEnabled = true;
+            this.cmbCharset1.Location = new System.Drawing.Point(60, 21);
+            this.cmbCharset1.Name = "cmbCharset1";
+            this.cmbCharset1.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset1.TabIndex = 11;
             // 
-            // tbLeftSource
+            // cmbCharset2
             // 
-            this.tbLeftSource.Location = new System.Drawing.Point(39, 40);
-            this.tbLeftSource.Name = "tbLeftSource";
-            this.tbLeftSource.Size = new System.Drawing.Size(225, 20);
-            this.tbLeftSource.TabIndex = 1;
+            this.cmbCharset2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset2.FormattingEnabled = true;
+            this.cmbCharset2.Location = new System.Drawing.Point(60, 48);
+            this.cmbCharset2.Name = "cmbCharset2";
+            this.cmbCharset2.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset2.TabIndex = 12;
             // 
-            // tbRightSource
+            // cmbCharset3
             // 
-            this.tbRightSource.Location = new System.Drawing.Point(39, 84);
-            this.tbRightSource.Name = "tbRightSource";
-            this.tbRightSource.Size = new System.Drawing.Size(225, 20);
-            this.tbRightSource.TabIndex = 3;
+            this.cmbCharset3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset3.FormattingEnabled = true;
+            this.cmbCharset3.Location = new System.Drawing.Point(60, 75);
+            this.cmbCharset3.Name = "cmbCharset3";
+            this.cmbCharset3.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset3.TabIndex = 13;
             // 
-            // lblRightSource
+            // cmbCharset4
             // 
-            this.lblRightSource.AutoSize = true;
-            this.lblRightSource.Location = new System.Drawing.Point(16, 66);
-            this.lblRightSource.Name = "lblRightSource";
-            this.lblRightSource.Size = new System.Drawing.Size(85, 13);
-            this.lblRightSource.TabIndex = 2;
-            this.lblRightSource.Text = "Right Dictionary:";
+            this.cmbCharset4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset4.FormattingEnabled = true;
+            this.cmbCharset4.Location = new System.Drawing.Point(60, 102);
+            this.cmbCharset4.Name = "cmbCharset4";
+            this.cmbCharset4.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset4.TabIndex = 14;
             // 
-            // cbIncrementMode
+            // textBox4
             // 
-            this.cbIncrementMode.AutoSize = true;
-            this.cbIncrementMode.Location = new System.Drawing.Point(15, 19);
-            this.cbIncrementMode.Name = "cbIncrementMode";
-            this.cbIncrementMode.Size = new System.Drawing.Size(137, 30);
-            this.cbIncrementMode.TabIndex = 0;
-            this.cbIncrementMode.Text = "Enable increment mode\r\n( -i,  --increment )";
-            this.cbIncrementMode.UseVisualStyleBackColor = true;
-            // 
-            // lblIncrementMin
-            // 
-            this.lblIncrementMin.AutoSize = true;
-            this.lblIncrementMin.Location = new System.Drawing.Point(12, 61);
-            this.lblIncrementMin.Name = "lblIncrementMin";
-            this.lblIncrementMin.Size = new System.Drawing.Size(132, 26);
-            this.lblIncrementMin.TabIndex = 1;
-            this.lblIncrementMin.Text = "Start incrementing at NUM\r\n( --increment-min=NUM ):";
-            // 
-            // lblIncrementMax
-            // 
-            this.lblIncrementMax.AutoSize = true;
-            this.lblIncrementMax.Location = new System.Drawing.Point(12, 98);
-            this.lblIncrementMax.Name = "lblIncrementMax";
-            this.lblIncrementMax.Size = new System.Drawing.Size(132, 26);
-            this.lblIncrementMax.TabIndex = 2;
-            this.lblIncrementMax.Text = "Stop incrementing at NUM\r\n( --increment-max=NUM ):";
-            // 
-            // nudIncrementMin
-            // 
-            this.nudIncrementMin.Location = new System.Drawing.Point(150, 65);
-            this.nudIncrementMin.Maximum = new decimal(new int[] {
-            55,
-            0,
-            0,
-            0});
-            this.nudIncrementMin.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudIncrementMin.Name = "nudIncrementMin";
-            this.nudIncrementMin.Size = new System.Drawing.Size(44, 20);
-            this.nudIncrementMin.TabIndex = 9;
-            this.nudIncrementMin.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nudIncrementMax
-            // 
-            this.nudIncrementMax.Location = new System.Drawing.Point(150, 102);
-            this.nudIncrementMax.Maximum = new decimal(new int[] {
-            54,
-            0,
-            0,
-            0});
-            this.nudIncrementMax.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudIncrementMax.Name = "nudIncrementMax";
-            this.nudIncrementMax.Size = new System.Drawing.Size(44, 20);
-            this.nudIncrementMax.TabIndex = 10;
-            this.nudIncrementMax.Value = new decimal(new int[] {
-            54,
-            0,
-            0,
-            0});
-            // 
-            // cbCharset1
-            // 
-            this.cbCharset1.AutoSize = true;
-            this.cbCharset1.Location = new System.Drawing.Point(19, 21);
-            this.cbCharset1.Name = "cbCharset1";
-            this.cbCharset1.Size = new System.Drawing.Size(35, 17);
-            this.cbCharset1.TabIndex = 0;
-            this.cbCharset1.Text = "-1";
-            this.cbCharset1.UseVisualStyleBackColor = true;
-            // 
-            // tbCharset1
-            // 
-            this.tbCharset1.Location = new System.Drawing.Point(60, 19);
-            this.tbCharset1.Name = "tbCharset1";
-            this.tbCharset1.Size = new System.Drawing.Size(204, 20);
-            this.tbCharset1.TabIndex = 4;
-            // 
-            // tbCharset2
-            // 
-            this.tbCharset2.Location = new System.Drawing.Point(60, 45);
-            this.tbCharset2.Name = "tbCharset2";
-            this.tbCharset2.Size = new System.Drawing.Size(204, 20);
-            this.tbCharset2.TabIndex = 6;
-            // 
-            // cbCharset2
-            // 
-            this.cbCharset2.AutoSize = true;
-            this.cbCharset2.Location = new System.Drawing.Point(19, 47);
-            this.cbCharset2.Name = "cbCharset2";
-            this.cbCharset2.Size = new System.Drawing.Size(35, 17);
-            this.cbCharset2.TabIndex = 5;
-            this.cbCharset2.Text = "-1";
-            this.cbCharset2.UseVisualStyleBackColor = true;
-            // 
-            // tbCharset3
-            // 
-            this.tbCharset3.Location = new System.Drawing.Point(60, 71);
-            this.tbCharset3.Name = "tbCharset3";
-            this.tbCharset3.Size = new System.Drawing.Size(204, 20);
-            this.tbCharset3.TabIndex = 8;
-            // 
-            // cbCharset3
-            // 
-            this.cbCharset3.AutoSize = true;
-            this.cbCharset3.Location = new System.Drawing.Point(19, 73);
-            this.cbCharset3.Name = "cbCharset3";
-            this.cbCharset3.Size = new System.Drawing.Size(35, 17);
-            this.cbCharset3.TabIndex = 7;
-            this.cbCharset3.Text = "-1";
-            this.cbCharset3.UseVisualStyleBackColor = true;
-            // 
-            // tbCharset4
-            // 
-            this.tbCharset4.Location = new System.Drawing.Point(60, 97);
-            this.tbCharset4.Name = "tbCharset4";
-            this.tbCharset4.Size = new System.Drawing.Size(204, 20);
-            this.tbCharset4.TabIndex = 10;
-            // 
-            // cbCharset4
-            // 
-            this.cbCharset4.AutoSize = true;
-            this.cbCharset4.Location = new System.Drawing.Point(19, 99);
-            this.cbCharset4.Name = "cbCharset4";
-            this.cbCharset4.Size = new System.Drawing.Size(35, 17);
-            this.cbCharset4.TabIndex = 9;
-            this.cbCharset4.Text = "-1";
-            this.cbCharset4.UseVisualStyleBackColor = true;
+            this.textBox4.Location = new System.Drawing.Point(317, 12);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(246, 75);
+            this.textBox4.TabIndex = 6;
             // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 433);
+            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.lblHashType);
             this.Controls.Add(this.tcTaskOptions);
-            this.Controls.Add(this.cbHashType);
+            this.Controls.Add(this.cmbHashType);
             this.Controls.Add(this.lblTemplate);
-            this.Controls.Add(this.cbTarget);
+            this.Controls.Add(this.cmbTarget);
             this.Controls.Add(this.lblTarget);
-            this.Controls.Add(this.cbTemplate);
+            this.Controls.Add(this.cmbTemplate);
             this.Name = "TaskEditorForm";
             this.Text = "TaskEditorForm";
             this.tcTaskOptions.ResumeLayout(false);
             this.tpMain.ResumeLayout(false);
+            this.gbIncrementMode.ResumeLayout(false);
+            this.gbIncrementMode.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMin)).EndInit();
+            this.gbCharsets.ResumeLayout(false);
+            this.gbCharsets.PerformLayout();
             this.gbAttackSource.ResumeLayout(false);
             this.gbAttackSource.PerformLayout();
             this.gbAttackType.ResumeLayout(false);
@@ -2085,12 +2133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            this.gbCharsets.ResumeLayout(false);
-            this.gbCharsets.PerformLayout();
-            this.gbIncrementMode.ResumeLayout(false);
-            this.gbIncrementMode.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudIncrementMax)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2102,11 +2144,11 @@
         private System.Windows.Forms.TabPage tpMain;
         private System.Windows.Forms.TabPage tpMisc;
         private System.Windows.Forms.Label lblHashType;
-        private System.Windows.Forms.ComboBox cbHashType;
+        private System.Windows.Forms.ComboBox cmbHashType;
         private System.Windows.Forms.Label lblTarget;
-        private System.Windows.Forms.ComboBox cbTarget;
+        private System.Windows.Forms.ComboBox cmbTarget;
         private System.Windows.Forms.Label lblTemplate;
-        private System.Windows.Forms.ComboBox cbTemplate;
+        private System.Windows.Forms.ComboBox cmbTemplate;
         private System.Windows.Forms.TabPage tpMarkov;
         private System.Windows.Forms.TabPage tpSession;
         private System.Windows.Forms.TabPage tpFiles;
@@ -2241,7 +2283,7 @@
         private System.Windows.Forms.RadioButton rbDictMask;
         private System.Windows.Forms.RadioButton rbBruteforce;
         private System.Windows.Forms.RadioButton rbCombination;
-        private System.Windows.Forms.RadioButton rbStaight;
+        private System.Windows.Forms.RadioButton rbStraight;
         private System.Windows.Forms.GroupBox gbAttackSource;
         private System.Windows.Forms.GroupBox gbIncrementMode;
         private System.Windows.Forms.NumericUpDown nudIncrementMax;
@@ -2250,17 +2292,18 @@
         private System.Windows.Forms.Label lblIncrementMin;
         private System.Windows.Forms.CheckBox cbIncrementMode;
         private System.Windows.Forms.GroupBox gbCharsets;
-        private System.Windows.Forms.TextBox tbCharset4;
         private System.Windows.Forms.CheckBox cbCharset4;
-        private System.Windows.Forms.TextBox tbCharset3;
         private System.Windows.Forms.CheckBox cbCharset3;
-        private System.Windows.Forms.TextBox tbCharset2;
         private System.Windows.Forms.CheckBox cbCharset2;
-        private System.Windows.Forms.TextBox tbCharset1;
         private System.Windows.Forms.CheckBox cbCharset1;
-        private System.Windows.Forms.TextBox tbRightSource;
         private System.Windows.Forms.Label lblRightSource;
-        private System.Windows.Forms.TextBox tbLeftSource;
         private System.Windows.Forms.Label lblLeftSource;
+        private System.Windows.Forms.ComboBox cmbCharset2;
+        private System.Windows.Forms.ComboBox cmbCharset1;
+        private System.Windows.Forms.ComboBox cmbRightSource;
+        private System.Windows.Forms.ComboBox cmbLeftSource;
+        private System.Windows.Forms.ComboBox cmbCharset4;
+        private System.Windows.Forms.ComboBox cmbCharset3;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
