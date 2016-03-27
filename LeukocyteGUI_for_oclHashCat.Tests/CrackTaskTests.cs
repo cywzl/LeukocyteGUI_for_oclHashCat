@@ -10,7 +10,7 @@ namespace LeukocyteGUI_for_oclHashCat.Tests
         {
             var crackTask = new CrackTask();
             crackTask.AttackMode = AttackModes.BruteForce;
-            crackTask.CrackDataSource = "?l?l?l?l?l?l?l";
+            crackTask.CrackDataSourceLeft = "?l?l?l?l?l?l?l";
             crackTask.CrackTarget = "7ac66c0f148de9519b8bd264312c4d64";
 
             string hashcatString = crackTask.ToString();
@@ -23,7 +23,7 @@ namespace LeukocyteGUI_for_oclHashCat.Tests
         {
             var crackTask = new CrackTask();
             crackTask.AttackMode = AttackModes.BruteForce;
-            crackTask.CrackDataSource = "?l?l?l?l?l?l?l";
+            crackTask.CrackDataSourceLeft = "?l?l?l?l?l?l?l";
             crackTask.CrackTarget = "7ac66c0f148de9519b8bd264312c4d64";
             crackTask.SessionSettings.Session = "testSession";
             crackTask.SessionSettings.Restore = true;

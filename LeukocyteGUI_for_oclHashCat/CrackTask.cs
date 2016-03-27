@@ -1421,13 +1421,13 @@ namespace LeukocyteGUI_for_oclHashCat
         private AttackModes attackMode = AttackModes.Straight;
 
         /// <summary>
-        /// Dictionary, mask or directory
+        /// Dictionary, mask or directory (left)
         /// </summary>
-        public string CrackDataSource
+        public string CrackDataSourceLeft
         {
             get
             {
-                return crackDataSource;
+                return crackDataSourceLeft;
             }
             set
             {
@@ -1436,10 +1436,31 @@ namespace LeukocyteGUI_for_oclHashCat
                     throw new InvalidOperationException("Cannot change CrackTask's property while it's being cracked.");
                 }
 
-                crackDataSource = value;
+                crackDataSourceLeft = value;
             }
         }
-        private string crackDataSource = "";
+        private string crackDataSourceLeft = "";
+
+        /// <summary>
+        /// Dictionary, mask or directory (right)
+        /// </summary>
+        public string CrackDataSourceRight
+        {
+            get
+            {
+                return crackDataSourceRight;
+            }
+            set
+            {
+                if (IsRunning)
+                {
+                    throw new InvalidOperationException("Cannot change CrackTask's property while it's being cracked.");
+                }
+
+                crackDataSourceRight = value;
+            }
+        }
+        private string crackDataSourceRight = "";
 
         /* Hashcat settings */
 
@@ -1886,8 +1907,11 @@ namespace LeukocyteGUI_for_oclHashCat
             ((IncrementSettings.IncrementMax > -1)              ? " --increment-max="           + IncrementSettings.IncrementMax    : "") +
 
             // Target Part
-            " " + crackTarget +
-            " " + crackDataSource;
+                                                                  " "                           + crackTarget                             +
+                                                                  " "                           + crackDataSourceLeft                     +
+            ((AttackMode == AttackModes.Combination)
+            || (AttackMode == AttackModes.DictPlusMask)
+            || (AttackMode == AttackModes.MaskPlusDict)         ? " "                           + crackDataSourceRight              : "");
         }
 
         /// <summary>

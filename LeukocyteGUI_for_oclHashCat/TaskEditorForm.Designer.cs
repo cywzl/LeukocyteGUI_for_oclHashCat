@@ -37,11 +37,17 @@
             this.lblIncrementMin = new System.Windows.Forms.Label();
             this.cbIncrementMode = new System.Windows.Forms.CheckBox();
             this.gbCharsets = new System.Windows.Forms.GroupBox();
+            this.cmbCharset4 = new System.Windows.Forms.ComboBox();
+            this.cmbCharset3 = new System.Windows.Forms.ComboBox();
+            this.cmbCharset2 = new System.Windows.Forms.ComboBox();
+            this.cmbCharset1 = new System.Windows.Forms.ComboBox();
             this.cbCharset4 = new System.Windows.Forms.CheckBox();
             this.cbCharset3 = new System.Windows.Forms.CheckBox();
             this.cbCharset2 = new System.Windows.Forms.CheckBox();
             this.cbCharset1 = new System.Windows.Forms.CheckBox();
             this.gbAttackSource = new System.Windows.Forms.GroupBox();
+            this.cmbRightSource = new System.Windows.Forms.ComboBox();
+            this.cmbLeftSource = new System.Windows.Forms.ComboBox();
             this.lblRightSource = new System.Windows.Forms.Label();
             this.lblLeftSource = new System.Windows.Forms.Label();
             this.gbAttackType = new System.Windows.Forms.GroupBox();
@@ -159,39 +165,33 @@
             this.lblSkip = new System.Windows.Forms.Label();
             this.cbSkip = new System.Windows.Forms.CheckBox();
             this.tpRules = new System.Windows.Forms.TabPage();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.nudGenerateRulesSeed = new System.Windows.Forms.NumericUpDown();
+            this.lblGenerateRulesSeed = new System.Windows.Forms.Label();
+            this.cbGenerateRulesSeed = new System.Windows.Forms.CheckBox();
+            this.nudGenerateRulesFuncMax = new System.Windows.Forms.NumericUpDown();
+            this.lblGenerateRulesFuncMax = new System.Windows.Forms.Label();
+            this.cbGenerateRulesFuncMax = new System.Windows.Forms.CheckBox();
+            this.nudGenerateRulesFuncMin = new System.Windows.Forms.NumericUpDown();
+            this.lblGenerateRulesFuncMin = new System.Windows.Forms.Label();
+            this.cbGenerateRulesFuncMin = new System.Windows.Forms.CheckBox();
+            this.nudGenerateRules = new System.Windows.Forms.NumericUpDown();
+            this.lblGenerateRules = new System.Windows.Forms.Label();
+            this.cbGenerateRules = new System.Windows.Forms.CheckBox();
+            this.tbRulesFiles = new System.Windows.Forms.TextBox();
+            this.lblRulesFiles = new System.Windows.Forms.Label();
+            this.cbRulesFiles = new System.Windows.Forms.CheckBox();
+            this.tbRuleRight = new System.Windows.Forms.TextBox();
+            this.lblRuleRight = new System.Windows.Forms.Label();
+            this.cbRuleRight = new System.Windows.Forms.CheckBox();
+            this.tbRuleLeft = new System.Windows.Forms.TextBox();
+            this.lblRuleLeft = new System.Windows.Forms.Label();
+            this.cbRuleLeft = new System.Windows.Forms.CheckBox();
             this.lblHashType = new System.Windows.Forms.Label();
             this.cmbHashType = new System.Windows.Forms.ComboBox();
             this.lblTarget = new System.Windows.Forms.Label();
             this.cmbTarget = new System.Windows.Forms.ComboBox();
             this.lblTemplate = new System.Windows.Forms.Label();
             this.cmbTemplate = new System.Windows.Forms.ComboBox();
-            this.cmbLeftSource = new System.Windows.Forms.ComboBox();
-            this.cmbRightSource = new System.Windows.Forms.ComboBox();
-            this.cmbCharset1 = new System.Windows.Forms.ComboBox();
-            this.cmbCharset2 = new System.Windows.Forms.ComboBox();
-            this.cmbCharset3 = new System.Windows.Forms.ComboBox();
-            this.cmbCharset4 = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.tcTaskOptions.SuspendLayout();
             this.tpMain.SuspendLayout();
@@ -226,10 +226,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSkip)).BeginInit();
             this.tpRules.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesSeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMax)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRules)).BeginInit();
             this.SuspendLayout();
             // 
             // tcTaskOptions
@@ -372,6 +372,46 @@
             this.gbCharsets.TabStop = false;
             this.gbCharsets.Text = "Charsets";
             // 
+            // cmbCharset4
+            // 
+            this.cmbCharset4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset4.FormattingEnabled = true;
+            this.cmbCharset4.Location = new System.Drawing.Point(60, 102);
+            this.cmbCharset4.Name = "cmbCharset4";
+            this.cmbCharset4.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset4.TabIndex = 14;
+            // 
+            // cmbCharset3
+            // 
+            this.cmbCharset3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset3.FormattingEnabled = true;
+            this.cmbCharset3.Location = new System.Drawing.Point(60, 75);
+            this.cmbCharset3.Name = "cmbCharset3";
+            this.cmbCharset3.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset3.TabIndex = 13;
+            // 
+            // cmbCharset2
+            // 
+            this.cmbCharset2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset2.FormattingEnabled = true;
+            this.cmbCharset2.Location = new System.Drawing.Point(60, 48);
+            this.cmbCharset2.Name = "cmbCharset2";
+            this.cmbCharset2.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset2.TabIndex = 12;
+            // 
+            // cmbCharset1
+            // 
+            this.cmbCharset1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCharset1.FormattingEnabled = true;
+            this.cmbCharset1.Location = new System.Drawing.Point(60, 21);
+            this.cmbCharset1.Name = "cmbCharset1";
+            this.cmbCharset1.Size = new System.Drawing.Size(204, 21);
+            this.cmbCharset1.TabIndex = 11;
+            // 
             // cbCharset4
             // 
             this.cbCharset4.AutoSize = true;
@@ -426,6 +466,27 @@
             this.gbAttackSource.TabIndex = 1;
             this.gbAttackSource.TabStop = false;
             this.gbAttackSource.Text = "Attack Source";
+            // 
+            // cmbRightSource
+            // 
+            this.cmbRightSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbRightSource.Enabled = false;
+            this.cmbRightSource.FormattingEnabled = true;
+            this.cmbRightSource.Location = new System.Drawing.Point(39, 85);
+            this.cmbRightSource.Name = "cmbRightSource";
+            this.cmbRightSource.Size = new System.Drawing.Size(225, 21);
+            this.cmbRightSource.TabIndex = 7;
+            // 
+            // cmbLeftSource
+            // 
+            this.cmbLeftSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbLeftSource.FormattingEnabled = true;
+            this.cmbLeftSource.Location = new System.Drawing.Point(39, 41);
+            this.cmbLeftSource.Name = "cmbLeftSource";
+            this.cmbLeftSource.Size = new System.Drawing.Size(225, 21);
+            this.cmbLeftSource.TabIndex = 6;
             // 
             // lblRightSource
             // 
@@ -1719,27 +1780,27 @@
             // 
             this.tpRules.AutoScroll = true;
             this.tpRules.AutoScrollMargin = new System.Drawing.Size(0, 18);
-            this.tpRules.Controls.Add(this.numericUpDown4);
-            this.tpRules.Controls.Add(this.label7);
-            this.tpRules.Controls.Add(this.checkBox7);
-            this.tpRules.Controls.Add(this.numericUpDown3);
-            this.tpRules.Controls.Add(this.label6);
-            this.tpRules.Controls.Add(this.checkBox6);
-            this.tpRules.Controls.Add(this.numericUpDown2);
-            this.tpRules.Controls.Add(this.label5);
-            this.tpRules.Controls.Add(this.checkBox5);
-            this.tpRules.Controls.Add(this.numericUpDown1);
-            this.tpRules.Controls.Add(this.label4);
-            this.tpRules.Controls.Add(this.checkBox4);
-            this.tpRules.Controls.Add(this.textBox3);
-            this.tpRules.Controls.Add(this.label3);
-            this.tpRules.Controls.Add(this.checkBox3);
-            this.tpRules.Controls.Add(this.textBox2);
-            this.tpRules.Controls.Add(this.label2);
-            this.tpRules.Controls.Add(this.checkBox2);
-            this.tpRules.Controls.Add(this.textBox1);
-            this.tpRules.Controls.Add(this.label1);
-            this.tpRules.Controls.Add(this.checkBox1);
+            this.tpRules.Controls.Add(this.nudGenerateRulesSeed);
+            this.tpRules.Controls.Add(this.lblGenerateRulesSeed);
+            this.tpRules.Controls.Add(this.cbGenerateRulesSeed);
+            this.tpRules.Controls.Add(this.nudGenerateRulesFuncMax);
+            this.tpRules.Controls.Add(this.lblGenerateRulesFuncMax);
+            this.tpRules.Controls.Add(this.cbGenerateRulesFuncMax);
+            this.tpRules.Controls.Add(this.nudGenerateRulesFuncMin);
+            this.tpRules.Controls.Add(this.lblGenerateRulesFuncMin);
+            this.tpRules.Controls.Add(this.cbGenerateRulesFuncMin);
+            this.tpRules.Controls.Add(this.nudGenerateRules);
+            this.tpRules.Controls.Add(this.lblGenerateRules);
+            this.tpRules.Controls.Add(this.cbGenerateRules);
+            this.tpRules.Controls.Add(this.tbRulesFiles);
+            this.tpRules.Controls.Add(this.lblRulesFiles);
+            this.tpRules.Controls.Add(this.cbRulesFiles);
+            this.tpRules.Controls.Add(this.tbRuleRight);
+            this.tpRules.Controls.Add(this.lblRuleRight);
+            this.tpRules.Controls.Add(this.cbRuleRight);
+            this.tpRules.Controls.Add(this.tbRuleLeft);
+            this.tpRules.Controls.Add(this.lblRuleLeft);
+            this.tpRules.Controls.Add(this.cbRuleLeft);
             this.tpRules.Location = new System.Drawing.Point(4, 22);
             this.tpRules.Name = "tpRules";
             this.tpRules.Size = new System.Drawing.Size(547, 293);
@@ -1747,207 +1808,207 @@
             this.tpRules.Text = "Rules";
             this.tpRules.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown4
+            // nudGenerateRulesSeed
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(94, 335);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.nudGenerateRulesSeed.Location = new System.Drawing.Point(94, 335);
+            this.nudGenerateRulesSeed.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown4.TabIndex = 62;
+            this.nudGenerateRulesSeed.Name = "nudGenerateRulesSeed";
+            this.nudGenerateRulesSeed.Size = new System.Drawing.Size(90, 20);
+            this.nudGenerateRulesSeed.TabIndex = 62;
             // 
-            // label7
+            // lblGenerateRulesSeed
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(45, 337);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 61;
-            this.label7.Text = "NUM =";
+            this.lblGenerateRulesSeed.AutoSize = true;
+            this.lblGenerateRulesSeed.Location = new System.Drawing.Point(45, 337);
+            this.lblGenerateRulesSeed.Name = "lblGenerateRulesSeed";
+            this.lblGenerateRulesSeed.Size = new System.Drawing.Size(41, 13);
+            this.lblGenerateRulesSeed.TabIndex = 61;
+            this.lblGenerateRulesSeed.Text = "NUM =";
             // 
-            // checkBox7
+            // cbGenerateRulesSeed
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(18, 312);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(294, 17);
-            this.checkBox7.TabIndex = 60;
-            this.checkBox7.Text = "Force RNG seed to NUM ( --generate-rules-seed=NUM ):";
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.cbGenerateRulesSeed.AutoSize = true;
+            this.cbGenerateRulesSeed.Location = new System.Drawing.Point(18, 312);
+            this.cbGenerateRulesSeed.Name = "cbGenerateRulesSeed";
+            this.cbGenerateRulesSeed.Size = new System.Drawing.Size(294, 17);
+            this.cbGenerateRulesSeed.TabIndex = 60;
+            this.cbGenerateRulesSeed.Text = "Force RNG seed to NUM ( --generate-rules-seed=NUM ):";
+            this.cbGenerateRulesSeed.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown3
+            // nudGenerateRulesFuncMax
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(94, 286);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.nudGenerateRulesFuncMax.Location = new System.Drawing.Point(94, 286);
+            this.nudGenerateRulesFuncMax.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown3.TabIndex = 59;
+            this.nudGenerateRulesFuncMax.Name = "nudGenerateRulesFuncMax";
+            this.nudGenerateRulesFuncMax.Size = new System.Drawing.Size(90, 20);
+            this.nudGenerateRulesFuncMax.TabIndex = 59;
             // 
-            // label6
+            // lblGenerateRulesFuncMax
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(45, 288);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
-            this.label6.TabIndex = 58;
-            this.label6.Text = "NUM =";
+            this.lblGenerateRulesFuncMax.AutoSize = true;
+            this.lblGenerateRulesFuncMax.Location = new System.Drawing.Point(45, 288);
+            this.lblGenerateRulesFuncMax.Name = "lblGenerateRulesFuncMax";
+            this.lblGenerateRulesFuncMax.Size = new System.Drawing.Size(41, 13);
+            this.lblGenerateRulesFuncMax.TabIndex = 58;
+            this.lblGenerateRulesFuncMax.Text = "NUM =";
             // 
-            // checkBox6
+            // cbGenerateRulesFuncMax
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(18, 263);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(393, 17);
-            this.checkBox6.TabIndex = 57;
-            this.checkBox6.Text = "Force NUM functions per random rule max ( --generate-rules-func-max=NUM ):";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.cbGenerateRulesFuncMax.AutoSize = true;
+            this.cbGenerateRulesFuncMax.Location = new System.Drawing.Point(18, 263);
+            this.cbGenerateRulesFuncMax.Name = "cbGenerateRulesFuncMax";
+            this.cbGenerateRulesFuncMax.Size = new System.Drawing.Size(393, 17);
+            this.cbGenerateRulesFuncMax.TabIndex = 57;
+            this.cbGenerateRulesFuncMax.Text = "Force NUM functions per random rule max ( --generate-rules-func-max=NUM ):";
+            this.cbGenerateRulesFuncMax.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown2
+            // nudGenerateRulesFuncMin
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(94, 237);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.nudGenerateRulesFuncMin.Location = new System.Drawing.Point(94, 237);
+            this.nudGenerateRulesFuncMin.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown2.TabIndex = 56;
+            this.nudGenerateRulesFuncMin.Name = "nudGenerateRulesFuncMin";
+            this.nudGenerateRulesFuncMin.Size = new System.Drawing.Size(90, 20);
+            this.nudGenerateRulesFuncMin.TabIndex = 56;
             // 
-            // label5
+            // lblGenerateRulesFuncMin
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(45, 239);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
-            this.label5.TabIndex = 55;
-            this.label5.Text = "NUM =";
+            this.lblGenerateRulesFuncMin.AutoSize = true;
+            this.lblGenerateRulesFuncMin.Location = new System.Drawing.Point(45, 239);
+            this.lblGenerateRulesFuncMin.Name = "lblGenerateRulesFuncMin";
+            this.lblGenerateRulesFuncMin.Size = new System.Drawing.Size(41, 13);
+            this.lblGenerateRulesFuncMin.TabIndex = 55;
+            this.lblGenerateRulesFuncMin.Text = "NUM =";
             // 
-            // checkBox5
+            // cbGenerateRulesFuncMin
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(18, 214);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(387, 17);
-            this.checkBox5.TabIndex = 54;
-            this.checkBox5.Text = "Force NUM functions per random rule min ( --generate-rules-func-min=NUM ):";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.cbGenerateRulesFuncMin.AutoSize = true;
+            this.cbGenerateRulesFuncMin.Location = new System.Drawing.Point(18, 214);
+            this.cbGenerateRulesFuncMin.Name = "cbGenerateRulesFuncMin";
+            this.cbGenerateRulesFuncMin.Size = new System.Drawing.Size(387, 17);
+            this.cbGenerateRulesFuncMin.TabIndex = 54;
+            this.cbGenerateRulesFuncMin.Text = "Force NUM functions per random rule min ( --generate-rules-func-min=NUM ):";
+            this.cbGenerateRulesFuncMin.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // nudGenerateRules
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(94, 188);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nudGenerateRules.Location = new System.Drawing.Point(94, 188);
+            this.nudGenerateRules.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDown1.TabIndex = 53;
+            this.nudGenerateRules.Name = "nudGenerateRules";
+            this.nudGenerateRules.Size = new System.Drawing.Size(90, 20);
+            this.nudGenerateRules.TabIndex = 53;
             // 
-            // label4
+            // lblGenerateRules
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 190);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 52;
-            this.label4.Text = "NUM =";
+            this.lblGenerateRules.AutoSize = true;
+            this.lblGenerateRules.Location = new System.Drawing.Point(45, 190);
+            this.lblGenerateRules.Name = "lblGenerateRules";
+            this.lblGenerateRules.Size = new System.Drawing.Size(41, 13);
+            this.lblGenerateRules.TabIndex = 52;
+            this.lblGenerateRules.Text = "NUM =";
             // 
-            // checkBox4
+            // cbGenerateRules
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(18, 165);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(301, 17);
-            this.checkBox4.TabIndex = 51;
-            this.checkBox4.Text = "Generate NUM random rules ( -g,  --generate-rules=NUM ):";
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.cbGenerateRules.AutoSize = true;
+            this.cbGenerateRules.Location = new System.Drawing.Point(18, 165);
+            this.cbGenerateRules.Name = "cbGenerateRules";
+            this.cbGenerateRules.Size = new System.Drawing.Size(301, 17);
+            this.cbGenerateRules.TabIndex = 51;
+            this.cbGenerateRules.Text = "Generate NUM random rules ( -g,  --generate-rules=NUM ):";
+            this.cbGenerateRules.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // tbRulesFiles
             // 
-            this.textBox3.Location = new System.Drawing.Point(94, 139);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(255, 20);
-            this.textBox3.TabIndex = 50;
+            this.tbRulesFiles.Location = new System.Drawing.Point(94, 139);
+            this.tbRulesFiles.Name = "tbRulesFiles";
+            this.tbRulesFiles.Size = new System.Drawing.Size(255, 20);
+            this.tbRulesFiles.TabIndex = 50;
             // 
-            // label3
+            // lblRulesFiles
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 142);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "FILE =";
+            this.lblRulesFiles.AutoSize = true;
+            this.lblRulesFiles.Location = new System.Drawing.Point(45, 142);
+            this.lblRulesFiles.Name = "lblRulesFiles";
+            this.lblRulesFiles.Size = new System.Drawing.Size(38, 13);
+            this.lblRulesFiles.TabIndex = 49;
+            this.lblRulesFiles.Text = "FILE =";
             // 
-            // checkBox3
+            // cbRulesFiles
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(18, 116);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(285, 17);
-            this.checkBox3.TabIndex = 48;
-            this.checkBox3.Text = "Rules-files, separate with comma ( -r,  --rules-file=FILE ):";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.cbRulesFiles.AutoSize = true;
+            this.cbRulesFiles.Location = new System.Drawing.Point(18, 116);
+            this.cbRulesFiles.Name = "cbRulesFiles";
+            this.cbRulesFiles.Size = new System.Drawing.Size(285, 17);
+            this.cbRulesFiles.TabIndex = 48;
+            this.cbRulesFiles.Text = "Rules-files, separate with comma ( -r,  --rules-file=FILE ):";
+            this.cbRulesFiles.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tbRuleRight
             // 
-            this.textBox2.Location = new System.Drawing.Point(94, 90);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(255, 20);
-            this.textBox2.TabIndex = 47;
+            this.tbRuleRight.Location = new System.Drawing.Point(94, 90);
+            this.tbRuleRight.Name = "tbRuleRight";
+            this.tbRuleRight.Size = new System.Drawing.Size(255, 20);
+            this.tbRuleRight.TabIndex = 47;
             // 
-            // label2
+            // lblRuleRight
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "RULE =";
+            this.lblRuleRight.AutoSize = true;
+            this.lblRuleRight.Location = new System.Drawing.Point(45, 93);
+            this.lblRuleRight.Name = "lblRuleRight";
+            this.lblRuleRight.Size = new System.Drawing.Size(45, 13);
+            this.lblRuleRight.TabIndex = 46;
+            this.lblRuleRight.Text = "RULE =";
             // 
-            // checkBox2
+            // cbRuleRight
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(18, 67);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(360, 17);
-            this.checkBox2.TabIndex = 45;
-            this.checkBox2.Text = "Single rule applied to each word from right dict ( -k,  --rule-right=RULE ):";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.cbRuleRight.AutoSize = true;
+            this.cbRuleRight.Location = new System.Drawing.Point(18, 67);
+            this.cbRuleRight.Name = "cbRuleRight";
+            this.cbRuleRight.Size = new System.Drawing.Size(360, 17);
+            this.cbRuleRight.TabIndex = 45;
+            this.cbRuleRight.Text = "Single rule applied to each word from right dict ( -k,  --rule-right=RULE ):";
+            this.cbRuleRight.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tbRuleLeft
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(255, 20);
-            this.textBox1.TabIndex = 44;
+            this.tbRuleLeft.Location = new System.Drawing.Point(94, 41);
+            this.tbRuleLeft.Name = "tbRuleLeft";
+            this.tbRuleLeft.Size = new System.Drawing.Size(255, 20);
+            this.tbRuleLeft.TabIndex = 44;
             // 
-            // label1
+            // lblRuleLeft
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "RULE =";
+            this.lblRuleLeft.AutoSize = true;
+            this.lblRuleLeft.Location = new System.Drawing.Point(45, 44);
+            this.lblRuleLeft.Name = "lblRuleLeft";
+            this.lblRuleLeft.Size = new System.Drawing.Size(45, 13);
+            this.lblRuleLeft.TabIndex = 43;
+            this.lblRuleLeft.Text = "RULE =";
             // 
-            // checkBox1
+            // cbRuleLeft
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(18, 18);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(344, 17);
-            this.checkBox1.TabIndex = 42;
-            this.checkBox1.Text = "Single rule applied to each word from left dict ( -j,  --rule-left=RULE ):";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbRuleLeft.AutoSize = true;
+            this.cbRuleLeft.Location = new System.Drawing.Point(18, 18);
+            this.cbRuleLeft.Name = "cbRuleLeft";
+            this.cbRuleLeft.Size = new System.Drawing.Size(344, 17);
+            this.cbRuleLeft.TabIndex = 42;
+            this.cbRuleLeft.Text = "Single rule applied to each word from left dict ( -j,  --rule-left=RULE ):";
+            this.cbRuleLeft.UseVisualStyleBackColor = true;
             // 
             // lblHashType
             // 
@@ -1999,67 +2060,6 @@
             this.cmbTemplate.Name = "cmbTemplate";
             this.cmbTemplate.Size = new System.Drawing.Size(201, 21);
             this.cmbTemplate.TabIndex = 0;
-            // 
-            // cmbLeftSource
-            // 
-            this.cmbLeftSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbLeftSource.FormattingEnabled = true;
-            this.cmbLeftSource.Location = new System.Drawing.Point(39, 41);
-            this.cmbLeftSource.Name = "cmbLeftSource";
-            this.cmbLeftSource.Size = new System.Drawing.Size(225, 21);
-            this.cmbLeftSource.TabIndex = 6;
-            // 
-            // cmbRightSource
-            // 
-            this.cmbRightSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbRightSource.Enabled = false;
-            this.cmbRightSource.FormattingEnabled = true;
-            this.cmbRightSource.Location = new System.Drawing.Point(39, 85);
-            this.cmbRightSource.Name = "cmbRightSource";
-            this.cmbRightSource.Size = new System.Drawing.Size(225, 21);
-            this.cmbRightSource.TabIndex = 7;
-            // 
-            // cmbCharset1
-            // 
-            this.cmbCharset1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCharset1.FormattingEnabled = true;
-            this.cmbCharset1.Location = new System.Drawing.Point(60, 21);
-            this.cmbCharset1.Name = "cmbCharset1";
-            this.cmbCharset1.Size = new System.Drawing.Size(204, 21);
-            this.cmbCharset1.TabIndex = 11;
-            // 
-            // cmbCharset2
-            // 
-            this.cmbCharset2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCharset2.FormattingEnabled = true;
-            this.cmbCharset2.Location = new System.Drawing.Point(60, 48);
-            this.cmbCharset2.Name = "cmbCharset2";
-            this.cmbCharset2.Size = new System.Drawing.Size(204, 21);
-            this.cmbCharset2.TabIndex = 12;
-            // 
-            // cmbCharset3
-            // 
-            this.cmbCharset3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCharset3.FormattingEnabled = true;
-            this.cmbCharset3.Location = new System.Drawing.Point(60, 75);
-            this.cmbCharset3.Name = "cmbCharset3";
-            this.cmbCharset3.Size = new System.Drawing.Size(204, 21);
-            this.cmbCharset3.TabIndex = 13;
-            // 
-            // cmbCharset4
-            // 
-            this.cmbCharset4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbCharset4.FormattingEnabled = true;
-            this.cmbCharset4.Location = new System.Drawing.Point(60, 102);
-            this.cmbCharset4.Name = "cmbCharset4";
-            this.cmbCharset4.Size = new System.Drawing.Size(204, 21);
-            this.cmbCharset4.TabIndex = 14;
             // 
             // textBox4
             // 
@@ -2129,10 +2129,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSkip)).EndInit();
             this.tpRules.ResumeLayout(false);
             this.tpRules.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesSeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMax)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRules)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2257,27 +2257,27 @@
         private System.Windows.Forms.NumericUpDown nudSkip;
         private System.Windows.Forms.Label lblSkip;
         private System.Windows.Forms.CheckBox cbSkip;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.NumericUpDown nudGenerateRulesSeed;
+        private System.Windows.Forms.Label lblGenerateRulesSeed;
+        private System.Windows.Forms.CheckBox cbGenerateRulesSeed;
+        private System.Windows.Forms.NumericUpDown nudGenerateRulesFuncMax;
+        private System.Windows.Forms.Label lblGenerateRulesFuncMax;
+        private System.Windows.Forms.CheckBox cbGenerateRulesFuncMax;
+        private System.Windows.Forms.NumericUpDown nudGenerateRulesFuncMin;
+        private System.Windows.Forms.Label lblGenerateRulesFuncMin;
+        private System.Windows.Forms.CheckBox cbGenerateRulesFuncMin;
+        private System.Windows.Forms.NumericUpDown nudGenerateRules;
+        private System.Windows.Forms.Label lblGenerateRules;
+        private System.Windows.Forms.CheckBox cbGenerateRules;
+        private System.Windows.Forms.TextBox tbRulesFiles;
+        private System.Windows.Forms.Label lblRulesFiles;
+        private System.Windows.Forms.CheckBox cbRulesFiles;
+        private System.Windows.Forms.TextBox tbRuleRight;
+        private System.Windows.Forms.Label lblRuleRight;
+        private System.Windows.Forms.CheckBox cbRuleRight;
+        private System.Windows.Forms.TextBox tbRuleLeft;
+        private System.Windows.Forms.Label lblRuleLeft;
+        private System.Windows.Forms.CheckBox cbRuleLeft;
         private System.Windows.Forms.GroupBox gbAttackType;
         private System.Windows.Forms.RadioButton rbMaskDict;
         private System.Windows.Forms.RadioButton rbDictMask;

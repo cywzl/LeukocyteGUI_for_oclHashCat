@@ -13,7 +13,7 @@ namespace LeukocyteGUI_for_oclHashCat.Tests
             crackTask.CrackTarget = "ab56b4d92b40713acc5af89985d4b786";
             crackTask.AttackMode = AttackModes.BruteForce;
             crackTask.HashType = new HashType("MD5", 0);
-            crackTask.CrackDataSource = "?l?l?l?l?l";
+            crackTask.CrackDataSourceLeft = "?l?l?l?l?l";
             crackTask.FilesSettings.PotfileDisable = true;
             cracker.CrackTasks.Add(crackTask);
 
