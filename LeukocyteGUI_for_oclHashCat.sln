@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeukocyteGUI_for_oclHashCat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeukocyteGUI_for_oclHashCat.Tests", "LeukocyteGUI_for_oclHashCat.Tests\LeukocyteGUI_for_oclHashCat.Tests.csproj", "{44D3E41F-2FC4-4243-92F5-FFA64725A78D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeukocyteCore_for_oclHashcat", "LeukocyteCore_for_oclHashcat\LeukocyteCore_for_oclHashcat.csproj", "{0AC7700F-6217-4E8D-8365-F40820E902E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44D3E41F-2FC4-4243-92F5-FFA64725A78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44D3E41F-2FC4-4243-92F5-FFA64725A78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44D3E41F-2FC4-4243-92F5-FFA64725A78D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC7700F-6217-4E8D-8365-F40820E902E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC7700F-6217-4E8D-8365-F40820E902E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC7700F-6217-4E8D-8365-F40820E902E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC7700F-6217-4E8D-8365-F40820E902E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
