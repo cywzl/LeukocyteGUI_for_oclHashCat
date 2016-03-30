@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
-    public class CrackDataSource
+    public class CrackDataSource : ICrackDataSource
     {
+        protected AttackModes attackMode = AttackModes.Straight;
         protected string name = "";
         protected string description = "";
-        protected string source = "";
+        protected string leftSource = "";
 
         public string Name
         {
@@ -35,21 +36,35 @@ namespace LeukocyteGUI_for_oclHashCat
                 description = value;
             }
         }
-        public string Source
+        public string LeftSource
         {
             get
             {
-                return source;
+                return leftSource;
             }
             set
             {
-                source = value;
+                leftSource = value;
+            }
+        }
+        public string RightSource
+        {
+            get
+            {
+                return "";
+            }
+        }
+        public AttackModes AttackMode
+        {
+            get
+            {
+                return attackMode;
             }
         }
 
         public void GenerateDescription()
         {
-            description = Path.GetFileNameWithoutExtension(source);
+            description = Path.GetFileNameWithoutExtension(leftSource);
         }
     }
 }

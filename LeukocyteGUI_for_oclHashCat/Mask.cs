@@ -17,13 +17,8 @@ namespace LeukocyteGUI_for_oclHashCat
     public class Mask : CrackDataSource
     {
         MaskTypes type = MaskTypes.String;
-        string charset1 = "";
-        string charset2 = "";
-        string charset3 = "";
-        string charset4 = "";
-        bool incrementMode;
-        byte incrementMin;
-        byte incrementMax;
+        IncrementSettings incrementSettings = new IncrementSettings();
+        CustomCharsetsSettings charsetsSettings = new CustomCharsetsSettings();
 
         public MaskTypes Type
         {
@@ -32,102 +27,26 @@ namespace LeukocyteGUI_for_oclHashCat
                 return type;
             }
         }
-        public string Charset1
+        public IncrementSettings IncrementSettings
         {
             get
             {
-                return charset1;
+                return incrementSettings;
             }
             set
             {
-                charset1 = value;
+                incrementSettings = value;
             }
         }
-        public string Charset2
+        public CustomCharsetsSettings CharsetsSettings
         {
             get
             {
-                return charset2;
+                return charsetsSettings;
             }
             set
             {
-                charset2 = value;
-            }
-        }
-        public string Charset3
-        {
-            get
-            {
-                return charset3;
-            }
-            set
-            {
-                charset3 = value;
-            }
-        }
-        public string Charset4
-        {
-            get
-            {
-                return charset4;
-            }
-            set
-            {
-                charset4 = value;
-            }
-        }
-        public bool IncrementMode
-        {
-            get
-            {
-                return incrementMode;
-            }
-            set
-            {
-                incrementMode = value;
-            }
-        }
-        public byte IncrementMin
-        {
-            get
-            {
-                return incrementMin;
-            }
-            set
-            {
-                incrementMin = value;
-            }
-        }
-        public byte IncrementMax
-        {
-            get
-            {
-                return incrementMax;
-            }
-            set
-            {
-                incrementMax = value;
-            }
-        }
-        public new string Source
-        {
-            get
-            {
-                return source;
-            }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Source cannot be empty.", "Source");
-                }
-
-                if ((type == MaskTypes.Hcmask) && (!File.Exists(value)))
-                {
-                    throw new ArgumentException("Source file does not exist.", "Source");
-                }
-
-                source = value;
+                charsetsSettings = value;
             }
         }
         public int Lentgh
@@ -136,7 +55,7 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 if (type == MaskTypes.String)
                 {
-                    return source.Length;
+                    return leftSource.Length;
                 }
                 else
                 {
@@ -148,12 +67,13 @@ namespace LeukocyteGUI_for_oclHashCat
         private Mask(MaskTypes type)
         {
             this.type = type;
+            attackMode = AttackModes.BruteForce;
         }
 
         public Mask CreateFromString(string maskString, string name)
         {
             Mask mask = new Mask(MaskTypes.String);
-            mask.Source = maskString;
+            mask.LeftSource = maskString;
             mask.Name = name;
 
             return mask;
@@ -161,7 +81,7 @@ namespace LeukocyteGUI_for_oclHashCat
         public Mask CreateFromHcmask(string hcmaskFileName, string name)
         {
             Mask mask = new Mask(MaskTypes.Hcmask);
-            mask.Source = hcmaskFileName;
+            mask.LeftSource = hcmaskFileName;
             mask.Name = name;
 
             return mask;
@@ -175,11 +95,16 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             else
             {
-                string targetLength = incrementMode ? (incrementMin + "-" + IncrementMax) : Lentgh.ToString();
-                string charsets = (string.IsNullOrEmpty(charset1) ? "" : ("[1]" + charset1 + " ")) +
-                    (string.IsNullOrEmpty(charset2) ? "" : ("[2]" + charset2 + " ")) +
-                    (string.IsNullOrEmpty(charset3) ? "" : ("[3]" + charset3 + " ")) +
-                    (string.IsNullOrEmpty(charset4) ? "" : ("[4]" + charset4 + " "));
+                string targetLength =
+                    incrementSettings.Increment
+                    ? (incrementSettings.IncrementMin + "-" + incrementSettings.IncrementMax)
+                    : Lentgh.ToString();
+
+                string charsets =
+                    (charsetsSettings.UseCharset1 ? "" : ("[1]" + charsetsSettings.Charset1 + " ")) +
+                    (charsetsSettings.UseCharset2 ? "" : ("[2]" + charsetsSettings.Charset2 + " ")) +
+                    (charsetsSettings.UseCharset3 ? "" : ("[3]" + charsetsSettings.Charset3 + " ")) +
+                    (charsetsSettings.UseCharset4 ? "" : ("[4]" + charsetsSettings.Charset4 + " "));
 
                 description = "<" + targetLength + ">" + charsets;
             }
