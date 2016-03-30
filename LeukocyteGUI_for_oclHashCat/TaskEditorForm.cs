@@ -12,13 +12,26 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public partial class TaskEditorForm : Form
     {
-        CrackTask crackTask;
+        List<CrackTask> crackTasks = new List<CrackTask>();
+        CrackTask sourceCrackTask;
 
-        public TaskEditorForm() : this(new CrackTask()) { }
+        public List<CrackTask> CrackTasks
+        {
+            get
+            {
+                return crackTasks;
+            }
+        }
+
+        public TaskEditorForm()
+        {
+            InitializeComponent();
+            sourceCrackTask = new CrackTask();
+        }
         public TaskEditorForm(CrackTask source)
         {
             InitializeComponent();
-            crackTask = source.DeepCopy();
+            sourceCrackTask = source.DeepCopy();
         }
 
         private void rbAttackType_CheckedChanged(object sender, EventArgs e)
@@ -79,8 +92,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 }
             }
         }
+
         private void FillForm()
         {
+            CrackTask crackTask = crackTasks[0];
+
             // Main
 
             switch (crackTask.AttackMode)
