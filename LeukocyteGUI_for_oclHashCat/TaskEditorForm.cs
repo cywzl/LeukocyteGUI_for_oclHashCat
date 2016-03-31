@@ -93,8 +93,13 @@ namespace LeukocyteGUI_for_oclHashCat
             }
         }
 
-        private void FillForm()
+        public void FillForm()
         {
+            if(crackTasks.Count == 0)
+            {
+                return;
+            }
+
             CrackTask crackTask = crackTasks[0];
 
             // Main
