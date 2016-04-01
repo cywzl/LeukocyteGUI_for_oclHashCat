@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrackDataSource.cs" />
-    <Compile Include="Cracker.cs" />
-    <Compile Include="CrackTask.cs" />
-    <Compile Include="CrackTasksList.cs" />
-    <Compile Include="CrackTaskTemplate.cs" />
-    <Compile Include="DataManager.cs" />
-    <Compile Include="Dictionary.cs" />
-    <Compile Include="ICrackDataSource.cs" />
-    <Compile Include="Mask.cs" />
+    <Compile Include="Classes\CrackDataSource.cs" />
+    <Compile Include="Classes\Cracker.cs" />
+    <Compile Include="Classes\CrackTask.cs" />
+    <Compile Include="Classes\CrackTasksList.cs" />
+    <Compile Include="Classes\CrackTaskTemplate.cs" />
+    <Compile Include="Classes\DataManager.cs" />
+    <Compile Include="Classes\Dictionary.cs" />
+    <Compile Include="Interfaces\ICrackDataSource.cs" />
+    <Compile Include="Classes\Mask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
