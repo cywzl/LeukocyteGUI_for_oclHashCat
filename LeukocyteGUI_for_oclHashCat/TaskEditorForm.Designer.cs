@@ -193,6 +193,12 @@
             this.lblTemplate = new System.Windows.Forms.Label();
             this.cmbTemplate = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tpPredefined = new System.Windows.Forms.TabPage();
+            this.lvPredefined = new System.Windows.Forms.ListView();
+            this.chPredefinedNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPredefinedName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPredefinedType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPredefinedDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcTaskOptions.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.gbIncrementMode.SuspendLayout();
@@ -230,6 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRules)).BeginInit();
+            this.tpPredefined.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcTaskOptions
@@ -238,6 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tcTaskOptions.Controls.Add(this.tpMain);
+            this.tcTaskOptions.Controls.Add(this.tpPredefined);
             this.tcTaskOptions.Controls.Add(this.tpMisc);
             this.tcTaskOptions.Controls.Add(this.tpMarkov);
             this.tcTaskOptions.Controls.Add(this.tpSession);
@@ -2070,6 +2078,52 @@
             this.textBox4.Size = new System.Drawing.Size(246, 75);
             this.textBox4.TabIndex = 6;
             // 
+            // tpPredefined
+            // 
+            this.tpPredefined.Controls.Add(this.lvPredefined);
+            this.tpPredefined.Location = new System.Drawing.Point(4, 22);
+            this.tpPredefined.Name = "tpPredefined";
+            this.tpPredefined.Padding = new System.Windows.Forms.Padding(3);
+            this.tpPredefined.Size = new System.Drawing.Size(547, 293);
+            this.tpPredefined.TabIndex = 8;
+            this.tpPredefined.Text = "Predefined";
+            this.tpPredefined.UseVisualStyleBackColor = true;
+            // 
+            // lvPredefined
+            // 
+            this.lvPredefined.CheckBoxes = true;
+            this.lvPredefined.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chPredefinedNumber,
+            this.chPredefinedType,
+            this.chPredefinedName,
+            this.chPredefinedDescription});
+            this.lvPredefined.FullRowSelect = true;
+            this.lvPredefined.Location = new System.Drawing.Point(16, 15);
+            this.lvPredefined.Name = "lvPredefined";
+            this.lvPredefined.Size = new System.Drawing.Size(510, 260);
+            this.lvPredefined.TabIndex = 0;
+            this.lvPredefined.UseCompatibleStateImageBehavior = false;
+            this.lvPredefined.View = System.Windows.Forms.View.Details;
+            // 
+            // chPredefinedNumber
+            // 
+            this.chPredefinedNumber.Text = "#";
+            this.chPredefinedNumber.Width = 40;
+            // 
+            // chPredefinedName
+            // 
+            this.chPredefinedName.Text = "Name";
+            this.chPredefinedName.Width = 68;
+            // 
+            // chPredefinedType
+            // 
+            this.chPredefinedType.Text = "Type";
+            // 
+            // chPredefinedDescription
+            // 
+            this.chPredefinedDescription.Text = "Description";
+            this.chPredefinedDescription.Width = 316;
+            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2133,6 +2187,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRules)).EndInit();
+            this.tpPredefined.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2305,5 +2360,11 @@
         private System.Windows.Forms.ComboBox cmbCharset4;
         private System.Windows.Forms.ComboBox cmbCharset3;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TabPage tpPredefined;
+        private System.Windows.Forms.ListView lvPredefined;
+        private System.Windows.Forms.ColumnHeader chPredefinedNumber;
+        private System.Windows.Forms.ColumnHeader chPredefinedType;
+        private System.Windows.Forms.ColumnHeader chPredefinedName;
+        private System.Windows.Forms.ColumnHeader chPredefinedDescription;
     }
 }
