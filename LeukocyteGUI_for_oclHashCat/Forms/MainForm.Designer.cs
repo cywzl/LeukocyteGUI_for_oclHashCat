@@ -76,6 +76,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.btnSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFan)).BeginInit();
@@ -566,11 +567,26 @@
             this.label23.Size = new System.Drawing.Size(2, 64);
             this.label23.TabIndex = 40;
             // 
+            // btnSettings
+            // 
+            this.btnSettings.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_settings;
+            this.btnSettings.Location = new System.Drawing.Point(336, 33);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnSettings.Size = new System.Drawing.Size(36, 36);
+            this.btnSettings.TabIndex = 41;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 482);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -669,5 +685,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Button btnSettings;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeukocyteGUI_for_oclHashCat.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,11 @@ namespace LeukocyteGUI_for_oclHashCat
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            new TaskEditorForm().Show();
+            new TaskEditorForm().ShowDialog();
+        }
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            new SettingsForm().ShowDialog();
         }
     }
 }
