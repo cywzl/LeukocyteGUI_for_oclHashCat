@@ -12,7 +12,7 @@ namespace LeukocyteGUI_for_oclHashCat
         protected AttackModes attackMode = AttackModes.Straight;
         protected string name = "";
         protected string description = "";
-        protected string leftSource = "";
+        protected string source = "";
 
         public string Name
         {
@@ -36,22 +36,15 @@ namespace LeukocyteGUI_for_oclHashCat
                 description = value;
             }
         }
-        public string LeftSource
+        public string Source
         {
             get
             {
-                return leftSource;
+                return source;
             }
             set
             {
-                leftSource = value;
-            }
-        }
-        public string RightSource
-        {
-            get
-            {
-                return "";
+                source = value;
             }
         }
         public AttackModes AttackMode
@@ -64,7 +57,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public void GenerateDescription()
         {
-            description = Path.GetFileNameWithoutExtension(leftSource);
+            description = Path.GetFileNameWithoutExtension(source);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace LeukocyteGUI_for_oclHashCat
             {
                 if (type == MaskTypes.String)
                 {
-                    return leftSource.Length;
+                    return source.Length;
                 }
                 else
                 {
@@ -73,7 +73,7 @@ namespace LeukocyteGUI_for_oclHashCat
         public Mask CreateFromString(string maskString, string name)
         {
             Mask mask = new Mask(MaskTypes.String);
-            mask.LeftSource = maskString;
+            mask.Source = maskString;
             mask.Name = name;
 
             return mask;
@@ -81,7 +81,7 @@ namespace LeukocyteGUI_for_oclHashCat
         public Mask CreateFromHcmask(string hcmaskFileName, string name)
         {
             Mask mask = new Mask(MaskTypes.Hcmask);
-            mask.LeftSource = hcmaskFileName;
+            mask.Source = hcmaskFileName;
             mask.Name = name;
 
             return mask;

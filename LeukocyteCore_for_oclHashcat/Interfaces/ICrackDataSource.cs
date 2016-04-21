@@ -10,8 +10,7 @@ namespace LeukocyteGUI_for_oclHashCat
     {
         string Name { get; }
         string Description { get; }
-        string LeftSource { get; }
-        string RightSource { get; }
+        string Source { get; }
         AttackModes AttackMode { get; }
     }
 }

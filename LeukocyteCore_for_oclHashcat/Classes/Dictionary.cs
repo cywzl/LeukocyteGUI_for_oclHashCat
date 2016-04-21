@@ -55,19 +55,19 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public Dictionary(string dictFileName, string name)
         {
-            leftSource = dictFileName;
+            source = dictFileName;
             this.name = name;
             attackMode = AttackModes.Straight;
         }
 
         public void LoadInfo()
         {
-            if (string.IsNullOrEmpty(leftSource))
+            if (string.IsNullOrEmpty(source))
             {
                 throw new InvalidOperationException("Source cannot be empty.");
             }
 
-            fileInfo = new FileInfo(leftSource);
+            fileInfo = new FileInfo(source);
         }
     }
 }
