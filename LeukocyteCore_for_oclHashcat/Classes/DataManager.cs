@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LeukocyteGUI_for_oclHashCat
 {
@@ -93,7 +89,7 @@ namespace LeukocyteGUI_for_oclHashCat
             }
             set
             {
-                if(string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Filename cannot be empty.", "CrackTasksFile");
                 }
@@ -195,7 +191,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public static void LoadData(DataTypes dataType)
         {
-            switch(dataType)
+            switch (dataType)
             {
                 case DataTypes.CrackTasks:
                     crackTasks = GetFromFile<CrackTask[]>(crackTasksFile);
@@ -216,7 +212,7 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public static void LoadData(DataTypes dataType, string fileName)
         {
-            switch(dataType)
+            switch (dataType)
             {
                 case DataTypes.CrackTasks:
                     CrackTasksFile = fileName;
@@ -237,6 +233,17 @@ namespace LeukocyteGUI_for_oclHashCat
 
             LoadData(dataType);
         }
+        public static void LoadAllAvailableData()
+        {
+            foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
+            {
+                try
+                {
+                    LoadData((DataTypes)dataType);
+                }
+                catch { }
+            }
+        }
         public static void SaveData(DataTypes dataType, object data)
         {
             switch (dataType)
@@ -256,6 +263,61 @@ namespace LeukocyteGUI_for_oclHashCat
                 case DataTypes.CrackTaskTemplates:
                     SaveToFile(data, crackTaskTemplatesFile);
                     break;
+            }
+        }
+        public static void SaveData(DataTypes dataType)
+        {
+            switch (dataType)
+            {
+                case DataTypes.CrackTasks:
+                    SaveToFile(crackTasks, crackTasksFile);
+                    break;
+                case DataTypes.Dictionaries:
+                    SaveToFile(dictionaries, dictionariesFile);
+                    break;
+                case DataTypes.Masks:
+                    SaveToFile(masks, masksFile);
+                    break;
+                case DataTypes.HashTypes:
+                    SaveToFile(hashTypes, hashTypesFile);
+                    break;
+                case DataTypes.CrackTaskTemplates:
+                    SaveToFile(crackTaskTemplates, crackTaskTemplatesFile);
+                    break;
+            }
+        }
+        public static void SaveData(DataTypes dataType, string fileName)
+        {
+            switch (dataType)
+            {
+                case DataTypes.CrackTasks:
+                    crackTasksFile = fileName;
+                    break;
+                case DataTypes.Dictionaries:
+                    dictionariesFile = fileName;
+                    break;
+                case DataTypes.Masks:
+                    masksFile = fileName;
+                    break;
+                case DataTypes.HashTypes:
+                    hashTypesFile = fileName;
+                    break;
+                case DataTypes.CrackTaskTemplates:
+                    crackTasksFile = fileName;
+                    break;
+            }
+
+            SaveData(dataType);
+        }
+        public static void SaveAllData()
+        {
+            foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
+            {
+                try
+                {
+                    SaveData((DataTypes)dataType);
+                }
+                catch { }
             }
         }
     }
