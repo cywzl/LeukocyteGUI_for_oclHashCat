@@ -13,8 +13,40 @@ namespace LeukocyteGUI_for_oclHashCat
         CrackTaskTemplates
     }
 
+    public class DataLoadedSavedEventArgs : EventArgs
+    {
+        DataTypes dataType;
+        string fileName;
+
+        public DataTypes DataType
+        {
+            get
+            {
+                return dataType;
+            }
+        }
+        public string FileName
+        {
+            get
+            {
+                return fileName;
+            }
+        }
+
+        public DataLoadedSavedEventArgs(DataTypes dataType, string fileName) : base()
+        {
+            this.dataType = dataType;
+            this.fileName = fileName;
+        }
+    }
+
     public static class DataManager
     {
+        public delegate void DataLoadedSavedEventHandler(DataLoadedSavedEventArgs e);
+
+        public static event DataLoadedSavedEventHandler DataLoaded = delegate { };
+        public static event DataLoadedSavedEventHandler DataSaved = delegate { };
+
         static CrackTask[] crackTasks = new CrackTask[0];
         static Dictionary[] dictionaries = new Dictionary[0];
         static Mask[] masks = new Mask[0];
@@ -191,24 +223,33 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public static void LoadData(DataTypes dataType)
         {
+            string fileName = "";
+
             switch (dataType)
             {
                 case DataTypes.CrackTasks:
                     crackTasks = GetFromFile<CrackTask[]>(crackTasksFile);
+                    fileName = crackTasksFile;
                     break;
                 case DataTypes.Dictionaries:
                     dictionaries = GetFromFile<Dictionary[]>(dictionariesFile);
+                    fileName = dictionariesFile;
                     break;
                 case DataTypes.Masks:
                     masks = GetFromFile<Mask[]>(masksFile);
+                    fileName = masksFile;
                     break;
                 case DataTypes.HashTypes:
                     hashTypes = GetFromFile<HashType[]>(hashTypesFile);
+                    fileName = hashTypesFile;
                     break;
                 case DataTypes.CrackTaskTemplates:
                     crackTaskTemplates = GetFromFile<CrackTaskTemplate[]>(crackTaskTemplatesFile);
+                    fileName = crackTaskTemplatesFile;
                     break;
             }
+
+            DataLoaded(new DataLoadedSavedEventArgs(dataType, fileName));
         }
         public static void LoadData(DataTypes dataType, string fileName)
         {
@@ -246,45 +287,63 @@ namespace LeukocyteGUI_for_oclHashCat
         }
         public static void SaveData(DataTypes dataType, object data)
         {
+            string fileName = "";
+
             switch (dataType)
             {
                 case DataTypes.CrackTasks:
                     SaveToFile(data, crackTasksFile);
+                    fileName = crackTasksFile;
                     break;
                 case DataTypes.Dictionaries:
                     SaveToFile(data, dictionariesFile);
+                    fileName = dictionariesFile;
                     break;
                 case DataTypes.Masks:
                     SaveToFile(data, masksFile);
+                    fileName = masksFile;
                     break;
                 case DataTypes.HashTypes:
                     SaveToFile(data, hashTypesFile);
+                    fileName = hashTypesFile;
                     break;
                 case DataTypes.CrackTaskTemplates:
                     SaveToFile(data, crackTaskTemplatesFile);
+                    fileName = crackTaskTemplatesFile;
                     break;
             }
+
+            DataSaved(new DataLoadedSavedEventArgs(dataType, fileName));
         }
         public static void SaveData(DataTypes dataType)
         {
+            string fileName = "";
+
             switch (dataType)
             {
                 case DataTypes.CrackTasks:
                     SaveToFile(crackTasks, crackTasksFile);
+                    fileName = crackTasksFile;
                     break;
                 case DataTypes.Dictionaries:
                     SaveToFile(dictionaries, dictionariesFile);
+                    fileName = dictionariesFile;
                     break;
                 case DataTypes.Masks:
                     SaveToFile(masks, masksFile);
+                    fileName = masksFile;
                     break;
                 case DataTypes.HashTypes:
                     SaveToFile(hashTypes, hashTypesFile);
+                    fileName = hashTypesFile;
                     break;
                 case DataTypes.CrackTaskTemplates:
                     SaveToFile(crackTaskTemplates, crackTaskTemplatesFile);
+                    fileName = crackTaskTemplatesFile;
                     break;
             }
+
+            DataSaved(new DataLoadedSavedEventArgs(dataType, fileName));
         }
         public static void SaveData(DataTypes dataType, string fileName)
         {

@@ -16,6 +16,7 @@ namespace LeukocyteGUI_for_oclHashCat
         public MainForm()
         {
             InitializeComponent();
+            DataManager.DataLoaded += DataManager_DataLoaded;
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
@@ -25,6 +26,20 @@ namespace LeukocyteGUI_for_oclHashCat
         private void btnSettings_Click(object sender, EventArgs e)
         {
             new SettingsForm().ShowDialog();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DataManager.SaveAllData();
+        }
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            DataManager.LoadAllAvailableData();
+        }
+
+        private void DataManager_DataLoaded(DataLoadedSavedEventArgs e)
+        {
+
         }
     }
 }

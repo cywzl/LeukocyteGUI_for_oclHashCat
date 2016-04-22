@@ -626,6 +626,8 @@
             this.Controls.Add(this.lvCrackTasks);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pbSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFan)).EndInit();
