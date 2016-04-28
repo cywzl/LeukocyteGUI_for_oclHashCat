@@ -31,14 +31,14 @@
             this.tcSettings = new System.Windows.Forms.TabControl();
             this.tpSettingsMain = new System.Windows.Forms.TabPage();
             this.tpSettingsPredefined = new System.Windows.Forms.TabPage();
+            this.btnEditPredefined = new System.Windows.Forms.Button();
+            this.btnRemovePredefined = new System.Windows.Forms.Button();
+            this.btnAddPredefined = new System.Windows.Forms.Button();
             this.lvPredefined = new System.Windows.Forms.ListView();
             this.chPredefinedNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPredefinedType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPredefinedName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPredefinedDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAddPredefined = new System.Windows.Forms.Button();
-            this.btnEditPredefined = new System.Windows.Forms.Button();
-            this.btnRemovePredefined = new System.Windows.Forms.Button();
             this.tcSettings.SuspendLayout();
             this.tpSettingsPredefined.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +80,45 @@
             this.tpSettingsPredefined.Text = "Predefined";
             this.tpSettingsPredefined.UseVisualStyleBackColor = true;
             // 
+            // btnEditPredefined
+            // 
+            this.btnEditPredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditPredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnEditPredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditPredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
+            this.btnEditPredefined.Location = new System.Drawing.Point(88, 8);
+            this.btnEditPredefined.Name = "btnEditPredefined";
+            this.btnEditPredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnEditPredefined.Size = new System.Drawing.Size(32, 32);
+            this.btnEditPredefined.TabIndex = 6;
+            this.btnEditPredefined.UseVisualStyleBackColor = true;
+            // 
+            // btnRemovePredefined
+            // 
+            this.btnRemovePredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemovePredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnRemovePredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemovePredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.btnRemovePredefined.Location = new System.Drawing.Point(52, 8);
+            this.btnRemovePredefined.Name = "btnRemovePredefined";
+            this.btnRemovePredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnRemovePredefined.Size = new System.Drawing.Size(32, 32);
+            this.btnRemovePredefined.TabIndex = 5;
+            this.btnRemovePredefined.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPredefined
+            // 
+            this.btnAddPredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddPredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnAddPredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.btnAddPredefined.Location = new System.Drawing.Point(16, 8);
+            this.btnAddPredefined.Name = "btnAddPredefined";
+            this.btnAddPredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnAddPredefined.Size = new System.Drawing.Size(32, 32);
+            this.btnAddPredefined.TabIndex = 3;
+            this.btnAddPredefined.UseVisualStyleBackColor = true;
+            // 
             // lvPredefined
             // 
             this.lvPredefined.CheckBoxes = true;
@@ -115,45 +154,6 @@
             this.chPredefinedDescription.Text = "Description";
             this.chPredefinedDescription.Width = 259;
             // 
-            // btnAddPredefined
-            // 
-            this.btnAddPredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAddPredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnAddPredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
-            this.btnAddPredefined.Location = new System.Drawing.Point(16, 8);
-            this.btnAddPredefined.Name = "btnAddPredefined";
-            this.btnAddPredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
-            this.btnAddPredefined.Size = new System.Drawing.Size(32, 32);
-            this.btnAddPredefined.TabIndex = 3;
-            this.btnAddPredefined.UseVisualStyleBackColor = true;
-            // 
-            // btnEditPredefined
-            // 
-            this.btnEditPredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEditPredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnEditPredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditPredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
-            this.btnEditPredefined.Location = new System.Drawing.Point(88, 8);
-            this.btnEditPredefined.Name = "btnEditPredefined";
-            this.btnEditPredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
-            this.btnEditPredefined.Size = new System.Drawing.Size(32, 32);
-            this.btnEditPredefined.TabIndex = 6;
-            this.btnEditPredefined.UseVisualStyleBackColor = true;
-            // 
-            // btnRemovePredefined
-            // 
-            this.btnRemovePredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnRemovePredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnRemovePredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemovePredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
-            this.btnRemovePredefined.Location = new System.Drawing.Point(52, 8);
-            this.btnRemovePredefined.Name = "btnRemovePredefined";
-            this.btnRemovePredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
-            this.btnRemovePredefined.Size = new System.Drawing.Size(32, 32);
-            this.btnRemovePredefined.TabIndex = 5;
-            this.btnRemovePredefined.UseVisualStyleBackColor = true;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +162,7 @@
             this.Controls.Add(this.tcSettings);
             this.Name = "SettingsForm";
             this.Text = "SettingsForm";
+            this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.tcSettings.ResumeLayout(false);
             this.tpSettingsPredefined.ResumeLayout(false);
             this.ResumeLayout(false);
