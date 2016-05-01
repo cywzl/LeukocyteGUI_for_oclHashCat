@@ -8,9 +8,8 @@ namespace LeukocyteGUI_for_oclHashCat
 {
     public interface ICrackDataSource
     {
-        string Name { get; }
-        string Description { get; }
-        string Source { get; }
-        AttackModes AttackMode { get; }
+        string Name { get; set; }
+        string Description { get; set; }
+        string Source { get; set; }
     }
 }

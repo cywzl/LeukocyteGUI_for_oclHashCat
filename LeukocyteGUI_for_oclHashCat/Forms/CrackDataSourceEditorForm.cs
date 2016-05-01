@@ -37,40 +37,56 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
 
         private void rbCrackSource_CheckedChanged(object sender, EventArgs e)
         {
-            switch ((sender as RadioButton).Name)
-            {
-                case "rbDictionary":
-                    if (tcEditor.SelectedIndex != 0)
-                    {
-                        tcEditor.SelectedIndex = 0;
-                    }
-                    break;
-                case "rbMask":
-                    if (tcEditor.SelectedIndex != 1)
-                    {
-                        tcEditor.SelectedIndex = 1;
-                    }
-                    break;
-            }
+            gbCharsets.Enabled = rbMask.Checked;
+            gbIncrementMode.Enabled = rbMask.Checked;
         }
 
-        private void tcEditor_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            switch (tcEditor.SelectedIndex)
+            if (rbMask.Checked)
             {
-                case 0:
-                    if (!rbDictionary.Checked)
-                    {
-                        rbDictionary.Checked = true;
-                    }
-                    break;
-                case 1:
-                    if (!rbMask.Checked)
-                    {
-                        rbMask.Checked = true;
-                    }
-                    break;
+                Mask mask;
+
+                if (tbSource.Text.EndsWith(".hcmask"))
+                {
+                    mask = Mask.CreateFromHcmask(tbSource.Text, tbName.Text);
+                }
+                else
+                {
+                    mask = Mask.CreateFromString(tbSource.Text, tbName.Text);
+                }
+
+                mask.CharsetsSettings = new CustomCharsetsSettings()
+                {
+                    Charset1 = cmbCharset1.Text,
+                    Charset2 = cmbCharset2.Text,
+                    Charset3 = cmbCharset3.Text,
+                    Charset4 = cmbCharset4.Text,
+                    UseCharset1 = cbCharset1.Checked,
+                    UseCharset2 = cbCharset2.Checked,
+                    UseCharset3 = cbCharset3.Checked,
+                    UseCharset4 = cbCharset4.Checked,
+                };
+                mask.IncrementSettings = new IncrementSettings()
+                {
+                    Increment = cbIncrementMode.Checked,
+                    IncrementMin = (int)nudIncrementMin.Value,
+                    IncrementMax = (int)nudIncrementMax.Value
+                };
+
+                source = mask;
+                sourceType = DataTypes.Masks;
             }
+            else
+            {
+                source = new Dictionary(tbSource.Text, tbName.Text);
+                sourceType = DataTypes.Dictionaries;
+            }
+
+            source.Description = tbDescription.Text;
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }
