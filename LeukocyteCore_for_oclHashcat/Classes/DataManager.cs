@@ -47,19 +47,12 @@ namespace LeukocyteGUI_for_oclHashCat
 
         public static event DataLoadedSavedEventHandler DataLoaded = delegate { };
         public static event DataLoadedSavedEventHandler DataSaved = delegate { };
-
-        static CrackTask[] crackTasks = new CrackTask[0];
-        static Dictionary[] dictionaries = new Dictionary[0];
-        static Mask[] masks = new Mask[0];
-        static HashType[] hashTypes = new HashType[0];
-        static CrackTaskTemplate[] crackTaskTemplates = new CrackTaskTemplate[0];
-        static string crackTasksFile = "CrackTasks.dat";
-        static string dictionariesFile = "Dictionaries.dat";
-        static string masksFile = "Masks.dat";
-        static string hashTypesFile = "HashTypes.dat";
-        static string crackTaskTemplatesFile = "CrackTaskTemplates.dat";
-
-        public static CrackTask[] CrackTasks
+        
+        /// <summary>
+        /// List of CrackTasks.
+        /// </summary>
+        /// <see cref="CrackTask"/>
+        public static List<CrackTask> CrackTasks
         {
             get
             {
@@ -70,7 +63,13 @@ namespace LeukocyteGUI_for_oclHashCat
                 crackTasks = value;
             }
         }
-        public static Dictionary[] Dictionaries
+        private static List<CrackTask> crackTasks = new List<CrackTask>();
+
+        /// <summary>
+        /// List of Dictionaries.
+        /// </summary>
+        /// <see cref="Dictionary"/>
+        public static List<Dictionary> Dictionaries
         {
             get
             {
@@ -81,7 +80,13 @@ namespace LeukocyteGUI_for_oclHashCat
                 dictionaries = value;
             }
         }
-        public static Mask[] Masks
+        private static List<Dictionary> dictionaries = new List<Dictionary>();
+
+        /// <summary>
+        /// List of Masks.
+        /// </summary>
+        /// <see cref="Mask"/>
+        public static List<Mask> Masks
         {
             get
             {
@@ -92,7 +97,13 @@ namespace LeukocyteGUI_for_oclHashCat
                 masks = value;
             }
         }
-        public static HashType[] HashTypes
+        private static List<Mask> masks = new List<Mask>();
+
+        /// <summary>
+        /// List of HashTypes.
+        /// </summary>
+        /// <see cref="HashType"/>
+        public static List<HashType> HashTypes
         {
             get
             {
@@ -103,7 +114,13 @@ namespace LeukocyteGUI_for_oclHashCat
                 hashTypes = value;
             }
         }
-        public static CrackTaskTemplate[] CrackTaskTemplates
+        private static List<HashType> hashTypes = new List<HashType>();
+
+        /// <summary>
+        /// List of CrackTaskTemplates.
+        /// </summary>
+        /// <see cref="CrackTaskTemplate"/>
+        public static List<CrackTaskTemplate> CrackTaskTemplates
         {
             get
             {
@@ -114,6 +131,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 crackTaskTemplates = value;
             }
         }
+        private static List<CrackTaskTemplate> crackTaskTemplates = new List<CrackTaskTemplate>();
+
+        /// <summary>
+        /// Name of the file where CrackTasks are stored.
+        /// </summary>
         public static string CrackTasksFile
         {
             get
@@ -130,6 +152,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 crackTasksFile = value;
             }
         }
+        private static string crackTasksFile = "CrackTasks.dat";
+
+        /// <summary>
+        /// Name of the file where Dictionaries are stored.
+        /// </summary>
         public static string DictionariesFile
         {
             get
@@ -146,6 +173,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 dictionariesFile = value;
             }
         }
+        private static string dictionariesFile = "Dictionaries.dat";
+
+        /// <summary>
+        /// Name of the file where Masks are stored.
+        /// </summary>
         public static string MasksFile
         {
             get
@@ -162,6 +194,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 masksFile = value;
             }
         }
+        private static string masksFile = "Masks.dat";
+
+        /// <summary>
+        /// Name of the file where HashTypes are stored.
+        /// </summary>
         public static string HashTypesFile
         {
             get
@@ -178,6 +215,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 hashTypesFile = value;
             }
         }
+        private static string hashTypesFile = "HashTypes.dat";
+
+        /// <summary>
+        /// Name of the file where CrackTaskTemplates are stored.
+        /// </summary>
         public static string CrackTaskTemplatesFile
         {
             get
@@ -194,6 +236,7 @@ namespace LeukocyteGUI_for_oclHashCat
                 crackTaskTemplatesFile = value;
             }
         }
+        private static string crackTaskTemplatesFile = "CrackTaskTemplates.dat";
 
         /// <summary>
         /// Saves any serializable object to file.
@@ -222,6 +265,10 @@ namespace LeukocyteGUI_for_oclHashCat
             return deserealizedObject;
         }
 
+        /// <summary>
+        /// Loads data of the specified DataType from the current corresponding file.
+        /// </summary>
+        /// <param name="dataType">A type of data to be loaded</param>
         public static void LoadData(DataTypes dataType)
         {
             string fileName = "";
@@ -229,29 +276,34 @@ namespace LeukocyteGUI_for_oclHashCat
             switch (dataType)
             {
                 case DataTypes.CrackTasks:
-                    crackTasks = GetFromFile<CrackTask[]>(crackTasksFile);
+                    crackTasks = new List<CrackTask>(GetFromFile<CrackTask[]>(crackTasksFile));
                     fileName = crackTasksFile;
                     break;
                 case DataTypes.Dictionaries:
-                    dictionaries = GetFromFile<Dictionary[]>(dictionariesFile);
+                    dictionaries = new List<Dictionary>(GetFromFile<Dictionary[]>(dictionariesFile));
                     fileName = dictionariesFile;
                     break;
                 case DataTypes.Masks:
-                    masks = GetFromFile<Mask[]>(masksFile);
+                    masks = new List<Mask>(GetFromFile<Mask[]>(masksFile));
                     fileName = masksFile;
                     break;
                 case DataTypes.HashTypes:
-                    hashTypes = GetFromFile<HashType[]>(hashTypesFile);
+                    hashTypes = new List<HashType>(GetFromFile<HashType[]>(hashTypesFile));
                     fileName = hashTypesFile;
                     break;
                 case DataTypes.CrackTaskTemplates:
-                    crackTaskTemplates = GetFromFile<CrackTaskTemplate[]>(crackTaskTemplatesFile);
+                    crackTaskTemplates = new List<CrackTaskTemplate>(GetFromFile<CrackTaskTemplate[]>(crackTaskTemplatesFile));
                     fileName = crackTaskTemplatesFile;
                     break;
             }
 
             DataLoaded(new DataLoadedSavedEventArgs(dataType, fileName));
         }
+        /// <summary>
+        /// Loads data of the specified DataType from the specified file (saving that filename for the further usage).
+        /// </summary>
+        /// <param name="dataType">A type of data to be loaded</param>
+        /// <param name="fileName">A name of a file from which data is loaded</param>
         public static void LoadData(DataTypes dataType, string fileName)
         {
             switch (dataType)
@@ -275,6 +327,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
             LoadData(dataType);
         }
+        /// <summary>
+        /// Tries to load data of all DataTypes from existing corresponding files.
+        /// </summary>
         public static void LoadAllAvailableData()
         {
             foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
@@ -286,6 +341,11 @@ namespace LeukocyteGUI_for_oclHashCat
                 catch { }
             }
         }
+        /// <summary>
+        /// Saves specified data of the specified DataType to the corresponding file.
+        /// </summary>
+        /// <param name="dataType">A type of data to be saved.</param>
+        /// <param name="data">Data to be saved.</param>
         public static void SaveData(DataTypes dataType, object data)
         {
             string fileName = "";
@@ -316,6 +376,10 @@ namespace LeukocyteGUI_for_oclHashCat
 
             DataSaved(new DataLoadedSavedEventArgs(dataType, fileName));
         }
+        /// <summary>
+        /// Saves data of the specified DataType to the corresponding file.
+        /// </summary>
+        /// <param name="dataType">A type of data to be saved.</param>
         public static void SaveData(DataTypes dataType)
         {
             string fileName = "";
@@ -346,6 +410,11 @@ namespace LeukocyteGUI_for_oclHashCat
 
             DataSaved(new DataLoadedSavedEventArgs(dataType, fileName));
         }
+        /// <summary>
+        /// Saves data of the specified DataType to the specified file.
+        /// </summary>
+        /// <param name="dataType">A type of data to be saved.</param>
+        /// <param name="fileName">A name of a file to which data is saved.</param>
         public static void SaveData(DataTypes dataType, string fileName)
         {
             switch (dataType)
@@ -369,6 +438,9 @@ namespace LeukocyteGUI_for_oclHashCat
 
             SaveData(dataType);
         }
+        /// <summary>
+        /// Tries to save all existsing data to the corresponding files.
+        /// </summary>
         public static void SaveAllData()
         {
             foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
@@ -380,35 +452,30 @@ namespace LeukocyteGUI_for_oclHashCat
                 catch { }
             }
         }
-        
+
+        /// <summary>
+        /// Adds specified data of the specified DataType.
+        /// </summary>
+        /// <param name="dataType">A type of a data to be added.</param>
+        /// <param name="data">Data to be added.</param>
         public static void AddData(DataTypes dataType, object data)
         {
             switch (dataType)
             {
                 case DataTypes.CrackTasks:
-                    var crackTasksList = new List<CrackTask>(crackTasks);
-                    crackTasksList.Add((CrackTask)data);
-                    crackTasks = crackTasksList.ToArray();
+                    crackTasks.Add((CrackTask)data);
                     break;
                 case DataTypes.CrackTaskTemplates:
-                    var crackTaskTemplatesList = new List<CrackTaskTemplate>(crackTaskTemplates);
-                    crackTaskTemplatesList.Add((CrackTaskTemplate)data);
-                    crackTaskTemplates = crackTaskTemplatesList.ToArray();
+                    crackTaskTemplates.Add((CrackTaskTemplate)data);
                     break;
                 case DataTypes.HashTypes:
-                    var hashTypesList = new List<HashType>(hashTypes);
-                    hashTypesList.Add((HashType)data);
-                    hashTypes = hashTypesList.ToArray();
+                    hashTypes.Add((HashType)data);
                     break;
                 case DataTypes.Masks:
-                    var masksList = new List<Mask>(masks);
-                    masksList.Add((Mask)data);
-                    masks = masksList.ToArray();
+                    masks.Add((Mask)data);
                     break;
                 case DataTypes.Dictionaries:
-                    var dictionariesList = new List<Dictionary>(dictionaries);
-                    dictionariesList.Add((Dictionary)data);
-                    dictionaries = dictionariesList.ToArray();
+                    dictionaries.Add((Dictionary)data);
                     break;
             }
         }
