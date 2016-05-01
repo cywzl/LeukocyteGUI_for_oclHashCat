@@ -19,10 +19,8 @@
 //  LeukocyteGUI_for_oclHashCat. 
 //  If not, see <http://www.gnu.org/licenses/>.
 
+using LeukocyteGUI_for_oclHashcat.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LeukocyteGUI_for_oclHashcat

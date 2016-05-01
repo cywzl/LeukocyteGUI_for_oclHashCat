@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace LeukocyteGUI_for_oclHashcat
+namespace LeukocyteCore_for_oclHashcat
 {
     public enum DataTypes
     {

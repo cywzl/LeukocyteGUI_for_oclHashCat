@@ -1,4 +1,5 @@
-﻿using LeukocyteCore_for_oclHashcat.Interfaces;
+﻿using LeukocyteCore_for_oclHashcat;
+using LeukocyteCore_for_oclHashcat.Interfaces;
 using System;
 using System.Windows.Forms;
 

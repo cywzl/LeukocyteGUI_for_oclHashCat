@@ -1,4 +1,4 @@
-﻿namespace LeukocyteGUI_for_oclHashcat
+﻿namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     partial class MainForm
     {

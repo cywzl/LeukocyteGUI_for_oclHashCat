@@ -48,6 +48,7 @@
     <Compile Include="Classes\CrackTaskTemplate.cs" />
     <Compile Include="Classes\DataManager.cs" />
     <Compile Include="Classes\Dictionary.cs" />
+    <Compile Include="Interfaces\ICombinedCrackData.cs" />
     <Compile Include="Interfaces\ICrackDataSource.cs" />
     <Compile Include="Classes\Mask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

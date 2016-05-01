@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LeukocyteGUI_for_oclHashcat
+namespace LeukocyteCore_for_oclHashcat
 {
     public enum MaskTypes
     {

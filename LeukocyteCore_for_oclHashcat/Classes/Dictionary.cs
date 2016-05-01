@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace LeukocyteGUI_for_oclHashcat
+namespace LeukocyteCore_for_oclHashcat
 {
     [Serializable()]
     public class Dictionary : CrackDataSource

@@ -1,8 +1,9 @@
-﻿using System;
+﻿using LeukocyteCore_for_oclHashcat;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace LeukocyteGUI_for_oclHashcat
+namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     public partial class TaskEditorForm : Form
     {

@@ -1,7 +1,7 @@
 ﻿using LeukocyteCore_for_oclHashcat.Interfaces;
 using System.IO;
 
-namespace LeukocyteGUI_for_oclHashcat
+namespace LeukocyteCore_for_oclHashcat
 {
     public class CrackDataSource : ICrackDataSource
     {
