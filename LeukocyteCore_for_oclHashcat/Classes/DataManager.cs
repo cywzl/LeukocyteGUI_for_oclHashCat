@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LeukocyteGUI_for_oclHashCat
@@ -377,6 +378,38 @@ namespace LeukocyteGUI_for_oclHashCat
                     SaveData((DataTypes)dataType);
                 }
                 catch { }
+            }
+        }
+        
+        public static void AddData(DataTypes dataType, object data)
+        {
+            switch (dataType)
+            {
+                case DataTypes.CrackTasks:
+                    var crackTasksList = new List<CrackTask>(crackTasks);
+                    crackTasksList.Add((CrackTask)data);
+                    crackTasks = crackTasksList.ToArray();
+                    break;
+                case DataTypes.CrackTaskTemplates:
+                    var crackTaskTemplatesList = new List<CrackTaskTemplate>(crackTaskTemplates);
+                    crackTaskTemplatesList.Add((CrackTaskTemplate)data);
+                    crackTaskTemplates = crackTaskTemplatesList.ToArray();
+                    break;
+                case DataTypes.HashTypes:
+                    var hashTypesList = new List<HashType>(hashTypes);
+                    hashTypesList.Add((HashType)data);
+                    hashTypes = hashTypesList.ToArray();
+                    break;
+                case DataTypes.Masks:
+                    var masksList = new List<Mask>(masks);
+                    masksList.Add((Mask)data);
+                    masks = masksList.ToArray();
+                    break;
+                case DataTypes.Dictionaries:
+                    var dictionariesList = new List<Dictionary>(dictionaries);
+                    dictionariesList.Add((Dictionary)data);
+                    dictionaries = dictionariesList.ToArray();
+                    break;
             }
         }
     }

@@ -70,7 +70,7 @@ namespace LeukocyteGUI_for_oclHashCat
             attackMode = AttackModes.BruteForce;
         }
 
-        public Mask CreateFromString(string maskString, string name)
+        public static Mask CreateFromString(string maskString, string name)
         {
             Mask mask = new Mask(MaskTypes.String);
             mask.Source = maskString;
@@ -78,7 +78,7 @@ namespace LeukocyteGUI_for_oclHashCat
 
             return mask;
         }
-        public Mask CreateFromHcmask(string hcmaskFileName, string name)
+        public static Mask CreateFromHcmask(string hcmaskFileName, string name)
         {
             Mask mask = new Mask(MaskTypes.Hcmask);
             mask.Source = hcmaskFileName;

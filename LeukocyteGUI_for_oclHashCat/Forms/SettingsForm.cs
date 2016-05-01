@@ -47,5 +47,17 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
                 VisualizeCrackSource(mask);
             }
         }
+
+        private void btnAddPredefined_Click(object sender, EventArgs e)
+        {
+            using (CrackDataSourceEditorForm editor = new CrackDataSourceEditorForm())
+            {
+                if (editor.ShowDialog() == DialogResult.OK)
+                {
+                    DataManager.AddData(editor.SourceType, editor.Source);
+                    VisualizeCrackSource(editor.Source);
+                }
+            }
+        }
     }
 }
