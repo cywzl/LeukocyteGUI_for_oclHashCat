@@ -1,4 +1,4 @@
-﻿namespace LeukocyteGUI_for_oclHashCat.Forms
+﻿namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     partial class SettingsForm
     {
@@ -85,7 +85,7 @@
             this.btnEditPredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnEditPredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnEditPredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditPredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
+            this.btnEditPredefined.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_edit;
             this.btnEditPredefined.Location = new System.Drawing.Point(88, 8);
             this.btnEditPredefined.Name = "btnEditPredefined";
             this.btnEditPredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -99,7 +99,7 @@
             this.btnRemovePredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnRemovePredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnRemovePredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemovePredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.btnRemovePredefined.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_delete;
             this.btnRemovePredefined.Location = new System.Drawing.Point(52, 8);
             this.btnRemovePredefined.Name = "btnRemovePredefined";
             this.btnRemovePredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -112,7 +112,7 @@
             this.btnAddPredefined.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAddPredefined.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnAddPredefined.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPredefined.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.btnAddPredefined.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_plus;
             this.btnAddPredefined.Location = new System.Drawing.Point(16, 8);
             this.btnAddPredefined.Name = "btnAddPredefined";
             this.btnAddPredefined.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);

@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace LeukocyteGUI_for_oclHashCat.Tests
+namespace LeukocyteGUI_for_oclHashcat.Tests
 {
     [TestClass]
     public class CrackerTests

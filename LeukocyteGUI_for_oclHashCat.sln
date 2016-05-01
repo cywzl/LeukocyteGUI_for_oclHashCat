@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeukocyteGUI_for_oclHashCat", "LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat.csproj", "{F23369CF-91A6-40C6-9F76-FD5848396017}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeukocyteGUI_for_oclHashcat", "LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashcat.csproj", "{F23369CF-91A6-40C6-9F76-FD5848396017}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeukocyteGUI_for_oclHashCat.Tests", "LeukocyteGUI_for_oclHashCat.Tests\LeukocyteGUI_for_oclHashCat.Tests.csproj", "{44D3E41F-2FC4-4243-92F5-FFA64725A78D}"
 EndProject

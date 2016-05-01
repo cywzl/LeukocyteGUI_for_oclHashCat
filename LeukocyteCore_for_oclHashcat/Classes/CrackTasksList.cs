@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
-namespace LeukocyteGUI_for_oclHashCat
+namespace LeukocyteGUI_for_oclHashcat
 {
     public class CrackTasksListTaskChangedEventArgs : EventArgs
     {

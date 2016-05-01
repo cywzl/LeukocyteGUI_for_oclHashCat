@@ -1,15 +1,8 @@
-﻿using LeukocyteGUI_for_oclHashCat.Forms;
+﻿using LeukocyteGUI_for_oclHashcat.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LeukocyteGUI_for_oclHashCat
+namespace LeukocyteGUI_for_oclHashcat
 {
     public partial class MainForm : Form
     {

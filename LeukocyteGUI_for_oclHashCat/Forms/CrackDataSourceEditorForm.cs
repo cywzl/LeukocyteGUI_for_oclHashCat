@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LeukocyteCore_for_oclHashcat.Interfaces;
+using System;
 using System.Windows.Forms;
 
-namespace LeukocyteGUI_for_oclHashCat.Forms
+namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     public partial class CrackDataSourceEditorForm : Form
     {

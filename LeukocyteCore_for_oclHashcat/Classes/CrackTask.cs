@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace LeukocyteGUI_for_oclHashCat
+namespace LeukocyteGUI_for_oclHashcat
 {
     public enum CrackStatuses
     {

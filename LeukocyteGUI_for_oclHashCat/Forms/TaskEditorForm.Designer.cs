@@ -1,4 +1,4 @@
-﻿namespace LeukocyteGUI_for_oclHashCat
+﻿namespace LeukocyteGUI_for_oclHashcat
 {
     partial class TaskEditorForm
     {

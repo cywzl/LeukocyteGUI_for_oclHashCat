@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LeukocyteCore_for_oclHashcat.Interfaces;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace LeukocyteGUI_for_oclHashCat
+namespace LeukocyteGUI_for_oclHashcat
 {
     public class CrackDataSource : ICrackDataSource
     {

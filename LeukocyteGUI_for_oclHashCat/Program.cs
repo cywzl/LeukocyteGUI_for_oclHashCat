@@ -25,7 +25,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LeukocyteGUI_for_oclHashCat
+namespace LeukocyteGUI_for_oclHashcat
 {
     static class Program
     {

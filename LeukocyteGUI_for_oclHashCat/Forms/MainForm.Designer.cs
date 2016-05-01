@@ -1,4 +1,4 @@
-﻿namespace LeukocyteGUI_for_oclHashCat
+﻿namespace LeukocyteGUI_for_oclHashcat
 {
     partial class MainForm
     {
@@ -172,7 +172,7 @@
             this.btnAddTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnAddTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_plus;
+            this.btnAddTask.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_plus;
             this.btnAddTask.Location = new System.Drawing.Point(12, 33);
             this.btnAddTask.Name = "btnAddTask";
             this.btnAddTask.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -186,7 +186,7 @@
             this.btnRemoveTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnRemoveTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnRemoveTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_delete;
+            this.btnRemoveTask.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_delete;
             this.btnRemoveTask.Location = new System.Drawing.Point(48, 33);
             this.btnRemoveTask.Name = "btnRemoveTask";
             this.btnRemoveTask.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -199,7 +199,7 @@
             this.btnEditTask.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnEditTask.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnEditTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditTask.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_edit;
+            this.btnEditTask.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_edit;
             this.btnEditTask.Location = new System.Drawing.Point(84, 33);
             this.btnEditTask.Name = "btnEditTask";
             this.btnEditTask.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -212,7 +212,7 @@
             this.btnCrack.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnCrack.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnCrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCrack.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_play;
+            this.btnCrack.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_play;
             this.btnCrack.Location = new System.Drawing.Point(252, 33);
             this.btnCrack.Name = "btnCrack";
             this.btnCrack.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -225,7 +225,7 @@
             this.btnStop.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnStop.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStop.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_stop;
+            this.btnStop.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_stop;
             this.btnStop.Location = new System.Drawing.Point(288, 33);
             this.btnStop.Name = "btnStop";
             this.btnStop.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -238,7 +238,7 @@
             this.btnReset.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnReset.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_update;
+            this.btnReset.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_task_update;
             this.btnReset.Location = new System.Drawing.Point(120, 33);
             this.btnReset.Name = "btnReset";
             this.btnReset.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -251,7 +251,7 @@
             this.btnMoveUp.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnMoveUp.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnMoveUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveUp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_up;
+            this.btnMoveUp.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_up;
             this.btnMoveUp.Location = new System.Drawing.Point(168, 33);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -264,7 +264,7 @@
             this.btnMoveDown.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnMoveDown.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnMoveDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveDown.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_down;
+            this.btnMoveDown.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_down;
             this.btnMoveDown.Location = new System.Drawing.Point(204, 33);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -275,7 +275,7 @@
             // pbSpeed
             // 
             this.pbSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbSpeed.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_speed;
+            this.pbSpeed.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_speed;
             this.pbSpeed.Location = new System.Drawing.Point(736, 13);
             this.pbSpeed.Name = "pbSpeed";
             this.pbSpeed.Size = new System.Drawing.Size(26, 26);
@@ -354,7 +354,7 @@
             // pbGPU
             // 
             this.pbGPU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbGPU.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_videocard;
+            this.pbGPU.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_videocard;
             this.pbGPU.Location = new System.Drawing.Point(414, 12);
             this.pbGPU.Name = "pbGPU";
             this.pbGPU.Size = new System.Drawing.Size(26, 26);
@@ -421,7 +421,7 @@
             // pbFan
             // 
             this.pbFan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbFan.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_fan;
+            this.pbFan.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_fan;
             this.pbFan.Location = new System.Drawing.Point(520, 12);
             this.pbFan.Name = "pbFan";
             this.pbFan.Size = new System.Drawing.Size(26, 26);
@@ -488,7 +488,7 @@
             // pbTemp
             // 
             this.pbTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbTemp.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_temperature;
+            this.pbTemp.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_temperature;
             this.pbTemp.Location = new System.Drawing.Point(625, 12);
             this.pbTemp.Name = "pbTemp";
             this.pbTemp.Size = new System.Drawing.Size(26, 26);
@@ -572,7 +572,7 @@
             this.btnSettings.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_settings;
+            this.btnSettings.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_settings;
             this.btnSettings.Location = new System.Drawing.Point(336, 33);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LeukocyteGUI_for_oclHashCat.Properties {
+namespace LeukocyteGUI_for_oclHashcat.Properties {
     using System;
     
     

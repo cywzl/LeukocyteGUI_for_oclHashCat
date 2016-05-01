@@ -1,4 +1,4 @@
-﻿namespace LeukocyteGUI_for_oclHashCat.Forms
+﻿namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     partial class CrackDataSourceEditorForm
     {
@@ -135,7 +135,7 @@
             this.btnCancel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_cancel;
+            this.btnCancel.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_task_cancel;
             this.btnCancel.Location = new System.Drawing.Point(463, 267);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
@@ -148,7 +148,7 @@
             this.btnOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOK.Image = global::LeukocyteGUI_for_oclHashCat.Properties.Resources.glyph_task_ok;
+            this.btnOK.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_task_ok;
             this.btnOK.Location = new System.Drawing.Point(421, 267);
             this.btnOK.Name = "btnOK";
             this.btnOK.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
