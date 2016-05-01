@@ -56,6 +56,12 @@
             this.rbBruteforce = new System.Windows.Forms.RadioButton();
             this.rbCombination = new System.Windows.Forms.RadioButton();
             this.rbStraight = new System.Windows.Forms.RadioButton();
+            this.tpPredefined = new System.Windows.Forms.TabPage();
+            this.lvPredefined = new System.Windows.Forms.ListView();
+            this.chPredefinedNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPredefinedType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPredefinedName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chPredefinedDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpMisc = new System.Windows.Forms.TabPage();
             this.nudWeakHashThreshold = new System.Windows.Forms.NumericUpDown();
             this.lblWeakHashThreshold = new System.Windows.Forms.Label();
@@ -193,12 +199,6 @@
             this.lblTemplate = new System.Windows.Forms.Label();
             this.cmbTemplate = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.tpPredefined = new System.Windows.Forms.TabPage();
-            this.lvPredefined = new System.Windows.Forms.ListView();
-            this.chPredefinedNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chPredefinedName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chPredefinedType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chPredefinedDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcTaskOptions.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.gbIncrementMode.SuspendLayout();
@@ -207,6 +207,7 @@
             this.gbCharsets.SuspendLayout();
             this.gbAttackSource.SuspendLayout();
             this.gbAttackType.SuspendLayout();
+            this.tpPredefined.SuspendLayout();
             this.tpMisc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeakHashThreshold)).BeginInit();
             this.tpMarkov.SuspendLayout();
@@ -236,7 +237,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRules)).BeginInit();
-            this.tpPredefined.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcTaskOptions
@@ -585,6 +585,52 @@
             this.rbStraight.Text = "(0) Straight";
             this.rbStraight.UseVisualStyleBackColor = true;
             this.rbStraight.CheckedChanged += new System.EventHandler(this.rbAttackType_CheckedChanged);
+            // 
+            // tpPredefined
+            // 
+            this.tpPredefined.Controls.Add(this.lvPredefined);
+            this.tpPredefined.Location = new System.Drawing.Point(4, 22);
+            this.tpPredefined.Name = "tpPredefined";
+            this.tpPredefined.Padding = new System.Windows.Forms.Padding(3);
+            this.tpPredefined.Size = new System.Drawing.Size(547, 293);
+            this.tpPredefined.TabIndex = 8;
+            this.tpPredefined.Text = "Predefined";
+            this.tpPredefined.UseVisualStyleBackColor = true;
+            // 
+            // lvPredefined
+            // 
+            this.lvPredefined.CheckBoxes = true;
+            this.lvPredefined.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chPredefinedNumber,
+            this.chPredefinedType,
+            this.chPredefinedName,
+            this.chPredefinedDescription});
+            this.lvPredefined.FullRowSelect = true;
+            this.lvPredefined.Location = new System.Drawing.Point(16, 15);
+            this.lvPredefined.Name = "lvPredefined";
+            this.lvPredefined.Size = new System.Drawing.Size(510, 260);
+            this.lvPredefined.TabIndex = 0;
+            this.lvPredefined.UseCompatibleStateImageBehavior = false;
+            this.lvPredefined.View = System.Windows.Forms.View.Details;
+            // 
+            // chPredefinedNumber
+            // 
+            this.chPredefinedNumber.Text = "#";
+            this.chPredefinedNumber.Width = 40;
+            // 
+            // chPredefinedType
+            // 
+            this.chPredefinedType.Text = "Type";
+            // 
+            // chPredefinedName
+            // 
+            this.chPredefinedName.Text = "Name";
+            this.chPredefinedName.Width = 68;
+            // 
+            // chPredefinedDescription
+            // 
+            this.chPredefinedDescription.Text = "Description";
+            this.chPredefinedDescription.Width = 316;
             // 
             // tpMisc
             // 
@@ -2078,52 +2124,6 @@
             this.textBox4.Size = new System.Drawing.Size(246, 75);
             this.textBox4.TabIndex = 6;
             // 
-            // tpPredefined
-            // 
-            this.tpPredefined.Controls.Add(this.lvPredefined);
-            this.tpPredefined.Location = new System.Drawing.Point(4, 22);
-            this.tpPredefined.Name = "tpPredefined";
-            this.tpPredefined.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPredefined.Size = new System.Drawing.Size(547, 293);
-            this.tpPredefined.TabIndex = 8;
-            this.tpPredefined.Text = "Predefined";
-            this.tpPredefined.UseVisualStyleBackColor = true;
-            // 
-            // lvPredefined
-            // 
-            this.lvPredefined.CheckBoxes = true;
-            this.lvPredefined.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chPredefinedNumber,
-            this.chPredefinedType,
-            this.chPredefinedName,
-            this.chPredefinedDescription});
-            this.lvPredefined.FullRowSelect = true;
-            this.lvPredefined.Location = new System.Drawing.Point(16, 15);
-            this.lvPredefined.Name = "lvPredefined";
-            this.lvPredefined.Size = new System.Drawing.Size(510, 260);
-            this.lvPredefined.TabIndex = 0;
-            this.lvPredefined.UseCompatibleStateImageBehavior = false;
-            this.lvPredefined.View = System.Windows.Forms.View.Details;
-            // 
-            // chPredefinedNumber
-            // 
-            this.chPredefinedNumber.Text = "#";
-            this.chPredefinedNumber.Width = 40;
-            // 
-            // chPredefinedName
-            // 
-            this.chPredefinedName.Text = "Name";
-            this.chPredefinedName.Width = 68;
-            // 
-            // chPredefinedType
-            // 
-            this.chPredefinedType.Text = "Type";
-            // 
-            // chPredefinedDescription
-            // 
-            this.chPredefinedDescription.Text = "Description";
-            this.chPredefinedDescription.Width = 316;
-            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2151,6 +2151,7 @@
             this.gbAttackSource.PerformLayout();
             this.gbAttackType.ResumeLayout(false);
             this.gbAttackType.PerformLayout();
+            this.tpPredefined.ResumeLayout(false);
             this.tpMisc.ResumeLayout(false);
             this.tpMisc.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeakHashThreshold)).EndInit();
@@ -2187,7 +2188,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRulesFuncMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudGenerateRules)).EndInit();
-            this.tpPredefined.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,8 +12,9 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
 {
     public partial class CrackDataSourceEditorForm : Form
     {
+        bool editMode = false;
         DataTypes sourceType = DataTypes.Masks;
-        ICrackDataSource source = Mask.CreateFromString("", "");
+        ICrackDataSource source;
 
         public DataTypes SourceType
         {
@@ -34,26 +35,69 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
         {
             InitializeComponent();
         }
+        public CrackDataSourceEditorForm(ICrackDataSource source) : this()
+        {
+            editMode = true;
+
+            gbCrackDataSourceType.Enabled = false;
+
+            tbName.Text = source.Name;
+            tbDescription.Text = source.Description;
+            tbSource.Text = source.Source;
+
+            switch (source.GetType().ToString().Split('.')[1])
+            {
+                case "Dictionary":
+                    rbDictionary.Checked = true;
+                    break;
+
+                case "Mask":
+                    rbMask.Checked = true;
+
+                    Mask mask = (Mask)source;
+                    cbIncrementMode.Checked = mask.IncrementSettings.Increment;
+                    nudIncrementMin.Value = mask.IncrementSettings.IncrementMin;
+                    nudIncrementMax.Value = mask.IncrementSettings.IncrementMax;
+                    cbCharset1.Checked = mask.CharsetsSettings.UseCharset1;
+                    cbCharset2.Checked = mask.CharsetsSettings.UseCharset2;
+                    cbCharset3.Checked = mask.CharsetsSettings.UseCharset3;
+                    cbCharset4.Checked = mask.CharsetsSettings.UseCharset4;
+                    cmbCharset1.Text = mask.CharsetsSettings.Charset1;
+                    cmbCharset2.Text = mask.CharsetsSettings.Charset2;
+                    cmbCharset3.Text = mask.CharsetsSettings.Charset3;
+                    cmbCharset4.Text = mask.CharsetsSettings.Charset4;
+
+                    break;
+            }
+
+            this.source = source;
+        }
 
         private void rbCrackSource_CheckedChanged(object sender, EventArgs e)
         {
             gbCharsets.Enabled = rbMask.Checked;
             gbIncrementMode.Enabled = rbMask.Checked;
         }
-
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (rbMask.Checked)
             {
                 Mask mask;
 
-                if (tbSource.Text.EndsWith(".hcmask"))
+                if (editMode)
                 {
-                    mask = Mask.CreateFromHcmask(tbSource.Text, tbName.Text);
+                    mask = (Mask)source;
                 }
                 else
                 {
-                    mask = Mask.CreateFromString(tbSource.Text, tbName.Text);
+                    if (tbSource.Text.EndsWith(".hcmask"))
+                    {
+                        mask = Mask.CreateFromHcmask(tbSource.Text, tbName.Text);
+                    }
+                    else
+                    {
+                        mask = Mask.CreateFromString(tbSource.Text, tbName.Text);
+                    }
                 }
 
                 mask.CharsetsSettings = new CustomCharsetsSettings()
@@ -79,7 +123,16 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
             }
             else
             {
-                source = new Dictionary(tbSource.Text, tbName.Text);
+                if (editMode)
+                {
+                    source.Name = tbName.Text;
+                    source.Source = tbSource.Text;
+                }
+                else
+                {
+                    source = new Dictionary(tbSource.Text, tbName.Text);
+                }
+
                 sourceType = DataTypes.Dictionaries;
             }
 

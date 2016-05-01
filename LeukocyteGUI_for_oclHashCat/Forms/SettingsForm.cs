@@ -19,21 +19,29 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
 
         private void VisualizeCrackSource(ICrackDataSource crackSource, int listViewId)
         {
-            lvPredefined.Items.Add(
-                new ListViewItem(
-                    new string[]
-                    {
-                        listViewId.ToString(),
-                        crackSource.GetType().ToString(),
-                        crackSource.Name,
-                        crackSource.Description
-                    }
-                )
-            );
+            ListViewItem item = new ListViewItem(new string[]
+                {
+                    listViewId.ToString(),
+                    crackSource.GetType().ToString().Split('.')[1],
+                    crackSource.Name,
+                    crackSource.Description
+                })
+            {
+                Tag = crackSource
+            };
+
+            if (listViewId < lvPredefined.Items.Count)
+            {
+                lvPredefined.Items[listViewId] = item;
+            }
+            else
+            {
+                lvPredefined.Items.Add(item);
+            }
         }
         private void VisualizeCrackSource(ICrackDataSource crackSource)
         {
-            VisualizeCrackSource(crackSource, lvPredefined.Items.Count - 1);
+            VisualizeCrackSource(crackSource, lvPredefined.Items.Count);
         }
 
         private void SettingsForm_Shown(object sender, EventArgs e)
@@ -56,6 +64,23 @@ namespace LeukocyteGUI_for_oclHashCat.Forms
                 {
                     DataManager.AddData(editor.SourceType, editor.Source);
                     VisualizeCrackSource(editor.Source);
+                }
+            }
+        }
+        private void btnEditPredefined_Click(object sender, EventArgs e)
+        {
+            if (lvPredefined.SelectedItems.Count > 0)
+            {
+                ICrackDataSource selectedSource = (ICrackDataSource)lvPredefined.SelectedItems[0].Tag;
+                int selectedIndex = lvPredefined.SelectedIndices[0];
+
+                using (CrackDataSourceEditorForm editor = new CrackDataSourceEditorForm(selectedSource))
+                {
+                    if (editor.ShowDialog() == DialogResult.OK)
+                    {
+                        selectedSource = editor.Source;
+                        VisualizeCrackSource(editor.Source, selectedIndex);
+                    }
                 }
             }
         }

@@ -92,6 +92,7 @@
             this.btnEditPredefined.Size = new System.Drawing.Size(32, 32);
             this.btnEditPredefined.TabIndex = 6;
             this.btnEditPredefined.UseVisualStyleBackColor = true;
+            this.btnEditPredefined.Click += new System.EventHandler(this.btnEditPredefined_Click);
             // 
             // btnRemovePredefined
             // 
