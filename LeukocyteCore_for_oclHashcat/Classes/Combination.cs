@@ -32,6 +32,20 @@
         {
             sourceBase = leftDictionary;
             additionalSourceBase = rightDictionary;
+            attackMode = AttackModes.Combination;
+        }
+
+        public override object Clone()
+        {
+            Combination clone = new Combination(
+                (Dictionary)sourceBase.Clone(),
+                (Dictionary)additionalSourceBase.Clone())
+            {
+                Name = string.Copy(name),
+                Description = string.Copy(description)
+            };
+
+            return clone;
         }
     }
 }

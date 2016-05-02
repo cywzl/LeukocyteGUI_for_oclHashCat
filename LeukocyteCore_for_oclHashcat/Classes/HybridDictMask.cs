@@ -32,6 +32,20 @@
         {
             sourceBase = leftDictionary;
             additionalSourceBase = rightMask;
+            attackMode = AttackModes.DictPlusMask;
+        }
+
+        public override object Clone()
+        {
+            HybridDictMask clone = new HybridDictMask(
+                (Dictionary)sourceBase.Clone(),
+                (Mask)additionalSourceBase.Clone())
+            {
+                Name = string.Copy(name),
+                Description = string.Copy(description)
+            };
+
+            return clone;
         }
     }
 }

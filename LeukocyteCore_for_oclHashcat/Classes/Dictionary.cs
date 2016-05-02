@@ -65,5 +65,15 @@ namespace LeukocyteCore_for_oclHashcat
 
             fileInfo = new FileInfo(source);
         }
+
+        public override object Clone()
+        {
+            Dictionary clone = new Dictionary(source, name)
+            {
+                Description = string.Copy(description),
+            };
+
+            return clone;
+        }
     }
 }

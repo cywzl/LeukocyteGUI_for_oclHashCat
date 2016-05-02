@@ -82,7 +82,7 @@ namespace LeukocyteCore_for_oclHashcat
             return mask;
         }
 
-        public new void GenerateDescription()
+        public override void GenerateDescription()
         {
             if (type == MaskTypes.Hcmask)
             {
@@ -103,6 +103,20 @@ namespace LeukocyteCore_for_oclHashcat
 
                 description = "<" + targetLength + ">" + charsets;
             }
+        }
+
+        public override object Clone()
+        {
+            Mask clone = new Mask(type)
+            {
+                Name = string.Copy(name),
+                Description = string.Copy(description),
+                Source = string.Copy(source),
+                IncrementSettings = incrementSettings.DeepCopy(),
+                CharsetsSettings = charsetsSettings.DeepCopy()
+            };
+
+            return clone;
         }
     }
 }

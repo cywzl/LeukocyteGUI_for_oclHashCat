@@ -58,5 +58,19 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             description = Path.GetFileNameWithoutExtension(sourceBase.Source) +
                 " + " + Path.GetFileNameWithoutExtension(additionalSourceBase.Source);
         }
+
+        public override object Clone()
+        {
+            CombinedCrackData clone = new CombinedCrackData()
+            {
+                Name = string.Copy(name),
+                Description = string.Copy(description),
+                AttackMode = attackMode,
+                SourceBase = (ICrackDataSource)sourceBase.Clone(),
+                AdditionalSourceBase = (ICrackDataSource)additionalSourceBase.Clone(),
+            };
+            
+            return clone;
+        }
     }
 }

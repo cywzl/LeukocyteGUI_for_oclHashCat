@@ -1,4 +1,5 @@
 ﻿using LeukocyteCore_for_oclHashcat.Interfaces;
+using System;
 using System.IO;
 
 namespace LeukocyteCore_for_oclHashcat
@@ -58,6 +59,19 @@ namespace LeukocyteCore_for_oclHashcat
         public virtual void GenerateDescription()
         {
             description = Path.GetFileNameWithoutExtension(source);
+        }
+
+        public virtual object Clone()
+        {
+            CrackDataSource clone = new CrackDataSource()
+            {
+                Name = string.Copy(name),
+                Description = string.Copy(description),
+                Source = string.Copy(source),
+                AttackMode = attackMode
+            };
+
+            return clone;
         }
     }
 }
