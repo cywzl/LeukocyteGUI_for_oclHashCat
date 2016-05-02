@@ -32,7 +32,7 @@ namespace LeukocyteCore_for_oclHashcat
                 description = value;
             }
         }
-        public string Source
+        public virtual string Source
         {
             get
             {
@@ -55,7 +55,7 @@ namespace LeukocyteCore_for_oclHashcat
             }
         }
 
-        public void GenerateDescription()
+        public virtual void GenerateDescription()
         {
             description = Path.GetFileNameWithoutExtension(source);
         }

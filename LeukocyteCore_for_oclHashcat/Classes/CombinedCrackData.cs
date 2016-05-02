@@ -1,4 +1,5 @@
 ﻿using LeukocyteCore_for_oclHashcat.Interfaces;
+using System.IO;
 
 namespace LeukocyteCore_for_oclHashcat.Classes
 {
@@ -7,7 +8,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         protected ICrackDataSource sourceBase;
         protected ICrackDataSource additionalSourceBase;
 
-        public new string Source
+        public override string Source
         {
             get
             {
@@ -50,6 +51,12 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             {
                 additionalSourceBase = value;
             }
+        }
+
+        public override void GenerateDescription()
+        {
+            description = Path.GetFileNameWithoutExtension(sourceBase.Source) +
+                " + " + Path.GetFileNameWithoutExtension(additionalSourceBase.Source);
         }
     }
 }

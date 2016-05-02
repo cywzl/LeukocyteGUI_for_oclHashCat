@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Combination.cs" />
     <Compile Include="Classes\CombinedCrackData.cs" />
     <Compile Include="Classes\CrackDataSource.cs" />
     <Compile Include="Classes\Cracker.cs" />
@@ -49,6 +50,8 @@
     <Compile Include="Classes\CrackTaskTemplate.cs" />
     <Compile Include="Classes\DataManager.cs" />
     <Compile Include="Classes\Dictionary.cs" />
+    <Compile Include="Classes\HybridDictMask.cs" />
+    <Compile Include="Classes\HybridMaskDict.cs" />
     <Compile Include="Interfaces\ICombinedCrackData.cs" />
     <Compile Include="Interfaces\ICrackDataSource.cs" />
     <Compile Include="Classes\Mask.cs" />
