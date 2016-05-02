@@ -5,10 +5,10 @@ namespace LeukocyteCore_for_oclHashcat
 {
     public class CrackDataSource : ICrackDataSource
     {
-        protected AttackModes attackMode = AttackModes.Straight;
         protected string name = "";
         protected string description = "";
         protected string source = "";
+        protected AttackModes attackMode = AttackModes.Straight;
 
         public string Name
         {
@@ -48,6 +48,10 @@ namespace LeukocyteCore_for_oclHashcat
             get
             {
                 return attackMode;
+            }
+            set
+            {
+                attackMode = value;
             }
         }
 

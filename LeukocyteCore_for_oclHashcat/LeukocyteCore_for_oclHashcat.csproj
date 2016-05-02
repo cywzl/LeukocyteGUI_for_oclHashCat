@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CombinedCrackData.cs" />
     <Compile Include="Classes\CrackDataSource.cs" />
     <Compile Include="Classes\Cracker.cs" />
     <Compile Include="Classes\CrackTask.cs" />
