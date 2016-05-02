@@ -3,15 +3,18 @@ using System.IO;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace LeukocyteCore_for_oclHashcat
+namespace LeukocyteCore_for_oclHashcat.Classes
 {
     public enum DataTypes
     {
         CrackTasks,
+        HashTypes,
+        CrackTaskTemplates,
         Dictionaries,
         Masks,
-        HashTypes,
-        CrackTaskTemplates
+        Combinations,
+        HybridDictMask,
+        HybridMaskDict
     }
 
     public class DataLoadedSavedEventArgs : EventArgs
@@ -98,6 +101,57 @@ namespace LeukocyteCore_for_oclHashcat
             }
         }
         private static List<Mask> masks = new List<Mask>();
+
+        /// <summary>
+        /// List of Combinations.
+        /// </summary>
+        /// <see cref="Combinations"/>
+        public static List<Combination> Combinations
+        {
+            get
+            {
+                return combinations;
+            }
+            set
+            {
+                combinations = value;
+            }
+        }
+        private static List<Combination> combinations = new List<Combination>();
+
+        /// <summary>
+        /// List of HybridDictMasks.
+        /// </summary>
+        /// <see cref="Combinations"/>
+        public static List<HybridDictMask> HybridDictMasks
+        {
+            get
+            {
+                return hybridDictMasks;
+            }
+            set
+            {
+                hybridDictMasks = value;
+            }
+        }
+        private static List<HybridDictMask> hybridDictMasks = new List<HybridDictMask>();
+
+        /// <summary>
+        /// List of HybridDictMasks.
+        /// </summary>
+        /// <see cref="Combinations"/>
+        public static List<HybridMaskDict> HybridMaskDicts
+        {
+            get
+            {
+                return hybridMaskDicts;
+            }
+            set
+            {
+                hybridMaskDicts = value;
+            }
+        }
+        private static List<HybridMaskDict> hybridMaskDicts = new List<HybridMaskDict>();
 
         /// <summary>
         /// List of HashTypes.
@@ -197,6 +251,69 @@ namespace LeukocyteCore_for_oclHashcat
         private static string masksFile = "Masks.dat";
 
         /// <summary>
+        /// Name of the file where Combinations are stored.
+        /// </summary>
+        public static string CombinationsFile
+        {
+            get
+            {
+                return combinationsFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "CombinationsFile");
+                }
+
+                combinationsFile = value;
+            }
+        }
+        private static string combinationsFile = "Combinations.dat";
+
+        /// <summary>
+        /// Name of the file where HybridDictMasks are stored.
+        /// </summary>
+        public static string HybridDictMasksFile
+        {
+            get
+            {
+                return hybridDictMasksFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "HybridDictMasksFile");
+                }
+
+                hybridDictMasksFile = value;
+            }
+        }
+        private static string hybridDictMasksFile = "HybridDictMasks.dat";
+
+        /// <summary>
+        /// Name of the file where Masks are stored.
+        /// </summary>
+        public static string HybridMaskDictsFile
+        {
+            get
+            {
+                return hybridMaskDictsFile;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Filename cannot be empty.", "HybridMaskDictsFile");
+                }
+
+                hybridMaskDictsFile = value;
+            }
+        }
+        private static string hybridMaskDictsFile = "HybridMaskDicts.dat";
+
+        /// <summary>
         /// Name of the file where HashTypes are stored.
         /// </summary>
         public static string HashTypesFile
@@ -287,6 +404,18 @@ namespace LeukocyteCore_for_oclHashcat
                     masks = new List<Mask>(GetFromFile<Mask[]>(masksFile));
                     fileName = masksFile;
                     break;
+                case DataTypes.Combinations:
+                    combinations = new List<Combination>(GetFromFile<Combination[]>(combinationsFile));
+                    fileName = combinationsFile;
+                    break;
+                case DataTypes.HybridDictMask:
+                    hybridDictMasks = new List<HybridDictMask>(GetFromFile<HybridDictMask[]>(hybridDictMasksFile));
+                    fileName = hybridDictMasksFile;
+                    break;
+                case DataTypes.HybridMaskDict:
+                    hybridMaskDicts = new List<HybridMaskDict>(GetFromFile<HybridMaskDict[]>(hybridMaskDictsFile));
+                    fileName = hybridMaskDictsFile;
+                    break;
                 case DataTypes.HashTypes:
                     hashTypes = new List<HashType>(GetFromFile<HashType[]>(hashTypesFile));
                     fileName = hashTypesFile;
@@ -316,6 +445,15 @@ namespace LeukocyteCore_for_oclHashcat
                     break;
                 case DataTypes.Masks:
                     MasksFile = fileName;
+                    break;
+                case DataTypes.Combinations:
+                    CombinationsFile = fileName;
+                    break;
+                case DataTypes.HybridDictMask:
+                    HybridDictMasksFile = fileName;
+                    break;
+                case DataTypes.HybridMaskDict:
+                    HybridMaskDictsFile = fileName;
                     break;
                 case DataTypes.HashTypes:
                     HashTypesFile = fileName;
@@ -364,6 +502,18 @@ namespace LeukocyteCore_for_oclHashcat
                     SaveToFile(data, masksFile);
                     fileName = masksFile;
                     break;
+                case DataTypes.Combinations:
+                    SaveToFile(data, combinationsFile);
+                    fileName = combinationsFile;
+                    break;
+                case DataTypes.HybridDictMask:
+                    SaveToFile(data, hybridDictMasksFile);
+                    fileName = hybridDictMasksFile;
+                    break;
+                case DataTypes.HybridMaskDict:
+                    SaveToFile(data, hybridMaskDictsFile);
+                    fileName = hybridMaskDictsFile;
+                    break;
                 case DataTypes.HashTypes:
                     SaveToFile(data, hashTypesFile);
                     fileName = hashTypesFile;
@@ -398,6 +548,18 @@ namespace LeukocyteCore_for_oclHashcat
                     SaveToFile(masks, masksFile);
                     fileName = masksFile;
                     break;
+                case DataTypes.Combinations:
+                    SaveToFile(combinations, combinationsFile);
+                    fileName = combinationsFile;
+                    break;
+                case DataTypes.HybridDictMask:
+                    SaveToFile(hybridDictMasks, hybridDictMasksFile);
+                    fileName = hybridDictMasksFile;
+                    break;
+                case DataTypes.HybridMaskDict:
+                    SaveToFile(hybridMaskDicts, hybridMaskDictsFile);
+                    fileName = hybridMaskDictsFile;
+                    break;
                 case DataTypes.HashTypes:
                     SaveToFile(hashTypes, hashTypesFile);
                     fileName = hashTypesFile;
@@ -427,6 +589,15 @@ namespace LeukocyteCore_for_oclHashcat
                     break;
                 case DataTypes.Masks:
                     masksFile = fileName;
+                    break;
+                case DataTypes.Combinations:
+                    combinationsFile = fileName;
+                    break;
+                case DataTypes.HybridDictMask:
+                    hybridDictMasksFile = fileName;
+                    break;
+                case DataTypes.HybridMaskDict:
+                    hybridMaskDictsFile = fileName;
                     break;
                 case DataTypes.HashTypes:
                     hashTypesFile = fileName;
@@ -476,6 +647,15 @@ namespace LeukocyteCore_for_oclHashcat
                     break;
                 case DataTypes.Dictionaries:
                     dictionaries.Add((Dictionary)data);
+                    break;
+                case DataTypes.Combinations:
+                    combinations.Add((Combination)data);
+                    break;
+                case DataTypes.HybridDictMask:
+                    hybridDictMasks.Add((HybridDictMask)data);
+                    break;
+                case DataTypes.HybridMaskDict:
+                    hybridMaskDicts.Add((HybridMaskDict)data);
                     break;
             }
         }
