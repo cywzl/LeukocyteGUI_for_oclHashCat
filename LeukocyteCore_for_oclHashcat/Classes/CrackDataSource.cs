@@ -4,6 +4,7 @@ using System.IO;
 
 namespace LeukocyteCore_for_oclHashcat
 {
+    [Serializable()]
     public class CrackDataSource : ICrackDataSource
     {
         protected string name = "";

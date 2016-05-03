@@ -1,8 +1,10 @@
 ﻿using LeukocyteCore_for_oclHashcat.Interfaces;
+using System;
 using System.IO;
 
 namespace LeukocyteCore_for_oclHashcat.Classes
 {
+    [Serializable()]
     public class CombinedCrackData : CrackDataSource, ICombinedCrackData
     {
         protected ICrackDataSource sourceBase;

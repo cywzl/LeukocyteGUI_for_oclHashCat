@@ -51,7 +51,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
         public static event DataLoadedSavedEventHandler DataLoaded = delegate { };
         public static event DataLoadedSavedEventHandler DataSaved = delegate { };
-        
+
         /// <summary>
         /// List of CrackTasks.
         /// </summary>
@@ -395,10 +395,20 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         public static T GetFromFile<T>(string fileName)
         {
             Stream fileStream = File.OpenRead(fileName);
-            BinaryFormatter deserializer = new BinaryFormatter();
-            T deserealizedObject = (T)deserializer.Deserialize(fileStream);
 
-            return deserealizedObject;
+            try
+            {
+                BinaryFormatter deserializer = new BinaryFormatter();
+                T deserealizedObject = (T)deserializer.Deserialize(fileStream);
+                fileStream.Close();
+
+                return deserealizedObject;
+            }
+            catch(Exception e)
+            {
+                fileStream.Close();
+                throw new Exception("Cannot get dat from the file.", e);
+            }
         }
 
         /// <summary>
@@ -412,35 +422,35 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             switch (dataType)
             {
                 case DataTypes.CrackTasks:
-                    crackTasks = new List<CrackTask>(GetFromFile<CrackTask[]>(crackTasksFile));
+                    crackTasks = GetFromFile<List<CrackTask>>(crackTasksFile);
                     fileName = crackTasksFile;
                     break;
                 case DataTypes.Dictionaries:
-                    dictionaries = new List<Dictionary>(GetFromFile<Dictionary[]>(dictionariesFile));
+                    dictionaries = GetFromFile<List<Dictionary>>(dictionariesFile);
                     fileName = dictionariesFile;
                     break;
                 case DataTypes.Masks:
-                    masks = new List<Mask>(GetFromFile<Mask[]>(masksFile));
+                    masks = GetFromFile<List<Mask>>(masksFile);
                     fileName = masksFile;
                     break;
                 case DataTypes.Combinations:
-                    combinations = new List<Combination>(GetFromFile<Combination[]>(combinationsFile));
+                    combinations = GetFromFile<List<Combination>>(combinationsFile);
                     fileName = combinationsFile;
                     break;
                 case DataTypes.HybridDictMask:
-                    hybridDictMasks = new List<HybridDictMask>(GetFromFile<HybridDictMask[]>(hybridDictMasksFile));
+                    hybridDictMasks = GetFromFile<List<HybridDictMask>>(hybridDictMasksFile);
                     fileName = hybridDictMasksFile;
                     break;
                 case DataTypes.HybridMaskDict:
-                    hybridMaskDicts = new List<HybridMaskDict>(GetFromFile<HybridMaskDict[]>(hybridMaskDictsFile));
+                    hybridMaskDicts = GetFromFile<List<HybridMaskDict>>(hybridMaskDictsFile);
                     fileName = hybridMaskDictsFile;
                     break;
                 case DataTypes.HashTypes:
-                    hashTypes = new List<HashType>(GetFromFile<HashType[]>(hashTypesFile));
+                    hashTypes = GetFromFile<List<HashType>>(hashTypesFile);
                     fileName = hashTypesFile;
                     break;
                 case DataTypes.CrackTaskTemplates:
-                    crackTaskTemplates = new List<CrackTaskTemplate>(GetFromFile<CrackTaskTemplate[]>(crackTaskTemplatesFile));
+                    crackTaskTemplates = GetFromFile<List<CrackTaskTemplate>>(crackTaskTemplatesFile);
                     fileName = crackTaskTemplatesFile;
                     break;
             }
@@ -635,11 +645,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         {
             foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
             {
-                try
-                {
-                    SaveData((DataTypes)dataType);
-                }
-                catch { }
+                SaveData((DataTypes)dataType);
             }
         }
 

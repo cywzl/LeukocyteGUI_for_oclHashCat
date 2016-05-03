@@ -1,5 +1,8 @@
-﻿namespace LeukocyteCore_for_oclHashcat.Classes
+﻿using System;
+
+namespace LeukocyteCore_for_oclHashcat.Classes
 {
+    [Serializable()]
     public class HybridMaskDict : CombinedCrackData
     {
         private new Mask sourceBase;
