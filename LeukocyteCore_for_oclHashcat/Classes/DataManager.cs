@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeukocyteCore_for_oclHashcat.Interfaces;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -186,6 +187,24 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             }
         }
         private static List<CrackTaskTemplate> crackTaskTemplates = new List<CrackTaskTemplate>();
+
+        /// <summary>
+        /// List of all CrackDataSources
+        /// </summary>
+        public static List<ICrackDataSource> CrackDataSources
+        {
+            get
+            {
+                List<ICrackDataSource> union = new List<ICrackDataSource>();
+                union.AddRange(dictionaries);
+                union.AddRange(masks);
+                union.AddRange(combinations);
+                union.AddRange(hybridDictMasks);
+                union.AddRange(hybridMaskDicts);
+
+                return union;
+            }
+        }
 
         /// <summary>
         /// Name of the file where CrackTasks are stored.

@@ -1,7 +1,7 @@
-﻿using LeukocyteCore_for_oclHashcat;
-using LeukocyteCore_for_oclHashcat.Classes;
+﻿using LeukocyteCore_for_oclHashcat.Classes;
 using LeukocyteCore_for_oclHashcat.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LeukocyteGUI_for_oclHashcat.Forms
@@ -39,17 +39,17 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         {
             VisualizeCrackSource(crackSource, lvPredefined.Items.Count);
         }
+        private void VisualizeCrackSources(IEnumerable<ICrackDataSource> sourcesList)
+        {
+            foreach (var source in sourcesList)
+            {
+                VisualizeCrackSource(source);
+            }
+        }
 
         private void SettingsForm_Shown(object sender, EventArgs e)
         {
-            foreach (var dictionary in DataManager.Dictionaries)
-            {
-                VisualizeCrackSource(dictionary);
-            }
-            foreach (var mask in DataManager.Masks)
-            {
-                VisualizeCrackSource(mask);
-            }
+            VisualizeCrackSources(DataManager.CrackDataSources);
         }
 
         private void btnAddPredefined_Click(object sender, EventArgs e)
