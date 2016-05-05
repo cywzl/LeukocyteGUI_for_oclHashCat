@@ -59,10 +59,15 @@ namespace LeukocyteCore_for_oclHashcat
             }
         }
 
-        private Mask(MaskTypes type)
+        public Mask() : this(MaskTypes.String) { }
+        public Mask(MaskTypes type)
         {
             this.type = type;
             attackMode = AttackModes.BruteForce;
+        }
+        public Mask(string mask)
+        {
+            Source = mask;
         }
 
         public static Mask CreateFromString(string maskString, string name)
