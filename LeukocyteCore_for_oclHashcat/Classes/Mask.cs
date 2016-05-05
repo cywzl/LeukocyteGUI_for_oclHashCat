@@ -58,33 +58,46 @@ namespace LeukocyteCore_for_oclHashcat
                 }
             }
         }
-
-        public Mask() : this(MaskTypes.String) { }
-        public Mask(MaskTypes type)
+        public override string Source
         {
-            this.type = type;
+            get
+            {
+                return base.Source;
+            }
+            set
+            {
+                if (value.EndsWith(".hcmask"))
+                {
+                    type = MaskTypes.Hcmask;
+                }
+                else
+                {
+                    type = MaskTypes.String;
+                }
+
+                base.Source = value;
+            }
+        }
+
+        public Mask()
+        {
             attackMode = AttackModes.BruteForce;
         }
-        public Mask(string mask)
+        public Mask(MaskTypes type) : this()
+        {
+            this.type = type;
+        }
+        public Mask(MaskTypes type, string name) : this(type)
+        {
+            this.name = name;
+        }
+        public Mask(string mask) : this()
         {
             Source = mask;
         }
-
-        public static Mask CreateFromString(string maskString, string name)
+        public Mask(string mask, string name) : this(mask)
         {
-            Mask mask = new Mask(MaskTypes.String);
-            mask.Source = maskString;
-            mask.Name = name;
-
-            return mask;
-        }
-        public static Mask CreateFromHcmask(string hcmaskFileName, string name)
-        {
-            Mask mask = new Mask(MaskTypes.Hcmask);
-            mask.Source = hcmaskFileName;
-            mask.Name = name;
-
-            return mask;
+            this.name = name;
         }
 
         public override void GenerateDescription()
@@ -109,7 +122,6 @@ namespace LeukocyteCore_for_oclHashcat
                 description = "<" + targetLength + ">" + charsets;
             }
         }
-
         public override object Clone()
         {
             Mask clone = new Mask(type)
