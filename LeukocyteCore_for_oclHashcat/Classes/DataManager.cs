@@ -1,6 +1,7 @@
 ﻿using LeukocyteCore_for_oclHashcat.Interfaces;
 using System;
 using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -47,10 +48,65 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
     public static class DataManager
     {
+        public class DataHolder
+        {
+            public IList StoredData
+            {
+                get
+                {
+                    return storedData;
+                }
+                set
+                {
+                    storedData.Clear();
+
+                    foreach (var entry in value)
+                    {
+                        storedData.Add(entry);
+                    }
+                }
+            }
+            private IList storedData;
+
+            public string FileName
+            {
+                get
+                {
+                    return fileName;
+                }
+                set
+                {
+                    fileName = value;
+                }
+            }
+            private string fileName = "";
+
+            public DataTypes DataType
+            {
+                get
+                {
+                    return dataType;
+                }
+                set
+                {
+                    dataType = value;
+                }
+            }
+            private DataTypes dataType;
+
+            public DataHolder(IList storedData, DataTypes dataType, string fileName)
+            {
+                this.storedData = storedData;
+                this.fileName = fileName;
+                this.dataType = dataType;
+            }
+        }
+
         public delegate void DataLoadedSavedEventHandler(DataLoadedSavedEventArgs e);
 
         public static event DataLoadedSavedEventHandler DataLoaded = delegate { };
         public static event DataLoadedSavedEventHandler DataSaved = delegate { };
+
 
         /// <summary>
         /// List of CrackTasks.
@@ -374,6 +430,18 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         }
         private static string crackTaskTemplatesFile = "CrackTaskTemplates.dat";
 
+        private static DataHolder[] dataMapper = new DataHolder[]
+        {
+            new DataHolder(crackTasks,            DataTypes.CrackTasks,          crackTasksFile),
+            new DataHolder(hashTypes,             DataTypes.HashTypes,           hashTypesFile),
+            new DataHolder(crackTaskTemplates,    DataTypes.CrackTaskTemplates,  crackTaskTemplatesFile),
+            new DataHolder(dictionaries,          DataTypes.Dictionaries,         dictionariesFile),
+            new DataHolder(masks,                 DataTypes.Masks,               masksFile),
+            new DataHolder(combinations,          DataTypes.Combinations,        combinationsFile),
+            new DataHolder(hybridDictMasks,       DataTypes.HybridDictMask,     hybridDictMasksFile),
+            new DataHolder(hybridMaskDicts,       DataTypes.HybridMaskDict,     hybridMaskDictsFile)
+        };
+
         /// <summary>
         /// Saves any serializable object to file.
         /// </summary>
@@ -386,29 +454,46 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             serializer.Serialize(fileStream, objectToSave);
             fileStream.Close();
         }
+
         /// <summary>
-        /// Gets serialized and saved to file object from that file.
+        /// Gets serialized object from a file.
+        /// </summary>
+        /// <param name="fileName">File where serialized object is stored</param>
+        /// <returns></returns>
+        public static object GetFromFile(string fileName)
+        {
+            using (Stream fileStream = File.OpenRead(fileName))
+            {
+                try
+                {
+                    return new BinaryFormatter().Deserialize(fileStream);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Cannot get dat from the file.", e);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets serialized object from a file.
         /// </summary>
         /// <typeparam name="T">Type of an object in the file.</typeparam>
-        /// <param name="fileName">File where an serialized object is stored.</param>
+        /// <param name="fileName">File where serialized object is stored.</param>
         /// <returns>Deserealized object of T type.</returns>
         public static T GetFromFile<T>(string fileName)
         {
-            Stream fileStream = File.OpenRead(fileName);
+            return (T)GetFromFile(fileName);
+        }
 
-            try
-            {
-                BinaryFormatter deserializer = new BinaryFormatter();
-                T deserealizedObject = (T)deserializer.Deserialize(fileStream);
-                fileStream.Close();
-
-                return deserealizedObject;
-            }
-            catch(Exception e)
-            {
-                fileStream.Close();
-                throw new Exception("Cannot get dat from the file.", e);
-            }
+        /// <summary>
+        /// Loads data for the specified DataHolder.
+        /// </summary>
+        /// <param name="dataHolder">DataHolder that data is associated with.</param>
+        public static void LoadData(DataHolder dataHolder)
+        {
+            dataHolder.StoredData = (IList)GetFromFile(dataHolder.FileName);
+            DataLoaded(new DataLoadedSavedEventArgs(dataHolder.DataType, dataHolder.FileName));
         }
 
         /// <summary>
@@ -417,46 +502,9 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// <param name="dataType">A type of data to be loaded</param>
         public static void LoadData(DataTypes dataType)
         {
-            string fileName = "";
-
-            switch (dataType)
-            {
-                case DataTypes.CrackTasks:
-                    crackTasks = GetFromFile<List<CrackTask>>(crackTasksFile);
-                    fileName = crackTasksFile;
-                    break;
-                case DataTypes.Dictionaries:
-                    dictionaries = GetFromFile<List<Dictionary>>(dictionariesFile);
-                    fileName = dictionariesFile;
-                    break;
-                case DataTypes.Masks:
-                    masks = GetFromFile<List<Mask>>(masksFile);
-                    fileName = masksFile;
-                    break;
-                case DataTypes.Combinations:
-                    combinations = GetFromFile<List<Combination>>(combinationsFile);
-                    fileName = combinationsFile;
-                    break;
-                case DataTypes.HybridDictMask:
-                    hybridDictMasks = GetFromFile<List<HybridDictMask>>(hybridDictMasksFile);
-                    fileName = hybridDictMasksFile;
-                    break;
-                case DataTypes.HybridMaskDict:
-                    hybridMaskDicts = GetFromFile<List<HybridMaskDict>>(hybridMaskDictsFile);
-                    fileName = hybridMaskDictsFile;
-                    break;
-                case DataTypes.HashTypes:
-                    hashTypes = GetFromFile<List<HashType>>(hashTypesFile);
-                    fileName = hashTypesFile;
-                    break;
-                case DataTypes.CrackTaskTemplates:
-                    crackTaskTemplates = GetFromFile<List<CrackTaskTemplate>>(crackTaskTemplatesFile);
-                    fileName = crackTaskTemplatesFile;
-                    break;
-            }
-
-            DataLoaded(new DataLoadedSavedEventArgs(dataType, fileName));
+            LoadData(dataMapper[(int)dataType]);
         }
+
         /// <summary>
         /// Loads data of the specified DataType from the specified file (saving that filename for the further usage).
         /// </summary>
@@ -464,143 +512,45 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// <param name="fileName">A name of a file from which data is loaded</param>
         public static void LoadData(DataTypes dataType, string fileName)
         {
-            switch (dataType)
-            {
-                case DataTypes.CrackTasks:
-                    CrackTasksFile = fileName;
-                    break;
-                case DataTypes.Dictionaries:
-                    DictionariesFile = fileName;
-                    break;
-                case DataTypes.Masks:
-                    MasksFile = fileName;
-                    break;
-                case DataTypes.Combinations:
-                    CombinationsFile = fileName;
-                    break;
-                case DataTypes.HybridDictMask:
-                    HybridDictMasksFile = fileName;
-                    break;
-                case DataTypes.HybridMaskDict:
-                    HybridMaskDictsFile = fileName;
-                    break;
-                case DataTypes.HashTypes:
-                    HashTypesFile = fileName;
-                    break;
-                case DataTypes.CrackTaskTemplates:
-                    CrackTaskTemplatesFile = fileName;
-                    break;
-            }
-
-            LoadData(dataType);
+            DataHolder dataHolder = dataMapper[(int)dataType];
+            dataHolder.FileName = fileName;
+            LoadData(dataHolder);
         }
+
         /// <summary>
         /// Tries to load data of all DataTypes from existing corresponding files.
         /// </summary>
         public static void LoadAllAvailableData()
         {
-            foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
+            foreach (var dataHolder in dataMapper)
             {
                 try
                 {
-                    LoadData((DataTypes)dataType);
+                    LoadData(dataHolder);
                 }
                 catch { }
             }
         }
+
         /// <summary>
-        /// Saves specified data of the specified DataType to the corresponding file.
+        /// Saves data associated with the specified DataHolder
         /// </summary>
-        /// <param name="dataType">A type of data to be saved.</param>
-        /// <param name="data">Data to be saved.</param>
-        public static void SaveData(DataTypes dataType, object data)
+        /// <param name="dataHolder">DataHolder that the data is associated with.</param>
+        public static void SaveData(DataHolder dataHolder)
         {
-            string fileName = "";
-
-            switch (dataType)
-            {
-                case DataTypes.CrackTasks:
-                    SaveToFile(data, crackTasksFile);
-                    fileName = crackTasksFile;
-                    break;
-                case DataTypes.Dictionaries:
-                    SaveToFile(data, dictionariesFile);
-                    fileName = dictionariesFile;
-                    break;
-                case DataTypes.Masks:
-                    SaveToFile(data, masksFile);
-                    fileName = masksFile;
-                    break;
-                case DataTypes.Combinations:
-                    SaveToFile(data, combinationsFile);
-                    fileName = combinationsFile;
-                    break;
-                case DataTypes.HybridDictMask:
-                    SaveToFile(data, hybridDictMasksFile);
-                    fileName = hybridDictMasksFile;
-                    break;
-                case DataTypes.HybridMaskDict:
-                    SaveToFile(data, hybridMaskDictsFile);
-                    fileName = hybridMaskDictsFile;
-                    break;
-                case DataTypes.HashTypes:
-                    SaveToFile(data, hashTypesFile);
-                    fileName = hashTypesFile;
-                    break;
-                case DataTypes.CrackTaskTemplates:
-                    SaveToFile(data, crackTaskTemplatesFile);
-                    fileName = crackTaskTemplatesFile;
-                    break;
-            }
-
-            DataSaved(new DataLoadedSavedEventArgs(dataType, fileName));
+            SaveToFile(dataHolder.StoredData, dataHolder.FileName);
+            DataSaved(new DataLoadedSavedEventArgs(dataHolder.DataType, dataHolder.FileName));
         }
+
         /// <summary>
         /// Saves data of the specified DataType to the corresponding file.
         /// </summary>
         /// <param name="dataType">A type of data to be saved.</param>
         public static void SaveData(DataTypes dataType)
         {
-            string fileName = "";
-
-            switch (dataType)
-            {
-                case DataTypes.CrackTasks:
-                    SaveToFile(crackTasks, crackTasksFile);
-                    fileName = crackTasksFile;
-                    break;
-                case DataTypes.Dictionaries:
-                    SaveToFile(dictionaries, dictionariesFile);
-                    fileName = dictionariesFile;
-                    break;
-                case DataTypes.Masks:
-                    SaveToFile(masks, masksFile);
-                    fileName = masksFile;
-                    break;
-                case DataTypes.Combinations:
-                    SaveToFile(combinations, combinationsFile);
-                    fileName = combinationsFile;
-                    break;
-                case DataTypes.HybridDictMask:
-                    SaveToFile(hybridDictMasks, hybridDictMasksFile);
-                    fileName = hybridDictMasksFile;
-                    break;
-                case DataTypes.HybridMaskDict:
-                    SaveToFile(hybridMaskDicts, hybridMaskDictsFile);
-                    fileName = hybridMaskDictsFile;
-                    break;
-                case DataTypes.HashTypes:
-                    SaveToFile(hashTypes, hashTypesFile);
-                    fileName = hashTypesFile;
-                    break;
-                case DataTypes.CrackTaskTemplates:
-                    SaveToFile(crackTaskTemplates, crackTaskTemplatesFile);
-                    fileName = crackTaskTemplatesFile;
-                    break;
-            }
-
-            DataSaved(new DataLoadedSavedEventArgs(dataType, fileName));
+            SaveData(dataMapper[(int)dataType]);
         }
+
         /// <summary>
         /// Saves data of the specified DataType to the specified file.
         /// </summary>
@@ -608,44 +558,19 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// <param name="fileName">A name of a file to which data is saved.</param>
         public static void SaveData(DataTypes dataType, string fileName)
         {
-            switch (dataType)
-            {
-                case DataTypes.CrackTasks:
-                    crackTasksFile = fileName;
-                    break;
-                case DataTypes.Dictionaries:
-                    dictionariesFile = fileName;
-                    break;
-                case DataTypes.Masks:
-                    masksFile = fileName;
-                    break;
-                case DataTypes.Combinations:
-                    combinationsFile = fileName;
-                    break;
-                case DataTypes.HybridDictMask:
-                    hybridDictMasksFile = fileName;
-                    break;
-                case DataTypes.HybridMaskDict:
-                    hybridMaskDictsFile = fileName;
-                    break;
-                case DataTypes.HashTypes:
-                    hashTypesFile = fileName;
-                    break;
-                case DataTypes.CrackTaskTemplates:
-                    crackTasksFile = fileName;
-                    break;
-            }
-
-            SaveData(dataType);
+            DataHolder dataHolder = dataMapper[(int)dataType];
+            dataHolder.FileName = fileName;
+            SaveData(dataHolder);
         }
+
         /// <summary>
         /// Tries to save all existsing data to the corresponding files.
         /// </summary>
         public static void SaveAllData()
         {
-            foreach (var dataType in Enum.GetValues(typeof(DataTypes)))
+            foreach (var dataHolder in dataMapper)
             {
-                SaveData((DataTypes)dataType);
+                SaveData(dataHolder);
             }
         }
 
@@ -656,33 +581,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// <param name="data">Data to be added.</param>
         public static void AddData(DataTypes dataType, object data)
         {
-            switch (dataType)
-            {
-                case DataTypes.CrackTasks:
-                    crackTasks.Add((CrackTask)data);
-                    break;
-                case DataTypes.CrackTaskTemplates:
-                    crackTaskTemplates.Add((CrackTaskTemplate)data);
-                    break;
-                case DataTypes.HashTypes:
-                    hashTypes.Add((HashType)data);
-                    break;
-                case DataTypes.Masks:
-                    masks.Add((Mask)data);
-                    break;
-                case DataTypes.Dictionaries:
-                    dictionaries.Add((Dictionary)data);
-                    break;
-                case DataTypes.Combinations:
-                    combinations.Add((Combination)data);
-                    break;
-                case DataTypes.HybridDictMask:
-                    hybridDictMasks.Add((HybridDictMask)data);
-                    break;
-                case DataTypes.HybridMaskDict:
-                    hybridMaskDicts.Add((HybridMaskDict)data);
-                    break;
-            }
+            ((IList)dataMapper[(int)dataType].StoredData).Add(data);
         }
     }
 }
