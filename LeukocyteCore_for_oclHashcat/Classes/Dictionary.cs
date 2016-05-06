@@ -12,7 +12,7 @@ namespace LeukocyteCore_for_oclHashcat
         {
             get
             {
-                return fileInfo.Length;
+                return (fileInfo == null ? 0 : fileInfo.Length);
             }
         }
         public string FormattedSize
@@ -21,7 +21,7 @@ namespace LeukocyteCore_for_oclHashcat
             {
                 if (fileInfo == null)
                 {
-
+                    return "N/I";
                 }
 
                 int length = fileInfo.Length.ToString().Length;
@@ -48,22 +48,48 @@ namespace LeukocyteCore_for_oclHashcat
                 }
             }
         }
-
-        public Dictionary(string dictFileName, string name)
+        public override string Source
         {
-            source = dictFileName;
-            this.name = name;
+            get
+            {
+                return source;
+            }
+            set
+            {
+                source = value;
+                LoadInfo();
+            }
+        }
+
+        public Dictionary()
+        {
             attackMode = AttackModes.Straight;
+        }
+        public Dictionary(string dictFileName) : this()
+        {
+            Source = dictFileName;
+        }
+        public Dictionary(string dictFileName, string name) : this(dictFileName)
+        {
+            this.name = name;
         }
 
         public void LoadInfo()
         {
             if (string.IsNullOrEmpty(source))
             {
-                throw new InvalidOperationException("Source cannot be empty.");
+                throw new InvalidOperationException("Cannot load info when source is empty.");
             }
 
-            fileInfo = new FileInfo(source);
+            try
+            {
+                fileInfo = new FileInfo(source);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Cannot load file info.", e);
+            }
+            
         }
 
         public override object Clone()
