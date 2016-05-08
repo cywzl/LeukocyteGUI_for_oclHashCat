@@ -1,6 +1,6 @@
 ﻿namespace LeukocyteGUI_for_oclHashcat.Forms
 {
-    partial class HashTypeEditor
+    partial class HashTypeEditorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.lblName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblCode = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudCode = new System.Windows.Forms.NumericUpDown();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCode)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
@@ -55,12 +55,12 @@
             this.tbName.Size = new System.Drawing.Size(169, 20);
             this.tbName.TabIndex = 1;
             // 
-            // textBox1
+            // tbDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(82, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 3;
+            this.tbDescription.Location = new System.Drawing.Point(82, 38);
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(169, 20);
+            this.tbDescription.TabIndex = 3;
             // 
             // lblDescription
             // 
@@ -80,12 +80,12 @@
             this.lblCode.TabIndex = 4;
             this.lblCode.Text = "Code:";
             // 
-            // numericUpDown1
+            // nudCode
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(82, 64);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(77, 20);
-            this.numericUpDown1.TabIndex = 5;
+            this.nudCode.Location = new System.Drawing.Point(82, 64);
+            this.nudCode.Name = "nudCode";
+            this.nudCode.Size = new System.Drawing.Size(77, 20);
+            this.nudCode.TabIndex = 5;
             // 
             // btnOK
             // 
@@ -100,6 +100,7 @@
             this.btnOK.Size = new System.Drawing.Size(36, 36);
             this.btnOK.TabIndex = 12;
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -123,15 +124,15 @@
             this.ClientSize = new System.Drawing.Size(269, 141);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.nudCode);
             this.Controls.Add(this.lblCode);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbDescription);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
             this.Name = "HashTypeEditor";
             this.Text = "HashTypeEditor";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,10 +142,10 @@
 
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Label lblCode;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudCode;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
     }

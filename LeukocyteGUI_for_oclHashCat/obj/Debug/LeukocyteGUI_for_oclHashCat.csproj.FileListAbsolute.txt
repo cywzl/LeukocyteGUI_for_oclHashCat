@@ -38,4 +38,4 @@ E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHas
 E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashCat.Forms.CrackDataSourceEditorForm.resources
 E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashcat.Forms.MainForm.resources
 E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashcat.Forms.TaskEditorForm.resources
-E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashcat.Forms.HashTypeEditor.resources
+E:\Projects\Visual Studio 11\LeukocyteGUI_for_oclHashCat\LeukocyteGUI_for_oclHashCat\obj\Debug\LeukocyteGUI_for_oclHashcat.Forms.HashTypeEditorForm.resources
