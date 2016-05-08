@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-namespace LeukocyteCore_for_oclHashcat
+namespace LeukocyteCore_for_oclHashcat.Classes
 {
     public class CrackerEventArgs
     {

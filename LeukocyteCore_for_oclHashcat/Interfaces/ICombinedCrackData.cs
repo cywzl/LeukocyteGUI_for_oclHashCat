@@ -1,4 +1,6 @@
-﻿namespace LeukocyteCore_for_oclHashcat.Interfaces
+﻿using LeukocyteCore_for_oclHashcat.Classes;
+
+namespace LeukocyteCore_for_oclHashcat.Interfaces
 {
     public interface ICombinedCrackData : ICrackDataSource
     {

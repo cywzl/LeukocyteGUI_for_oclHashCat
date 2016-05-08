@@ -39,8 +39,18 @@
             this.chPredefinedType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPredefinedName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPredefinedDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tpSettingsHashTypes = new System.Windows.Forms.TabPage();
+            this.btnEditHashType = new System.Windows.Forms.Button();
+            this.btnRemoveHashType = new System.Windows.Forms.Button();
+            this.btnAddHashType = new System.Windows.Forms.Button();
+            this.lvHashTypes = new System.Windows.Forms.ListView();
+            this.chHashTypeNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chHashTypeCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chHashTypeName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chHashTypeDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcSettings.SuspendLayout();
             this.tpSettingsPredefined.SuspendLayout();
+            this.tpSettingsHashTypes.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcSettings
@@ -50,6 +60,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tcSettings.Controls.Add(this.tpSettingsMain);
             this.tcSettings.Controls.Add(this.tpSettingsPredefined);
+            this.tcSettings.Controls.Add(this.tpSettingsHashTypes);
             this.tcSettings.Location = new System.Drawing.Point(12, 12);
             this.tcSettings.Name = "tcSettings";
             this.tcSettings.SelectedIndex = 0;
@@ -156,6 +167,94 @@
             this.chPredefinedDescription.Text = "Description";
             this.chPredefinedDescription.Width = 259;
             // 
+            // tpSettingsHashTypes
+            // 
+            this.tpSettingsHashTypes.Controls.Add(this.btnEditHashType);
+            this.tpSettingsHashTypes.Controls.Add(this.btnRemoveHashType);
+            this.tpSettingsHashTypes.Controls.Add(this.btnAddHashType);
+            this.tpSettingsHashTypes.Controls.Add(this.lvHashTypes);
+            this.tpSettingsHashTypes.Location = new System.Drawing.Point(4, 22);
+            this.tpSettingsHashTypes.Name = "tpSettingsHashTypes";
+            this.tpSettingsHashTypes.Padding = new System.Windows.Forms.Padding(3);
+            this.tpSettingsHashTypes.Size = new System.Drawing.Size(494, 316);
+            this.tpSettingsHashTypes.TabIndex = 2;
+            this.tpSettingsHashTypes.Text = "HashTypes";
+            this.tpSettingsHashTypes.UseVisualStyleBackColor = true;
+            // 
+            // btnEditHashType
+            // 
+            this.btnEditHashType.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnEditHashType.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnEditHashType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditHashType.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_edit;
+            this.btnEditHashType.Location = new System.Drawing.Point(88, 8);
+            this.btnEditHashType.Name = "btnEditHashType";
+            this.btnEditHashType.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnEditHashType.Size = new System.Drawing.Size(32, 32);
+            this.btnEditHashType.TabIndex = 10;
+            this.btnEditHashType.UseVisualStyleBackColor = true;
+            // 
+            // btnRemoveHashType
+            // 
+            this.btnRemoveHashType.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRemoveHashType.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnRemoveHashType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveHashType.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_delete;
+            this.btnRemoveHashType.Location = new System.Drawing.Point(52, 8);
+            this.btnRemoveHashType.Name = "btnRemoveHashType";
+            this.btnRemoveHashType.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnRemoveHashType.Size = new System.Drawing.Size(32, 32);
+            this.btnRemoveHashType.TabIndex = 9;
+            this.btnRemoveHashType.UseVisualStyleBackColor = true;
+            // 
+            // btnAddHashType
+            // 
+            this.btnAddHashType.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAddHashType.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnAddHashType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddHashType.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_plus;
+            this.btnAddHashType.Location = new System.Drawing.Point(16, 8);
+            this.btnAddHashType.Name = "btnAddHashType";
+            this.btnAddHashType.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnAddHashType.Size = new System.Drawing.Size(32, 32);
+            this.btnAddHashType.TabIndex = 8;
+            this.btnAddHashType.UseVisualStyleBackColor = true;
+            // 
+            // lvHashTypes
+            // 
+            this.lvHashTypes.CheckBoxes = true;
+            this.lvHashTypes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chHashTypeNumber,
+            this.chHashTypeCode,
+            this.chHashTypeName,
+            this.chHashTypeDescription});
+            this.lvHashTypes.FullRowSelect = true;
+            this.lvHashTypes.Location = new System.Drawing.Point(16, 46);
+            this.lvHashTypes.Name = "lvHashTypes";
+            this.lvHashTypes.Size = new System.Drawing.Size(460, 252);
+            this.lvHashTypes.TabIndex = 7;
+            this.lvHashTypes.UseCompatibleStateImageBehavior = false;
+            this.lvHashTypes.View = System.Windows.Forms.View.Details;
+            // 
+            // chHashTypeNumber
+            // 
+            this.chHashTypeNumber.Text = "#";
+            this.chHashTypeNumber.Width = 40;
+            // 
+            // chHashTypeCode
+            // 
+            this.chHashTypeCode.Text = "Code";
+            // 
+            // chHashTypeName
+            // 
+            this.chHashTypeName.Text = "Name";
+            this.chHashTypeName.Width = 68;
+            // 
+            // chHashTypeDescription
+            // 
+            this.chHashTypeDescription.Text = "Description";
+            this.chHashTypeDescription.Width = 259;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +266,7 @@
             this.Shown += new System.EventHandler(this.SettingsForm_Shown);
             this.tcSettings.ResumeLayout(false);
             this.tpSettingsPredefined.ResumeLayout(false);
+            this.tpSettingsHashTypes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -184,5 +284,14 @@
         private System.Windows.Forms.Button btnAddPredefined;
         private System.Windows.Forms.Button btnEditPredefined;
         private System.Windows.Forms.Button btnRemovePredefined;
+        private System.Windows.Forms.TabPage tpSettingsHashTypes;
+        private System.Windows.Forms.Button btnEditHashType;
+        private System.Windows.Forms.Button btnRemoveHashType;
+        private System.Windows.Forms.Button btnAddHashType;
+        private System.Windows.Forms.ListView lvHashTypes;
+        private System.Windows.Forms.ColumnHeader chHashTypeNumber;
+        private System.Windows.Forms.ColumnHeader chHashTypeCode;
+        private System.Windows.Forms.ColumnHeader chHashTypeName;
+        private System.Windows.Forms.ColumnHeader chHashTypeDescription;
     }
 }
