@@ -435,11 +435,11 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             new DataHolder(crackTasks,            DataTypes.CrackTasks,          crackTasksFile),
             new DataHolder(hashTypes,             DataTypes.HashTypes,           hashTypesFile),
             new DataHolder(crackTaskTemplates,    DataTypes.CrackTaskTemplates,  crackTaskTemplatesFile),
-            new DataHolder(dictionaries,          DataTypes.Dictionaries,         dictionariesFile),
+            new DataHolder(dictionaries,          DataTypes.Dictionaries,        dictionariesFile),
             new DataHolder(masks,                 DataTypes.Masks,               masksFile),
             new DataHolder(combinations,          DataTypes.Combinations,        combinationsFile),
-            new DataHolder(hybridDictMasks,       DataTypes.HybridDictMask,     hybridDictMasksFile),
-            new DataHolder(hybridMaskDicts,       DataTypes.HybridMaskDict,     hybridMaskDictsFile)
+            new DataHolder(hybridDictMasks,       DataTypes.HybridDictMask,      hybridDictMasksFile),
+            new DataHolder(hybridMaskDicts,       DataTypes.HybridMaskDict,      hybridMaskDictsFile)
         };
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Cannot get dat from the file.", e);
+                    throw new Exception("Cannot get data from the file.", e);
                 }
             }
         }
@@ -581,7 +581,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// <param name="data">Data to be added.</param>
         public static void AddData(DataTypes dataType, object data)
         {
-            ((IList)dataMapper[(int)dataType].StoredData).Add(data);
+            dataMapper[(int)dataType].StoredData.Add(data);
         }
     }
 }

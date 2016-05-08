@@ -39,7 +39,7 @@ namespace LeukocyteCore_for_oclHashcat
     public class HashType
     {
         /// <summary>
-        /// An oclHashcat HashType name or description
+        /// An oclHashcat HashType name.
         /// </summary>
         public string Name
         {
@@ -55,7 +55,23 @@ namespace LeukocyteCore_for_oclHashcat
         private string name;
 
         /// <summary>
-        /// An oclHashcat HashType code
+        /// An oclHashcat HashType description.
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
+            }
+        }
+        private string description;
+
+        /// <summary>
+        /// An oclHashcat HashType code.
         /// </summary>
         public int Code
         {
