@@ -28,7 +28,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         public TaskEditorForm(CrackTask source)
         {
             InitializeComponent();
-            sourceCrackTask = source.DeepCopy();
+            sourceCrackTask = (CrackTask)source.Clone();
         }
 
         private void rbAttackType_CheckedChanged(object sender, EventArgs e)

@@ -129,8 +129,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 Name = string.Copy(name),
                 Description = string.Copy(description),
                 Source = string.Copy(source),
-                IncrementSettings = incrementSettings.DeepCopy(),
-                CharsetsSettings = charsetsSettings.DeepCopy()
+                IncrementSettings = (IncrementSettings)incrementSettings.Clone(),
+                CharsetsSettings = (CustomCharsetsSettings)charsetsSettings.Clone()
             };
 
             return clone;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LeukocyteCore_for_oclHashcat.Classes
 {
@@ -36,7 +37,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
     }
 
     [Serializable()]
-    public class HashType
+    public class HashType : ICloneable
     {
         /// <summary>
         /// An oclHashcat HashType name.
@@ -96,9 +97,17 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             Name = name;
             Code = code;
         }
+
+        public object Clone()
+        {
+            return new HashType(string.Copy(name), code)
+            {
+                Description = string.Copy(description)
+            };
+        }
     }
     [Serializable()]
-    public class MiscSettings
+    public class MiscSettings : ICloneable
     {
         /// <summary>
         /// Assume charset is given in hex
@@ -205,13 +214,13 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>MiscSettings objects</returns>
-        public MiscSettings DeepCopy()
+        public object Clone()
         {
-            return (MiscSettings)MemberwiseClone();
+            return MemberwiseClone();
         }
     }
     [Serializable()]
-    public class MarkovSettings
+    public class MarkovSettings : ICloneable
     {
         /// <summary>
         /// Specify hcstat file to use, default is hashcat.hcstat
@@ -286,13 +295,16 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>MarkovSettings object</returns>
-        public MarkovSettings DeepCopy()
+        public object Clone()
         {
-            return (MarkovSettings)MemberwiseClone();
+            MarkovSettings ms = (MarkovSettings)MemberwiseClone();
+            ms.MarkovHcstat = string.Copy(markovHcstat);
+
+            return ms;
         }
     }
     [Serializable()]
-    public class SessionSettings
+    public class SessionSettings : ICloneable
     {
         /// <summary>
         /// Abort session after NUM seconds of runtime
@@ -367,13 +379,16 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>SessionSettings object</returns>
-        public SessionSettings DeepCopy()
+        public object Clone()
         {
-            return (SessionSettings)MemberwiseClone();
+            SessionSettings ses = (SessionSettings)MemberwiseClone();
+            ses.Session = string.Copy(session);
+
+            return ses;
         }
     }
     [Serializable()]
-    public class FilesSettings
+    public class FilesSettings : ICloneable
     {
         /// <summary>
         /// Define outfile for recovered hash
@@ -667,13 +682,20 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>FilesSettings object</returns>
-        public FilesSettings DeepCopy()
+        public object Clone()
         {
-            return (FilesSettings)MemberwiseClone();
+            FilesSettings fs = (FilesSettings)MemberwiseClone();
+            fs.OutFile = string.Copy(outFile);
+            fs.DebugFile = string.Copy(debugFile);
+            fs.InductionDir = string.Copy(inductionDir);
+            fs.OutFileCheckDir = string.Copy(outFileCheckDir);
+            fs.TrueCryptKeyFiles = new List<string>(trueCryptKeyFiles.Select(x => string.Copy(x)));
+
+            return fs;
         }
     }
     [Serializable()]
-    public class ResourcesSettings
+    public class ResourcesSettings : ICloneable
     {
         /// <summary>
         /// Size in MB to cache from the wordfile
@@ -938,13 +960,17 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>ResourcesSettings object</returns>
-        public ResourcesSettings DeepCopy()
+        public object Clone()
         {
-            return (ResourcesSettings)MemberwiseClone();
+            ResourcesSettings rs = (ResourcesSettings)MemberwiseClone();
+            rs.CpuAffinity = new List<string>(cpuAffinity.Select(x => string.Copy(x)));
+            rs.GpuDevices = new List<string>(gpuDevices.Select(x => string.Copy(x)));
+
+            return rs;
         }
     }
     [Serializable()]
-    public class DistributedSettings
+    public class DistributedSettings : ICloneable
     {
         /// <summary>
         /// Skip number of words
@@ -1008,13 +1034,13 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>DistributedSettings object</returns>
-        public DistributedSettings DeepCopy()
+        public object Clone()
         {
-            return (DistributedSettings)MemberwiseClone();
+            return MemberwiseClone();
         }
     }
     [Serializable()]
-    public class RulesSettings
+    public class RulesSettings : ICloneable
     {
         /// <summary>
         /// Single rule applied to each word from left dict
@@ -1152,13 +1178,18 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>RulesSettings object</returns>
-        public RulesSettings DeepCopy()
+        public object Clone()
         {
-            return (RulesSettings)MemberwiseClone();
+            RulesSettings rs = (RulesSettings)MemberwiseClone();
+            rs.RuleLeft = string.Copy(ruleLeft);
+            rs.RuleRight = string.Copy(ruleRight);
+            rs.RulesFiles = new List<string>(rulesFiles.Select(x => string.Copy(x)));
+
+            return rs;
         }
     }
     [Serializable()]
-    public class CustomCharsetsSettings
+    public class CustomCharsetsSettings : ICloneable
     {
         /// <summary>
         /// User-defined charset 1
@@ -1292,13 +1323,19 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>CustomCharsetsSettings object</returns>
-        public CustomCharsetsSettings DeepCopy()
+        public object Clone()
         {
-            return (CustomCharsetsSettings)MemberwiseClone();
+            CustomCharsetsSettings ccs = (CustomCharsetsSettings)MemberwiseClone();
+            ccs.Charset1 = string.Copy(charset1);
+            ccs.Charset2 = string.Copy(charset2);
+            ccs.Charset3 = string.Copy(charset3);
+            ccs.Charset4 = string.Copy(charset4);
+
+            return ccs;
         }
     }
     [Serializable()]
-    public class IncrementSettings
+    public class IncrementSettings : ICloneable
     {
         /// <summary>
         /// Enable increment mode
@@ -1362,14 +1399,14 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>IncrementSettings object</returns>
-        public IncrementSettings DeepCopy()
+        public object Clone()
         {
-            return (IncrementSettings)MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 
     [Serializable()]
-    public class CrackTask
+    public class CrackTask : ICloneable
     {
         /// <summary>
         /// Indicates whether CrackTask is being cracked now.
@@ -1934,21 +1971,25 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// Returns deep copy of the object
         /// </summary>
         /// <returns>CrackTask object</returns>
-        public CrackTask DeepCopy()
+        public object Clone()
         {
-            CrackTask crackTaskCopy = (CrackTask)MemberwiseClone();
-
-            crackTaskCopy.MiscSettings = miscSettings.DeepCopy();
-            crackTaskCopy.MarkovSettings = markovSettings.DeepCopy();
-            crackTaskCopy.SessionSettings = sessionSettings.DeepCopy();
-            crackTaskCopy.FilesSettings = filesSettings.DeepCopy();
-            crackTaskCopy.ResourcesSettings = resourcesSettings.DeepCopy();
-            crackTaskCopy.DistributedSettings = distributedSettings.DeepCopy();
-            crackTaskCopy.RulesSettings = rulesSettings.DeepCopy();
-            crackTaskCopy.CustomCharsetsSettings = customCharsetsSettings.DeepCopy();
-            crackTaskCopy.IncrementSettings = incrementSettings.DeepCopy();
-
-            return crackTaskCopy;
+            return new CrackTask()
+            {
+                CrackTarget = string.Copy(crackTarget),
+                HashType = (HashType)hashType.Clone(),
+                AttackMode = attackMode,
+                CrackDataSourceLeft = string.Copy(crackDataSourceLeft),
+                CrackDataSourceRight = string.Copy(crackDataSourceRight),
+                MiscSettings = (MiscSettings)miscSettings.Clone(),
+                MarkovSettings = (MarkovSettings)markovSettings.Clone(),
+                SessionSettings = (SessionSettings)sessionSettings.Clone(),
+                FilesSettings = (FilesSettings)filesSettings.Clone(),
+                ResourcesSettings = (ResourcesSettings)resourcesSettings.Clone(),
+                DistributedSettings = (DistributedSettings)distributedSettings.Clone(),
+                RulesSettings = (RulesSettings)rulesSettings.Clone(),
+                CustomCharsetsSettings = (CustomCharsetsSettings)customCharsetsSettings.Clone(),
+                IncrementSettings = (IncrementSettings)incrementSettings.Clone(),
+            };
         }
 
         /// <summary>
