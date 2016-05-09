@@ -61,7 +61,6 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         {
             description = Path.GetFileNameWithoutExtension(source);
         }
-
         public virtual object Clone()
         {
             CrackDataSource clone = new CrackDataSource()
@@ -73,6 +72,10 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             };
 
             return clone;
+        }
+        public override string ToString()
+        {
+            return name + " | " + description;
         }
     }
 }
