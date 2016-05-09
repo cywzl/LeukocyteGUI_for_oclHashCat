@@ -199,6 +199,8 @@
             this.lblTemplate = new System.Windows.Forms.Label();
             this.cmbTemplate = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tcTaskOptions.SuspendLayout();
             this.tpMain.SuspendLayout();
             this.gbIncrementMode.SuspendLayout();
@@ -241,9 +243,8 @@
             // 
             // tcTaskOptions
             // 
-            this.tcTaskOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcTaskOptions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tcTaskOptions.Controls.Add(this.tpMain);
             this.tcTaskOptions.Controls.Add(this.tpPredefined);
             this.tcTaskOptions.Controls.Add(this.tpMisc);
@@ -256,7 +257,7 @@
             this.tcTaskOptions.Location = new System.Drawing.Point(12, 102);
             this.tcTaskOptions.Name = "tcTaskOptions";
             this.tcTaskOptions.SelectedIndex = 0;
-            this.tcTaskOptions.Size = new System.Drawing.Size(555, 319);
+            this.tcTaskOptions.Size = new System.Drawing.Size(555, 320);
             this.tcTaskOptions.TabIndex = 0;
             // 
             // tpMain
@@ -268,7 +269,7 @@
             this.tpMain.Location = new System.Drawing.Point(4, 22);
             this.tpMain.Name = "tpMain";
             this.tpMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMain.Size = new System.Drawing.Size(547, 293);
+            this.tpMain.Size = new System.Drawing.Size(547, 294);
             this.tpMain.TabIndex = 0;
             this.tpMain.Text = "Main";
             this.tpMain.UseVisualStyleBackColor = true;
@@ -592,7 +593,7 @@
             this.tpPredefined.Location = new System.Drawing.Point(4, 22);
             this.tpPredefined.Name = "tpPredefined";
             this.tpPredefined.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPredefined.Size = new System.Drawing.Size(547, 293);
+            this.tpPredefined.Size = new System.Drawing.Size(547, 294);
             this.tpPredefined.TabIndex = 8;
             this.tpPredefined.Text = "Predefined";
             this.tpPredefined.UseVisualStyleBackColor = true;
@@ -645,7 +646,7 @@
             this.tpMisc.Location = new System.Drawing.Point(4, 22);
             this.tpMisc.Name = "tpMisc";
             this.tpMisc.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMisc.Size = new System.Drawing.Size(547, 293);
+            this.tpMisc.Size = new System.Drawing.Size(547, 294);
             this.tpMisc.TabIndex = 1;
             this.tpMisc.Text = "Misc";
             this.tpMisc.UseVisualStyleBackColor = true;
@@ -748,7 +749,7 @@
             this.tpMarkov.Controls.Add(this.cbMarkovHcstat);
             this.tpMarkov.Location = new System.Drawing.Point(4, 22);
             this.tpMarkov.Name = "tpMarkov";
-            this.tpMarkov.Size = new System.Drawing.Size(547, 293);
+            this.tpMarkov.Size = new System.Drawing.Size(547, 294);
             this.tpMarkov.TabIndex = 2;
             this.tpMarkov.Text = "Markov";
             this.tpMarkov.UseVisualStyleBackColor = true;
@@ -843,7 +844,7 @@
             this.tpSession.Controls.Add(this.cbRuntime);
             this.tpSession.Location = new System.Drawing.Point(4, 22);
             this.tpSession.Name = "tpSession";
-            this.tpSession.Size = new System.Drawing.Size(547, 293);
+            this.tpSession.Size = new System.Drawing.Size(547, 294);
             this.tpSession.TabIndex = 3;
             this.tpSession.Text = "Session";
             this.tpSession.UseVisualStyleBackColor = true;
@@ -959,7 +960,7 @@
             this.tpFiles.Controls.Add(this.cbOutfileFormat);
             this.tpFiles.Location = new System.Drawing.Point(4, 22);
             this.tpFiles.Name = "tpFiles";
-            this.tpFiles.Size = new System.Drawing.Size(547, 293);
+            this.tpFiles.Size = new System.Drawing.Size(547, 294);
             this.tpFiles.TabIndex = 4;
             this.tpFiles.Text = "Files";
             this.tpFiles.UseVisualStyleBackColor = true;
@@ -1363,7 +1364,7 @@
             this.tpResources.Controls.Add(this.cbSegmentSize);
             this.tpResources.Location = new System.Drawing.Point(4, 22);
             this.tpResources.Name = "tpResources";
-            this.tpResources.Size = new System.Drawing.Size(547, 293);
+            this.tpResources.Size = new System.Drawing.Size(547, 294);
             this.tpResources.TabIndex = 5;
             this.tpResources.Text = "Resources";
             this.tpResources.UseVisualStyleBackColor = true;
@@ -1763,7 +1764,7 @@
             this.tpDistributed.Controls.Add(this.cbSkip);
             this.tpDistributed.Location = new System.Drawing.Point(4, 22);
             this.tpDistributed.Name = "tpDistributed";
-            this.tpDistributed.Size = new System.Drawing.Size(547, 293);
+            this.tpDistributed.Size = new System.Drawing.Size(547, 294);
             this.tpDistributed.TabIndex = 6;
             this.tpDistributed.Text = "Distributed";
             this.tpDistributed.UseVisualStyleBackColor = true;
@@ -1857,7 +1858,7 @@
             this.tpRules.Controls.Add(this.cbRuleLeft);
             this.tpRules.Location = new System.Drawing.Point(4, 22);
             this.tpRules.Name = "tpRules";
-            this.tpRules.Size = new System.Drawing.Size(547, 293);
+            this.tpRules.Size = new System.Drawing.Size(547, 294);
             this.tpRules.TabIndex = 7;
             this.tpRules.Text = "Rules";
             this.tpRules.UseVisualStyleBackColor = true;
@@ -2109,6 +2110,7 @@
             // 
             // cmbTemplate
             // 
+            this.cmbTemplate.Enabled = false;
             this.cmbTemplate.FormattingEnabled = true;
             this.cmbTemplate.Location = new System.Drawing.Point(73, 12);
             this.cmbTemplate.Name = "cmbTemplate";
@@ -2124,11 +2126,42 @@
             this.textBox4.Size = new System.Drawing.Size(246, 75);
             this.textBox4.TabIndex = 6;
             // 
+            // btnOK
+            // 
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnOK.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOK.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_task_ok;
+            this.btnOK.Location = new System.Drawing.Point(487, 427);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnOK.Size = new System.Drawing.Size(36, 36);
+            this.btnOK.TabIndex = 12;
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_task_cancel;
+            this.btnCancel.Location = new System.Drawing.Point(529, 427);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(0, 0, 2, 2);
+            this.btnCancel.Size = new System.Drawing.Size(36, 36);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // TaskEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 433);
+            this.ClientSize = new System.Drawing.Size(579, 472);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.lblHashType);
             this.Controls.Add(this.tcTaskOptions);
@@ -2137,8 +2170,12 @@
             this.Controls.Add(this.cmbTarget);
             this.Controls.Add(this.lblTarget);
             this.Controls.Add(this.cmbTemplate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "TaskEditorForm";
-            this.Text = "TaskEditorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "LeukocyteGUI_for_oclHashcat - TaskEditor";
+            this.Shown += new System.EventHandler(this.TaskEditorForm_Shown);
             this.tcTaskOptions.ResumeLayout(false);
             this.tpMain.ResumeLayout(false);
             this.gbIncrementMode.ResumeLayout(false);
@@ -2366,5 +2403,7 @@
         private System.Windows.Forms.ColumnHeader chPredefinedType;
         private System.Windows.Forms.ColumnHeader chPredefinedName;
         private System.Windows.Forms.ColumnHeader chPredefinedDescription;
+        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

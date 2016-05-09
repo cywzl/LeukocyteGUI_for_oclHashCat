@@ -1,5 +1,6 @@
 ﻿using LeukocyteCore_for_oclHashcat.Classes;
 using LeukocyteCore_for_oclHashcat.Interfaces;
+using LeukocyteGUI_for_oclHashcat.Classes;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -16,16 +17,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
         private void VisualizeCrackSource(ICrackDataSource crackSource, int listViewId)
         {
-            ListViewItem item = new ListViewItem(new string[]
-                {
-                    listViewId.ToString(),
-                    crackSource.GetType().ToString().Split('.').Last(),
-                    crackSource.Name,
-                    crackSource.Description
-                })
-            {
-                Tag = crackSource
-            };
+            ListViewItem item = crackSource.ToListViewItem(listViewId + 1);
 
             if (listViewId < lvPredefined.Items.Count)
             {

@@ -1,5 +1,7 @@
 ﻿using LeukocyteCore_for_oclHashcat.Classes;
+using LeukocyteGUI_for_oclHashcat.Classes;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -35,6 +37,8 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
             if (rb.Checked)
             {
+                FillAttackSources();
+
                 switch (rb.Name)
                 {
                     case "rbStraight":
@@ -88,9 +92,9 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
             }
         }
 
-        public void FillForm()
+        private void FillForm()
         {
-            if(crackTasks.Count == 0)
+            if (crackTasks.Count == 0)
             {
                 return;
             }
@@ -525,6 +529,54 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 cbGenerateRulesSeed.Checked = true;
                 nudGenerateRulesSeed.Value = crackTask.RulesSettings.GenerateRulesSeed;
             }
+        }
+        private void FillPredefined()
+        {
+            foreach (var source in DataManager.CrackDataSources)
+            {
+                lvPredefined.Items.Add(source.ToListViewItem(lvPredefined.Items.Count + 1));
+            }
+        }
+        private void FillAttackSources()
+        {
+            cmbLeftSource.Items.Clear();
+            cmbRightSource.Items.Clear();
+
+            if ((rbStraight.Checked) || (rbCombination.Checked) || (rbDictMask.Checked))
+            {
+                foreach (var dictionary in DataManager.Dictionaries)
+                {
+                    cmbLeftSource.Items.Add(dictionary);
+                }
+
+                if (rbDictMask.Checked)
+                {
+                    foreach (var mask in DataManager.Masks)
+                    {
+                        cmbRightSource.Items.Add(mask);
+                    }
+                }
+            }
+            if ((rbCombination.Checked) || (rbMaskDict.Checked))
+            {
+                foreach (var dictionary in DataManager.Dictionaries)
+                {
+                    cmbRightSource.Items.Add(dictionary);
+                }
+            }
+            if ((rbMaskDict.Checked) || (rbBruteforce.Checked))
+            {
+                foreach (var mask in DataManager.Masks)
+                {
+                    cmbLeftSource.Items.Add(mask);
+                }
+            }
+        }
+
+        private void TaskEditorForm_Shown(object sender, EventArgs e)
+        {
+            FillPredefined();
+            FillAttackSources();
         }
     }
 }
