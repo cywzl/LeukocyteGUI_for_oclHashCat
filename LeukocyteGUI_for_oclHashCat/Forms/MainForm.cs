@@ -1,5 +1,4 @@
-﻿using LeukocyteCore_for_oclHashcat;
-using LeukocyteCore_for_oclHashcat.Classes;
+﻿using LeukocyteCore_for_oclHashcat.Classes;
 using System;
 using System.Windows.Forms;
 
@@ -7,19 +6,17 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     public partial class MainForm : Form
     {
-        CrackTasksList crackTasksList = new CrackTasksList();
-
         public MainForm()
         {
             InitializeComponent();
 
             DataManager.DataLoaded += DataManager_DataLoaded;
 
-            crackTasksList.CrackTaskAdded += CrackTasksList_CrackTaskAdded;
-            crackTasksList.CrackTaskChanged += CrackTasksList_CrackTaskChanged;
-            crackTasksList.CrackTaskMoved += CrackTasksList_CrackTaskMoved;
-            crackTasksList.CrackTaskRemoved += CrackTasksList_CrackTaskRemoved;
-            crackTasksList.CrackTasksCleared += CrackTasksList_CrackTasksCleared;
+            DataManager.CrackTasks.CrackTaskAdded += CrackTasksList_CrackTaskAdded;
+            DataManager.CrackTasks.CrackTaskChanged += CrackTasksList_CrackTaskChanged;
+            DataManager.CrackTasks.CrackTaskMoved += CrackTasksList_CrackTaskMoved;
+            DataManager.CrackTasks.CrackTaskRemoved += CrackTasksList_CrackTaskRemoved;
+            DataManager.CrackTasks.CrackTasksCleared += CrackTasksList_CrackTasksCleared;
         }
 
         private void VisualizeCrackTask(CrackTask crackTask, int listViewItemId)
@@ -66,11 +63,11 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         {
             if (e.DataType == DataTypes.CrackTasks)
             {
-                crackTasksList.Clear();
+                lvCrackTasks.Items.Clear();
 
-                foreach (var crackTask in DataManager.CrackTasks)
+                for (int i = 0; i < DataManager.CrackTasks.Count; i++)
                 {
-                    crackTasksList.Add(crackTask);
+                    VisualizeCrackTask(DataManager.CrackTasks[i], i);
                 }
             }
         }

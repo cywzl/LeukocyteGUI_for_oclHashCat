@@ -112,7 +112,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// List of CrackTasks.
         /// </summary>
         /// <see cref="CrackTask"/>
-        public static List<CrackTask> CrackTasks
+        public static CrackTasksList CrackTasks
         {
             get
             {
@@ -123,7 +123,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 crackTasks = value;
             }
         }
-        private static List<CrackTask> crackTasks = new List<CrackTask>();
+        private static CrackTasksList crackTasks = new CrackTasksList();
 
         /// <summary>
         /// List of Dictionaries.
