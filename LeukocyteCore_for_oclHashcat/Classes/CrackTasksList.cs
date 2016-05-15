@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
 
 namespace LeukocyteCore_for_oclHashcat.Classes
 {
@@ -68,7 +67,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
     }
 
     [Serializable()]
-    public class CrackTasksList : IList<CrackTask>
+    public class CrackTasksList : List<CrackTask>
     {
         public delegate void CrackTasksListTaskChangedEventHandler(object sender, CrackTasksListTaskChangedEventArgs e);
         public delegate void CrackTasksListTaskMovedEventHandler(object sender, CrackTasksListTaskMovedEventArgs e);
@@ -80,54 +79,9 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         public event CrackTasksListTaskMovedEventHandler CrackTaskMoved = delegate { };
         public event CrackTasksListEventHandler CrackTasksCleared = delegate { };
 
-        List<CrackTask> crackTasks;
-
-        public int Count
-        {
-            get
-            {
-                return crackTasks.Count;
-            }
-        }
-        public bool IsReadOnly
-        {
-            get
-            {
-                return false;
-            }
-        }
-
-        public CrackTask this[int crackTaskId]
-        {
-            get
-            {
-                CheckCrackTaskIdException(crackTaskId);
-                return crackTasks[crackTaskId];
-            }
-            set
-            {
-                CheckCrackTaskIdException(crackTaskId);
-                crackTasks[crackTaskId] = value;
-            }
-        }
-
-        public CrackTasksList()
-        {
-            crackTasks = new List<CrackTask>();
-        }
-        public CrackTasksList(IEnumerable<CrackTask> collection)
-        {
-            crackTasks = new List<CrackTask>(collection);
-        }
-
-        IEnumerator<CrackTask> IEnumerable<CrackTask>.GetEnumerator()
-        {
-            return crackTasks.GetEnumerator();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return crackTasks.GetEnumerator();
-        }
+        public CrackTasksList() : base() { }
+        public CrackTasksList(int capacity) : base(capacity) { }
+        public CrackTasksList(IEnumerable<CrackTask> collection) : base(collection) { }
 
         public void CheckCrackTaskIdException(int crackTaskId)
         {
@@ -135,29 +89,24 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             {
                 throw new ArgumentOutOfRangeException("TaskId cannot be less than 0.");
             }
-            if (crackTaskId >= crackTasks.Count)
+            if (crackTaskId >= Count)
             {
                 throw new ArgumentOutOfRangeException("TaskId cannot be greater than last task's id.");
             }
         }
-        public void Add(CrackTask crackTask)
+
+        public new void Add(CrackTask crackTask)
         {
-            crackTasks.Add(crackTask);
-            CrackTaskAdded(this, new CrackTasksListTaskChangedEventArgs(crackTask, crackTasks.Count - 1));
+            base.Add(crackTask);
+            CrackTaskAdded(this, new CrackTasksListTaskChangedEventArgs(crackTask, Count - 1));
         }
-        public bool Remove(CrackTask crackTask)
+        public new bool Remove(CrackTask crackTask)
         {
-            int index = crackTasks.IndexOf(crackTask);
+            int index = IndexOf(crackTask);
 
             if (index > -1)
             {
-                crackTasks.RemoveAt(index);
-                CrackTaskRemoved(this, new CrackTasksListTaskChangedEventArgs(crackTask, index));
-
-                for (int i = index; i < crackTasks.Count; i++)
-                {
-                    CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(crackTasks[i], i + 1, i));
-                }
+                RemoveAt(index);
 
                 return true;
             }
@@ -166,68 +115,45 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 return false;
             }
         }
-        public void RemoveAt(int crackTaskId)
+        public new void RemoveAt(int crackTaskId)
         {
-            CheckCrackTaskIdException(crackTaskId);
-
-            CrackTask crackTask = crackTasks[crackTaskId];
-            crackTasks.RemoveAt(crackTaskId);
+            CrackTask crackTask = this[crackTaskId];
+            base.RemoveAt(crackTaskId);
             CrackTaskRemoved(this, new CrackTasksListTaskChangedEventArgs(crackTask, crackTaskId));
 
-            for (int i = crackTaskId; i < crackTasks.Count; i++)
+            for (int i = crackTaskId; i < Count; i++)
             {
-                CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(crackTasks[i], i + 1, i));
+                CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(this[i], i + 1, i));
             }
         }
-        public void Clear()
+        public new void Clear()
         {
-            crackTasks.Clear();
+            base.Clear();
             CrackTasksCleared(this, new EventArgs());
         }
-        public int IndexOf(CrackTask crackTask)
+        public new void Insert(int crackTaskId, CrackTask crackTask)
         {
-            return crackTasks.IndexOf(crackTask);
-        }
-        public bool Contains(CrackTask crackTask)
-        {
-            return crackTasks.Contains(crackTask);
-        }
-        public void Insert(int crackTaskId, CrackTask crackTask)
-        {
-            if (crackTaskId < 0)
-            {
-                throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be less than 0.");
-            }
-            if (crackTaskId > crackTasks.Count)
-            {
-                throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be greater than last task's id more than by 1.");
-            }
-
-            crackTasks.Insert(crackTaskId, crackTask);
+            base.Insert(crackTaskId, crackTask);
             CrackTaskAdded(this, new CrackTasksListTaskChangedEventArgs(crackTask, crackTaskId));
 
-            for (int i = crackTaskId + 1; i < crackTasks.Count; i++)
+            for (int i = crackTaskId + 1; i < Count; i++)
             {
-                CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(crackTasks[i], i - 1, i));
+                CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(this[i], i - 1, i));
             }
-        }
-        public void CopyTo(CrackTask[] array, int arrayIndex)
-        {
-            crackTasks.CopyTo(array, arrayIndex);
         }
         public void SwapTasks(int firstCrackTaskId, int secondCrackTaskId)
         {
             CheckCrackTaskIdException(firstCrackTaskId);
             CheckCrackTaskIdException(secondCrackTaskId);
 
-            CrackTask firstCrackTask = crackTasks[firstCrackTaskId];
-            CrackTask secondCrackTask = crackTasks[secondCrackTaskId];
+            CrackTask firstCrackTask = this[firstCrackTaskId];
+            CrackTask secondCrackTask = this[secondCrackTaskId];
 
-            crackTasks[secondCrackTaskId] = firstCrackTask;
+            this[secondCrackTaskId] = firstCrackTask;
             CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(firstCrackTask,
                 firstCrackTaskId, secondCrackTaskId));
 
-            crackTasks[firstCrackTaskId] = secondCrackTask;
+            this[firstCrackTaskId] = secondCrackTask;
             CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(secondCrackTask,
                 secondCrackTaskId, firstCrackTaskId));
         }
@@ -251,7 +177,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             {
                 throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be less than 0.");
             }
-            if (newCrackTaskId > crackTasks.Count)
+            if (newCrackTaskId > Count)
             {
                 throw new ArgumentOutOfRangeException("secondCrackTaskId", "TaskId cannot be greater than last task's id more than by 1.");
             }
@@ -260,9 +186,9 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 throw new ArgumentException("NewCrackTask cannot be the same as CrackTaskId.", "newCrackTaskId");
             }
 
-            CrackTask crackTask = crackTasks[crackTaskId];
-            crackTasks.RemoveAt(crackTaskId);
-            crackTasks.Insert(newCrackTaskId, crackTask);
+            CrackTask crackTask = this[crackTaskId];
+            base.RemoveAt(crackTaskId);
+            base.Insert(newCrackTaskId, crackTask);
 
             if (newCrackTaskId < crackTaskId)
             {
@@ -270,7 +196,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
                 for (int i = newCrackTaskId; i < crackTaskId; i++)
                 {
-                    CrackTask curCrackTask = crackTasks[i + 1];
+                    CrackTask curCrackTask = this[i + 1];
                     CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(curCrackTask, i, i + 1));
                 }
             }
@@ -280,7 +206,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
                 for (int i = crackTaskId + 1; i < newCrackTaskId; i++)
                 {
-                    CrackTask curCrackTask = crackTasks[i - 1];
+                    CrackTask curCrackTask = this[i - 1];
                     CrackTaskMoved(this, new CrackTasksListTaskMovedEventArgs(curCrackTask, i, i - 1));
                 }
             }
@@ -288,7 +214,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         public void UpdateTask(int crackTaskId, CrackTask crackTask)
         {
             CheckCrackTaskIdException(crackTaskId);
-            crackTasks[crackTaskId] = crackTask;
+            this[crackTaskId] = crackTask;
+            CrackTaskChanged(this, new CrackTasksListTaskChangedEventArgs(crackTask, crackTaskId));
         }
         public bool TryUpdateTask(int crackTaskId, CrackTask crackTask)
         {
@@ -302,10 +229,6 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             }
 
             return true;
-        }
-        public CrackTask[] ToArray()
-        {
-            return crackTasks.ToArray();
         }
     }
 }
