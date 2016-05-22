@@ -1,4 +1,5 @@
 ﻿using LeukocyteCore_for_oclHashcat.Classes;
+using LeukocyteGUI_for_oclHashcat.Classes;
 using System;
 using System.Windows.Forms;
 
@@ -21,33 +22,41 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
         private void VisualizeCrackTask(CrackTask crackTask, int listViewItemId)
         {
-            string[] values = new string[]
-            {
-                /* #         */ (listViewItemId + 1).ToString(),
-                /* HashType  */ crackTask.HashType.Name,
-                /* Target    */ crackTask.CrackTarget,
-                /* Plain     */ crackTask.Plain,
-                /* Length    */ crackTask.CurrentLength.ToString(),
-                /* Progress  */ crackTask.Progress.ToString(),
-                /* Estimated */ crackTask.TimeEstimated,
-                /* Mask/Dict */ crackTask.CrackDataSourceLeft +
-                                    (!string.IsNullOrEmpty(crackTask.CrackDataSourceRight)
-                                        ? " + " + crackTask.CrackDataSourceRight : ""),
-                /* Started   */ crackTask.Started.ToString(),
-                /* Finished  */ crackTask.Finished.ToString(),
-                /* Session   */ crackTask.SessionSettings.Session
-            };
-
-            lvCrackTasks.Items[listViewItemId] = new ListViewItem(values);
+            lvCrackTasks.Items[listViewItemId] = crackTask.ToListViewItem(listViewItemId);
+        }
+        private void VisualizeCrackTask(CrackTask crackTask)
+        {
+            lvCrackTasks.Items.Add(crackTask.ToListViewItem(lvCrackTasks.Items.Count));
+        }
+        private void Revisualize(int listViewItemId)
+        {
+            lvCrackTasks.Items[listViewItemId] = ((CrackTask)lvCrackTasks.Items[listViewItemId].Tag).ToListViewItem(listViewItemId);
         }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            new TaskEditorForm().ShowDialog();
+            using (var taskEditor = new TaskEditorForm())
+            {
+                if (taskEditor.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (var crackTask in taskEditor.CrackTasks)
+                    {
+                        DataManager.CrackTasks.Add(crackTask);
+                    }
+                }
+            }
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
             new SettingsForm().ShowDialog();
+        }
+        private void btnEditTask_Click(object sender, EventArgs e)
+        {
+            if (lvCrackTasks.SelectedItems.Count == 1)
+            {
+                new TaskEditorForm((CrackTask)lvCrackTasks.SelectedItems[0].Tag).ShowDialog();
+                Revisualize(lvCrackTasks.SelectedIndices[0]);
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -67,7 +76,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
                 for (int i = 0; i < DataManager.CrackTasks.Count; i++)
                 {
-                    VisualizeCrackTask(DataManager.CrackTasks[i], i);
+                    VisualizeCrackTask(DataManager.CrackTasks[i]);
                 }
             }
         }

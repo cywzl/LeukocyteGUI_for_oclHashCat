@@ -729,9 +729,9 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             }
             set
             {
-                if (value <= 0)
+                if ((value == 0) || (value < -1))
                 {
-                    throw new ArgumentOutOfRangeException("BitmapMin should be a positive integer value.");
+                    throw new ArgumentOutOfRangeException("BitmapMin should be a positive integer value or -1 if not used.");
                 }
 
                 bitmapMin = value;

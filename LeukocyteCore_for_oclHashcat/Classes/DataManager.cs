@@ -538,6 +538,11 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         /// <param name="dataHolder">DataHolder that the data is associated with.</param>
         public static void SaveData(DataHolder dataHolder)
         {
+            if (dataHolder.DataType == DataTypes.CrackTasks)
+            {
+                CrackTasks.ClearEvents();
+            }
+
             SaveToFile(dataHolder.StoredData, dataHolder.FileName);
             DataSaved(new DataLoadedSavedEventArgs(dataHolder.DataType, dataHolder.FileName));
         }

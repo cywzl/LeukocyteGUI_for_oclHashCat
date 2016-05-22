@@ -639,13 +639,13 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         public TaskEditorForm()
         {
             InitializeComponent();
-            crackTask = new CrackTask();
         }
         public TaskEditorForm(CrackTask source)
         {
             InitializeComponent();
             crackTask = source;
             lvPredefined.Enabled = false;
+            FillForm();
         }
 
         private void rbAttackType_CheckedChanged(object sender, EventArgs e)
@@ -711,6 +711,8 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         private void btnOK_Click(object sender, EventArgs e)
         {
             UpdateCrackTasks();
+            DialogResult = DialogResult.OK;
+            Close();
         }
         private void TaskEditorForm_Shown(object sender, EventArgs e)
         {
@@ -802,16 +804,38 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 }
             }
         }
+        private void InitCrackTask(CrackTask crackTask, ICrackDataSource withSource)
+        {
+            crackTask.CustomCharsetsSettings = Charsets;
+            crackTask.IncrementSettings = Increment;
+            crackTask.MiscSettings = Misc;
+            crackTask.MarkovSettings = Markov;
+            crackTask.SessionSettings = Sessions;
+            crackTask.FilesSettings = Files;
+            crackTask.ResourcesSettings = Resources;
+            crackTask.DistributedSettings = Distributed;
+            crackTask.RulesSettings = Rules;
+            crackTask.CrackDataSourceLeft = withSource.Source;
+            crackTask.CrackDataSourceRight = (withSource as ICombinedCrackData)?.AdditionalSource ?? "";
+            crackTask.CrackTarget = cmbTarget.Text;
+            crackTask.HashType = (HashType)cmbHashType.SelectedItem
+                ?? new HashType(cmbHashType.Text, int.Parse(cmbHashType.Text));
+        }
 
         private void UpdateCrackTasks()
         {
+            ICrackDataSource singleSource = CrackDataSource;
+
+            if (crackTask != null)
+            {
+                InitCrackTask(crackTask, singleSource);
+            }
+
             crackTasks.Clear();
 
             var sources = (from item in lvPredefined.Items.Cast<ListViewItem>()
                            where item.Checked
                            select item.Tag as ICrackDataSource).ToList();
-
-            ICrackDataSource singleSource = CrackDataSource;
 
             if (singleSource != null)
             {
@@ -820,40 +844,13 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
             if (sources.Count > 0)
             {
-                CustomCharsetsSettings charsets = Charsets;
-                IncrementSettings increment = Increment;
-                MiscSettings misc = Misc;
-                MarkovSettings markov = Markov;
-                SessionSettings sessions = Sessions;
-                FilesSettings files = Files;
-                ResourcesSettings resources = Resources;
-                DistributedSettings distributed = Distributed;
-                RulesSettings rules = Rules;
-
                 foreach (var source in sources)
                 {
-                    CrackTask crackTask = new CrackTask
-                    {
-                        CustomCharsetsSettings = (CustomCharsetsSettings)charsets.Clone(),
-                        IncrementSettings = (IncrementSettings)increment.Clone(),
-                        MiscSettings = (MiscSettings)misc.Clone(),
-                        MarkovSettings = (MarkovSettings)markov.Clone(),
-                        SessionSettings = (SessionSettings)sessions.Clone(),
-                        FilesSettings = (FilesSettings)files.Clone(),
-                        ResourcesSettings = (ResourcesSettings)resources.Clone(),
-                        DistributedSettings = (DistributedSettings)distributed.Clone(),
-                        RulesSettings = (RulesSettings)rules.Clone(),
-                        CrackDataSourceLeft = source.Source,
-                        CrackDataSourceRight = (source as ICombinedCrackData)?.AdditionalSource ?? "",
-                        CrackTarget = cmbTarget.Text,
-                        HashType = (HashType)cmbHashType.SelectedItem
-                    };
-
+                    CrackTask crackTask = new CrackTask();
+                    InitCrackTask(crackTask, source);
                     crackTasks.Add(crackTask);
                 }
             }
-
-
         }
     }
 }

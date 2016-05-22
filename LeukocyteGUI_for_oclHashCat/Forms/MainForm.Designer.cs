@@ -100,6 +100,7 @@
             this.chTimeStarted,
             this.chTimeFinished,
             this.chSession});
+            this.lvCrackTasks.FullRowSelect = true;
             this.lvCrackTasks.Location = new System.Drawing.Point(12, 75);
             this.lvCrackTasks.Name = "lvCrackTasks";
             this.lvCrackTasks.Size = new System.Drawing.Size(840, 370);
@@ -206,6 +207,7 @@
             this.btnEditTask.Size = new System.Drawing.Size(36, 36);
             this.btnEditTask.TabIndex = 4;
             this.btnEditTask.UseVisualStyleBackColor = true;
+            this.btnEditTask.Click += new System.EventHandler(this.btnEditTask_Click);
             // 
             // btnCrack
             // 

@@ -230,5 +230,13 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
             return true;
         }
+        public void ClearEvents()
+        {
+            CrackTaskAdded = delegate { };
+            CrackTaskRemoved = delegate { };
+            CrackTaskChanged = delegate { };
+            CrackTaskMoved = delegate { };
+            CrackTasksCleared = delegate { };
+        }
     }
 }
