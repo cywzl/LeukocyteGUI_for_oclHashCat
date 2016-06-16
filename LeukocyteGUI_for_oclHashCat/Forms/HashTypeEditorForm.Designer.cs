@@ -83,6 +83,11 @@
             // nudCode
             // 
             this.nudCode.Location = new System.Drawing.Point(82, 64);
+            this.nudCode.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nudCode.Name = "nudCode";
             this.nudCode.Size = new System.Drawing.Size(77, 20);
             this.nudCode.TabIndex = 5;
@@ -117,7 +122,7 @@
             this.btnCancel.TabIndex = 11;
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // HashTypeEditor
+            // HashTypeEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,7 +135,8 @@
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.lblName);
-            this.Name = "HashTypeEditor";
+            this.Name = "HashTypeEditorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HashTypeEditor";
             ((System.ComponentModel.ISupportInitialize)(this.nudCode)).EndInit();
             this.ResumeLayout(false);

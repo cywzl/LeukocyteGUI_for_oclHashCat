@@ -718,6 +718,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         {
             FillPredefined();
             FillAttackSources();
+            FillHashTypes();
         }
 
         private void FillForm()
@@ -802,6 +803,13 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 {
                     cmbLeftSource.Items.Add(mask);
                 }
+            }
+        }
+        private void FillHashTypes()
+        {
+            foreach (var hashType in DataManager.HashTypes)
+            {
+                cmbHashType.Items.Add(hashType);
             }
         }
         private void InitCrackTask(CrackTask crackTask, ICrackDataSource withSource)

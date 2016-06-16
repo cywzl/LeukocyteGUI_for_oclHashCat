@@ -105,6 +105,11 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 Description = string.Copy(description)
             };
         }
+
+        public override string ToString()
+        {
+            return "(" + code.ToString().PadLeft(5) + ") " + name;
+        }
     }
     [Serializable()]
     public class MiscSettings : ICloneable

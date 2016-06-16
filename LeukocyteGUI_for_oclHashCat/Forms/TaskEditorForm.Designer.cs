@@ -2076,10 +2076,11 @@
             // 
             // cmbHashType
             // 
+            this.cmbHashType.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmbHashType.FormattingEnabled = true;
             this.cmbHashType.Location = new System.Drawing.Point(73, 66);
             this.cmbHashType.Name = "cmbHashType";
-            this.cmbHashType.Size = new System.Drawing.Size(201, 21);
+            this.cmbHashType.Size = new System.Drawing.Size(201, 20);
             this.cmbHashType.TabIndex = 4;
             // 
             // lblTarget

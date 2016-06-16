@@ -135,5 +135,37 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 }
             }
         }
+        private void btnRemoveHashType_Click(object sender, EventArgs e)
+        {
+            if (lvHashTypes.SelectedItems.Count > 0)
+            {
+                foreach (ListViewItem selectedItem in lvHashTypes.SelectedItems)
+                {
+                    DataManager.HashTypes.Remove(selectedItem.Tag as HashType);
+                    lvHashTypes.Items.Remove(selectedItem);
+                }
+            }
+        }
+
+        private void lvHashTypes_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            switch (e.Column)
+            {
+                case 1:
+                    DataManager.HashTypes = DataManager.HashTypes.OrderBy(ht => ht.Code).ToList();
+                    break;
+
+                case 2:
+                    DataManager.HashTypes = DataManager.HashTypes.OrderBy(ht => ht.Name).ToList();
+                    break;
+
+                case 3:
+                    DataManager.HashTypes = DataManager.HashTypes.OrderBy(ht => ht.Description).ToList();
+                    break;
+            }
+
+            lvHashTypes.Items.Clear();
+            VisualizeHashTypes(DataManager.HashTypes);
+        }
     }
 }
