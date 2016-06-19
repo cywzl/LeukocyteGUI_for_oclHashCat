@@ -1961,8 +1961,10 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
             // Increment
             (IncrementSettings.Increment                        ? " --increment"                                                    : "") +
-            ((IncrementSettings.IncrementMin > -1)              ? " --increment-min="           + IncrementSettings.IncrementMin    : "") +
-            ((IncrementSettings.IncrementMax > -1)              ? " --increment-max="           + IncrementSettings.IncrementMax    : "") +
+            ((IncrementSettings.IncrementMin > -1
+             && IncrementSettings.Increment)                    ? " --increment-min="           + IncrementSettings.IncrementMin    : "") +
+            ((IncrementSettings.IncrementMax > -1
+             && IncrementSettings.Increment)                    ? " --increment-max="           + IncrementSettings.IncrementMax    : "") +
 
             // Target Part
                                                                   " "                           + crackTarget                             +

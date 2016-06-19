@@ -7,6 +7,8 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 {
     public partial class MainForm : Form
     {
+        private Cracker cracker;
+
         public MainForm()
         {
             InitializeComponent();
@@ -18,6 +20,12 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
             DataManager.CrackTasks.CrackTaskMoved += CrackTasksList_CrackTaskMoved;
             DataManager.CrackTasks.CrackTaskRemoved += CrackTasksList_CrackTaskRemoved;
             DataManager.CrackTasks.CrackTasksCleared += CrackTasksList_CrackTasksCleared;
+
+            cracker = new Cracker(
+                @"E:\Program Files (x86)\oclHashcat\oclHashcat64.exe"
+            );
+            cracker.ProgressChanged += Cracker_ProgressChanged;
+            cracker.CrackTasks = DataManager.CrackTasks;
         }
 
         private void VisualizeCrackTask(CrackTask crackTask, int listViewItemId)
@@ -106,6 +114,13 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
             lvCrackTasks.Select();
         }
+        private void btnCrack_Click(object sender, EventArgs e)
+        {
+            if (lvCrackTasks.SelectedIndices.Count > 0)
+            {
+                cracker.Crack(lvCrackTasks.SelectedIndices[0]);
+            }
+        }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -149,6 +164,11 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         {
             lvCrackTasks.Items.Add("");
             VisualizeCrackTask(e.CrackTask, e.CrackTaskId);
+        }
+
+        private void Cracker_ProgressChanged(object sender, CrackerEventArgs e)
+        {
+            Revisualize(e.CrackTaskId);
         }
     }
 }

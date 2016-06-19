@@ -70,7 +70,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         byte fan;
         int processingTaskId = -1;
         int lastProcessedTaskId = -1;
-        bool processNextQueued = true;
+        bool processNextQueued = false;
         Regex recoveredRegex = new Regex(@"(.*?)/(.*?) \(.*?\%\) Digests, (.*?)/(.*?) \(.*?\%\) Salts");
         Regex monitorRegex = new Regex(@"(.*?)% Util, (.*?)c Temp, (.*?)% Fan");
         CultureInfo cultureInfo;

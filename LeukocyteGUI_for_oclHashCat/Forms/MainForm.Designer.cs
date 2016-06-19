@@ -222,6 +222,7 @@
             this.btnCrack.Size = new System.Drawing.Size(36, 36);
             this.btnCrack.TabIndex = 5;
             this.btnCrack.UseVisualStyleBackColor = true;
+            this.btnCrack.Click += new System.EventHandler(this.btnCrack_Click);
             // 
             // btnStop
             // 

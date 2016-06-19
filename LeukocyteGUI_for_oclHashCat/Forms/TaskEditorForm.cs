@@ -814,6 +814,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         }
         private void InitCrackTask(CrackTask crackTask, ICrackDataSource withSource)
         {
+            crackTask.AttackMode = withSource.AttackMode;
             crackTask.CustomCharsetsSettings = Charsets;
             crackTask.IncrementSettings = Increment;
             crackTask.MiscSettings = Misc;
