@@ -194,6 +194,7 @@
             this.btnRemoveTask.Size = new System.Drawing.Size(36, 36);
             this.btnRemoveTask.TabIndex = 3;
             this.btnRemoveTask.UseVisualStyleBackColor = true;
+            this.btnRemoveTask.Click += new System.EventHandler(this.btnRemoveTask_Click);
             // 
             // btnEditTask
             // 
@@ -260,6 +261,7 @@
             this.btnMoveUp.Size = new System.Drawing.Size(36, 36);
             this.btnMoveUp.TabIndex = 8;
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -273,6 +275,7 @@
             this.btnMoveDown.Size = new System.Drawing.Size(36, 36);
             this.btnMoveDown.TabIndex = 9;
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // pbSpeed
             // 

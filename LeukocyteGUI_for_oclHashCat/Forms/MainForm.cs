@@ -46,6 +46,22 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 }
             }
         }
+        private void btnRemoveTask_Click(object sender, EventArgs e)
+        {
+            if (lvCrackTasks.SelectedIndices.Count > 0)
+            {
+                // We need to track how many items have been removed before current,
+                // beacause every removal causes shift of the following items
+                // (and changes their indexes)
+                int shift = 0;
+
+                foreach (int index in lvCrackTasks.SelectedIndices)
+                {
+                    DataManager.CrackTasks.RemoveAt(index - shift);
+                    shift++;
+                }
+            }
+        }
         private void btnSettings_Click(object sender, EventArgs e)
         {
             new SettingsForm().ShowDialog();
@@ -57,6 +73,38 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 new TaskEditorForm((CrackTask)lvCrackTasks.SelectedItems[0].Tag).ShowDialog();
                 Revisualize(lvCrackTasks.SelectedIndices[0]);
             }
+        }
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (lvCrackTasks.SelectedIndices.Count == 1)
+            {
+                int indexUpper = lvCrackTasks.SelectedIndices[0] - 1;
+                int indexLower = lvCrackTasks.SelectedIndices[0];
+
+                if (DataManager.CrackTasks.TrySwapTasks(indexUpper, indexLower))
+                {
+                    lvCrackTasks.Items[indexUpper].Selected = true;
+                    lvCrackTasks.Items[indexUpper].Focused = true;
+                }
+            }
+
+            lvCrackTasks.Select();
+        }
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (lvCrackTasks.SelectedIndices.Count == 1)
+            {
+                int indexUpper = lvCrackTasks.SelectedIndices[0];
+                int indexLower = lvCrackTasks.SelectedIndices[0] + 1;
+
+                if (DataManager.CrackTasks.TrySwapTasks(indexUpper, indexLower))
+                {
+                    lvCrackTasks.Items[indexLower].Selected = true;
+                    lvCrackTasks.Items[indexLower].Focused = true;
+                }
+            }
+
+            lvCrackTasks.Select();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
