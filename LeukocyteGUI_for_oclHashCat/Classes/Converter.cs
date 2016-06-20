@@ -2,6 +2,7 @@
 using LeukocyteCore_for_oclHashcat.Classes;
 using System.Linq;
 using System.Windows.Forms;
+using System;
 
 namespace LeukocyteGUI_for_oclHashcat.Classes
 {
@@ -34,8 +35,10 @@ namespace LeukocyteGUI_for_oclHashcat.Classes
                     /* Mask/Dict */ crackTask.CrackDataSourceLeft +
                                         (!string.IsNullOrEmpty(crackTask.CrackDataSourceRight)
                                         ? " + " + crackTask.CrackDataSourceRight : ""),
-                    /* Started   */ crackTask.Started.ToString(),
-                    /* Finished  */ crackTask.Finished.ToString(),
+                    /* Started   */ crackTask.Started == DateTime.MinValue
+                                        ? "" : crackTask.Started.ToString(),
+                    /* Finished  */ crackTask.Finished == DateTime.MinValue
+                                        ? "" : crackTask.Finished.ToString(),
                     /* Session   */ crackTask.SessionSettings.Session
                 })
             {

@@ -25,6 +25,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                 @"E:\Program Files (x86)\oclHashcat\oclHashcat64.exe"
             );
             cracker.ProgressChanged += Cracker_ProgressChanged;
+            cracker.Stopped += Cracker_Stopped;
             cracker.CrackTasks = DataManager.CrackTasks;
         }
 
@@ -168,7 +169,11 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
         private void Cracker_ProgressChanged(object sender, CrackerEventArgs e)
         {
-            Revisualize(e.CrackTaskId);
+            Invoke(new Action(() => Revisualize(e.CrackTaskId)));
+        }
+        private void Cracker_Stopped(object sender, CrackerEventArgs e)
+        {
+            Invoke(new Action(() => Revisualize(e.CrackTaskId)));
         }
     }
 }

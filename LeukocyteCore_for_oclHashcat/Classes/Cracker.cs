@@ -75,7 +75,6 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         Regex monitorRegex = new Regex(@"(.*?)% Util, (.*?)c Temp, (.*?)% Fan");
         CultureInfo cultureInfo;
 
-
         public CrackTasksList CrackTasks
         {
             get
@@ -245,6 +244,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                             {
                                 case "Cracked":
                                     ProcessingTask.CrackStatus = CrackStatuses.Cracked;
+                                    ProcessingTask.Progress = 100;
                                     break;
                                 case "Exhausted":
                                     ProcessingTask.CrackStatus = CrackStatuses.Exausted;
@@ -323,6 +323,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                             }
                             break;
                     }
+
+                    ProgressChanged(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
                 }
             }
         }
@@ -413,8 +415,19 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
             cracker.StartInfo.Arguments = ProcessingTask.ToString();
             cracker.Start();
-            cracker.BeginErrorReadLine();
-            cracker.BeginOutputReadLine();
+
+            try
+            {
+                cracker.BeginErrorReadLine();
+            }
+            catch { }
+
+            try
+            {
+                cracker.BeginOutputReadLine();
+            }
+            catch { }
+            
 
             ProcessingTask.SessionSettings.Restore = !ProcessingTask.SessionSettings.RestoreDisable;
             ProcessingTask.CrackStatus = CrackStatuses.Cracking;
