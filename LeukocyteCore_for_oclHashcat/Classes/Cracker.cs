@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
@@ -64,10 +65,11 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
         CrackTasksList crackTasks;
         Process cracker;
-        string speed;
-        byte util;
-        byte temp;
-        byte fan;
+        string[] speed;
+        byte[] util;
+        byte[] temp;
+        byte[] fan;
+        int gpuDataUpdateInterval = 2;
         int processingTaskId = -1;
         int lastProcessedTaskId = -1;
         bool processNextQueued = false;
@@ -108,25 +110,32 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 cracker.StartInfo.WorkingDirectory = value;
             }
         }
-        public string Speed
+        public string[] Speed
         {
             get
             {
                 return speed;
             }
         }
-        public byte Util
+        public byte[] Util
         {
             get
             {
                 return util;
             }
         }
-        public byte Fan
+        public byte[] Fan
         {
             get
             {
                 return fan;
+            }
+        }
+        public byte[] Temp
+        {
+            get
+            {
+                return temp;
             }
         }
         public int ProcessingTaskId
@@ -189,6 +198,18 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 processNextQueued = value;
             }
         }
+        public int GpuDataUpdateInterval
+        {
+            get
+            {
+                return gpuDataUpdateInterval;
+            }
+            set
+            {
+                // TODO: Maybe check for invalid values?
+                gpuDataUpdateInterval = value;
+            }
+        }
 
         public Cracker()
         {
@@ -210,6 +231,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             cracker.ErrorDataReceived += Cracker_ErrorDataReceived;
             cracker.Exited += Cracker_Exited;
             cracker.OutputDataReceived += Cracker_OutputDataReceived;
+
+            InitGpuData();
         }
         public Cracker(string crackerFile, string workingDirectory = "") : this()
         {
@@ -269,7 +292,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                             break;
 
                         case "Speed.GPU.#1...":
-                            speed = parts[1].TrimStart(' ');
+                            speed[0] = parts[1].TrimStart(' ');
                             break;
 
                         case "Recovered......":
@@ -305,9 +328,9 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
                         case "HWMon.GPU.#1...":
                             Match matchMonitor = monitorRegex.Match(parts[1]);
-                            util = byte.Parse(matchMonitor.Groups[1].Value);
-                            temp = byte.Parse(matchMonitor.Groups[2].Value);
-                            fan = byte.Parse(matchMonitor.Groups[3].Value);
+                            util[0] = byte.Parse(matchMonitor.Groups[1].Value);
+                            temp[0] = byte.Parse(matchMonitor.Groups[2].Value);
+                            fan[0] = byte.Parse(matchMonitor.Groups[3].Value);
                             break;
 
                         default:
@@ -330,6 +353,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         }
         private void Cracker_Exited(object sender, EventArgs e)
         {
+            InitGpuData();
+
             lock (ProcessingTask)
             {
                 if (ProcessingTask == null)
@@ -349,7 +374,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                     }
 
                 }
-
+                
                 Stopped(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
 
                 if (processNextQueued)
@@ -373,6 +398,14 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         {
             //throw new NotImplementedException();
         }
+
+        private void InitGpuData()
+        {
+            speed = Enumerable.Repeat("0 h/s", 8).ToArray();
+            util = new byte[8];
+            temp = new byte[8];
+            fan = new byte[8];
+        }
         private void ClearAfterCracking()
         {
             try
@@ -383,10 +416,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             }
             catch { }
 
-            speed = "";
-            util = 0;
-            temp = 0;
-            fan = 0;
+            InitGpuData();
             processingTaskId = -1;
         }
         private void CrackingProcessCleanKill()
@@ -413,7 +443,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 ProcessingTask.Started = DateTime.Now;
             }
 
-            cracker.StartInfo.Arguments = ProcessingTask.ToString();
+            cracker.StartInfo.Arguments = ProcessingTask.ToString()
+                + (gpuDataUpdateInterval > 0 ? " --status --status-timer=" + gpuDataUpdateInterval : "");
             cracker.Start();
 
             try

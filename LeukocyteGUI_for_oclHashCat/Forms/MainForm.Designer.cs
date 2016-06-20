@@ -282,7 +282,7 @@
             // 
             this.pbSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbSpeed.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_speed;
-            this.pbSpeed.Location = new System.Drawing.Point(736, 13);
+            this.pbSpeed.Location = new System.Drawing.Point(721, 13);
             this.pbSpeed.Name = "pbSpeed";
             this.pbSpeed.Size = new System.Drawing.Size(26, 26);
             this.pbSpeed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -295,7 +295,7 @@
             this.lblNumbersSpeed.AutoSize = true;
             this.lblNumbersSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblNumbersSpeed.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblNumbersSpeed.Location = new System.Drawing.Point(768, 10);
+            this.lblNumbersSpeed.Location = new System.Drawing.Point(753, 10);
             this.lblNumbersSpeed.Name = "lblNumbersSpeed";
             this.lblNumbersSpeed.Size = new System.Drawing.Size(19, 60);
             this.lblNumbersSpeed.TabIndex = 11;
@@ -305,9 +305,9 @@
             // 
             this.lblSpeed0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpeed0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSpeed0.Location = new System.Drawing.Point(782, 10);
+            this.lblSpeed0.Location = new System.Drawing.Point(771, 10);
             this.lblSpeed0.Name = "lblSpeed0";
-            this.lblSpeed0.Size = new System.Drawing.Size(70, 23);
+            this.lblSpeed0.Size = new System.Drawing.Size(81, 23);
             this.lblSpeed0.TabIndex = 12;
             this.lblSpeed0.Text = "0 h/s";
             this.lblSpeed0.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -316,9 +316,9 @@
             // 
             this.lblSpeed1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpeed1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSpeed1.Location = new System.Drawing.Point(782, 25);
+            this.lblSpeed1.Location = new System.Drawing.Point(774, 24);
             this.lblSpeed1.Name = "lblSpeed1";
-            this.lblSpeed1.Size = new System.Drawing.Size(70, 15);
+            this.lblSpeed1.Size = new System.Drawing.Size(78, 23);
             this.lblSpeed1.TabIndex = 13;
             this.lblSpeed1.Text = "0 h/s";
             this.lblSpeed1.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -327,9 +327,9 @@
             // 
             this.lblSpeed2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpeed2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSpeed2.Location = new System.Drawing.Point(782, 40);
+            this.lblSpeed2.Location = new System.Drawing.Point(774, 39);
             this.lblSpeed2.Name = "lblSpeed2";
-            this.lblSpeed2.Size = new System.Drawing.Size(70, 15);
+            this.lblSpeed2.Size = new System.Drawing.Size(78, 23);
             this.lblSpeed2.TabIndex = 14;
             this.lblSpeed2.Text = "0 h/s";
             this.lblSpeed2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -338,9 +338,9 @@
             // 
             this.lblSpeed3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpeed3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblSpeed3.Location = new System.Drawing.Point(782, 55);
+            this.lblSpeed3.Location = new System.Drawing.Point(774, 54);
             this.lblSpeed3.Name = "lblSpeed3";
-            this.lblSpeed3.Size = new System.Drawing.Size(70, 15);
+            this.lblSpeed3.Size = new System.Drawing.Size(78, 18);
             this.lblSpeed3.TabIndex = 15;
             this.lblSpeed3.Text = "0 h/s";
             this.lblSpeed3.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -351,7 +351,7 @@
             this.lblNumbersGPU.AutoSize = true;
             this.lblNumbersGPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblNumbersGPU.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblNumbersGPU.Location = new System.Drawing.Point(446, 9);
+            this.lblNumbersGPU.Location = new System.Drawing.Point(431, 9);
             this.lblNumbersGPU.Name = "lblNumbersGPU";
             this.lblNumbersGPU.Size = new System.Drawing.Size(19, 60);
             this.lblNumbersGPU.TabIndex = 17;
@@ -361,7 +361,7 @@
             // 
             this.pbGPU.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbGPU.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_videocard;
-            this.pbGPU.Location = new System.Drawing.Point(414, 12);
+            this.pbGPU.Location = new System.Drawing.Point(399, 12);
             this.pbGPU.Name = "pbGPU";
             this.pbGPU.Size = new System.Drawing.Size(26, 26);
             this.pbGPU.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -372,7 +372,7 @@
             // 
             this.lblFanUsage3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFanUsage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFanUsage3.Location = new System.Drawing.Point(567, 54);
+            this.lblFanUsage3.Location = new System.Drawing.Point(552, 54);
             this.lblFanUsage3.Name = "lblFanUsage3";
             this.lblFanUsage3.Size = new System.Drawing.Size(41, 15);
             this.lblFanUsage3.TabIndex = 27;
@@ -383,7 +383,7 @@
             // 
             this.lblFanUsage2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFanUsage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFanUsage2.Location = new System.Drawing.Point(567, 39);
+            this.lblFanUsage2.Location = new System.Drawing.Point(552, 39);
             this.lblFanUsage2.Name = "lblFanUsage2";
             this.lblFanUsage2.Size = new System.Drawing.Size(41, 15);
             this.lblFanUsage2.TabIndex = 26;
@@ -394,7 +394,7 @@
             // 
             this.lblFanUsage1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFanUsage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFanUsage1.Location = new System.Drawing.Point(567, 24);
+            this.lblFanUsage1.Location = new System.Drawing.Point(552, 24);
             this.lblFanUsage1.Name = "lblFanUsage1";
             this.lblFanUsage1.Size = new System.Drawing.Size(41, 15);
             this.lblFanUsage1.TabIndex = 25;
@@ -405,7 +405,7 @@
             // 
             this.lblFanUsage0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFanUsage0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblFanUsage0.Location = new System.Drawing.Point(567, 9);
+            this.lblFanUsage0.Location = new System.Drawing.Point(552, 9);
             this.lblFanUsage0.Name = "lblFanUsage0";
             this.lblFanUsage0.Size = new System.Drawing.Size(41, 15);
             this.lblFanUsage0.TabIndex = 24;
@@ -418,7 +418,7 @@
             this.lblNumbersFan.AutoSize = true;
             this.lblNumbersFan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblNumbersFan.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblNumbersFan.Location = new System.Drawing.Point(552, 9);
+            this.lblNumbersFan.Location = new System.Drawing.Point(537, 9);
             this.lblNumbersFan.Name = "lblNumbersFan";
             this.lblNumbersFan.Size = new System.Drawing.Size(19, 60);
             this.lblNumbersFan.TabIndex = 23;
@@ -428,7 +428,7 @@
             // 
             this.pbFan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbFan.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_fan;
-            this.pbFan.Location = new System.Drawing.Point(520, 12);
+            this.pbFan.Location = new System.Drawing.Point(505, 12);
             this.pbFan.Name = "pbFan";
             this.pbFan.Size = new System.Drawing.Size(26, 26);
             this.pbFan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -439,7 +439,7 @@
             // 
             this.lblTemp3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTemp3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTemp3.Location = new System.Drawing.Point(672, 54);
+            this.lblTemp3.Location = new System.Drawing.Point(657, 54);
             this.lblTemp3.Name = "lblTemp3";
             this.lblTemp3.Size = new System.Drawing.Size(48, 15);
             this.lblTemp3.TabIndex = 33;
@@ -450,7 +450,7 @@
             // 
             this.lblTemp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTemp2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTemp2.Location = new System.Drawing.Point(672, 39);
+            this.lblTemp2.Location = new System.Drawing.Point(657, 39);
             this.lblTemp2.Name = "lblTemp2";
             this.lblTemp2.Size = new System.Drawing.Size(48, 15);
             this.lblTemp2.TabIndex = 32;
@@ -461,7 +461,7 @@
             // 
             this.lblTemp1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTemp1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTemp1.Location = new System.Drawing.Point(672, 24);
+            this.lblTemp1.Location = new System.Drawing.Point(657, 24);
             this.lblTemp1.Name = "lblTemp1";
             this.lblTemp1.Size = new System.Drawing.Size(48, 15);
             this.lblTemp1.TabIndex = 31;
@@ -472,7 +472,7 @@
             // 
             this.lblTemp0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTemp0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTemp0.Location = new System.Drawing.Point(672, 9);
+            this.lblTemp0.Location = new System.Drawing.Point(657, 9);
             this.lblTemp0.Name = "lblTemp0";
             this.lblTemp0.Size = new System.Drawing.Size(48, 15);
             this.lblTemp0.TabIndex = 30;
@@ -485,7 +485,7 @@
             this.lblNumbersTemp.AutoSize = true;
             this.lblNumbersTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblNumbersTemp.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.lblNumbersTemp.Location = new System.Drawing.Point(657, 9);
+            this.lblNumbersTemp.Location = new System.Drawing.Point(642, 9);
             this.lblNumbersTemp.Name = "lblNumbersTemp";
             this.lblNumbersTemp.Size = new System.Drawing.Size(19, 60);
             this.lblNumbersTemp.TabIndex = 29;
@@ -495,7 +495,7 @@
             // 
             this.pbTemp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbTemp.Image = global::LeukocyteGUI_for_oclHashcat.Properties.Resources.glyph_temperature;
-            this.pbTemp.Location = new System.Drawing.Point(625, 12);
+            this.pbTemp.Location = new System.Drawing.Point(610, 12);
             this.pbTemp.Name = "pbTemp";
             this.pbTemp.Size = new System.Drawing.Size(26, 26);
             this.pbTemp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -506,7 +506,7 @@
             // 
             this.lblGPUUsage3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGPUUsage3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblGPUUsage3.Location = new System.Drawing.Point(461, 54);
+            this.lblGPUUsage3.Location = new System.Drawing.Point(446, 54);
             this.lblGPUUsage3.Name = "lblGPUUsage3";
             this.lblGPUUsage3.Size = new System.Drawing.Size(41, 15);
             this.lblGPUUsage3.TabIndex = 37;
@@ -517,7 +517,7 @@
             // 
             this.lblGPUUsage2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGPUUsage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblGPUUsage2.Location = new System.Drawing.Point(461, 39);
+            this.lblGPUUsage2.Location = new System.Drawing.Point(446, 39);
             this.lblGPUUsage2.Name = "lblGPUUsage2";
             this.lblGPUUsage2.Size = new System.Drawing.Size(41, 15);
             this.lblGPUUsage2.TabIndex = 36;
@@ -528,7 +528,7 @@
             // 
             this.lblGPUUsage1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGPUUsage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblGPUUsage1.Location = new System.Drawing.Point(461, 24);
+            this.lblGPUUsage1.Location = new System.Drawing.Point(446, 24);
             this.lblGPUUsage1.Name = "lblGPUUsage1";
             this.lblGPUUsage1.Size = new System.Drawing.Size(41, 15);
             this.lblGPUUsage1.TabIndex = 35;
@@ -539,7 +539,7 @@
             // 
             this.lblGPUUsage0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGPUUsage0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblGPUUsage0.Location = new System.Drawing.Point(461, 9);
+            this.lblGPUUsage0.Location = new System.Drawing.Point(446, 9);
             this.lblGPUUsage0.Name = "lblGPUUsage0";
             this.lblGPUUsage0.Size = new System.Drawing.Size(41, 15);
             this.lblGPUUsage0.TabIndex = 34;
@@ -550,7 +550,7 @@
             // 
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label21.Location = new System.Drawing.Point(508, 8);
+            this.label21.Location = new System.Drawing.Point(493, 8);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(2, 64);
             this.label21.TabIndex = 38;
@@ -559,7 +559,7 @@
             // 
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label22.Location = new System.Drawing.Point(613, 8);
+            this.label22.Location = new System.Drawing.Point(598, 8);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(2, 64);
             this.label22.TabIndex = 39;
@@ -568,7 +568,7 @@
             // 
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label23.Location = new System.Drawing.Point(725, 8);
+            this.label23.Location = new System.Drawing.Point(710, 8);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(2, 64);
             this.label23.TabIndex = 40;

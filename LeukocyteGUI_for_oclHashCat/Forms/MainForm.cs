@@ -41,6 +41,13 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         {
             lvCrackTasks.Items[listViewItemId] = ((CrackTask)lvCrackTasks.Items[listViewItemId].Tag).ToListViewItem(listViewItemId);
         }
+        private void VisualizeGpuData()
+        {
+            lblFanUsage0.Text = cracker.Fan[0].ToString() + "%";
+            lblGPUUsage0.Text = cracker.Util[0].ToString() + "%";
+            lblSpeed0.Text = cracker.Speed[0];
+            lblTemp0.Text = cracker.Temp[0].ToString() + " °C";
+        }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
@@ -79,8 +86,14 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
         {
             if (lvCrackTasks.SelectedItems.Count == 1)
             {
-                new TaskEditorForm((CrackTask)lvCrackTasks.SelectedItems[0].Tag).ShowDialog();
-                Revisualize(lvCrackTasks.SelectedIndices[0]);
+                CrackTask crackTask = (CrackTask)lvCrackTasks.SelectedItems[0].Tag;
+
+                if (new TaskEditorForm(crackTask).ShowDialog() == DialogResult.OK)
+                {
+                    crackTask.ClearResults();
+                    Revisualize(lvCrackTasks.SelectedIndices[0]);
+                }
+                
             }
         }
         private void btnMoveUp_Click(object sender, EventArgs e)
@@ -169,11 +182,19 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
 
         private void Cracker_ProgressChanged(object sender, CrackerEventArgs e)
         {
-            Invoke(new Action(() => Revisualize(e.CrackTaskId)));
+            Invoke(new Action(() =>
+            {
+                Revisualize(e.CrackTaskId);
+                VisualizeGpuData();
+            }));
         }
         private void Cracker_Stopped(object sender, CrackerEventArgs e)
         {
-            Invoke(new Action(() => Revisualize(e.CrackTaskId)));
+            Invoke(new Action(() =>
+            {
+                Revisualize(e.CrackTaskId);
+                VisualizeGpuData();
+            }));
         }
     }
 }
