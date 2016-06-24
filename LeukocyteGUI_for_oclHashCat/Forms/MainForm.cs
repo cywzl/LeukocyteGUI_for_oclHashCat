@@ -93,7 +93,7 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
                     crackTask.ClearResults();
                     Revisualize(lvCrackTasks.SelectedIndices[0]);
                 }
-                
+
             }
         }
         private void btnMoveUp_Click(object sender, EventArgs e)
@@ -134,6 +134,16 @@ namespace LeukocyteGUI_for_oclHashcat.Forms
             {
                 cracker.Crack(lvCrackTasks.SelectedIndices[0]);
             }
+        }
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem el in lvCrackTasks.SelectedItems)
+            {
+                CrackTask crackTask = (CrackTask)el.Tag;
+                crackTask.CrackStatus = CrackStatuses.Paused;
+            }
+
+            cracker.Stop();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

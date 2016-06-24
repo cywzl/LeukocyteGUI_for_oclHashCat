@@ -236,6 +236,7 @@
             this.btnStop.Size = new System.Drawing.Size(36, 36);
             this.btnStop.TabIndex = 6;
             this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnReset
             // 

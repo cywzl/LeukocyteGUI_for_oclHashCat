@@ -249,7 +249,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         }
         private void Cracker_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if ((e.Data != null) && (e.Data.Length > 0))
+            if ((e.Data != null) && (e.Data.Length > 0) && (ProcessingTask != null))
             {
                 lock (ProcessingTask)
                 {
@@ -353,6 +353,9 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         }
         private void Cracker_Exited(object sender, EventArgs e)
         {
+            // Ensure all async data is received
+            cracker.WaitForExit();
+
             InitGpuData();
 
             lock (ProcessingTask)
@@ -374,7 +377,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                     }
 
                 }
-                
+
                 Stopped(this, new CrackerEventArgs(ProcessingTask, processingTaskId));
 
                 if (processNextQueued)
@@ -408,6 +411,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         }
         private void ClearAfterCracking()
         {
+            cracker.WaitForExit(1000);
+
             try
             {
                 cracker.Close();
@@ -425,7 +430,6 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             {
                 SetConsoleCtrlHandler(null, true);
                 GenerateConsoleCtrlEvent(ConsoleCtrlEvent.CTRL_C, 0);
-                cracker.WaitForExit(1000);
                 FreeConsole();
                 SetConsoleCtrlHandler(null, false);
             }
@@ -458,7 +462,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
                 cracker.BeginOutputReadLine();
             }
             catch { }
-            
+
 
             ProcessingTask.SessionSettings.Restore = !ProcessingTask.SessionSettings.RestoreDisable;
             ProcessingTask.CrackStatus = CrackStatuses.Cracking;
