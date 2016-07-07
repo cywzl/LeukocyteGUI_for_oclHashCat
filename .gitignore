@@ -55,3 +55,6 @@ LeukocyteGUI_for_oclHashCat.Tests/bin/Debug/oclHashcat.log
 LeukocyteGUI_for_oclHashCat.Tests/bin/Debug/oclHashcat.pot
 LeukocyteGUI_for_oclHashCat/bin/Debug/oclHashcat.log
 LeukocyteGUI_for_oclHashCat/bin/Debug/oclHashcat.pot
+LeukocyteGUI_for_oclHashCat/bin/Debug/0000000002.log
+LeukocyteGUI_for_oclHashCat/bin/Debug/000000001.log
+*.restore

@@ -65,6 +65,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
         CrackTasksList crackTasks;
         Process cracker;
+        string crackerFile;
+        string workingDirectory;
         string[] speed;
         byte[] util;
         byte[] temp;
@@ -92,22 +94,22 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         {
             get
             {
-                return cracker.StartInfo.FileName;
+                return crackerFile;
             }
             set
             {
-                cracker.StartInfo.FileName = value;
+                crackerFile = value;
             }
         }
         public string WorkingDirectory
         {
             get
             {
-                return cracker.StartInfo.WorkingDirectory;
+                return workingDirectory;
             }
             set
             {
-                cracker.StartInfo.WorkingDirectory = value;
+                workingDirectory = value;
             }
         }
         public string[] Speed
@@ -219,25 +221,12 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             crackTasks = new CrackTasksList();
             crackTasks.CrackTaskMoved += CrackTasks_CrackTaskMoved;
 
-            cracker = new Process();
-            cracker.StartInfo = new ProcessStartInfo()
-            {
-                CreateNoWindow = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false
-            };
-            cracker.EnableRaisingEvents = true;
-            cracker.ErrorDataReceived += Cracker_ErrorDataReceived;
-            cracker.Exited += Cracker_Exited;
-            cracker.OutputDataReceived += Cracker_OutputDataReceived;
-
             InitGpuData();
         }
         public Cracker(string crackerFile, string workingDirectory = "") : this()
         {
-            cracker.StartInfo.FileName = crackerFile;
-            cracker.StartInfo.WorkingDirectory = workingDirectory;
+            this.crackerFile = crackerFile;
+            this.workingDirectory = workingDirectory;
         }
 
         private void CrackTasks_CrackTaskMoved(object sender, CrackTasksListTaskMovedEventArgs e)
@@ -402,6 +391,24 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             //throw new NotImplementedException();
         }
 
+        private void InitCracker()
+        {
+            cracker = new Process();
+            cracker.StartInfo = new ProcessStartInfo()
+            {
+                CreateNoWindow = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                RedirectStandardInput = true,
+                UseShellExecute = false,
+                FileName = crackerFile,
+                WorkingDirectory = workingDirectory
+            };
+            cracker.EnableRaisingEvents = true;
+            cracker.ErrorDataReceived += Cracker_ErrorDataReceived;
+            cracker.Exited += Cracker_Exited;
+            cracker.OutputDataReceived += Cracker_OutputDataReceived;
+        }
         private void InitGpuData()
         {
             speed = Enumerable.Repeat("0 h/s", 8).ToArray();
@@ -412,15 +419,7 @@ namespace LeukocyteCore_for_oclHashcat.Classes
         private void ClearAfterCracking()
         {
             cracker.WaitForExit(1000);
-
-            try
-            {
-                cracker.Close();
-                cracker.CancelOutputRead();
-                cracker.CancelErrorRead();
-            }
-            catch { }
-
+            cracker.Dispose();
             InitGpuData();
             processingTaskId = -1;
         }
@@ -437,6 +436,8 @@ namespace LeukocyteCore_for_oclHashcat.Classes
 
         public void Crack(int crackTaskId)
         {
+            InitCracker();
+
             crackTasks.CheckCrackTaskIdException(crackTaskId);
             processingTaskId = crackTaskId;
 
@@ -448,21 +449,12 @@ namespace LeukocyteCore_for_oclHashcat.Classes
             }
 
             cracker.StartInfo.Arguments = ProcessingTask.ToString()
-                + (gpuDataUpdateInterval > 0 ? " --status --status-timer=" + gpuDataUpdateInterval : "");
+                + ((gpuDataUpdateInterval > 0) && (!ProcessingTask.SessionSettings.Restore)
+                  ? " --status --status-timer=" + gpuDataUpdateInterval : "");
             cracker.Start();
 
-            try
-            {
-                cracker.BeginErrorReadLine();
-            }
-            catch { }
-
-            try
-            {
-                cracker.BeginOutputReadLine();
-            }
-            catch { }
-
+            cracker.BeginErrorReadLine();
+            cracker.BeginOutputReadLine();
 
             ProcessingTask.SessionSettings.Restore = !ProcessingTask.SessionSettings.RestoreDisable;
             ProcessingTask.CrackStatus = CrackStatuses.Cracking;
